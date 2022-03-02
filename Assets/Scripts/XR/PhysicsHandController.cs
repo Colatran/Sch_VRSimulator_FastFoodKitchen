@@ -16,6 +16,7 @@ public class PhysicsHandController : MonoBehaviour
     {
         rb.velocity = (target.position - transform.position) / Time.fixedDeltaTime;
 
+
         Quaternion rotationDifference = target.rotation * Quaternion.Inverse(transform.rotation);
         rotationDifference.ToAngleAxis(out float angleInDegree, out Vector3 rotationAxis);
 

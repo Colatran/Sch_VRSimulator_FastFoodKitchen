@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class HandGrabArea : MonoBehaviour
 {
-    public List<Interactible> interactibles = new List<Interactible>();
+    [SerializeField] HandGrabArea otherHand;
+
+    private List<Interactible> interactibles = new List<Interactible>();
     private Interactible closest;
     private bool grabing;
 
@@ -11,6 +13,8 @@ public class HandGrabArea : MonoBehaviour
     {
         Interactible interactible = other.GetComponent<Interactible>();
         if (interactible == null) return;
+
+        if (interactibles.Contains(interactible)) return;
 
         interactibles.Add(interactible);
     }
@@ -21,25 +25,30 @@ public class HandGrabArea : MonoBehaviour
         if (interactible == null) return;
 
         interactibles.Remove(interactible);
-
-        if (interactible == closest)
-        {
-            closest.RemoveHilight("2");
-            closest = null;
-        }
     }
 
 
     void Update()
     {
-        FindClosest();
+        if (grabing) ReleaseIfTooFar();
+        else FindClosest();
     }
 
 
+    private void ReleaseIfTooFar()
+    {
+        if (Vector3.Distance(closest.transform.position, transform.position) > .2f) ReleaseClosest();
+    }
+
     private void FindClosest()
     {
-        if (grabing) return;
-        if (interactibles.Count == 0) return;
+        if (interactibles.Count == 0) 
+        { 
+            if (closest == null) return;
+            closest.RemoveHilight();
+            closest = null;
+            return;
+        }
 
         Interactible _closest = null;
         float minDistance = 1f;
@@ -55,18 +64,11 @@ public class HandGrabArea : MonoBehaviour
             }
         }
 
-        if (closest == null)
-        {
-            closest = _closest;
-            closest.AddHilight("1");
-            return;
-        }
+        if (_closest == closest) return;
 
-        if (closest == _closest) return;
-
-        closest.RemoveHilight("1");
+        if (closest != null) closest.RemoveHilight();
         closest = _closest;
-        closest.AddHilight("2");
+        closest.AddHilight();
     }
 
 
@@ -74,18 +76,23 @@ public class HandGrabArea : MonoBehaviour
     {
         if (closest == null) return;
 
-        closest.Interact(transform.parent.gameObject);
+        if (otherHand.grabing && otherHand.closest == closest) otherHand.SwitchRelease();
 
+        closest.Interact(transform.parent.gameObject);
+        closest.RemoveHilight();
         grabing = true;
     }
-
     public void ReleaseClosest()
     {
         if (!grabing || closest == null) return;
 
         closest.Interact(transform.parent.gameObject);
-        interactibles.Remove(closest);
-
+        closest.AddHilight();
+        grabing = false;
+    }
+    public void SwitchRelease()
+    {
+        closest.AddHilight();
         grabing = false;
     }
 }

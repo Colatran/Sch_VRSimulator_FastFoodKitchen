@@ -23,12 +23,12 @@ public class Interactible : MonoBehaviour
     }
 
 
-    public void AddHilight(string by)
+    public void AddHilight()
     {
         hilight++;
         if (hilight == 1) HilightOn();
     }
-    public void RemoveHilight(string by)
+    public void RemoveHilight()
     {
         hilight--;
         if (hilight == 0) HilightOff();

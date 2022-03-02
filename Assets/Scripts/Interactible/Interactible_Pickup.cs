@@ -8,6 +8,7 @@ public class Interactible_Pickup : Interactible
     protected override void OnValidate()
     {
         base.OnValidate();
+
         if(attachment == null) attachment = GetComponent<Attachment>();
     }
 
@@ -20,12 +21,10 @@ public class Interactible_Pickup : Interactible
         if(attachment.NotAttached)
         {
             attachment.AttachTo(toAttach);
-            //RemoveHilight();
         }
         else if (attachment.Parent == toAttach) 
         {
             attachment.Detach();
-            //AddHilight();
         }
         else
         {
