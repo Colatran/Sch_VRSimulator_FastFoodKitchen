@@ -3,8 +3,12 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class HandInputController : MonoBehaviour
 {
-    [SerializeField] private ActionBasedController controller;
-    [SerializeField] private HandGrabArea handGrabArea;
+    [SerializeField] ActionBasedController controller;
+    [SerializeField] HandGrabArea handGrabArea;
+    [SerializeField] TeleportMovement teleportMovement;
+    [SerializeField] XRInteractorLineVisual myInteractorLineVisual;
+    [SerializeField] XRInteractorLineVisual otherInteractorLineVisual;
+    [SerializeField] LineRenderer lineRenderer;
 
     private float selectActionValue;
     public float SelectActionValue { get => selectActionValue; }
@@ -57,8 +61,13 @@ public class HandInputController : MonoBehaviour
 
     private void ActivatePress()
     {
+        myInteractorLineVisual.enabled = true;
+        otherInteractorLineVisual.enabled = false;
+        teleportMovement.StartTeleport(lineRenderer);
     }
     private void ActivateRelease()
     {
+        otherInteractorLineVisual.enabled = true;
+        teleportMovement.EndTeleport();
     }
 }
