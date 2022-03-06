@@ -1,27 +1,31 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Attachment : MonoBehaviour
 {
     [SerializeField] Collider[] colliders;
-    public Collider[] Colliders { get => colliders; }
     [SerializeField] Rigidbody rb;
+    [SerializeField] OrientationChecker orientation;
 
     private Attachment parent;
-    public Attachment Parent { get => parent; }
-    public bool Attached { get => parent != null; }
-    public bool NotAttached { get => parent == null; }
-
     private List<Attachment> children = new List<Attachment>();
 
+    public Collider[] Colliders { get => colliders; }
+    public Attachment Parent { get => parent; }
+    public bool HasProperOrientation { get => orientation.Check(null); }
+
+    public bool Attached { get => parent != null; }
+    public bool NotAttached { get => parent == null; }
 
 
     private void OnValidate()
     {
+        if (colliders.Length == 0) colliders = GetComponentsInChildren<Collider>();
+
         if (rb == null) rb = GetComponent<Rigidbody>();
 
-        if (colliders.Length == 0) colliders = GetComponents<Collider>();
-        if (colliders.Length == 0) colliders = GetComponentsInChildren<Collider>();
+        if(orientation == null) orientation = GetComponent<OrientationChecker>();
     }
 
 
@@ -75,14 +79,20 @@ public class Attachment : MonoBehaviour
         rb.interpolation = RigidbodyInterpolation.Interpolate;
     }
 
-    private void IgnoreCollisionsWith(Attachment parent, bool ignore)
+    private void IgnoreCollisionsWith(Attachment other, bool ignore)
     {
         foreach (Collider m_collider in colliders)
         {
-            foreach (Collider p_ollider in parent.colliders)
+            foreach (Collider o_collider in parent.colliders)
             {
-                Physics.IgnoreCollision(m_collider, p_ollider, ignore);
+                Physics.IgnoreCollision(m_collider, o_collider, ignore);
             }
         }
+    }
+
+
+    public void DetachAllChildren()
+    {
+        foreach (Attachment child in children) child.Detach();
     }
 }
