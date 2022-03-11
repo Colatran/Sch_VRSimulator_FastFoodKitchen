@@ -29,12 +29,12 @@ public class XrSettingsCanvas : MonoBehaviour
         if (settingsController.TeleportDash)
         {
             settingsController.TeleportDash = false;
-            text_tele.text = "Teletransport Piscar";
+            text_tele.text = "Teletransporte Piscar";
         }
         else
         {
             settingsController.TeleportDash = true;
-            text_tele.text = "Teletransport Dash";
+            text_tele.text = "Teletransporte Dash";
         }
 
         settingsController.SetSettings();

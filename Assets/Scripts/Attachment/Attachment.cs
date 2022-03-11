@@ -1,70 +1,128 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Attachment : MonoBehaviour
 {
-    [SerializeField] Collider[] colliders;
     [SerializeField] Rigidbody rb;
     [SerializeField] OrientationChecker orientation;
-
-    private Attachment parent;
-    private List<Attachment> children = new List<Attachment>();
-
-    public Collider[] Colliders { get => colliders; }
-    public Attachment Parent { get => parent; }
-    public bool HasProperOrientation { get => orientation.Check(null); }
-
-    public bool Attached { get => parent != null; }
-    public bool NotAttached { get => parent == null; }
-
+    [SerializeField] bool isContainer;
+    //[SerializeField] Collider[] colliders;
 
     private void OnValidate()
     {
-        if (colliders.Length == 0) colliders = GetComponentsInChildren<Collider>();
-
         if (rb == null) rb = GetComponent<Rigidbody>();
+        if (orientation == null) orientation = GetComponent<OrientationChecker>();
+        /*if (colliders.Length == 0) 
+        {
+            List<Collider> all = new List<Collider>();
+            List<Collider> final = new List<Collider>();
+            all.AddRange(GetComponentsInChildren<Collider>());
 
-        if(orientation == null) orientation = GetComponent<OrientationChecker>();
+            foreach (Collider col in all)
+                if (col.gameObject.layer == 2)
+                    final.Add(col);
+
+            colliders = final.ToArray();
+        }*/
     }
 
 
-    public void AttachTo(Attachment newParent)
+
+    private Attachment directParent;
+    private Attachment endParent;
+    private List<Attachment> directChildren = new List<Attachment>();
+    private List<Attachment> endChildren;
+
+
+    public bool HasProperOrientation(Transform other) => orientation.Check(other);
+    public bool IsContainer { get => isContainer; }
+    public Attachment DirectParent { get => directParent; }
+    public Attachment EndParent { get => endParent; }
+    public bool IsAttached { get => endParent != null; }
+    public bool IsNotAttached { get => endParent == null; }
+    public bool IsAttachable { get => orientation.Check(null) && (IsAttached || isContainer); }
+    public bool IsNotAttachable { get => !IsAttachable; }
+
+
+    private void Awake()
     {
-        DisableRigidbody();
-
-        parent = newParent;
-        parent.children.Add(this);
-
-        IgnoreCollisionsWith(parent, true);
-
-        transform.parent = parent.transform;
+        if (isContainer) endChildren = new List<Attachment>();
     }
-    public void Detach()
-    {
-        IgnoreCollisionsWith(parent, false);
 
+
+
+    public void AttachTo(Attachment newParent, bool dealWithRigidbody)
+    {
+        if (dealWithRigidbody) DisableRigidbody();
+
+        SetDirectParent(newParent);
+        transform.parent = directParent.transform;
+
+        if (directParent.IsAttached) SetEndParent(directParent.endParent);
+        else SetEndParent(directParent);
+        
+        SetChildrensEndParent(endParent);
+    }
+
+    public void Detach(bool dealWithRigidbody)
+    {
+        if (dealWithRigidbody) EnableRigidbody();
+
+        SetDirectParent(null);
         transform.parent = null;
 
-        parent.children.Remove(this);
-        parent = null;
+        if (isContainer) SetChildrensEndParent(this);
+        else DetachAllChildren();
 
-        EnableRigidbody();
+        SetEndParent(null);
     }
-    public void SwitchToParent(Attachment newParent) 
+
+    public void SwitchParent(Attachment newParent) 
     {
-        //Deal with the old parent
-        IgnoreCollisionsWith(parent, false);
-        parent.children.Remove(this);
-
-        //Set new parent
-        parent = newParent;
-        parent.children.Add(this);
-        IgnoreCollisionsWith(parent, true);
-        transform.parent = parent.transform;
-
+        Detach(false);
+        AttachTo(newParent, false);
     }
 
+    public void DetachAllChildren()
+    {
+        while (directChildren.Count > 0)
+        {
+            directChildren[0].Detach(true);
+        }
+    }
+
+
+
+    private void SetDirectParent(Attachment parent)
+    {
+        if (directParent != null)
+            directParent.directChildren.Remove(this);
+
+        directParent = parent;
+
+        if (directParent == null) return;
+        directParent.directChildren.Add(this);
+    }
+    private void SetEndParent(Attachment parent)
+    {
+        if (endParent != null)
+            endParent.endChildren.Remove(this);
+
+        endParent = parent;
+
+        if (endParent == null) return;
+        endParent.endChildren.Add(this);
+    }
+
+    public void SetChildrensEndParent(Attachment eParent)
+    {
+        foreach (Attachment child in directChildren)
+        {
+            child.SetEndParent(eParent);
+
+            child.SetChildrensEndParent(eParent);
+        }
+    }
 
     private void DisableRigidbody()
     {
@@ -77,22 +135,5 @@ public class Attachment : MonoBehaviour
         rb.isKinematic = false;
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         rb.interpolation = RigidbodyInterpolation.Interpolate;
-    }
-
-    private void IgnoreCollisionsWith(Attachment other, bool ignore)
-    {
-        foreach (Collider m_collider in colliders)
-        {
-            foreach (Collider o_collider in parent.colliders)
-            {
-                Physics.IgnoreCollision(m_collider, o_collider, ignore);
-            }
-        }
-    }
-
-
-    public void DetachAllChildren()
-    {
-        foreach (Attachment child in children) child.Detach();
     }
 }

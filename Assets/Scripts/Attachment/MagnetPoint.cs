@@ -7,21 +7,28 @@ public class MagnetPoint : MonoBehaviour
 
     private void OnValidate()
     {
-        manager = GetComponentInParent<MagnetPointsManager>();
+        if(manager == null) manager = GetComponentInParent<MagnetPointsManager>();
     }
 
 
-    private List<Attachment> potencialParents = new List<Attachment>();
-    public List<Attachment> PotencialParents { get => potencialParents; }
+
+    private List<Attachment> parents = new List<Attachment>();
+
+    public bool HasPotencialParent(Attachment parent) => parents.Contains(parent);
+
 
     public void OnEnterArea(Attachment attachment)
     {
-        potencialParents.Add(attachment);
-        if (potencialParents.Count == 1) manager.PointInArea();
+        parents.Add(attachment);
+
+        manager.PointInArea(attachment, parents.Count == 1);
     }
     public void OnExitArea(Attachment attachment)
     {
-        potencialParents.Remove(attachment);
-        if (potencialParents.Count == 0) manager.PointExitArea();
+        bool anyParentBefore = parents.Count > 0;
+
+        parents.Remove(attachment);
+
+        manager.PointExitArea(attachment, anyParentBefore && parents.Count == 0);
     }
 }

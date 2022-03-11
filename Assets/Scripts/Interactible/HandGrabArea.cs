@@ -8,6 +8,7 @@ public class HandGrabArea : MonoBehaviour
     private List<Interactible> interactibles = new List<Interactible>();
     private Interactible closest;
     private bool grabing;
+    private float interactibleRadius = 0;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -37,7 +38,10 @@ public class HandGrabArea : MonoBehaviour
 
     private void ReleaseIfTooFar()
     {
-        if (Vector3.Distance(closest.transform.position, transform.position) > .2f) ReleaseClosest();
+        if (
+            interactibleRadius > 0 && 
+            Vector3.Distance(closest.transform.position, transform.position) > interactibleRadius)
+            ReleaseClosest();
     }
 
     private void FindClosest()
@@ -74,17 +78,18 @@ public class HandGrabArea : MonoBehaviour
 
     public void GrabClosest()
     {
-        if (closest == null) return;
+        if (closest == null || grabing) return;
 
         if (otherHand.grabing && otherHand.closest == closest) otherHand.SwitchRelease();
 
+        interactibleRadius = closest.InteractibleRadius;
         closest.Interact(transform.parent.gameObject);
         closest.RemoveHilight();
         grabing = true;
     }
     public void ReleaseClosest()
     {
-        if (!grabing || closest == null) return;
+        if (closest == null || !grabing) return;
 
         closest.Interact(transform.parent.gameObject);
         closest.AddHilight();

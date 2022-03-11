@@ -18,17 +18,17 @@ public class Interactible_Pickup : Interactible
         Attachment toAttach = gObject.GetComponent<Attachment>();
         if (toAttach == null) return;
 
-        if(attachment.NotAttached)
+        if(attachment.IsNotAttached)
         {
-            attachment.AttachTo(toAttach);
+            attachment.AttachTo(toAttach, true);
         }
-        else if (attachment.Parent == toAttach) 
+        else if (attachment.EndParent == toAttach)
         {
-            attachment.Detach();
+            attachment.Detach(true);
         }
         else
         {
-            attachment.SwitchToParent(toAttach);
+            attachment.SwitchParent(toAttach);
         }
     }
 }

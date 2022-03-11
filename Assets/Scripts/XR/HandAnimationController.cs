@@ -10,7 +10,6 @@ public class HandAnimationController : MonoBehaviour
     private void OnValidate()
     {
         controller = GetComponent<HandInputController>();
-        //animators = GetComponentsInChildren<Animator>();
     }
 
 
