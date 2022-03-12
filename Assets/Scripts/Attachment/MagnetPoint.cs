@@ -14,8 +14,23 @@ public class MagnetPoint : MonoBehaviour
 
     private List<Attachment> parents = new List<Attachment>();
 
-    public bool HasPotencialParent(Attachment parent) => parents.Contains(parent);
-
+    public bool HasPotentialParent(Attachment parent) => parents.Contains(parent);
+    public bool HasEndParent(Attachment parent)
+    {
+        foreach (Attachment item in parents)
+        {
+            if (item.EndParent == parent) return true;
+        }
+        return false;
+    }
+    public Attachment GetWithEndParent(Attachment parent)
+    {
+        foreach (Attachment item in parents)
+        {
+            if (item.EndParent == parent) return item;
+        }
+        return null;
+    }
 
     public void OnEnterArea(Attachment attachment)
     {

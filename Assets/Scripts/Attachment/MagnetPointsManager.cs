@@ -15,8 +15,10 @@ public class MagnetPointsManager : MonoBehaviour
 
 
 
-    private List<Attachment> potencialParents = new List<Attachment>();
+    private List<Attachment> potentialParents = new List<Attachment>();
+    private List<Attachment> potentialParentsColective = new List<Attachment>();
     private int currentPoints = 0;
+
 
     public void PointInArea(Attachment attachment, bool check)
     {
@@ -30,21 +32,38 @@ public class MagnetPointsManager : MonoBehaviour
 
         CheckOutArea(attachment);
     }
-    
+
     private void CheckInArea(Attachment attachment)
     {
+        if (potentialParents.Contains(attachment)) return;
+
         int numPoints = 0;
-
-        if (potencialParents.Contains(attachment)) return;
-
         foreach (MagnetPoint point in points)
         {
-            if (point.HasPotencialParent(attachment))
+            if (point.HasPotentialParent(attachment))
                 numPoints++;
 
             if (numPoints == minPoints)
             {
-                potencialParents.Add(attachment);
+                potentialParents.Add(attachment);
+                return;
+            }
+        }
+
+
+        if (potentialParentsColective.Contains(attachment)) return;
+
+        Attachment endParent = attachment.EndParent;
+        if (endParent == null) return;
+        numPoints = 0;
+        foreach (MagnetPoint point in points)
+        {
+            if(point.HasEndParent(endParent))
+                numPoints++;
+
+            if (numPoints == minPoints)
+            {
+                potentialParentsColective.Add(attachment);
                 return;
             }
         }
@@ -54,29 +73,52 @@ public class MagnetPointsManager : MonoBehaviour
         int numPoints = 0;
 
         foreach (MagnetPoint point in points)
-            if (point.HasPotencialParent(attachment))
+            if (point.HasPotentialParent(attachment))
                 numPoints++;
 
         if (numPoints < minPoints)
-            potencialParents.Remove(attachment);
+            potentialParents.Remove(attachment);
     }
 
 
+    private bool IsAttachable(Attachment pParent)
+    {
+        return 
+            pParent.IsAttachable
+            && transform.position.y - pParent.transform.position.y > 0 
+            && attachment.HasProperOrientation(pParent.transform);
+    }
 
     private void Update()
     {
         if (attachment.IsNotAttached)
         {
-            foreach (Attachment pParent in potencialParents)
+            foreach (Attachment pParent in potentialParents)
             {
-                if (
-                    pParent.IsAttachable
-                    && transform.position.y - pParent.transform.position.y > 0
-                    && attachment.HasProperOrientation(pParent.transform)
-                    )
+                if (IsAttachable(pParent))
                 {
-                    attachment.AttachTo(pParent, true);
-                    potencialParents.RemoveAll(x => x == pParent);
+                    attachment.Attach(pParent);
+                    //potentialParents.RemoveAll(x => x == pParent);
+                    potentialParents.Remove(pParent);
+                    return;
+                }
+            }
+
+
+            foreach (Attachment pParent in potentialParentsColective)
+            {
+                if (IsAttachable(pParent))
+                {
+                    foreach (MagnetPoint point in points) 
+                    {
+                        Attachment parent = point.GetWithEndParent(pParent.EndParent);
+                        if (parent == null || parent == pParent) continue;
+                        attachment.AddColectiveParent(parent); 
+                    }
+
+                    attachment.Attach(pParent);
+                    //potentialParentsColective.RemoveAll(x => x == pParent);
+                    potentialParentsColective.Remove(pParent);
                     return;
                 }
             }

@@ -28,11 +28,10 @@ public class Attachment : MonoBehaviour
 
 
 
-    private Attachment directParent;
-    private Attachment endParent;
-    private List<Attachment> directChildren = new List<Attachment>();
-    private List<Attachment> endChildren;
-
+    public Attachment directParent;
+    public Attachment endParent;
+    public List<Attachment> directChildren = new List<Attachment>();
+    public List<Attachment> endChildren;
 
     public bool HasProperOrientation(Transform other) => orientation.Check(other);
     public bool IsContainer { get => isContainer; }
@@ -43,52 +42,14 @@ public class Attachment : MonoBehaviour
     public bool IsAttachable { get => orientation.Check(null) && (IsAttached || isContainer); }
     public bool IsNotAttachable { get => !IsAttachable; }
 
+    private delegate void DetachAction();
+    private event DetachAction OnDetach;
+    private List<Attachment> colectiveParents = new List<Attachment>();
+
 
     private void Awake()
     {
         if (isContainer) endChildren = new List<Attachment>();
-    }
-
-
-
-    public void AttachTo(Attachment newParent, bool dealWithRigidbody)
-    {
-        if (dealWithRigidbody) DisableRigidbody();
-
-        SetDirectParent(newParent);
-        transform.parent = directParent.transform;
-
-        if (directParent.IsAttached) SetEndParent(directParent.endParent);
-        else SetEndParent(directParent);
-        
-        SetChildrensEndParent(endParent);
-    }
-
-    public void Detach(bool dealWithRigidbody)
-    {
-        if (dealWithRigidbody) EnableRigidbody();
-
-        SetDirectParent(null);
-        transform.parent = null;
-
-        if (isContainer) SetChildrensEndParent(this);
-        else DetachAllChildren();
-
-        SetEndParent(null);
-    }
-
-    public void SwitchParent(Attachment newParent) 
-    {
-        Detach(false);
-        AttachTo(newParent, false);
-    }
-
-    public void DetachAllChildren()
-    {
-        while (directChildren.Count > 0)
-        {
-            directChildren[0].Detach(true);
-        }
     }
 
 
@@ -113,15 +74,36 @@ public class Attachment : MonoBehaviour
         if (endParent == null) return;
         endParent.endChildren.Add(this);
     }
-
-    public void SetChildrensEndParent(Attachment eParent)
+    private void SetChildrensEndParent(Attachment parent)
     {
         foreach (Attachment child in directChildren)
         {
-            child.SetEndParent(eParent);
+            child.SetEndParent(parent);
 
-            child.SetChildrensEndParent(eParent);
+            child.SetChildrensEndParent(parent);
         }
+    }
+
+    private void SetParenting(Attachment parent)
+    {
+        SetDirectParent(parent);
+        transform.parent = directParent.transform;
+
+        if (directParent.IsAttached) SetEndParent(directParent.endParent);
+        else SetEndParent(directParent);
+
+        SetChildrensEndParent(endParent);
+
+    }
+    private void ClearParenting()
+    {
+        SetDirectParent(null);
+        transform.parent = null;
+
+        if (isContainer) SetChildrensEndParent(this);
+        else DetachAllChildren();
+
+        SetEndParent(null);
     }
 
     private void DisableRigidbody()
@@ -135,5 +117,56 @@ public class Attachment : MonoBehaviour
         rb.isKinematic = false;
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         rb.interpolation = RigidbodyInterpolation.Interpolate;
+    }
+
+    public void Attach(Attachment parent)
+    {
+        DisableRigidbody();
+
+        SetParenting(parent);
+    }
+    public void Detach()
+    {
+        EnableRigidbody();
+
+        ClearParenting();
+
+        if (OnDetach == null) return;
+        OnDetach();
+    }
+
+    public void SwitchParent(Attachment parent)
+    {
+        ClearParenting();
+
+        if (OnDetach != null)
+            OnDetach();
+
+        SetParenting(parent);
+    }
+
+    public void DetachAllChildren()
+    {
+        while (directChildren.Count > 0)
+        {
+            directChildren[0].Detach();
+        }
+    }
+
+
+    public void AddColectiveParent(Attachment parent)
+    {
+        if (colectiveParents.Contains(parent)) return;
+        colectiveParents.Add(parent);
+        parent.OnDetach += DetachEvent;
+    }
+    public void DetachEvent()
+    {
+        Detach();
+
+        foreach (Attachment parent in colectiveParents)
+            parent.OnDetach -= DetachEvent;
+
+        colectiveParents.Clear();
     }
 }

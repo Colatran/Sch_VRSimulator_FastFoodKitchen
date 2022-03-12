@@ -20,11 +20,11 @@ public class Interactible_Pickup : Interactible
 
         if(attachment.IsNotAttached)
         {
-            attachment.AttachTo(toAttach, true);
+            attachment.Attach(toAttach);
         }
         else if (attachment.EndParent == toAttach)
         {
-            attachment.Detach(true);
+            attachment.Detach();
         }
         else
         {
