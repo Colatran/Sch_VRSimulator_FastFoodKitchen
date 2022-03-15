@@ -4,9 +4,9 @@ using UnityEngine;
 public class Attachment : MonoBehaviour
 {
     [SerializeField] Rigidbody rb;
-    [SerializeField] float rb_mass;
-    [SerializeField] float rb_drag;
-    [SerializeField] float rb_angdrag;
+    [HideInInspector] [SerializeField] float rb_mass;
+    [HideInInspector] [SerializeField] float rb_drag;
+    [HideInInspector] [SerializeField] float rb_angdrag;
     [SerializeField] OrientationChecker orientation;
     [SerializeField] bool isContainer;
 
@@ -31,7 +31,6 @@ public class Attachment : MonoBehaviour
     public event EmptyAction OnAttach;
     public event EmptyAction OnDetach;
 
-
     public bool HasProperOrientation(Transform other) => orientation.Check(other);
     public bool IsContainer { get => isContainer; }
     public Attachment DirectParent { get => directParent; }
@@ -40,7 +39,6 @@ public class Attachment : MonoBehaviour
     public bool IsNotAttached { get => endParent == null; }
     public bool IsAttachable { get => orientation.Check(null) && (IsAttached || isContainer); }
     public bool IsNotAttachable { get => !IsAttachable; }
-
     public List<Attachment> DirectChildren { get => directChildren; }
     public List<Attachment> EndChildren { get => endChildren; }
 
@@ -100,7 +98,7 @@ public class Attachment : MonoBehaviour
 
         SetChildrensEndParent(endParent);
 
-        if (OnDetach == null) return;
+        if (OnAttach == null) return;
         OnAttach();
     }
     private void ClearParenting()
@@ -119,6 +117,8 @@ public class Attachment : MonoBehaviour
 
     private void DisableRigidbody()
     {
+        if (rb == null) return;
+
         Destroy(rb);
     }
     private void EnableRigidbody()
@@ -140,6 +140,11 @@ public class Attachment : MonoBehaviour
     {
         if (directChildren.Contains(parent)) return;
 
+        if (IsAttached) 
+        {
+            ClearParenting();
+        }
+
         DisableRigidbody();
 
         SetParenting(parent);
@@ -149,13 +154,6 @@ public class Attachment : MonoBehaviour
         EnableRigidbody();
 
         ClearParenting();
-    }
-
-    public void SwitchParent(Attachment parent)
-    {
-        ClearParenting();
-
-        SetParenting(parent);
     }
 
     public void DetachAllChildren()
@@ -171,14 +169,14 @@ public class Attachment : MonoBehaviour
     {
         if (colectiveParents.Contains(parent)) return;
         colectiveParents.Add(parent);
-        parent.OnDetach += DetachEvent;
+        parent.OnDetach += DetachFromColectiveParentEvent;
     }
-    public void DetachEvent()
+    public void DetachFromColectiveParentEvent()
     {
         Detach();
 
         foreach (Attachment parent in colectiveParents)
-            parent.OnDetach -= DetachEvent;
+            parent.OnDetach -= DetachFromColectiveParentEvent;
 
         colectiveParents.Clear();
     }

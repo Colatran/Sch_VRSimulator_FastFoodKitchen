@@ -56,7 +56,7 @@ public class HandInputController : MonoBehaviour
     }
     private void SelectRelease()
     {
-        handGrabArea.ReleaseClosest();
+        handGrabArea.ReleaseGrabbed();
     }
 
     private void ActivatePress()

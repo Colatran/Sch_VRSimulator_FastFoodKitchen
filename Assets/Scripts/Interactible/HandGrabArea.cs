@@ -9,7 +9,9 @@ public class HandGrabArea : MonoBehaviour
 
     public List<Interactible> interactibles = new List<Interactible>();
     public Interactible closest;
-    private bool grabing;
+    public Interactible grabbed;
+    private bool grabing { get => grabbed != null; }
+    private bool notGrabing { get => grabbed == null; }
     private float interactibleRadius = 0;
 
 
@@ -34,16 +36,8 @@ public class HandGrabArea : MonoBehaviour
 
     void Update()
     {
-        if (grabing) ReleaseIfTooFar();
-        else FindClosest();
-    }
-
-    private void ReleaseIfTooFar()
-    {
-        if (
-            interactibleRadius > 0 && 
-            Vector3.Distance(closest.transform.position, transform.position) > interactibleRadius)
-            ReleaseClosest();
+        if (notGrabing) FindClosest();
+        else ReleaseIfTooFar();
     }
 
     private void FindClosest()
@@ -73,65 +67,79 @@ public class HandGrabArea : MonoBehaviour
         if (_closest == closest) return;
 
         if (closest != null) closest.RemoveHilight();
+
         closest = _closest;
         closest.AddHilight();
     }
+
+    private void ReleaseIfTooFar()
+    {
+        if (interactibleRadius > 0
+            && Vector3.Distance(grabbed.transform.position, transform.position) > interactibleRadius)
+            ReleaseGrabbed();
+    }
+
 
 
     public void GrabClosest()
     {
         if (closest == null || grabing) return;
 
-        if (otherHand.grabing && otherHand.closest == closest) otherHand.SwitchRelease();
+        grabbed = closest;
+        closest = null; 
 
-        interactibleRadius = closest.InteractibleRadius;
-        closest.Interact(transform.parent.gameObject, true);
-        closest.RemoveHilight();
+        if (otherHand.grabbed == grabbed) otherHand.ReleaseGrabbedWork();
 
-        grabing = true;
+        interactibleRadius = grabbed.InteractibleRadius;
+        grabbed.Interact(transform.parent.gameObject, true);
+        grabbed.RemoveHilight();
 
-
-        if(closest is Interactible_Pickup)
-        {
-            rb.mass = 0.0001f;
-            attachmentListeningOnDetach = (closest as Interactible_Pickup).Attachment;
-            attachmentListeningOnDetach.OnDetach += OnPickupDetach;
-        }
+        TryListeningOnPickupEvents();
     }
-    public void ReleaseClosest()
+    public void ReleaseGrabbed()
     {
-        if (closest == null || !grabing) return;
+        if (notGrabing) return;
 
-        closest.AddHilight();
-        closest.Interact(transform.parent.gameObject, false);
-        
-        grabing = false;
+        StopListeningOnPickupEvents();
+
+        grabbed.Interact(transform.parent.gameObject, false);
+
+        ReleaseGrabbedWork();
     }
 
-    private void SwitchRelease()
+    private void ReleaseGrabbedWork()
     {
-        closest.AddHilight();
-        grabing = false;
+        grabbed = null;
     }
 
 
 
     private Attachment attachmentListeningOnDetach;
-
-    private void OnPickupDetach()
+    private void TryListeningOnPickupEvents()
+    {
+        if (grabbed is Interactible_Pickup)
+        {
+            rb.mass = 0.0001f;
+            attachmentListeningOnDetach = (grabbed as Interactible_Pickup).Attachment;
+            attachmentListeningOnDetach.OnDetach += OnPickupDetach;
+        }
+    }
+    private void StopListeningOnPickupEvents()
     {
         rb.mass = 100;
 
+        if (attachmentListeningOnDetach == null) return;
+
         attachmentListeningOnDetach.OnDetach -= OnPickupDetach;
-
-        Interactible interactible = attachmentListeningOnDetach.GetComponent<Interactible>();
-        interactibles.Remove(interactible);
-        interactible.RemoveHilight();
-
-        closest = null;
-
         attachmentListeningOnDetach = null;
     }
+    private void OnPickupDetach()
+    {
+        Interactible interactible = attachmentListeningOnDetach.GetComponent<Interactible>();
+        interactibles.Remove(interactible);
 
+        StopListeningOnPickupEvents();
 
+        ReleaseGrabbedWork();
+    }
 }

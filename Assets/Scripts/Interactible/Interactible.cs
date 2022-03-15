@@ -6,10 +6,8 @@ public class Interactible : MonoBehaviour
     [SerializeField] float interactibleRadius = 0;
 
     private Material material;
-    private int hilight = 0;
+    public int hilight = 0;
 
-    public bool IsHilighted { get => hilight > 0; }
-    public bool NotHilighted { get => hilight == 0; }
     public float InteractibleRadius { get => interactibleRadius; }
 
     protected virtual void OnValidate()

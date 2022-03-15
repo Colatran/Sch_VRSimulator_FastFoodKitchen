@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Board_InteriorTrigger : MonoBehaviour
@@ -14,6 +15,7 @@ public class Board_InteriorTrigger : MonoBehaviour
 
 
     private Attachment attachmentInRange;
+    private List<Attachment> attachmentsMustIgnore = new List<Attachment>();
 
     private void OnTriggerEnter(Collider other)
     {
@@ -28,9 +30,16 @@ public class Board_InteriorTrigger : MonoBehaviour
             if(item == null) return;
         }
 
-        if(item.Is(type))
+        Attachment itemAttachment = item.Attachment;
+
+        if (itemAttachment == attachmentsMustIgnore.Contains(item.Attachment)) {
+            attachmentsMustIgnore.Remove(itemAttachment);
+            return;
+        }
+
+        if (item.Is(type))
         {
-            attachmentInRange = item.Attachment;
+            attachmentInRange = itemAttachment;
         }
     }
 
@@ -51,6 +60,8 @@ public class Board_InteriorTrigger : MonoBehaviour
             attachmentInRange.Attach(attachment);
             attachmentInRange.transform.localRotation = Quaternion.identity;
             attachmentInRange.transform.localPosition = position;
+
+            attachmentsMustIgnore.Add(attachmentInRange);
 
             attachmentInRange = null;
         }
