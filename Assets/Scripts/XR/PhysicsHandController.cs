@@ -9,21 +9,27 @@ public class PhysicsHandController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        FollowHands();
+        FollowHandPosition();
+        FollowHandRotation();
     }
 
-    private void FollowHands()
+    private void FollowHandPosition()
     {
         rb.velocity = (target.position - transform.position) / Time.fixedDeltaTime;
-
-
-        Quaternion rotationDifference = target.rotation * Quaternion.Inverse(transform.rotation);
-        rotationDifference.ToAngleAxis(out float angleInDegree, out Vector3 rotationAxis);
-
-        Vector3 rotationDifferenceInDegree = angleInDegree * rotationAxis;
-
-        rb.angularVelocity = (rotationDifferenceInDegree * Mathf.Deg2Rad / Time.fixedDeltaTime);
     }
+    private void FollowHandRotation()
+    {
+        Quaternion rotationDifference = target.rotation * Quaternion.Inverse(transform.rotation);
+        rotationDifference.ToAngleAxis(out float angleInDegrees, out Vector3 rotationAxis);
+        if (angleInDegrees > 180f)
+            angleInDegrees -= 360f;
+
+        var angularVelocity = (angleInDegrees * rotationAxis * Mathf.Deg2Rad / Time.fixedDeltaTime);
+
+        if (!float.IsNaN(angularVelocity.x))
+            rb.angularVelocity = angularVelocity;
+    }
+
 
 
     private void Update()

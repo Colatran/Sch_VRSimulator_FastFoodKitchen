@@ -58,7 +58,7 @@ public class MagnetPointsManager : MonoBehaviour
         numPoints = 0;
         foreach (MagnetPoint point in points)
         {
-            if(point.HasEndParent(endParent))
+            if (point.HasEndParent(endParent))
                 numPoints++;
 
             if (numPoints == minPoints)
@@ -83,9 +83,9 @@ public class MagnetPointsManager : MonoBehaviour
 
     private bool IsAttachable(Attachment pParent)
     {
-        return 
+        return
             pParent.IsAttachable
-            && transform.position.y - pParent.transform.position.y > 0 
+            && transform.position.y - pParent.transform.position.y > 0
             && attachment.HasProperOrientation(pParent.transform);
     }
 
@@ -98,7 +98,6 @@ public class MagnetPointsManager : MonoBehaviour
                 if (IsAttachable(pParent))
                 {
                     attachment.Attach(pParent);
-                    //potentialParents.RemoveAll(x => x == pParent);
                     potentialParents.Remove(pParent);
                     return;
                 }
@@ -109,15 +108,14 @@ public class MagnetPointsManager : MonoBehaviour
             {
                 if (IsAttachable(pParent))
                 {
-                    foreach (MagnetPoint point in points) 
+                    foreach (MagnetPoint point in points)
                     {
                         Attachment parent = point.GetWithEndParent(pParent.EndParent);
                         if (parent == null || parent == pParent) continue;
-                        attachment.AddColectiveParent(parent); 
+                        attachment.AddColectiveParent(parent);
                     }
 
                     attachment.Attach(pParent);
-                    //potentialParentsColective.RemoveAll(x => x == pParent);
                     potentialParentsColective.Remove(pParent);
                     return;
                 }

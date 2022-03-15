@@ -12,4 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5411e327b2a13e94a909642061ac7ea7, type: 3}
   m_Name: AssetHolder
   m_EditorClassIdentifier: 
-  hilightMaterial: {fileID: 2100000, guid: 121a2b0ee846cd643abf9f5ed38d0fac, type: 2}
+  Material_Hilight: {fileID: 2100000, guid: 121a2b0ee846cd643abf9f5ed38d0fac, type: 2}
+  Material_UHC_TimerOn: {fileID: 2100000, guid: 6cd16e5602d1f4c40a4718e21188d2cc,
+    type: 2}
+  Material_UHC_TimerOff: {fileID: 2100000, guid: 2d96a4ad6ee42064a8d29b2b1a31768e,
+    type: 2}
+  Material_Grill_Button: {fileID: 2100000, guid: 19d6434ea5b9d334c91b5b43a6ce571a,
+    type: 2}
+  Material_Grill_ButtonLocked: {fileID: 2100000, guid: f7c0a220c2cdd7c4bb65db2700519a41,
+    type: 2}

@@ -23,18 +23,16 @@ public class Interactible_Slider : Interactible
         }
     }
 
-    public override void Interact(GameObject gObject)
+    public override void Interact(GameObject sender, bool grab)
     {
-        Transform objTransform = gObject.transform;
-
-        if (targetTransform == objTransform)
+        if(grab)
         {
-            targetTransform = null;
+            targetTransform = sender.transform;
+            offset = targetTransform.position - transform.position;
         }
         else
         {
-            targetTransform = objTransform;
-            offset = targetTransform.position - transform.position;
+            targetTransform = null;
         }
     }
 

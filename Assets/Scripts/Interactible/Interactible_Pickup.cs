@@ -3,6 +3,7 @@ using UnityEngine;
 public class Interactible_Pickup : Interactible
 {
     [SerializeField] Attachment attachment;
+    public Attachment Attachment { get => attachment; }
 
 
     protected override void OnValidate()
@@ -13,22 +14,25 @@ public class Interactible_Pickup : Interactible
     }
 
 
-    public override void Interact(GameObject gObject)
+    public override void Interact(GameObject sender, bool grab)
     {
-        Attachment toAttach = gObject.GetComponent<Attachment>();
-        if (toAttach == null) return;
+        if(grab)
+        {
+            Attachment toAttach = sender.GetComponent<Attachment>();
+            if (toAttach == null) return;
 
-        if(attachment.IsNotAttached)
-        {
-            attachment.Attach(toAttach);
-        }
-        else if (attachment.EndParent == toAttach)
-        {
-            attachment.Detach();
+            if (attachment.IsAttached)
+            {
+                attachment.SwitchParent(toAttach);
+            }
+            else
+            {
+                attachment.Attach(toAttach);
+            }
         }
         else
         {
-            attachment.SwitchParent(toAttach);
+            attachment.Detach();
         }
     }
 }

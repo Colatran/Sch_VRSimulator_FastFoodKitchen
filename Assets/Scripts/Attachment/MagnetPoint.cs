@@ -7,7 +7,7 @@ public class MagnetPoint : MonoBehaviour
 
     private void OnValidate()
     {
-        if(manager == null) manager = GetComponentInParent<MagnetPointsManager>();
+        if (manager == null) manager = GetComponentInParent<MagnetPointsManager>();
     }
 
 

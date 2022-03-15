@@ -4,34 +4,33 @@ using UnityEngine;
 public class Attachment : MonoBehaviour
 {
     [SerializeField] Rigidbody rb;
+    [SerializeField] float rb_mass;
+    [SerializeField] float rb_drag;
+    [SerializeField] float rb_angdrag;
     [SerializeField] OrientationChecker orientation;
     [SerializeField] bool isContainer;
-    //[SerializeField] Collider[] colliders;
 
     private void OnValidate()
     {
         if (rb == null) rb = GetComponent<Rigidbody>();
         if (orientation == null) orientation = GetComponent<OrientationChecker>();
-        /*if (colliders.Length == 0) 
-        {
-            List<Collider> all = new List<Collider>();
-            List<Collider> final = new List<Collider>();
-            all.AddRange(GetComponentsInChildren<Collider>());
-
-            foreach (Collider col in all)
-                if (col.gameObject.layer == 2)
-                    final.Add(col);
-
-            colliders = final.ToArray();
-        }*/
     }
 
 
 
-    public Attachment directParent;
-    public Attachment endParent;
-    public List<Attachment> directChildren = new List<Attachment>();
-    public List<Attachment> endChildren;
+    private Attachment directParent;
+    private Attachment endParent;
+    private List<Attachment> directChildren = new List<Attachment>();
+    private List<Attachment> endChildren;
+    private List<Attachment> colectiveParents = new List<Attachment>();
+
+    public delegate void ParentAction(Attachment child);
+    public event ParentAction OnAddContent;
+    public event ParentAction OnRemoveContent;
+    public delegate void EmptyAction();
+    public event EmptyAction OnAttach;
+    public event EmptyAction OnDetach;
+
 
     public bool HasProperOrientation(Transform other) => orientation.Check(other);
     public bool IsContainer { get => isContainer; }
@@ -42,9 +41,8 @@ public class Attachment : MonoBehaviour
     public bool IsAttachable { get => orientation.Check(null) && (IsAttached || isContainer); }
     public bool IsNotAttachable { get => !IsAttachable; }
 
-    private delegate void DetachAction();
-    private event DetachAction OnDetach;
-    private List<Attachment> colectiveParents = new List<Attachment>();
+    public List<Attachment> DirectChildren { get => directChildren; }
+    public List<Attachment> EndChildren { get => endChildren; }
 
 
     private void Awake()
@@ -67,12 +65,20 @@ public class Attachment : MonoBehaviour
     private void SetEndParent(Attachment parent)
     {
         if (endParent != null)
+        {
             endParent.endChildren.Remove(this);
+
+            if (endParent.OnRemoveContent != null)
+                endParent.OnRemoveContent(this);
+        }
 
         endParent = parent;
 
         if (endParent == null) return;
         endParent.endChildren.Add(this);
+
+        if (endParent.OnAddContent != null)
+            endParent.OnAddContent(this);
     }
     private void SetChildrensEndParent(Attachment parent)
     {
@@ -94,6 +100,8 @@ public class Attachment : MonoBehaviour
 
         SetChildrensEndParent(endParent);
 
+        if (OnDetach == null) return;
+        OnAttach();
     }
     private void ClearParenting()
     {
@@ -104,6 +112,9 @@ public class Attachment : MonoBehaviour
         else DetachAllChildren();
 
         SetEndParent(null);
+
+        if (OnDetach == null) return;
+        OnDetach();
     }
 
     private void DisableRigidbody()
@@ -112,15 +123,23 @@ public class Attachment : MonoBehaviour
     }
     private void EnableRigidbody()
     {
+        if (rb != null) return;
+
         rb = gameObject.AddComponent(typeof(Rigidbody)) as Rigidbody;
         rb.useGravity = true;
         rb.isKinematic = false;
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         rb.interpolation = RigidbodyInterpolation.Interpolate;
+        rb.mass = rb_mass;
+        rb.drag = rb_drag;
+        rb.angularDrag = rb_angdrag;
+
     }
 
     public void Attach(Attachment parent)
     {
+        if (directChildren.Contains(parent)) return;
+
         DisableRigidbody();
 
         SetParenting(parent);
@@ -130,17 +149,11 @@ public class Attachment : MonoBehaviour
         EnableRigidbody();
 
         ClearParenting();
-
-        if (OnDetach == null) return;
-        OnDetach();
     }
 
     public void SwitchParent(Attachment parent)
     {
         ClearParenting();
-
-        if (OnDetach != null)
-            OnDetach();
 
         SetParenting(parent);
     }

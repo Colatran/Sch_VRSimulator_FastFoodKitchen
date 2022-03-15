@@ -55,7 +55,7 @@ public class MagnetArea : MonoBehaviour
             if (attachment.IsAttachable)
             {
                 goodOrientation = true;
-                foreach (MagnetPoint point in points) point.OnEnterArea(attachment);            
+                foreach (MagnetPoint point in points) point.OnEnterArea(attachment);
             }
         }
     }

@@ -35,9 +35,9 @@ public class Interactible : MonoBehaviour
         if (hilight == 0) HilightOff();
     }
 
-    private void HilightOn() => render.material = GameManager.Asset.hilightMaterial;
+    private void HilightOn() => render.material = GameManager.Asset.Material_Hilight;
     private void HilightOff() => render.material = material;
 
 
-    public virtual void Interact(GameObject gObject) { }
+    public virtual void Interact(GameObject sender, bool grab) { }
 }

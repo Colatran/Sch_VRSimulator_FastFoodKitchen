@@ -4,11 +4,14 @@ using UnityEngine;
 public class HandGrabArea : MonoBehaviour
 {
     [SerializeField] HandGrabArea otherHand;
+    [SerializeField] Rigidbody rb;
 
-    private List<Interactible> interactibles = new List<Interactible>();
-    private Interactible closest;
+
+    public List<Interactible> interactibles = new List<Interactible>();
+    public Interactible closest;
     private bool grabing;
     private float interactibleRadius = 0;
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -34,7 +37,6 @@ public class HandGrabArea : MonoBehaviour
         if (grabing) ReleaseIfTooFar();
         else FindClosest();
     }
-
 
     private void ReleaseIfTooFar()
     {
@@ -83,21 +85,53 @@ public class HandGrabArea : MonoBehaviour
         if (otherHand.grabing && otherHand.closest == closest) otherHand.SwitchRelease();
 
         interactibleRadius = closest.InteractibleRadius;
-        closest.Interact(transform.parent.gameObject);
+        closest.Interact(transform.parent.gameObject, true);
         closest.RemoveHilight();
+
         grabing = true;
+
+
+        if(closest is Interactible_Pickup)
+        {
+            rb.mass = 0.0001f;
+            attachmentListeningOnDetach = (closest as Interactible_Pickup).Attachment;
+            attachmentListeningOnDetach.OnDetach += OnPickupDetach;
+        }
     }
     public void ReleaseClosest()
     {
         if (closest == null || !grabing) return;
 
-        closest.Interact(transform.parent.gameObject);
         closest.AddHilight();
+        closest.Interact(transform.parent.gameObject, false);
+        
         grabing = false;
     }
-    public void SwitchRelease()
+
+    private void SwitchRelease()
     {
         closest.AddHilight();
         grabing = false;
     }
+
+
+
+    private Attachment attachmentListeningOnDetach;
+
+    private void OnPickupDetach()
+    {
+        rb.mass = 100;
+
+        attachmentListeningOnDetach.OnDetach -= OnPickupDetach;
+
+        Interactible interactible = attachmentListeningOnDetach.GetComponent<Interactible>();
+        interactibles.Remove(interactible);
+        interactible.RemoveHilight();
+
+        closest = null;
+
+        attachmentListeningOnDetach = null;
+    }
+
+
 }
