@@ -5,11 +5,6 @@ public class Interactible : MonoBehaviour
     [SerializeField] Renderer render;
     [SerializeField] float interactibleRadius = 0;
 
-    private Material material;
-    public int hilight = 0;
-
-    public float InteractibleRadius { get => interactibleRadius; }
-
     protected virtual void OnValidate()
     {
         if (render == null) render = GetComponent<Renderer>();
@@ -21,6 +16,11 @@ public class Interactible : MonoBehaviour
         material = render.material;
     }
 
+
+
+    private Material material;
+    private int hilight = 0;
+    public float InteractibleRadius { get => interactibleRadius; }
 
     public void AddHilight()
     {

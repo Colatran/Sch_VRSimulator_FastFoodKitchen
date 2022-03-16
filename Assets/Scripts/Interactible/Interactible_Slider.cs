@@ -50,6 +50,4 @@ public class Interactible_Slider : Interactible
 
         rb.velocity = velocity;
     }
-
-
 }

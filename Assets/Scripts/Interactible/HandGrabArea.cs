@@ -7,9 +7,9 @@ public class HandGrabArea : MonoBehaviour
     [SerializeField] Rigidbody rb;
 
 
-    public List<Interactible> interactibles = new List<Interactible>();
-    public Interactible closest;
-    public Interactible grabbed;
+    private List<Interactible> interactibles = new List<Interactible>();
+    private Interactible closest;
+    private Interactible grabbed;
     private bool grabing { get => grabbed != null; }
     private bool notGrabing { get => grabbed == null; }
     private float interactibleRadius = 0;
@@ -55,6 +55,12 @@ public class HandGrabArea : MonoBehaviour
 
         foreach (var interactible in interactibles)
         {
+            if (interactible == null)
+            {
+                interactibles.Remove(interactible);
+                return;
+            }
+
             float distance = Vector3.Distance(transform.position, interactible.transform.position);
 
             if (distance < minDistance)
@@ -94,13 +100,13 @@ public class HandGrabArea : MonoBehaviour
         grabbed.Interact(transform.parent.gameObject, true);
         grabbed.RemoveHilight();
 
-        TryListeningOnPickupEvents();
+        WorkCase_InteractiblePickup();
     }
     public void ReleaseGrabbed()
     {
         if (notGrabing) return;
 
-        StopListeningOnPickupEvents();
+        StopWorkCase_InteractiblePickup();
 
         grabbed.Interact(transform.parent.gameObject, false);
 
@@ -114,31 +120,31 @@ public class HandGrabArea : MonoBehaviour
 
 
 
-    private Attachment attachmentListeningOnDetach;
-    private void TryListeningOnPickupEvents()
+    private Attachment attachment_InteractiblePickup;
+    private void WorkCase_InteractiblePickup()
     {
         if (grabbed is Interactible_Pickup)
         {
             rb.mass = 0.0001f;
-            attachmentListeningOnDetach = (grabbed as Interactible_Pickup).Attachment;
-            attachmentListeningOnDetach.OnDetach += OnPickupDetach;
+            attachment_InteractiblePickup = (grabbed as Interactible_Pickup).Attachment;
+            attachment_InteractiblePickup.OnDetach += OnPickupDetach;
         }
     }
-    private void StopListeningOnPickupEvents()
+    private void StopWorkCase_InteractiblePickup()
     {
         rb.mass = 100;
 
-        if (attachmentListeningOnDetach == null) return;
+        if (attachment_InteractiblePickup == null) return;
 
-        attachmentListeningOnDetach.OnDetach -= OnPickupDetach;
-        attachmentListeningOnDetach = null;
+        attachment_InteractiblePickup.OnDetach -= OnPickupDetach;
+        attachment_InteractiblePickup = null;
     }
     private void OnPickupDetach()
     {
-        Interactible interactible = attachmentListeningOnDetach.GetComponent<Interactible>();
+        Interactible interactible = attachment_InteractiblePickup.GetComponent<Interactible>();
         interactibles.Remove(interactible);
 
-        StopListeningOnPickupEvents();
+        StopWorkCase_InteractiblePickup();
 
         ReleaseGrabbedWork();
     }

@@ -5,7 +5,6 @@ public class Interactible_Pickup : Interactible
     [SerializeField] Attachment attachment;
     public Attachment Attachment { get => attachment; }
 
-
     protected override void OnValidate()
     {
         base.OnValidate();

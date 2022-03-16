@@ -9,6 +9,7 @@ public class HandInputController : MonoBehaviour
     [SerializeField] XRInteractorLineVisual myInteractorLineVisual;
     [SerializeField] XRInteractorLineVisual otherInteractorLineVisual;
     [SerializeField] LineRenderer lineRenderer;
+    [SerializeField] FingerTip fingerTip;
 
     private float selectActionValue;
     public float SelectActionValue { get => selectActionValue; }
@@ -18,6 +19,7 @@ public class HandInputController : MonoBehaviour
 
     private bool selectActionPressing = false;
     private bool activateActionPressing = false;
+    private bool notPointing = false;
 
 
     private void Update()
@@ -47,6 +49,24 @@ public class HandInputController : MonoBehaviour
             if (activateAction) ActivatePress();
         }
         activateActionPressing = activateAction;
+
+
+        if(notPointing)
+        {
+            if (selectAction && !activateAction) 
+            {
+                notPointing = false;
+                Point();
+            }
+        }
+        else
+        {
+            if (!selectAction || activateAction)
+            {
+                notPointing = true;
+                NotPoint();
+            }
+        }
     }
 
 
@@ -69,5 +89,14 @@ public class HandInputController : MonoBehaviour
     {
         otherInteractorLineVisual.enabled = true;
         teleportMovement.EndTeleport();
+    }
+
+    private void Point()
+    {
+        fingerTip.Pressing = true;
+    }
+    private void NotPoint()
+    {
+        fingerTip.Pressing = false;
     }
 }

@@ -1,5 +1,62 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &715061110476882135
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 495315716677699682}
+  - component: {fileID: 5402800128951273191}
+  - component: {fileID: 8471182590884369508}
+  m_Layer: 6
+  m_Name: FingerTip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &495315716677699682
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715061110476882135}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.02, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8986698116028588001}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &5402800128951273191
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715061110476882135}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.01
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8471182590884369508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715061110476882135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a386da2d39b2df44d82c7c1717e7fc59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4402119740063575695
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,6 +543,64 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &8554647845720738524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8969128660887558190}
+  - component: {fileID: 1675978716355401181}
+  - component: {fileID: 9136770702354237524}
+  m_Layer: 6
+  m_Name: FingerTip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8969128660887558190
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8554647845720738524}
+  m_LocalRotation: {x: 0.000000049729714, y: -0.000000018197099, z: -0.000000029802315,
+    w: 1}
+  m_LocalPosition: {x: -0.02, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8986698116397215996}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1675978716355401181
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8554647845720738524}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.01
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9136770702354237524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8554647845720738524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a386da2d39b2df44d82c7c1717e7fc59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8986698115267060012
 GameObject:
   m_ObjectHideFlags: 0
@@ -2639,6 +2754,7 @@ MonoBehaviour:
   myInteractorLineVisual: {fileID: 8986698115744034264}
   otherInteractorLineVisual: {fileID: 8986698117200010671}
   lineRenderer: {fileID: 8986698115744034263}
+  fingerTip: {fileID: 9136770702354237524}
 --- !u!1 &8986698115745314534
 GameObject:
   m_ObjectHideFlags: 0
@@ -3254,9 +3370,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   otherHand: {fileID: 8986698116705018491}
   rb: {fileID: 8986698117128959534}
-  interactibles: []
-  closest: {fileID: 0}
-  grabbed: {fileID: 0}
 --- !u!1 &8986698115910154010
 GameObject:
   m_ObjectHideFlags: 0
@@ -3704,6 +3817,7 @@ Transform:
   m_Children:
   - {fileID: 8986698116252275464}
   - {fileID: 8986698116036038832}
+  - {fileID: 495315716677699682}
   m_Father: {fileID: 8986698116596381827}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0.000000847709, y: -0.000000101581975, z: -47.143677}
@@ -5325,6 +5439,7 @@ Transform:
   m_Children:
   - {fileID: 8986698116884352742}
   - {fileID: 8986698116999306338}
+  - {fileID: 8969128660887558190}
   m_Father: {fileID: 8986698116942113884}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -1.815828e-14, y: 2.1759275e-15, z: -47.143677}
@@ -6678,9 +6793,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   otherHand: {fileID: 8986698115906489181}
   rb: {fileID: 8986698116526748092}
-  interactibles: []
-  closest: {fileID: 0}
-  grabbed: {fileID: 0}
 --- !u!1 &8986698116712129229
 GameObject:
   m_ObjectHideFlags: 0
@@ -8488,6 +8600,7 @@ MonoBehaviour:
   myInteractorLineVisual: {fileID: 8986698117200010671}
   otherInteractorLineVisual: {fileID: 8986698115744034264}
   lineRenderer: {fileID: 8986698117200010668}
+  fingerTip: {fileID: 8471182590884369508}
 --- !u!1 &8986698117210170188
 GameObject:
   m_ObjectHideFlags: 0

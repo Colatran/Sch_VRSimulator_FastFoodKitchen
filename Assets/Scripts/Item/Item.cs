@@ -3,15 +3,12 @@ using UnityEngine;
 public abstract class Item : MonoBehaviour
 {
     [SerializeField] protected Attachment attachment;
+    public Attachment Attachment { get => attachment; }
 
     protected virtual void OnValidate()
     {
         attachment = GetComponent<Attachment>();
     }
-
-
-    public Attachment Attachment { get => attachment; }
-
 
 
 

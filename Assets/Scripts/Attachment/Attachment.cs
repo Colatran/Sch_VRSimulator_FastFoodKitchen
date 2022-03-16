@@ -12,8 +12,26 @@ public class Attachment : MonoBehaviour
 
     private void OnValidate()
     {
-        if (rb == null) rb = GetComponent<Rigidbody>();
+        if (rb == null) 
+        {
+            rb = GetComponent<Rigidbody>();
+            rb_mass = rb.mass;
+            rb_drag = rb.drag;
+            rb_angdrag = rb.angularDrag;
+        }
         if (orientation == null) orientation = GetComponent<OrientationChecker>();
+    }
+
+    private void OnDestroy()
+    {
+        if (directParent != null) directParent.directChildren.Remove(this);
+        if (endParent != null) endParent.endChildren.Remove(this);
+
+        foreach (Attachment child in colectiveChildren)
+            OnDetach -= child.DetachFromColectiveParent;
+
+        if (OnDetach != null)
+            OnDetach();
     }
 
 
@@ -23,13 +41,14 @@ public class Attachment : MonoBehaviour
     private List<Attachment> directChildren = new List<Attachment>();
     private List<Attachment> endChildren;
     private List<Attachment> colectiveParents = new List<Attachment>();
+    private List<Attachment> colectiveChildren = new List<Attachment>();
 
-    public delegate void ParentAction(Attachment child);
-    public event ParentAction OnAddContent;
-    public event ParentAction OnRemoveContent;
     public delegate void EmptyAction();
     public event EmptyAction OnAttach;
     public event EmptyAction OnDetach;
+    public delegate void AttachmentAction(Attachment attachment);
+    public event AttachmentAction OnAddContent;
+    public event AttachmentAction OnRemoveContent;
 
     public bool HasProperOrientation(Transform other) => orientation.Check(other);
     public bool IsContainer { get => isContainer; }
@@ -169,14 +188,20 @@ public class Attachment : MonoBehaviour
     {
         if (colectiveParents.Contains(parent)) return;
         colectiveParents.Add(parent);
-        parent.OnDetach += DetachFromColectiveParentEvent;
+        parent.OnDetach += DetachFromColectiveParent;
+        parent.colectiveChildren.Add(this);
     }
-    public void DetachFromColectiveParentEvent()
+    public void DetachFromColectiveParent()
     {
         Detach();
 
         foreach (Attachment parent in colectiveParents)
-            parent.OnDetach -= DetachFromColectiveParentEvent;
+        {
+            if (parent == null) continue;
+
+            parent.colectiveChildren.Remove(this);
+            parent.OnDetach -= DetachFromColectiveParent;
+        }
 
         colectiveParents.Clear();
     }

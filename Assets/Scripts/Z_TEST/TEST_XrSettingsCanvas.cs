@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class XrSettingsCanvas : MonoBehaviour
+public class TEST_XrSettingsCanvas : MonoBehaviour
 {
     [SerializeField] XRSettingsController settingsController;
     [SerializeField] TMP_Text text_rot;

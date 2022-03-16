@@ -478,11 +478,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Simple Cube
       objectReference: {fileID: 0}
-    - target: {fileID: 6117627626941477787, guid: 35514b40b7103d44e981b0193cc7912d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6117627626941477788, guid: 35514b40b7103d44e981b0193cc7912d,
         type: 3}
       propertyPath: m_RootOrder
@@ -538,21 +533,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6117627626941477789, guid: 35514b40b7103d44e981b0193cc7912d,
-        type: 3}
-      propertyPath: interactibleRadius
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6117627626941477791, guid: 35514b40b7103d44e981b0193cc7912d,
-        type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6117627626941477791, guid: 35514b40b7103d44e981b0193cc7912d,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35514b40b7103d44e981b0193cc7912d, type: 3}
 --- !u!1 &283867193
@@ -603,11 +583,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Simple Cube
-      objectReference: {fileID: 0}
-    - target: {fileID: 6117627626941477787, guid: 35514b40b7103d44e981b0193cc7912d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6117627626941477788, guid: 35514b40b7103d44e981b0193cc7912d,
         type: 3}
@@ -663,21 +638,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6117627626941477789, guid: 35514b40b7103d44e981b0193cc7912d,
-        type: 3}
-      propertyPath: interactibleRadius
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6117627626941477791, guid: 35514b40b7103d44e981b0193cc7912d,
-        type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6117627626941477791, guid: 35514b40b7103d44e981b0193cc7912d,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35514b40b7103d44e981b0193cc7912d, type: 3}
@@ -1267,30 +1227,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2675654022272763145, guid: 9059f1bfd8d7b7b4cb5632742f0631a0,
-        type: 3}
-      propertyPath: interactibleRadius
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2675654022272763147, guid: 9059f1bfd8d7b7b4cb5632742f0631a0,
-        type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2675654022272763147, guid: 9059f1bfd8d7b7b4cb5632742f0631a0,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2675654022272763150, guid: 9059f1bfd8d7b7b4cb5632742f0631a0,
         type: 3}
       propertyPath: m_Name
       value: Content
-      objectReference: {fileID: 0}
-    - target: {fileID: 2675654022272763150, guid: 9059f1bfd8d7b7b4cb5632742f0631a0,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9059f1bfd8d7b7b4cb5632742f0631a0, type: 3}
@@ -1372,21 +1312,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Container
-      objectReference: {fileID: 0}
-    - target: {fileID: 7669658725657058891, guid: eddc786fdd2906447a497f642faad6bc,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7669658725657058894, guid: eddc786fdd2906447a497f642faad6bc,
-        type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7669658725657058894, guid: eddc786fdd2906447a497f642faad6bc,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eddc786fdd2906447a497f642faad6bc, type: 3}
@@ -1721,30 +1646,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2675654022272763145, guid: 9059f1bfd8d7b7b4cb5632742f0631a0,
-        type: 3}
-      propertyPath: interactibleRadius
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2675654022272763147, guid: 9059f1bfd8d7b7b4cb5632742f0631a0,
-        type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2675654022272763147, guid: 9059f1bfd8d7b7b4cb5632742f0631a0,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2675654022272763150, guid: 9059f1bfd8d7b7b4cb5632742f0631a0,
         type: 3}
       propertyPath: m_Name
       value: Content
-      objectReference: {fileID: 0}
-    - target: {fileID: 2675654022272763150, guid: 9059f1bfd8d7b7b4cb5632742f0631a0,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9059f1bfd8d7b7b4cb5632742f0631a0, type: 3}
@@ -1862,30 +1767,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2675654022272763145, guid: 9059f1bfd8d7b7b4cb5632742f0631a0,
-        type: 3}
-      propertyPath: interactibleRadius
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2675654022272763147, guid: 9059f1bfd8d7b7b4cb5632742f0631a0,
-        type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2675654022272763147, guid: 9059f1bfd8d7b7b4cb5632742f0631a0,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2675654022272763150, guid: 9059f1bfd8d7b7b4cb5632742f0631a0,
         type: 3}
       propertyPath: m_Name
       value: Content
-      objectReference: {fileID: 0}
-    - target: {fileID: 2675654022272763150, guid: 9059f1bfd8d7b7b4cb5632742f0631a0,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9059f1bfd8d7b7b4cb5632742f0631a0, type: 3}
@@ -2000,21 +1885,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2675654022272763146, guid: 9059f1bfd8d7b7b4cb5632742f0631a0,
-        type: 3}
-      propertyPath: debug
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2675654022272763147, guid: 9059f1bfd8d7b7b4cb5632742f0631a0,
-        type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2675654022272763147, guid: 9059f1bfd8d7b7b4cb5632742f0631a0,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2675654022272763150, guid: 9059f1bfd8d7b7b4cb5632742f0631a0,
         type: 3}
@@ -2181,16 +2051,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1214611451}
     m_Modifications:
-    - target: {fileID: 6221216315263496306, guid: a7a5f0e18a714a841bd10113a5939cd2,
-        type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6221216315263496306, guid: a7a5f0e18a714a841bd10113a5939cd2,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6221216315263496311, guid: a7a5f0e18a714a841bd10113a5939cd2,
         type: 3}
       propertyPath: m_Name
@@ -2549,25 +2409,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2675654022272763147, guid: 9059f1bfd8d7b7b4cb5632742f0631a0,
-        type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2675654022272763147, guid: 9059f1bfd8d7b7b4cb5632742f0631a0,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2675654022272763150, guid: 9059f1bfd8d7b7b4cb5632742f0631a0,
         type: 3}
       propertyPath: m_Name
       value: Content
-      objectReference: {fileID: 0}
-    - target: {fileID: 2675654022272763150, guid: 9059f1bfd8d7b7b4cb5632742f0631a0,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9059f1bfd8d7b7b4cb5632742f0631a0, type: 3}
@@ -2588,11 +2433,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Simple Cube
-      objectReference: {fileID: 0}
-    - target: {fileID: 6117627626941477787, guid: 35514b40b7103d44e981b0193cc7912d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6117627626941477788, guid: 35514b40b7103d44e981b0193cc7912d,
         type: 3}
@@ -2648,21 +2488,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6117627626941477789, guid: 35514b40b7103d44e981b0193cc7912d,
-        type: 3}
-      propertyPath: interactibleRadius
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6117627626941477791, guid: 35514b40b7103d44e981b0193cc7912d,
-        type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6117627626941477791, guid: 35514b40b7103d44e981b0193cc7912d,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35514b40b7103d44e981b0193cc7912d, type: 3}
@@ -2922,21 +2747,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ContentContainer
       objectReference: {fileID: 0}
-    - target: {fileID: 3315719041023300752, guid: 4b441da8da0e4904a974241369cf9187,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3315719041023300757, guid: 4b441da8da0e4904a974241369cf9187,
-        type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3315719041023300757, guid: 4b441da8da0e4904a974241369cf9187,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 3315719041023300762, guid: 4b441da8da0e4904a974241369cf9187,
         type: 3}
       propertyPath: m_RootOrder
@@ -3012,11 +2822,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Simple Cube
       objectReference: {fileID: 0}
-    - target: {fileID: 6117627626941477787, guid: 35514b40b7103d44e981b0193cc7912d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6117627626941477788, guid: 35514b40b7103d44e981b0193cc7912d,
         type: 3}
       propertyPath: m_RootOrder
@@ -3072,21 +2877,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6117627626941477789, guid: 35514b40b7103d44e981b0193cc7912d,
-        type: 3}
-      propertyPath: interactibleRadius
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6117627626941477791, guid: 35514b40b7103d44e981b0193cc7912d,
-        type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6117627626941477791, guid: 35514b40b7103d44e981b0193cc7912d,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35514b40b7103d44e981b0193cc7912d, type: 3}
 --- !u!1001 &8320372200638697497
@@ -3096,21 +2886,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1214611451}
     m_Modifications:
-    - target: {fileID: 6221216315263496306, guid: a7a5f0e18a714a841bd10113a5939cd2,
-        type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6221216315263496306, guid: a7a5f0e18a714a841bd10113a5939cd2,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6221216315263496307, guid: a7a5f0e18a714a841bd10113a5939cd2,
-        type: 3}
-      propertyPath: debug
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6221216315263496311, guid: a7a5f0e18a714a841bd10113a5939cd2,
         type: 3}
       propertyPath: m_Name
