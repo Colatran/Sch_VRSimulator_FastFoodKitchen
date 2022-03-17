@@ -11,6 +11,8 @@ public class HandInputController : MonoBehaviour
     [SerializeField] LineRenderer lineRenderer;
     [SerializeField] FingerTip fingerTip;
 
+    public HandGrabArea HandGrabArea { get => handGrabArea; }
+
     private float selectActionValue;
     public float SelectActionValue { get => selectActionValue; }
 

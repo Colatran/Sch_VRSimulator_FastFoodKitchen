@@ -7,6 +7,10 @@ public class Attachment : MonoBehaviour
     [HideInInspector] [SerializeField] float rb_mass;
     [HideInInspector] [SerializeField] float rb_drag;
     [HideInInspector] [SerializeField] float rb_angdrag;
+    [HideInInspector] [SerializeField] bool rb_isKinematic;
+    [HideInInspector] [SerializeField] bool rb_useGravity;
+    [HideInInspector] [SerializeField] CollisionDetectionMode rb_collisionDetectionMode;
+    [HideInInspector] [SerializeField] RigidbodyInterpolation rb_interpolation;
     [SerializeField] OrientationChecker orientation;
     [SerializeField] bool isContainer;
 
@@ -18,6 +22,10 @@ public class Attachment : MonoBehaviour
             rb_mass = rb.mass;
             rb_drag = rb.drag;
             rb_angdrag = rb.angularDrag;
+            rb_isKinematic = rb.isKinematic;
+            rb_useGravity = rb.useGravity;
+            rb_collisionDetectionMode = rb.collisionDetectionMode;
+            rb_interpolation = rb.interpolation;
         }
         if (orientation == null) orientation = GetComponent<OrientationChecker>();
     }
@@ -145,14 +153,13 @@ public class Attachment : MonoBehaviour
         if (rb != null) return;
 
         rb = gameObject.AddComponent(typeof(Rigidbody)) as Rigidbody;
-        rb.useGravity = true;
-        rb.isKinematic = false;
-        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
-        rb.interpolation = RigidbodyInterpolation.Interpolate;
         rb.mass = rb_mass;
         rb.drag = rb_drag;
         rb.angularDrag = rb_angdrag;
-
+        rb.isKinematic = rb_isKinematic;
+        rb.useGravity = rb_useGravity;
+        rb.collisionDetectionMode = rb_collisionDetectionMode;
+        rb.interpolation = rb_interpolation;
     }
 
     public void Attach(Attachment parent)
