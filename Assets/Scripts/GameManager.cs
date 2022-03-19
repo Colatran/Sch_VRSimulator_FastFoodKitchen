@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         reference = this;
-        //performanceManager.Clear();
     }
 
 
@@ -34,11 +33,15 @@ public class GameManager : MonoBehaviour
     public static void MakeMistake(MistakeType type)
     {
         reference.performanceManager.AddMistake(type);
-
-        Mistake mistake;
-        MistakeList.mistakes.TryGetValue(type, out mistake);
-        Debug.Log(mistake.Title + " - " + mistake.Description);
     }
+
+
+
+
+
+
+
+
 
 
 
@@ -54,10 +57,6 @@ public class GameManager : MonoBehaviour
     {
         reference.effectUpdatedManager.RemoveEffect(effect);
     }
-
-
-
-
 
     [SerializeField] GreasePool _greasePool;
     public static GreasePool greasePool { get => reference._greasePool; }

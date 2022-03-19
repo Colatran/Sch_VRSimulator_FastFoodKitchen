@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public static class MistakeList
+public static class MistakeLibrary
 {
     public static Dictionary<MistakeType, Mistake> mistakes = new Dictionary<MistakeType, Mistake>() {
         { 
@@ -268,4 +268,14 @@ public static class MistakeList
 
 
     };
+
+
+
+
+    public static Mistake GetMistake(MistakeType type)
+    {
+        Mistake mistake;
+        mistakes.TryGetValue(type, out mistake);
+        return mistake;
+    }
 }
