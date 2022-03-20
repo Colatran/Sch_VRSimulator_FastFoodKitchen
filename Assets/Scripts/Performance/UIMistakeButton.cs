@@ -4,20 +4,17 @@ using TMPro;
 public class UIMistakeButton : PoolObject
 {
     [SerializeField] TMP_Text text;
-    [SerializeField] UIMistakeList list;
-
-    public void SetList(UIMistakeList List) => list = List;
 
 
 
-
+    private UIMistakeList list;
     private MistakeType mistakeType;
 
-
-    public void SetMistakeType(MistakeType type)
+    public void SetUpButton(UIMistakeList list, MistakeType type)
     {
-        mistakeType = type;
+        this.list = list;
 
+        mistakeType = type;
         Mistake mistake = MistakeLibrary.GetMistake(type);
         text.text = mistake.Title;
     }

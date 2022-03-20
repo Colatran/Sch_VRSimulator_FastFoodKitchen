@@ -11,7 +11,7 @@ public class GameObjectPool : MonoBehaviour
     }
 
     [SerializeField] GameObject instance;
-    [SerializeField] Transform parent;
+    [SerializeField] Transform container;
     [SerializeField] List<GameObject> objects = new List<GameObject>();
     [SerializeField] int inicialCount = 10;
     [SerializeField] PoolType poolType = PoolType.FAST;
@@ -22,7 +22,7 @@ public class GameObjectPool : MonoBehaviour
         {
             while (objects.Count < inicialCount)
             {
-                GameObject _object = Instantiate(instance, parent);
+                GameObject _object = Instantiate(instance, container);
                 _object.SetActive(false);
                 objects.Add(_object);
             }
@@ -36,6 +36,8 @@ public class GameObjectPool : MonoBehaviour
     }
 
 
+
+    public Transform Container { get => container; }
     public List<GameObject> Objects { get => objects; }
 
 

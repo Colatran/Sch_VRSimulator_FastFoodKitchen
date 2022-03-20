@@ -6007,6 +6007,7 @@ MonoBehaviour:
   rb_interpolation: 0
   orientation: {fileID: 0}
   isContainer: 1
+  isDeadEnd: 1
 --- !u!1 &8986698116529678066
 GameObject:
   m_ObjectHideFlags: 0
@@ -7859,6 +7860,7 @@ MonoBehaviour:
   rb_interpolation: 0
   orientation: {fileID: 0}
   isContainer: 1
+  isDeadEnd: 1
 --- !u!1 &8986698117130687330
 GameObject:
   m_ObjectHideFlags: 0

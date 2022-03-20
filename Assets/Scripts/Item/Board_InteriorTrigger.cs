@@ -20,19 +20,11 @@ public class Board_InteriorTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Item item = other.GetComponent<Item>();
-        if (item == null)
-        {
-            Attachment attachment = other.GetComponent<Attachment>();
-            Attachment childAttachment = attachment.DirectChildren[0];
-            if (childAttachment == null) return;
-
-            item = childAttachment.GetComponent<Item>();
-            if(item == null) return;
-        }
+        if (item == null) return;
 
         Attachment itemAttachment = item.Attachment;
-
-        if (itemAttachment == attachmentsMustIgnore.Contains(item.Attachment)) {
+        if (itemAttachment == attachmentsMustIgnore.Contains(item.Attachment))
+        {
             attachmentsMustIgnore.Remove(itemAttachment);
             return;
         }

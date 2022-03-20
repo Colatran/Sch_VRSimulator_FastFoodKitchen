@@ -7,8 +7,8 @@ public class Button3D : MonoBehaviour
     [SerializeField] Vector3 movingDirection;
     [SerializeField] float movingDistance;
     [SerializeField] float velocity;
-    [HideInInspector] [SerializeField] Vector3 startingPosition;
-    [HideInInspector] [SerializeField] Vector3 targetPosition;
+    [ReadOnly, SerializeField] Vector3 startingPosition;
+    [ReadOnly, SerializeField] Vector3 targetPosition;
 
     private void OnValidate()
     {

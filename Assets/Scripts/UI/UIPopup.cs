@@ -14,7 +14,8 @@ public class UIPopup : MonoBehaviour
     public event Action OnPopUp;
     public event Action OnPopOff;
 
-
+    private bool up = false;
+    public bool UP { get => up; }
 
     private void SetInCameraPosition()
     {
@@ -49,6 +50,9 @@ public class UIPopup : MonoBehaviour
 
     public void PopUp()
     {
+        if (up) return;
+        up = true;
+
         if(setInCameraPosition) SetInCameraPosition();
         SetObjectsActive(true);
 
@@ -57,6 +61,9 @@ public class UIPopup : MonoBehaviour
     }
     public void PopOff()
     {
+        if (!up) return;
+        up = false;
+
         SetObjectsActive(false);
 
         if (OnPopOff != null)

@@ -4,15 +4,16 @@ using UnityEngine;
 public class Attachment : MonoBehaviour
 {
     [SerializeField] Rigidbody rb;
-    [HideInInspector] [SerializeField] float rb_mass;
-    [HideInInspector] [SerializeField] float rb_drag;
-    [HideInInspector] [SerializeField] float rb_angdrag;
-    [HideInInspector] [SerializeField] bool rb_isKinematic;
-    [HideInInspector] [SerializeField] bool rb_useGravity;
-    [HideInInspector] [SerializeField] CollisionDetectionMode rb_collisionDetectionMode;
-    [HideInInspector] [SerializeField] RigidbodyInterpolation rb_interpolation;
+    [ReadOnly, SerializeField] float rb_mass;
+    [ReadOnly, SerializeField] float rb_drag;
+    [ReadOnly, SerializeField] float rb_angdrag;
+    [ReadOnly, SerializeField] bool rb_isKinematic;
+    [ReadOnly, SerializeField] bool rb_useGravity;
+    [ReadOnly, SerializeField] CollisionDetectionMode rb_collisionDetectionMode;
+    [ReadOnly, SerializeField] RigidbodyInterpolation rb_interpolation;
     [SerializeField] OrientationChecker orientation;
     [SerializeField] bool isContainer;
+    [SerializeField] bool isDeadEnd;
 
     private void OnValidate()
     {
@@ -123,7 +124,7 @@ public class Attachment : MonoBehaviour
         if (directParent.IsAttached) SetEndParent(directParent.endParent);
         else SetEndParent(directParent);
 
-        SetChildrensEndParent(endParent);
+        if (!isDeadEnd) SetChildrensEndParent(endParent);
 
         if (OnAttach == null) return;
         OnAttach();
