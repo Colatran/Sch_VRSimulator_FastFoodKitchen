@@ -10,6 +10,7 @@ public class HandInputController : MonoBehaviour
     [SerializeField] XRInteractorLineVisual otherInteractorLineVisual;
     [SerializeField] LineRenderer lineRenderer;
     [SerializeField] FingerTip fingerTip;
+    [SerializeField] GameObject handCursor;
 
     public HandGrabArea HandGrabArea { get => handGrabArea; }
 
@@ -22,6 +23,7 @@ public class HandInputController : MonoBehaviour
     private bool selectActionPressing = false;
     private bool activateActionPressing = false;
     private bool notPointing = false;
+    private bool openHand = false;
 
 
     private void Update()
@@ -69,6 +71,23 @@ public class HandInputController : MonoBehaviour
                 NotPoint();
             }
         }
+
+        if(openHand)
+        {
+            if (selectActionPressing || activateActionPressing)
+            {
+                openHand = false;
+                OnCloseHand();
+            }
+        }
+        else
+        {
+            if (!(selectActionPressing || activateActionPressing))
+            {
+                openHand = true;
+                OnOpenHand();
+            }
+        }
     }
 
 
@@ -100,5 +119,14 @@ public class HandInputController : MonoBehaviour
     private void NotPoint()
     {
         fingerTip.Pressing = false;
+    }
+
+    private void OnOpenHand()
+    {
+        handCursor.SetActive(true);
+    }
+    private void OnCloseHand()
+    {
+        handCursor.SetActive(false);
     }
 }
