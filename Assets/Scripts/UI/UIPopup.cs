@@ -1,41 +1,33 @@
 using UnityEngine;
 
-public class UIPopup : MonoBehaviour
+public class UIPopUp : MonoBehaviour
 {
     [SerializeField] GameObject[] objects;
-    [SerializeField] bool setInCameraPosition = false;
-    [SerializeField] Transform Camera;
-    [SerializeField] LayerMask layerMask;
-    [SerializeField] float initialDistance = .75f;
-    [SerializeField] float hitDistanceOffset = .1f;
+    [SerializeField] UIPopUpResponsiveness responsiveness;
 
-
-    public delegate void Action();
-    public event Action OnPopUp;
-    public event Action OnPopOff;
 
     private bool up = false;
-    public bool UP { get => up; }
+    public bool isUp { get => up; }
 
-    private void SetInCameraPosition()
+    public void PopUp()
     {
-        Vector3 direction = Camera.forward;
-        Vector3 position = Camera.position;
-        float distance = initialDistance;
+        if (up) return;
+        up = true;
 
-        Ray ray = new Ray();
-        ray.direction = direction;
-        ray.origin = position;
+        SetObjectsActive(true);
 
-        RaycastHit hitInfo;
-        bool hit = Physics.Raycast(ray, out hitInfo, .75f + hitDistanceOffset, layerMask);
-        if(hit)
-        {
-            distance = Vector3.Distance(position, hitInfo.point) - hitDistanceOffset;
-        }
+        if (responsiveness != null)
+            responsiveness.PopUp();
+    }
+    public void PopOff()
+    {
+        if (!up) return;
+        up = false;
 
-        Vector3 finalPosition = position + direction.normalized * distance;
-        transform.position = finalPosition;
+        SetObjectsActive(false);
+
+        if (responsiveness != null)
+            responsiveness.PopOff();
     }
 
     private void SetObjectsActive(bool active)
@@ -45,29 +37,4 @@ public class UIPopup : MonoBehaviour
             _object.SetActive(active);
         }
     }
-
-
-
-    public void PopUp()
-    {
-        if (up) return;
-        up = true;
-
-        if(setInCameraPosition) SetInCameraPosition();
-        SetObjectsActive(true);
-
-        if (OnPopUp != null)
-            OnPopUp();
-    }
-    public void PopOff()
-    {
-        if (!up) return;
-        up = false;
-
-        SetObjectsActive(false);
-
-        if (OnPopOff != null)
-            OnPopOff();
-    }
-
 }

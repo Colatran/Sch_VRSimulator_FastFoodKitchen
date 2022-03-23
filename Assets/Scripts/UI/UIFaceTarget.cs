@@ -1,21 +1,15 @@
 using UnityEngine;
 
-public class UIFaceCamera : MonoBehaviour
+public class UIFaceTarget : MonoBehaviour
 {
-    [SerializeField] Transform Camera;
+    [SerializeField] Transform target;
     [SerializeField] bool lockX = false;
     [SerializeField] bool lockY = false;
     [SerializeField] bool lockZ = false;
-    public float a;
-
-    private void OnValidate()
-    {
-        Camera = GetComponentInChildren<Canvas>().worldCamera.transform;
-    }
 
     private void Update()
     {
-        transform.LookAt(Camera);
+        transform.LookAt(target);
         Quaternion currRotation = transform.rotation;
 
         float x;

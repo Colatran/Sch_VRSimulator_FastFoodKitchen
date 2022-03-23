@@ -4,13 +4,15 @@ using TMPro;
 public class UIMistakeButton : PoolObject
 {
     [SerializeField] TMP_Text text;
+    [SerializeField] GameObject selectedBackground;
 
 
-
-    private UIMistakeList list;
+    private MistakeList list;
     private MistakeType mistakeType;
 
-    public void SetUpButton(UIMistakeList list, MistakeType type)
+    public MistakeType MistakeType { get => mistakeType; }
+
+    public void SetUp(MistakeList list, MistakeType type)
     {
         this.list = list;
 
@@ -19,8 +21,18 @@ public class UIMistakeButton : PoolObject
         text.text = mistake.Title;
     }
 
-    public void OnPressed() 
-    { 
-        list.SetDescription(mistakeType);
+    public void OnPressed()
+    {
+        list.PressButton(this);
+    }
+
+
+    public void SetSelected()
+    {
+        selectedBackground.SetActive(true);
+    }
+    public void SetUnselected()
+    {
+        selectedBackground.SetActive(false);
     }
 }

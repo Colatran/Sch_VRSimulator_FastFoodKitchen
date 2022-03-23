@@ -3,23 +3,27 @@ using UnityEngine;
 
 public class PerformanceManager : MonoBehaviour
 {
-    [SerializeField] UIPopup popup;
-
-
-
     List<MistakeType> mistakeList = new List<MistakeType>();
     public List<MistakeType> MistakeList { get => mistakeList; }
 
     public delegate void MistakeTypeAction(MistakeType type);
     public event MistakeTypeAction OnAddMistake;
 
-    public void AddMistake(MistakeType type)
+    public void AddMistake(MistakeType mistakeType)
     {
-        mistakeList.Add(type);
+        mistakeList.Add(mistakeType);
 
         if(OnAddMistake != null)
-            OnAddMistake(type);
+            OnAddMistake(mistakeType);
 
-        popup.PopUp();
+        //MistakeToConsole(mistakeType);
+    }
+
+
+
+    private void MistakeToConsole(MistakeType mistakeType)
+    {
+        Mistake mistake = MistakeLibrary.GetMistake(mistakeType);
+        Debug.Log(mistake.Title + " - " + mistake.Description);
     }
 }

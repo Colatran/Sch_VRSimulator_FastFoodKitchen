@@ -1,18 +1,18 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class XRinteractableToInteractibleConverter : MonoBehaviour
+public class XRInteractableToInteractibleConverter : MonoBehaviour
 {
     [SerializeField] XRBaseInteractable XRinteractable;
-    [SerializeField] Interactible_Pickup interactible;
+    [SerializeField] Interactible interactible;
 
-    public void InteractGrab()
+    public void SelectEnter()
     {
         interactible.Interact(
             XRinteractable.firstInteractorSelecting.transform.GetComponent<HandInputController>()
             .HandGrabArea.transform.parent.gameObject, true);
     }
-    public void InteractRelease()
+    public void SelectExit()
     {
         interactible.Interact(
             XRinteractable.firstInteractorSelecting.transform.GetComponent<HandInputController>()

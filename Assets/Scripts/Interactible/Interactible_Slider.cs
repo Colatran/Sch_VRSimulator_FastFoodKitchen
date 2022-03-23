@@ -39,10 +39,10 @@ public class Interactible_Slider : Interactible
 
     private void FixedUpdate()
     {
-        FallowTarget();
+        FallowTargetPosition();
     }
 
-    private void FallowTarget()
+    private void FallowTargetPosition()
     {
         if (targetTransform == null) return;
 

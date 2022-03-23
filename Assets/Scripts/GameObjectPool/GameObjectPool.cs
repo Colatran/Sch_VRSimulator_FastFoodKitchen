@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class GameObjectPool : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class GameObjectPool : MonoBehaviour
         SACALABLE,
     }
 
-    [SerializeField] GameObject instance;
+    [SerializeField] GameObject prefab;
     [SerializeField] Transform container;
     [SerializeField] List<GameObject> objects = new List<GameObject>();
     [SerializeField] int inicialCount = 10;
@@ -22,7 +23,7 @@ public class GameObjectPool : MonoBehaviour
         {
             while (objects.Count < inicialCount)
             {
-                GameObject _object = Instantiate(instance, container);
+                GameObject _object = PrefabUtility.InstantiatePrefab(prefab, container) as GameObject;
                 _object.SetActive(false);
                 objects.Add(_object);
             }
@@ -74,12 +75,22 @@ public class GameObjectPool : MonoBehaviour
             if (!_object.activeSelf) return _object;
         }
 
-        return Instantiate(instance, transform);
+        return AddObject();
     }
 
-
-    public void DisableAllObjects()
+    private GameObject AddObject()
     {
-        foreach (GameObject _object in objects) _object.SetActive(false);
+        GameObject _object = Instantiate(prefab, container);
+        Objects.Add(_object);
+        return _object;
+    }
+
+    public void DiactiveAllObjects()
+    {
+        foreach (GameObject _object in objects) 
+        {
+            _object.SetActive(false);
+            _object.transform.SetParent(container);
+        }
     }
 }

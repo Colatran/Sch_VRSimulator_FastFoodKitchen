@@ -20,6 +20,7 @@ public class TEST_Button3D : MonoBehaviour
     private void OnPressed()
     {
         m_renderer.material = GameManager.Asset.Material_UHC_TimerOn;
+        GameManager.MakeMistake(MistakeType.BIFE_CRUSALGADO);
     }
     private void OnReleased()
     {
