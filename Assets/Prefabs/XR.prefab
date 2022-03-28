@@ -2470,6 +2470,19 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 7779212132400271959, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
+  m_SecondaryAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Secondary
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: ca2a8d10-9211-48df-bbd6-ac31938146b3
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 2958607136776762351, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
   m_ButtonPressPoint: 0.5
 --- !u!114 &8986698115744034262
 MonoBehaviour:
@@ -8366,6 +8379,19 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 875253871413052681, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
+  m_SecondaryAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Secondary
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 89bb0e6c-90c2-4dd6-8de6-cbf6debd60a8
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 8879807152153621687, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
   m_ButtonPressPoint: 0.5
 --- !u!114 &8986698117200010667

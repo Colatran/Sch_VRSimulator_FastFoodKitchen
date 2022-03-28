@@ -38,6 +38,9 @@ public class GameManager : MonoBehaviour
 
 
 
+    [SerializeField] UIPopUp pauseMenu;
+    public static UIPopUp PauseMenu { get => reference.pauseMenu; }
+
 
 
 

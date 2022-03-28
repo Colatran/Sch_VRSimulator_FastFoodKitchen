@@ -8,6 +8,9 @@ public class HandInputManager : MonoBehaviour
 
 
     public delegate void Action();
+    public event Action OnSecondaryStart;
+    public event Action OnSecondaryCancel;
+
     public event Action OnGripStart;
     public event Action OnGripCancel;
     public event Action OnTriggerStart;
@@ -44,15 +47,28 @@ public class HandInputManager : MonoBehaviour
 
 
 
-    private void Awake()
+    private void OnEnable()
     {
         controller.selectAction.action.started += SelectStart;
         controller.selectAction.action.canceled += SelectCancel;
 
         controller.activateAction.action.started += ActivateStart;
         controller.activateAction.action.canceled += ActivateCancel;
-    }
 
+        controller.secondaryAction.action.started += SecondaryStart;
+        controller.secondaryAction.action.canceled += SecondaryCancel;
+    }
+    private void OnDisable()
+    {
+        controller.selectAction.action.started -= SelectStart;
+        controller.selectAction.action.canceled -= SelectCancel;
+
+        controller.activateAction.action.started -= ActivateStart;
+        controller.activateAction.action.canceled -= ActivateCancel;
+
+        controller.secondaryAction.action.started -= SecondaryStart;
+        controller.secondaryAction.action.canceled -= SecondaryCancel;
+    }
 
 
     private void SelectStart(InputAction.CallbackContext obj)
@@ -101,7 +117,17 @@ public class HandInputManager : MonoBehaviour
             CheckOpen();
     }
 
-    
+    private void SecondaryStart(InputAction.CallbackContext obj)
+    {
+        Call(OnSecondaryStart);
+    }
+    private void SecondaryCancel(InputAction.CallbackContext obj)
+    {
+        Call(OnSecondaryCancel);
+    }
+
+
+
     private bool CheckPoint()
     {
         if (point) return true;

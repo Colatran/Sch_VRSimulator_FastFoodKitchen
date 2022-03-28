@@ -20,7 +20,7 @@ public class HandInputController : MonoBehaviour
 
 
 
-    private void Awake()
+    private void OnEnable()
     {
         manager.OnGripStart += GrabStart;
         manager.OnGripCancel += GrabCancel;
@@ -33,6 +33,24 @@ public class HandInputController : MonoBehaviour
 
         manager.OnOpenStart += OpenStart;
         manager.OnOpenCancel += OpenCancel;
+
+        manager.OnSecondaryStart += Pause;
+    }
+    private void OnDisable()
+    {
+        manager.OnGripStart -= GrabStart;
+        manager.OnGripCancel -= GrabCancel;
+
+        manager.OnTriggerStart -= TeleportStart;
+        manager.OnTriggerCancel -= TeleportCancel;
+
+        manager.OnPointStart -= PointStart;
+        manager.OnPointCancel -= PointCancel;
+
+        manager.OnOpenStart -= OpenStart;
+        manager.OnOpenCancel -= OpenCancel;
+
+        manager.OnSecondaryStart -= Pause;
     }
 
 
@@ -73,5 +91,14 @@ public class HandInputController : MonoBehaviour
     private void OpenCancel()
     {
         handCursor.SetActive(false);
+    }
+
+
+    private void Pause()
+    {
+        UIPopUp pauseMenu = GameManager.PauseMenu;
+
+        if (pauseMenu.isUp) pauseMenu.PopOff();
+        else pauseMenu.PopUp();
     }
 }
