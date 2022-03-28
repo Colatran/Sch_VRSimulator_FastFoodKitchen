@@ -7,11 +7,16 @@ public class MistakeList : MonoBehaviour
     [SerializeField] PerformanceManager performanceManager;
     [SerializeField] GameObjectPool buttonPool;
     [SerializeField] Transform buttonContainer;
-    [Header("Secription")]
+    [Header("Description")]
     [SerializeField] TMP_Text text_title;
     [SerializeField] TMP_Text text_description;
     [SerializeField] TMP_Text text_hint;
-
+    [Header("Listing")]
+    [SerializeField] GameObject sectorPanel;
+    [SerializeField] TMP_Text text_currentSector;
+    [SerializeField] TMP_Text text_sectorCount;
+    [SerializeField] GameObject nextSectorButton;
+    [SerializeField] GameObject previousSectorButton;
 
 
     private void Awake()
@@ -20,45 +25,46 @@ public class MistakeList : MonoBehaviour
     }
     private void OnDestroy()
     {
-        GameManager.PerformanceManager.OnAddMistake -= AddMistake;
+        performanceManager.OnAddMistake -= AddMistake;
     }
 
 
+
+
+
+    private List<MistakeType> mistakes = new List<MistakeType>();
+    private void AddMistake(MistakeType type) 
+    {
+        mistakes.Add(type);
+
+        SetSectorPanel();
+    }
+
+
+    private bool isOpen = false;
+
+    private int sectorCount = 0;
+    private int currentSector = 0;
+    private int baseIndex = 0;
+    private int currentIndex = 0;
+    private int finalIndex = 0;
+
+    private bool inFirstSector { get => currentSector == 0; }
+    private bool inLastSector { get => currentSector + 1 == sectorCount; }
 
     private const float _presentTime = .0625f;
     private float presentTime;
 
-    private List<MistakeType> mistakesToPresent = new List<MistakeType>();
-    private void AddMistake(MistakeType type)
-    {
-        mistakesToPresent.Add(type);
-    }
 
-    private UIMistakeButton currentButton;
-    private void SetCurrentButton(UIMistakeButton button)
-    {
-        if (currentButton != null)
-            currentButton.SetUnselected();
-
-        currentButton = button;
-
-        if (currentButton != null)
-        {
-            currentButton.SetSelected();
-            SetDescription(currentButton.MistakeType);
-        }
-    }
-
-    private bool isOpen = false;
-
-    public delegate void Action();
-    public event Action OnButtonPressed;
 
 
 
     public void Open()
     {
         isOpen = true;
+
+        currentSector = 0;
+        StartSectorListing();
     }
     public void Close()
     {
@@ -66,53 +72,149 @@ public class MistakeList : MonoBehaviour
 
         buttonPool.DiactiveAllObjects();
 
-        mistakesToPresent.Clear();
+        mistakes.Clear();
+    }
 
-        SetCurrentButton(null);
+    public void PressNextSector() 
+    {
+        if (inLastSector) return;
+        currentSector++;
+
+        CheckSectorBoundries();
+
+        StartSectorListing();
+    }
+    public void PressPreviousSector()
+    {
+        if (currentSector == 0) return;
+        currentSector--;
+
+        CheckSectorBoundries();
+
+        StartSectorListing();
     }
 
 
-    private void PresentNextButton()
+    private void CheckSectorBoundries()
     {
-        if (mistakesToPresent.Count == 0) return;
+        if (inLastSector)
+        {
+            previousSectorButton.SetActive(true);
+            nextSectorButton.SetActive(false);
+        }
+        else if(inFirstSector)
+        {
+            previousSectorButton.SetActive(false);
+            nextSectorButton.SetActive(true);
+        }
+        else
+        {
+            previousSectorButton.SetActive(true);
+            nextSectorButton.SetActive(true);
+        }
+    }
 
+    private void SetSectorPanel()
+    {
+        int mistakeCount = mistakes.Count;
+
+        sectorCount = mistakeCount / 10;
+        if (mistakeCount % 10 > 0) sectorCount++;
+
+        if (sectorCount > 1)
+        {
+            sectorPanel.SetActive(true);
+            text_sectorCount.text = sectorCount + "";
+        }
+        else
+        {
+            sectorPanel.SetActive(false);
+            text_currentSector.text = 1 + "";
+        }
+
+        CheckSectorBoundries();
+    }
+
+
+
+
+    private void StartSectorListing()
+    {
+        buttonPool.DiactiveAllObjects();
+        CurrentButton = null;
+
+        baseIndex = currentSector * 10;
+        currentIndex = 0;
+        finalIndex = baseIndex;
+
+        text_currentSector.text = currentSector + 1 + "";
+    }
+
+    private void SectorListing()
+    {
+        if (finalIndex == mistakes.Count) return;
+        if (currentIndex > 9) return;
+
+        presentTime -= Time.deltaTime;
+
+        if (presentTime < 0)
+        {
+            PresentButton(finalIndex);
+
+            presentTime = _presentTime;
+            currentIndex++;
+            finalIndex = baseIndex + currentIndex;
+        }
+    }
+
+    private void PresentButton(int mistakeIndex)
+    {
         GameObject buttonObject = buttonPool.GetObject();
         buttonObject.transform.SetParent(buttonContainer, false);
         buttonObject.SetActive(true);
 
         UIMistakeButton button = buttonObject.GetComponent<UIMistakeButton>();
-        button.SetUp(this, mistakesToPresent[0]);
+        button.SetUp(this, mistakes[mistakeIndex]);
 
-        if (currentButton == null)
-        {
-            SetCurrentButton(button);
-        }
-
-        mistakesToPresent.RemoveAt(0);
-
-        presentTime = _presentTime;
+        if (CurrentButton == null)
+            CurrentButton = button;
     }
 
-    private void ButtonListing()
-    {
-        if (mistakesToPresent.Count > 0)
-        {
-            presentTime -= Time.deltaTime;
 
-            if (presentTime < 0)
-                PresentNextButton();
+    private void Update()
+    {
+        if (isOpen)
+        {
+            SectorListing();
         }
     }
 
 
 
-    public void PressButton(UIMistakeButton button)
-    {
-        SetCurrentButton(button);
 
-        if (OnButtonPressed != null)
-            OnButtonPressed();
+
+    public delegate void Action();
+    public event Action OnButtonPressed;
+
+    private UIMistakeButton currentButton;
+    public UIMistakeButton CurrentButton
+    {
+        get => currentButton;
+        set
+        {
+            if (currentButton != null)
+                currentButton.SetUnselected();
+
+            currentButton = value;
+
+            if (currentButton != null)
+            {
+                currentButton.SetSelected();
+                SetDescription(currentButton.MistakeType);
+            }
+        }
     }
+
 
     private void SetDescription(MistakeType mistakeType)
     {
@@ -123,13 +225,11 @@ public class MistakeList : MonoBehaviour
         text_hint.text = mistake.Hint;
     }
 
-
-
-    private void Update()
+    public void PressMistakeButton(UIMistakeButton button)
     {
-        if (isOpen)
-        {
-            ButtonListing();
-        }
+        CurrentButton = button;
+
+        if (OnButtonPressed != null)
+            OnButtonPressed();
     }
 }

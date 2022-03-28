@@ -23,7 +23,7 @@ public class UIMistakeButton : PoolObject
 
     public void OnPressed()
     {
-        list.PressButton(this);
+        list.PressMistakeButton(this);
     }
 
 

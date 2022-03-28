@@ -26,10 +26,4 @@ public class PerformanceManager : MonoBehaviour
         Mistake mistake = MistakeLibrary.GetMistake(mistakeType);
         Debug.Log(mistake.Title + " - " + mistake.Description);
     }
-
-
-    private void Awake()
-    {
-        GameManager.MakeMistake(MistakeType.BIFE_CRUSALGADO);
-    }
 }

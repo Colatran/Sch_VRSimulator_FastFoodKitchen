@@ -81,13 +81,13 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_SizeDelta.x
-    path: Mistake_Canvas/Canvas/Panel_MistakeList/Panel_MistakeDescription
+    path: Mistake_Canvas/Canvas/Panel_MistakeList/Panel_Description
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -100,13 +100,13 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.y
-    path: Mistake_Canvas/Canvas/Panel_MistakeList/Panel_MistakeDescription/Panel_Hint
+    path: Mistake_Canvas/Canvas/Panel_MistakeList/Panel_Description/Panel_Hint
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -119,13 +119,13 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_SizeDelta.y
-    path: Mistake_Canvas/Canvas/Panel_MistakeList/Panel_MistakeDescription/Panel_Hint
+    path: Mistake_Canvas/Canvas/Panel_MistakeList/Panel_Description/Panel_Hint
     classID: 224
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -158,21 +158,21 @@ AnimationClip:
       customType: 28
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 1426279897
+      path: 1916861931
       attribute: 1967290853
       script: {fileID: 0}
       typeID: 224
       customType: 28
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3688396698
+      path: 830757619
       attribute: 538195251
       script: {fileID: 0}
       typeID: 224
       customType: 28
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3688396698
+      path: 830757619
       attribute: 38095219
       script: {fileID: 0}
       typeID: 224
@@ -267,13 +267,13 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_SizeDelta.x
-    path: Mistake_Canvas/Canvas/Panel_MistakeList/Panel_MistakeDescription
+    path: Mistake_Canvas/Canvas/Panel_MistakeList/Panel_Description
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -286,13 +286,13 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.y
-    path: Mistake_Canvas/Canvas/Panel_MistakeList/Panel_MistakeDescription/Panel_Hint
+    path: Mistake_Canvas/Canvas/Panel_MistakeList/Panel_Description/Panel_Hint
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -305,13 +305,13 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_SizeDelta.y
-    path: Mistake_Canvas/Canvas/Panel_MistakeList/Panel_MistakeDescription/Panel_Hint
+    path: Mistake_Canvas/Canvas/Panel_MistakeList/Panel_Description/Panel_Hint
     classID: 224
     script: {fileID: 0}
   m_EulerEditorCurves: []
