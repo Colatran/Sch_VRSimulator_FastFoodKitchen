@@ -1,24 +1,20 @@
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit;
 
 public class HandAnimationController : MonoBehaviour
 {
-    [SerializeField] HandInputController controller;
-    [SerializeField] Animator[] animators;
+    [SerializeField] HandInputManager manager;
+    [SerializeField] Animator animator;
 
 
     private void OnValidate()
     {
-        controller = GetComponent<HandInputController>();
+        if(manager == null) manager = GetComponent<HandInputManager>();
     }
 
 
     private void Update()
     {
-        foreach (Animator animator in animators)
-        {
-            animator.SetFloat("Grip", controller.SelectActionValue);
-            animator.SetFloat("Trigger", controller.ActivateActionValue);
-        }
+        animator.SetFloat("Grip", manager.SelectActionValue);
+        animator.SetFloat("Trigger", manager.ActivateActionValue);
     }
 }

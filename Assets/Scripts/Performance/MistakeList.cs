@@ -13,13 +13,14 @@ public class MistakeList : MonoBehaviour
     [SerializeField] TMP_Text text_hint;
 
 
+
     private void Awake()
     {
         performanceManager.OnAddMistake += AddMistake;
     }
     private void OnDestroy()
     {
-        performanceManager.OnAddMistake -= AddMistake;
+        GameManager.PerformanceManager.OnAddMistake -= AddMistake;
     }
 
 

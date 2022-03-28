@@ -1,26 +1,26 @@
 using UnityEngine;
 
-public class TeleportMovement : MonoBehaviour
+public class MovementTeleport : MonoBehaviour
 {
     [SerializeField] Transform recticle;
     [SerializeField] GameObject ground;
 
 
     private LineRenderer lineRenderer;
-    private int telport;
+    private int teleport;
 
 
     public void StartTeleport(LineRenderer line)
     {
-        telport++;
+        teleport++;
         lineRenderer = line;
 
-        if (telport == 1) EnableTeleport();
+        if (teleport == 1) EnableTeleport();
     }
     public void EndTeleport()
     {
-        telport--;
-        if (telport == 0) DisableTeleport();
+        teleport--;
+        if (teleport == 0) DisableTeleport();
     }
 
     private void EnableTeleport()
@@ -58,8 +58,10 @@ public class TeleportMovement : MonoBehaviour
     }
 
 
-    [SerializeField] Transform leftPhysicalHand;
-    [SerializeField] Transform rightPhysicalHand;
+
+
+    
+    [SerializeField] Transform[] physicalHands;
     public bool dash { get; set; }
     private bool teleporing = false;
     private Vector3 teleportPosition;
@@ -80,19 +82,25 @@ public class TeleportMovement : MonoBehaviour
     private void TeleportBody() 
     {
         transform.position = teleportPosition;
-        leftPhysicalHand.position = teleportPosition;
-        rightPhysicalHand.position = teleportPosition;
+
+        foreach (Transform pHand in physicalHands)
+            pHand.position = teleportPosition;
     }
 
 
-    [SerializeField] Transform MainCamera;
-    [SerializeField] Camera mc_camera;
-    [SerializeField] AudioListener mc_AudioListener;
-    [SerializeField] Transform DashCamera;
-    [SerializeField] Camera dc_camera;
-    [SerializeField] AudioListener dc_AudioListener;
-    [SerializeField] Renderer leftPhysicalHandRenderer;
-    [SerializeField] Renderer rightPhysicalHandRenderer;
+
+
+
+    [Header("")]
+    [SerializeField] Transform mainCamera;
+    [ReadOnly, SerializeField] Camera mainCamera_camera;
+    [ReadOnly, SerializeField] AudioListener mainCamera_AudioListener;
+
+    [SerializeField] Transform dashCamera;
+    [ReadOnly, SerializeField] Camera dashCamera_camera;
+    [ReadOnly, SerializeField] AudioListener dashCamera_AudioListener;
+
+    [SerializeField] Renderer[] physicalHandRenderers;
 
     private Vector3 oldMcPosition;
 
@@ -100,48 +108,54 @@ public class TeleportMovement : MonoBehaviour
     {
         teleportTime = 0.25f;
 
-        leftPhysicalHandRenderer.enabled = false;
-        rightPhysicalHandRenderer.enabled = false;
+        SetPhysicalHandRenderersEnabled(false);
+        SetDashAndMainCameraEnabled(false);
 
-        mc_AudioListener.enabled = false;
-        mc_camera.enabled = false;
-        dc_AudioListener.enabled = true;
-        dc_camera.enabled = true;
+        oldMcPosition = mainCamera.position;
 
-        oldMcPosition = MainCamera.position;
-
-        DashCamera.position = MainCamera.position;
-        DashCamera.rotation = MainCamera.rotation;
+        dashCamera.rotation = mainCamera.rotation;
+        dashCamera.position = mainCamera.position;
 
         TeleportBody();
     }
 
     private void DashTeleporting()
     {
-        if(teleportTime > 0)
+        if (teleportTime > 0)
         {
             teleportTime -= Time.deltaTime * 1;
 
-            DashCamera.rotation = MainCamera.rotation;
-
-            DashCamera.position = Vector3.Lerp(MainCamera.position, oldMcPosition, teleportTime * 4);
+            dashCamera.rotation = mainCamera.rotation;
+            dashCamera.position = Vector3.Lerp(mainCamera.position, oldMcPosition, teleportTime * 4);
         }
-        else
+        else 
         {
-            leftPhysicalHandRenderer.enabled = true;
-            rightPhysicalHandRenderer.enabled = true;
-
-            mc_AudioListener.enabled = true;
-            mc_camera.enabled = true;
-            dc_AudioListener.enabled = false;
-            dc_camera.enabled = false;
+            SetPhysicalHandRenderersEnabled(true);
+            SetDashAndMainCameraEnabled(true);
 
             teleporing = false;
         }
     }
 
+    private void SetPhysicalHandRenderersEnabled(bool enabled)
+    {
+        foreach (Renderer renderer in physicalHandRenderers)
+            renderer.enabled = enabled;
+    }
+    private void SetDashAndMainCameraEnabled(bool mainEnabled)
+    {
+        mainCamera_AudioListener.enabled = mainEnabled;
+        mainCamera_camera.enabled = mainEnabled;
+        dashCamera_AudioListener.enabled = !mainEnabled;
+        dashCamera_camera.enabled = !mainEnabled;
+    }
 
-    [SerializeField] TeleportBlinkCanvas blinkCanvas;
+
+
+
+
+    [Header("")]
+    [SerializeField] MovementTeleportBlinkCanvas blinkCanvas;
     private bool blinkClosing = true;
 
     private void BlinkTeleport()
@@ -186,14 +200,32 @@ public class TeleportMovement : MonoBehaviour
     }
 
 
+
+
+
     private void Update()
     {
-        if (telport > 0) TeleportRay();
+        if (teleport > 0) TeleportRay();
 
         if(teleporing)
         {
             if (dash) DashTeleporting();
             else BlinkTeleporting();
+        }
+    }
+
+
+    private void OnValidate()
+    {
+        if(mainCamera != null) 
+        {
+            if (mainCamera_camera == null) mainCamera_camera = mainCamera.GetComponent<Camera>();
+            if (mainCamera_AudioListener == null) mainCamera_AudioListener = mainCamera.GetComponent<AudioListener>();
+        }
+        if (dashCamera != null)
+        {
+            if (dashCamera_camera == null) dashCamera_camera = dashCamera.GetComponent<Camera>();
+            if (dashCamera_AudioListener == null) dashCamera_AudioListener = dashCamera.GetComponent<AudioListener>();
         }
     }
 }

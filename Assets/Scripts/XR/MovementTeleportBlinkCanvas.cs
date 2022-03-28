@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TeleportBlinkCanvas : MonoBehaviour
+public class MovementTeleportBlinkCanvas : MonoBehaviour
 {
     [SerializeField] Image[] images;
 

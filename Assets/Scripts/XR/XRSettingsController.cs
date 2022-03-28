@@ -5,7 +5,7 @@ public class XRSettingsController : MonoBehaviour
 {
     [SerializeField] ContinuousTurnProviderBase ContinuousTurnProvider;
     [SerializeField] SnapTurnProviderBase SnapTurnProvider;
-    [SerializeField] TeleportMovement TeleportMovement;
+    [SerializeField] MovementTeleport MovementTeleport;
 
 
     public bool ContinuousTurn = true;
@@ -20,7 +20,7 @@ public class XRSettingsController : MonoBehaviour
         SnapTurnProvider.enabled = !ContinuousTurn;
 
         //Teleport
-        TeleportMovement.dash = TeleportDash;
+        MovementTeleport.dash = TeleportDash;
     }
 
 

@@ -5,7 +5,7 @@ using UnityEngine.InputSystem.Controls;
 using UnityEngine.XR.Interaction.Toolkit.Inputs;
 using Unity.XR.CoreUtils;
 
-public class ContinuousMovement : ContinuousMoveProviderBase
+public class MovementContinuous : ContinuousMoveProviderBase
 {
     [SerializeField]
     [Tooltip("The Input System Action that will be used to read Move data from the left hand controller. Must be a Value Vector2 Control.")]

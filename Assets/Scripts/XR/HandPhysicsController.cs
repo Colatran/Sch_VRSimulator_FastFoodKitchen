@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PhysicsHandController : MonoBehaviour
+public class HandPhysicsController : MonoBehaviour
 {
     [SerializeField] Rigidbody rb;
     [SerializeField] Transform target;

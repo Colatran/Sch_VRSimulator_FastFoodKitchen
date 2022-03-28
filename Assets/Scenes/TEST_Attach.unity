@@ -1085,7 +1085,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   render: {fileID: 568031199}
   interactibleRadius: 0.2
-  hilight: 0
   rb: {fileID: 568031197}
 --- !u!54 &568031197
 Rigidbody:
@@ -1550,6 +1549,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 747379622}
   m_CullTransparentMesh: 1
+--- !u!20 &787919430 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8986698115338687419, guid: 919060f0c32aefc4dbafa285b7e5ddf8,
+    type: 3}
+  m_PrefabInstance: {fileID: 495039830}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &976136532
 GameObject:
   m_ObjectHideFlags: 0
@@ -1584,6 +1589,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1045398900 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8986698116530087173, guid: 919060f0c32aefc4dbafa285b7e5ddf8,
+    type: 3}
+  m_PrefabInstance: {fileID: 495039830}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37ee3181fdc9a0740a8aa29fa507ae7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1107636458
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2652,7 +2669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a34355fa0ddf8e46952a61f415dfd2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settingsController: {fileID: 0}
+  settingsController: {fileID: 1045398900}
   text_rot: {fileID: 458350427}
   text_tele: {fileID: 747379624}
 --- !u!114 &2069860799
@@ -2724,7 +2741,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 787919430}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1

@@ -3,129 +3,74 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class HandInputController : MonoBehaviour
 {
-    [SerializeField] ActionBasedController controller;
+    [SerializeField] MovementTeleport teleport;
+    [SerializeField] HandInputManager manager;
+
+    [Header("")]
     [SerializeField] HandGrabArea handGrabArea;
-    [SerializeField] TeleportMovement teleportMovement;
-    [SerializeField] XRInteractorLineVisual myInteractorLineVisual;
+    public HandGrabArea HandGrabArea { get => handGrabArea; }
+    [SerializeField] GameObject handCursor;
+    [SerializeField] FingerTip fingerTip;
+
+    [Header("")]
+    [SerializeField] XRInteractorLineVisual interactorLineVisual;
     [SerializeField] XRInteractorLineVisual otherInteractorLineVisual;
     [SerializeField] LineRenderer lineRenderer;
-    [SerializeField] FingerTip fingerTip;
-    [SerializeField] GameObject handCursor;
-
-    public HandGrabArea HandGrabArea { get => handGrabArea; }
-
-    private float selectActionValue;
-    public float SelectActionValue { get => selectActionValue; }
-
-    private float activateActionValue;
-    public float ActivateActionValue { get => activateActionValue; }
-
-    private bool selectActionPressing = false;
-    private bool activateActionPressing = false;
-    private bool notPointing = false;
-    private bool openHand = false;
 
 
-    private void Update()
+
+
+    private void Awake()
     {
-        selectActionValue = controller.selectActionValue.action.ReadValue<float>();
-        activateActionValue = controller.activateActionValue.action.ReadValue<float>();
+        manager.OnGripStart += GrabStart;
+        manager.OnGripCancel += GrabCancel;
 
-        var selectAction = controller.selectAction.action.ReadValue<float>() == 1;
-        if (selectActionPressing)
-        {
-            if (!selectAction) SelectRelease();
-        }
-        else
-        {
-            if(selectAction) SelectPress();
-        }
-        selectActionPressing = selectAction;
+        manager.OnTriggerStart += TeleportStart;
+        manager.OnTriggerCancel += TeleportCancel;
 
+        manager.OnPointStart += PointStart;
+        manager.OnPointCancel += PointCancel;
 
-        var activateAction = controller.activateAction.action.ReadValue<float>() == 1;
-        if (activateActionPressing)
-        {
-            if (!activateAction) ActivateRelease();
-        }
-        else
-        {
-            if (activateAction) ActivatePress();
-        }
-        activateActionPressing = activateAction;
-
-
-        if(notPointing)
-        {
-            if (selectAction && !activateAction) 
-            {
-                notPointing = false;
-                Point();
-            }
-        }
-        else
-        {
-            if (!selectAction || activateAction)
-            {
-                notPointing = true;
-                NotPoint();
-            }
-        }
-
-        if(openHand)
-        {
-            if (selectActionPressing || activateActionPressing)
-            {
-                openHand = false;
-                OnCloseHand();
-            }
-        }
-        else
-        {
-            if (!(selectActionPressing || activateActionPressing))
-            {
-                openHand = true;
-                OnOpenHand();
-            }
-        }
+        manager.OnOpenStart += OpenStart;
+        manager.OnOpenCancel += OpenCancel;
     }
 
 
-    private void SelectPress()
+    private void GrabStart()
     {
         handGrabArea.GrabClosest();
     }
-    private void SelectRelease()
+    private void GrabCancel()
     {
         handGrabArea.ReleaseGrabbed();
     }
 
-    private void ActivatePress()
+    private void TeleportStart()
     {
-        myInteractorLineVisual.enabled = true;
+        interactorLineVisual.enabled = true;
         otherInteractorLineVisual.enabled = false;
-        teleportMovement.StartTeleport(lineRenderer);
+        teleport.StartTeleport(lineRenderer);
     }
-    private void ActivateRelease()
+    private void TeleportCancel()
     {
         otherInteractorLineVisual.enabled = true;
-        teleportMovement.EndTeleport();
+        teleport.EndTeleport();
     }
 
-    private void Point()
+    private void PointStart()
     {
         fingerTip.Pressing = true;
     }
-    private void NotPoint()
+    private void PointCancel()
     {
         fingerTip.Pressing = false;
     }
 
-    private void OnOpenHand()
+    private void OpenStart()
     {
         handCursor.SetActive(true);
     }
-    private void OnCloseHand()
+    private void OpenCancel()
     {
         handCursor.SetActive(false);
     }

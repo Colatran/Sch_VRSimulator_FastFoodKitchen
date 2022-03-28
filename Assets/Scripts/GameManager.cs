@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -30,13 +28,11 @@ public class GameManager : MonoBehaviour
 
 
     [SerializeField] PerformanceManager performanceManager;
+    public static PerformanceManager PerformanceManager { get => reference.performanceManager; }
     public static void MakeMistake(MistakeType type)
     {
         reference.performanceManager.AddMistake(type);
     }
-
-
-
 
 
 
