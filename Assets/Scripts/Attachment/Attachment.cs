@@ -59,6 +59,7 @@ public class Attachment : MonoBehaviour
     public event AttachmentAction OnAddContent;
     public event AttachmentAction OnRemoveContent;
 
+    public float Mass { get => rb_mass; }
     public bool HasProperOrientation(Transform other) => orientation.Check(other);
     public bool IsContainer { get => isContainer; }
     public Attachment DirectParent { get => directParent; }

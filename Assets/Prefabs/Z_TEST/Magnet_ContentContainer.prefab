@@ -503,8 +503,13 @@ MonoBehaviour:
   rb_mass: 1
   rb_drag: 0
   rb_angdrag: 0.05
+  rb_isKinematic: 0
+  rb_useGravity: 1
+  rb_collisionDetectionMode: 2
+  rb_interpolation: 1
   orientation: {fileID: 7604660088209928613}
   isContainer: 1
+  isDeadEnd: 0
 --- !u!114 &7604660088209928613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,7 +537,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   render: {fileID: 3315719040963371606}
   interactibleRadius: 0
-  hilight: 0
   attachment: {fileID: 3315719041023300756}
 --- !u!114 &8467292144793281172
 MonoBehaviour:

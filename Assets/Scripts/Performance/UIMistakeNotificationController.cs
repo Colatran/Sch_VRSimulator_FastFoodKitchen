@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class UIMistakeNotificationController : MonoBehaviour
 {
-    [SerializeField] PerformanceManager performanceManager;
     [SerializeField] MistakeList mistakeList;
     [SerializeField] UIPopUp popup;
     [SerializeField] UIPopUpResponsiveness popupResponsiveness;
@@ -11,15 +10,15 @@ public class UIMistakeNotificationController : MonoBehaviour
 
 
 
-    private void Awake()
+    private void OnEnable()
     {
-        performanceManager.OnAddMistake += OnAddMistake;
+        GameManager.PerformanceManager.OnAddMistake += OnAddMistake;
         mistakeList.OnButtonPressed += OnButtonPressed;
         popupResponsiveness.OnShouldPopOff += OnShouldPopOff;
     }
     private void OnDestroy()
     {
-        performanceManager.OnAddMistake -= OnAddMistake;
+        GameManager.PerformanceManager.OnAddMistake -= OnAddMistake;
         mistakeList.OnButtonPressed -= OnButtonPressed;
         popupResponsiveness.OnShouldPopOff -= OnShouldPopOff;
     }

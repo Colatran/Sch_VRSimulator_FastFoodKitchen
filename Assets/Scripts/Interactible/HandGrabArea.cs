@@ -125,8 +125,9 @@ public class HandGrabArea : MonoBehaviour
     {
         if (grabbed is Interactible_Pickup)
         {
-            rb.mass = 0.0001f;
+            //rb.mass = 1f;
             attachment_InteractiblePickup = (grabbed as Interactible_Pickup).Attachment;
+            rb.mass = attachment_InteractiblePickup.Mass;
             attachment_InteractiblePickup.OnDetach += OnPickupDetach;
         }
     }

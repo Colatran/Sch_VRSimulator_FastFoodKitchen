@@ -4720,12 +4720,12 @@ GameObject:
   - component: {fileID: 2955061196783096391}
   - component: {fileID: 2955061196783096411}
   - component: {fileID: 2955061196783096389}
-  - component: {fileID: 2955061196783096413}
-  - component: {fileID: 2955061196783096410}
   - component: {fileID: 2955061196783096414}
   - component: {fileID: 2955061196783096408}
-  - component: {fileID: 2955061196783096388}
+  - component: {fileID: 2955061196783096413}
+  - component: {fileID: 2955061196783096410}
   - component: {fileID: 2955061196783096412}
+  - component: {fileID: 2955061196783096388}
   m_Layer: 5
   m_Name: MistakeNotification
   m_TagString: Untagged
@@ -4788,56 +4788,6 @@ MonoBehaviour:
   orientation: {fileID: 0}
   isContainer: 0
   isDeadEnd: 0
---- !u!114 &2955061196783096413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2955061196783096390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09db03b390567c04b991d7c1ea66dd7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 5056953720865535333, guid: b98542c32c2a10f4a8256fa141f51793, type: 3}
-  container: {fileID: 2955061195888921992}
-  objects:
-  - {fileID: 8011785116565054647}
-  - {fileID: 8011785117123577918}
-  - {fileID: 8011785118107766708}
-  - {fileID: 8011785116680370875}
-  - {fileID: 8011785118310675538}
-  - {fileID: 8011785117967883247}
-  - {fileID: 8011785117090561294}
-  - {fileID: 8011785118329418559}
-  - {fileID: 8011785116701647351}
-  - {fileID: 8011785116753593601}
-  inicialCount: 10
-  poolType: 0
---- !u!114 &2955061196783096410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2955061196783096390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 138a5293beeec1f4b88789bb21fc3d51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  performanceManager: {fileID: 0}
-  buttonPool: {fileID: 2955061196783096413}
-  buttonContainer: {fileID: 2955061195135866091}
-  text_title: {fileID: 2955061196426075054}
-  text_description: {fileID: 2955061196570703976}
-  text_hint: {fileID: 2955061195069902612}
-  sectorPanel: {fileID: 2955061196704240918}
-  text_currentSector: {fileID: 2955061195733044509}
-  text_sectorCount: {fileID: 2955061196017633061}
-  nextSectorButton: {fileID: 2955061195052952236}
-  previousSectorButton: {fileID: 2955061195343499269}
 --- !u!114 &2955061196783096414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4879,6 +4829,74 @@ MonoBehaviour:
   maxAngle: 45
   responsiveToDistance: 1
   maxDistance: 1.5
+--- !u!114 &2955061196783096413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2955061196783096390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09db03b390567c04b991d7c1ea66dd7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 5056953720865535333, guid: b98542c32c2a10f4a8256fa141f51793, type: 3}
+  container: {fileID: 2955061195888921992}
+  objects:
+  - {fileID: 8011785116565054647}
+  - {fileID: 8011785117123577918}
+  - {fileID: 8011785118107766708}
+  - {fileID: 8011785116680370875}
+  - {fileID: 8011785118310675538}
+  - {fileID: 8011785117967883247}
+  - {fileID: 8011785117090561294}
+  - {fileID: 8011785118329418559}
+  - {fileID: 8011785116701647351}
+  - {fileID: 8011785116753593601}
+  inicialCount: 10
+  poolType: 0
+--- !u!114 &2955061196783096410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2955061196783096390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138a5293beeec1f4b88789bb21fc3d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonPool: {fileID: 2955061196783096413}
+  buttonContainer: {fileID: 2955061195135866091}
+  text_title: {fileID: 2955061196426075054}
+  text_description: {fileID: 2955061196570703976}
+  text_hint: {fileID: 2955061195069902612}
+  sectorPanel: {fileID: 2955061196704240918}
+  text_currentSector: {fileID: 2955061195733044509}
+  text_sectorCount: {fileID: 2955061196017633061}
+  nextSectorButton: {fileID: 2955061195052952236}
+  previousSectorButton: {fileID: 2955061195343499269}
+--- !u!114 &2955061196783096412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2955061196783096390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb87d7aa00859cc4c92144a01682ffd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mistakeList: {fileID: 2955061196783096410}
+  popup: {fileID: 2955061196783096414}
+  popupResponsiveness: {fileID: 2955061196783096408}
+  animator: {fileID: 2955061196783096388}
+  attachment: {fileID: 2955061196783096389}
+  spoilerArrow_Description: {fileID: 2955061194830489806}
+  spoilerArrow_Hint: {fileID: 2955061195950827325}
 --- !u!95 &2955061196783096388
 Animator:
   serializedVersion: 3
@@ -4898,26 +4916,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2955061196783096412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2955061196783096390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb87d7aa00859cc4c92144a01682ffd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  performanceManager: {fileID: 0}
-  mistakeList: {fileID: 2955061196783096410}
-  popup: {fileID: 2955061196783096414}
-  popupResponsiveness: {fileID: 2955061196783096408}
-  animator: {fileID: 2955061196783096388}
-  attachment: {fileID: 2955061196783096389}
-  spoilerArrow_Description: {fileID: 2955061194830489806}
-  spoilerArrow_Hint: {fileID: 2955061195950827325}
 --- !u!1 &2955061196789264624
 GameObject:
   m_ObjectHideFlags: 0

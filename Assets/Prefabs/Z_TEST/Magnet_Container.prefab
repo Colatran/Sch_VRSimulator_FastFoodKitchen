@@ -127,8 +127,13 @@ MonoBehaviour:
   rb_mass: 1
   rb_drag: 0
   rb_angdrag: 0.05
+  rb_isKinematic: 0
+  rb_useGravity: 1
+  rb_collisionDetectionMode: 2
+  rb_interpolation: 1
   orientation: {fileID: 3313236525632011134}
   isContainer: 1
+  isDeadEnd: 0
 --- !u!114 &3313236525632011134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +161,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   render: {fileID: 7669658725735213197}
   interactibleRadius: 0
-  hilight: 0
   attachment: {fileID: 7669658725657058895}
 --- !u!1 &7669658725735213194
 GameObject:

@@ -4,7 +4,6 @@ using TMPro;
 
 public class MistakeList : MonoBehaviour
 {
-    [SerializeField] PerformanceManager performanceManager;
     [SerializeField] GameObjectPool buttonPool;
     [SerializeField] Transform buttonContainer;
     [Header("Description")]
@@ -19,13 +18,13 @@ public class MistakeList : MonoBehaviour
     [SerializeField] GameObject previousSectorButton;
 
 
-    private void Awake()
+    private void OnEnable()
     {
-        performanceManager.OnAddMistake += AddMistake;
+        GameManager.PerformanceManager.OnAddMistake += AddMistake;
     }
-    private void OnDestroy()
+    private void OnDisable()
     {
-        performanceManager.OnAddMistake -= AddMistake;
+        GameManager.PerformanceManager.OnAddMistake -= AddMistake;
     }
 
 
