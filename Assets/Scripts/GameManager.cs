@@ -20,6 +20,17 @@ public class GameManager : MonoBehaviour
 
 
 
+    private int currentBatch = 0;
+    public static int GetNewBatch()
+    {
+        reference.currentBatch++;
+        return reference.currentBatch;
+    }
+
+
+
+
+
     [SerializeField] AssetHolder assetHolder;
     public static AssetHolder Asset { get => reference.assetHolder; }
 

@@ -2,7 +2,104 @@ using System.Collections.Generic;
 
 public static class MistakeLibrary
 {
-    public static Dictionary<MistakeType, Mistake> mistakes = new Dictionary<MistakeType, Mistake>() {
+    public static Dictionary<MistakeType, Mistake> mistakes = new Dictionary<MistakeType, Mistake>()
+    {
+        {
+            MistakeType.GAVETA_PRODUTO_CONTAMINADO,
+            new Mistake(
+                "Produto Contaminado",
+                "Colocou na gaveta um produto que tocou no chão.",
+                "Qualquer produto que tenha tocado no chão deve ser descartado.")
+        },
+        {
+            MistakeType.GAVETA_PRODUTO_MISTURADO_LOTE,
+            new Mistake(
+                "Produto Velho",
+                "Misturou produto novo com produto velho.",
+                "Qualquer produto que sobre nas gavetas deve ser descartado.")
+        },
+        {
+            MistakeType.GAVETA_PRODUTO_CRU,
+            new Mistake(
+                "Produto Cru",
+                "Colocou na gaveta um produto cru.",
+                "Deve respeitar os temporizadores das frigideiras e dos grelhadores."
+                + " Se achar que o equipamento em questão não está a funcionar corretamente deve chamar o gerente.")
+        },
+        {
+            MistakeType.GAVETA_PRODUTO_QUEIMADO,
+            new Mistake(
+                "Produto Queimado",
+                "Colocou na gaveta um produto queimado.",
+                "Produtos queimados devem ser descartados.")
+        },
+
+
+
+        {
+            MistakeType.GAVETABIFE_PAPEL_MUITO,
+            new Mistake(
+                "Muito Papel",
+                "Colocou muito papel na gaveta.",
+                "Deve colocar apenas uma folha de papel no fundo da gaveta.")
+        }, 
+        {
+            MistakeType.GAVETABIFE_PAPEL_REUTILIZADO,
+            new Mistake(
+                "Papel Reutilizado",
+                "Utilizou uma folha de papel mais que uma vez.",
+                "Deve trocar o papel sempre que reutilizar a gaveta.")
+        },
+        {
+            MistakeType.GAVETABIFE_PAPEL_SUJO,
+            new Mistake(
+                "Papel Sujo",
+                "Utilizou uma folha de papel suja.",
+                "Folhas de papel que estiverem potencialmente contaminadas devem ser descartadas.")
+        },
+        {
+            MistakeType.GAVETABIFE_PAPEL_FALTA,
+            new Mistake(
+                "Falta Papel",
+                "Colocou a carne numa gaveta sem papel.",
+                "Deve colocar papel no fundo da gaveta antes de colocar as carnes nesta.")
+        },
+        {
+            MistakeType.GAVETABIFE_BIFE_TIPOERRADO,
+            new Mistake(
+                "Gaveta Errada",
+                "Colocou um bife de um tipo não correspondente à gaveta."
+                + " Não pode colocar produtos de tipos diferentes na mesma gaveta.",
+                "Vermelho para bifes normais, Verde para bifes vegan.")
+        },
+        {
+            MistakeType.GAVETABIFE_BIFE_SEMSAL,
+            new Mistake(
+                "Bife Sem Sal",
+                "Colocou na gaveta uma carne que não foi salgada.",
+                "Deve salgar os bifes assim que a placa superior subir.")
+        },
+        {
+            MistakeType.GAVETABIFE_FRITO,
+            new Mistake(
+                "Gaveta Errada",
+                "Colocou na gaveta um produto frito."
+                + " Não pode colocar produtos de tipos diferentes na mesma gaveta.",
+                "As gavetas vermelhas e verdes são somente para bifes.")
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+
         { 
             MistakeType.PRODURO_NOCHAO, 
             new Mistake(
@@ -10,23 +107,18 @@ public static class MistakeLibrary
                 "Deixou cair um produto.",
                 "") 
         }, {
-            MistakeType.PRODURO_CONTAMINADO,
+            MistakeType.PRODUTO_CONTAMINADO,
             new Mistake(
                 "Produto Contaminado",
                 "Utilizou produto que tocou no chão.",
                 "Qualquer produto que tenha tocado no chão deve ser descartado.")
         }, { 
-            MistakeType.PRODURO_CRU, 
-            new Mistake(
-                "Produto Cru",
-                "Colocou na gaveta um produto cru.",
-                "Deve respeitar os temporizadores das frigideiras e dos grelhadores.", 0)
-        }, { 
             MistakeType.PRODURO_QUEIMADO,
             new Mistake(
                 "Produto Queimado",
                 "Colocou na gaveta um produto queimado.",
-                "Os temporizadores das frigideiras e dos grelhadores já estão programados para dar aos produtos o tempo de cozedura correto.", 0)
+                "Os temporizadores das frigideiras e dos grelhadores já estão programados para dar aos produtos o tempo de cozedura correto."
+                + " Se achar que o equipamento em questão não está a funcionar corretamente deve chamar o gerente.")
         }, {
             MistakeType.PRODUTO_FRIO, 
             new Mistake(
@@ -41,12 +133,6 @@ public static class MistakeLibrary
                 "Misturou Produto",
                 "Misturou produtos de tipos diferentes sobre a mesma placa no gelhador.",
                 "Deve utiliza uma placa diferente para cada tipo de produto.")
-        }, {
-            MistakeType.PRODUTO_MISTURADO_GAVETA,
-            new Mistake(
-                "Misturou Produto",
-                "Misturou produto novo com produto velho.",
-                "Qualquer produto que sobre nas gavetas deve ser descartado.")
         }, {
             MistakeType.PRODUTO_MISTURADO_FRITADEIRA,
             new Mistake(
@@ -64,14 +150,8 @@ public static class MistakeLibrary
 
 
 
-        { 
-            MistakeType.BIFE_SAL_SEM,
-            new Mistake(
-                "Bife Sem Sal",
-                "Colocou na gaveta uma carne que não foi salgada.",
-                "Deve salgar os bifes assim que a placa superior subir.")
-        }, { 
-            MistakeType.BIFE_SAL_MUITO,
+         { 
+            MistakeType.BIFE_MUITOSAL,
             new Mistake(
                 "Bife Muito Salgado",
                 "Salgou demasiado a carne.",
@@ -184,24 +264,6 @@ public static class MistakeLibrary
                 "Papel em Gaveta para Fritos",
                 "Colocou papel numa gaveta para fritos.",
                 "Gavetas para fritos não necessitam de papel, necessitam apenas da sua grelha respetiva.")
-        }, {
-            MistakeType.GAVETA_PAPEL_FALTA,
-            new Mistake(
-                "Falta Papel",
-                "Colocou a carne numa gaveta sem papel.",
-                "Deve colocar papel no fundo da gaveta antes de colocar as carnes neste.")
-        }, { 
-            MistakeType.GAVETA_PAPEL_MUITO,
-            new Mistake(
-                "Muito Papel",
-                "Colocou muito papel na gaveta.",
-                "Deve colocar apenas uma folha de papel no fundo da gaveta.")
-        }, {
-            MistakeType.GAVETA_PAPEL_SUJO,
-            new Mistake(
-                "Papel Sujo",
-                "Utilizou uma folha de papel mais que uma vez.",
-                "Deve trocar o papel sempre que reutilizar a gaveta.")
         },
 
 
@@ -216,18 +278,12 @@ public static class MistakeLibrary
 
 
 
-        { 
-            MistakeType.REL_GAVETAPRODUTO,
-            new Mistake(
-                "Gaveta Errada",
-                "Colocou o produto numa gaveta de tipo não corespondente.",
-                "", 1)
-        }, {
+         {
             MistakeType.REL_PRODUTOSLOT,
             new Mistake(
                 "Slot Errada",
                 "Colocou a gaveta numa slot que não corresponde ao produto.",
-                "O tipo de produto está marcado na etiqueta em cima da slot.", 1)
+                "O tipo de produto está marcado na etiqueta em cima da slot.")
         },
 
 
@@ -257,8 +313,6 @@ public static class MistakeLibrary
 
     public static string[] sufixes =
     {
-        "Se achar que o equipamento em questão não está a funcionar corretamente deve chamar o gerente.",
-
         "Vermelho - Bife" +
         "Verde - Bife Vegan" +
         "Amarelo - Panado de Frango" +
