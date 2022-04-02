@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GrillTop_CloseMove
+  m_Name: GrillPlank_OpenShake
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,33 +20,24 @@ AnimationClip:
       - serializedVersion: 3
         time: 0
         value: {x: -60, y: 0, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
+        inSlope: {x: -108.81112, y: 0, z: 0}
+        outSlope: {x: 8.810548, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        inWeight: {x: 0.13530797, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.1328311, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 1
-        value: {x: 0, y: 0, z: 0}
-        inSlope: {x: 69.37202, y: 0, z: 0}
-        outSlope: {x: -8.169242, y: 0, z: 0}
+        value: {x: -60, y: 0, z: 0}
+        inSlope: {x: -13.197234, y: 0, z: 0}
+        outSlope: {x: 6.4969845, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
-        inWeight: {x: 0.13860446, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.1315116, y: 0.33333334, z: 0.33333334}
+        inWeight: {x: 0.109564304, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.27404118, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 1.9666667
-        value: {x: 0, y: 0, z: 0}
-        inSlope: {x: 5.6951933, y: 0, z: 0}
-        outSlope: {x: -4.963509, y: 0, z: 0}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.1444655, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.23153947, y: 0.33333334, z: 0.33333334}
-      - serializedVersion: 3
-        time: 2.5
-        value: {x: 0, y: 0, z: 0}
+        time: 2
+        value: {x: -60, y: 0, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -81,7 +72,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 2.5
+    m_StopTime: 2
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -103,33 +94,24 @@ AnimationClip:
       - serializedVersion: 3
         time: 0
         value: -60
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        inSlope: -108.81112
+        outSlope: 8.810548
+        tangentMode: 1
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0.13530797
+        outWeight: 0.1328311
       - serializedVersion: 3
         time: 1
-        value: 0
-        inSlope: 69.37202
-        outSlope: -8.169242
+        value: -60
+        inSlope: -13.197234
+        outSlope: 6.4969845
         tangentMode: 1
         weightedMode: 0
-        inWeight: 0.13860446
-        outWeight: 0.1315116
+        inWeight: 0.109564304
+        outWeight: 0.27404118
       - serializedVersion: 3
-        time: 1.9666667
-        value: 0
-        inSlope: 5.6951933
-        outSlope: -4.963509
-        tangentMode: 1
-        weightedMode: 0
-        inWeight: 0.1444655
-        outWeight: 0.23153947
-      - serializedVersion: 3
-        time: 2.5
-        value: 0
+        time: 2
+        value: -60
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -146,11 +128,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 2.4833333
-    functionName: UnlockButton
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

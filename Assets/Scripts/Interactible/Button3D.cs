@@ -14,14 +14,17 @@ public class Button3D : MonoBehaviour
     {
         startingPosition = movinTransform.position;
         targetPosition = movinTransform.position + movingDirection.normalized * movingDistance;
+
+        if(GetComponent<Collider>() == null) Debug.LogError(gameObject.name + " - Button3D - precisa de um collider!!!");
+        else if (!GetComponent<Collider>().isTrigger) Debug.LogError(gameObject.name + " - Button3D - tem de ser trigger!!!");
     }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawCube(startingPosition, Vector3.one * .01f);
+        Gizmos.DrawCube(startingPosition, Vector3.one * .001f);
 
         Gizmos.color = Color.blue;
-        Gizmos.DrawCube(targetPosition, Vector3.one * .01f);
+        Gizmos.DrawCube(targetPosition, Vector3.one * .001f);
         Gizmos.DrawLine(startingPosition, targetPosition);
     }
 

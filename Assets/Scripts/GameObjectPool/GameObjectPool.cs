@@ -13,7 +13,7 @@ public class GameObjectPool : MonoBehaviour
 
     [SerializeField] GameObject prefab;
     [SerializeField] Transform container;
-    [SerializeField] List<GameObject> objects = new List<GameObject>();
+    [SerializeField] List<PoolObject> objects = new List<PoolObject>();
     [SerializeField] int inicialCount = 10;
     [SerializeField] PoolType poolType = PoolType.FAST;
 
@@ -25,21 +25,21 @@ public class GameObjectPool : MonoBehaviour
             {
                 GameObject _object = PrefabUtility.InstantiatePrefab(prefab, container) as GameObject;
                 _object.SetActive(false);
-                objects.Add(_object);
+                objects.Add(_object.GetComponent<PoolObject>());
             }
         }
         else if (inicialCount < objects.Count)
         {
-            GameObject gObject = objects[0];
-            objects.Remove(gObject);
-            Destroy(gObject);
+            PoolObject poolObject = objects[0];
+            objects.Remove(poolObject);
+            Destroy(poolObject.gameObject);
         }
     }
 
 
 
     public Transform Container { get => container; }
-    public List<GameObject> Objects { get => objects; }
+    public List<PoolObject> Objects { get => objects; }
 
 
 
@@ -47,50 +47,60 @@ public class GameObjectPool : MonoBehaviour
 
     public GameObject GetObject()
     {
-        if (poolType == PoolType.FAST) return FastGetter();
-        else if (poolType == PoolType.NONSCALABLE) return NonScalableGetter();
-        else return ScalableGetter();
+        PoolObject pObject;
+        if (poolType == PoolType.FAST) pObject = FastGetter();
+        else if (poolType == PoolType.NONSCALABLE) pObject = NonScalableGetter();
+        else pObject = ScalableGetter();
+
+        if (pObject != null) pObject.Enable();
+        return pObject.gameObject;
     }
 
-    private GameObject FastGetter()
+    private PoolObject FastGetter()
     {
         currentIndex++;
         if (currentIndex == objects.Count) currentIndex = 0;
 
         return objects[currentIndex];
     }
-    private GameObject NonScalableGetter()
+    private PoolObject NonScalableGetter()
     {
-        foreach (GameObject _object in objects)
+        foreach (PoolObject pObject in objects)
         {
-            if (!_object.activeSelf) return _object;
+            if (!pObject.gameObject.activeSelf) return pObject;
         }
 
         return FastGetter();
     }
-    private GameObject ScalableGetter()
+    private PoolObject ScalableGetter()
     {
-        foreach (GameObject _object in objects)
+        foreach (PoolObject pObject in objects)
         {
-            if (!_object.activeSelf) return _object;
+            if (!pObject.gameObject.activeSelf) return pObject;
         }
 
         return AddObject();
     }
 
-    private GameObject AddObject()
+    private PoolObject AddObject()
     {
-        GameObject _object = Instantiate(prefab, container);
-        Objects.Add(_object);
-        return _object;
+        PoolObject pObject = Instantiate(prefab, container).GetComponent<PoolObject>();
+        Objects.Add(pObject);
+        return pObject;
     }
 
     public void DiactiveAllObjects()
     {
-        foreach (GameObject _object in objects) 
+        foreach (PoolObject poolObject in objects) 
         {
-            _object.SetActive(false);
-            _object.transform.SetParent(container);
+            DisableObject(poolObject);
         }
+    }
+
+    public void DisableObject(PoolObject poolObject)
+    {
+        poolObject.Disable();
+        poolObject.gameObject.SetActive(false);
+        poolObject.gameObject.transform.SetParent(container);
     }
 }

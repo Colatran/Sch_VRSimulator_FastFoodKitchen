@@ -73,7 +73,7 @@ public class Item_Cookable : Item
     private void HeatSource_Cooker(float deltaTime)
     {
         temperature += deltaTime;
-        cooked += deltaTime;
+        cooked += deltaTime / 100;
         cookedMaterial.Set(cooked / GameManager.CookingTime);
 
         if (toCallOnBurned && IsOvercooked)

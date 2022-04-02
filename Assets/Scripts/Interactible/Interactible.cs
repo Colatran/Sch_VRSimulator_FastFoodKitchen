@@ -9,6 +9,10 @@ public class Interactible : MonoBehaviour
     {
         if (render == null) render = GetComponent<Renderer>();
         if (render == null) render = GetComponentInChildren<Renderer>();
+
+        if(gameObject.layer != 8 && gameObject.layer != 5) Debug.LogError(gameObject.name + " - Interactible - tem de estar na layer 8(Interactible)!!!");
+        if (GetComponent<Collider>() == null) Debug.LogError(gameObject.name + " - Interactible - precisa de um collider");
+        else if (GetComponent<Collider>().isTrigger) Debug.LogError(gameObject.name + " - Interactible - collider não pode ser Trigger!!!");
     }
 
     private void Start()

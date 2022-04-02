@@ -90,7 +90,42 @@ public static class MistakeLibrary
 
 
 
-
+        {
+            MistakeType.GRELHADOR_SUJO,
+            new Mistake(
+                "Grelhador Sujo",
+                "Utilizou o grelhador antes de o limpar.",
+                "Deve utilizar o rodo para limpar a placa superior e inferior antes de colocar quais quer itens no grelhador.")
+        },
+        {
+            MistakeType.GRELHADOR_PRODUTO_CONTAMINADO,
+            new Mistake(
+                "Produto Contaminado",
+                "Colocou no grelhador um produto que tocou no chão.",
+                "Qualquer produto que tenha tocado no chão deve ser descartado.")
+        },
+        {
+            MistakeType.GRELHADOR_PRODUTO_FRITO,
+            new Mistake(
+                "Frito No Grelhador",
+                "Colocou um produto frito no grelhador.",
+                "O grelhador é apenas para bifes.")
+        },
+        {
+            MistakeType.GRELHADOR_PRODUTO_MISTURADO,
+            new Mistake(
+                "Produto Misturado no Grelhador",
+                "Colocou bifes de tipos diferentes sobre a mesma placa no grelhador.",
+                "Não deve cozinhar produtos de tipos diferentes sobre a mesma placa.")
+        },
+        {
+            MistakeType.GRELHADOR_ORDEMERRADA,
+            new Mistake(
+                "Ordem Errada",
+                "Tirou os bifes do grelhado na ordem errada.",
+                "Deve retirar os bifes na ordem em que foram colocados no grelhador.")
+        },
+        
 
 
 
@@ -128,12 +163,6 @@ public static class MistakeLibrary
         },
 
         {
-            MistakeType.PRODUTO_MISTURADO_GRELHADOR,
-            new Mistake(
-                "Misturou Produto",
-                "Misturou produtos de tipos diferentes sobre a mesma placa no gelhador.",
-                "Deve utiliza uma placa diferente para cada tipo de produto.")
-        }, {
             MistakeType.PRODUTO_MISTURADO_FRITADEIRA,
             new Mistake(
                 "Misturou Produto",
@@ -150,7 +179,7 @@ public static class MistakeLibrary
 
 
 
-         { 
+        { 
             MistakeType.BIFE_MUITOSAL,
             new Mistake(
                 "Bife Muito Salgado",
@@ -162,13 +191,7 @@ public static class MistakeLibrary
                 "Bife Cru Salgado",
                 "Salgou um bife que ainda estava cru.",
                 "Deve salgar as carnes apenas quando a placa superior do grelhador levantar.")
-        }, {
-            MistakeType.BIFE_ORDEMERRADA,
-            new Mistake(
-                "Ordem Errada",
-                "Tirou os bifes do grelhado na ordem errada.",
-                "Deve retirar os bifes na ordem em que foram colocados no grelhador.")
-        },
+        }, 
 
 
 
@@ -188,20 +211,7 @@ public static class MistakeLibrary
 
 
 
-        {
-            MistakeType.GRELHADOR_FRITO,
-            new Mistake(
-                "Frito No Grelhador",
-                "Colocou um produto frito no grelhador.",
-                "O grelhador é apenas para bifes.")
-        }, {
-            MistakeType.GRELHADOR_SUJO,
-            new Mistake(
-                "Grelhador Sujo",
-                "Utilizou o grelhador antes de o limpar.",
-                "Deve utilizar o rodo para limpar a placa superior e inferior antes de colocar quais quer itens no grelhador."
-                )
-        },
+         
 
 
 

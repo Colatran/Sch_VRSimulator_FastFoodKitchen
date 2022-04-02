@@ -8,6 +8,10 @@ public class MagnetPoint : MonoBehaviour
     private void OnValidate()
     {
         if (manager == null) manager = GetComponentInParent<MagnetPointsManager>();
+
+        if (gameObject.layer != 12) Debug.LogError(gameObject.name + " - MagnetPoint - deve estar na layer 12(MagnetPoint)!!!");
+        if (GetComponent<Collider>() == null) Debug.LogError(gameObject.name + " - MagnetPoint - precisa de um collider!!!");
+        else if (GetComponent<Collider>().isTrigger) Debug.LogError(gameObject.name + " - MagnetPoint - não pode ser trigger!!!");
     }
 
 

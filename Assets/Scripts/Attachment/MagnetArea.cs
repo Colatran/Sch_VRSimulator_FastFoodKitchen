@@ -8,6 +8,10 @@ public class MagnetArea : MonoBehaviour
     private void OnValidate()
     {
         if (attachment == null) attachment = GetComponentInParent<Attachment>();
+
+        if (gameObject.layer != 11) Debug.LogError(gameObject.name + " - MagnetArea deve estar na layer 11(MagnetArea)!!!");
+        if (GetComponent<Collider>() == null) Debug.LogError(gameObject.name + " - MagnetArea - precisa de um collider");
+        else if (!GetComponent<Collider>().isTrigger) Debug.LogError(gameObject.name + " - MagnetArea tem de ser trigger!!!");
     }
 
 
