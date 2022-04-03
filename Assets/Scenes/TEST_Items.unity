@@ -128,7 +128,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1122379142}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7909868006403801041, guid: f523ad1a909f9bd438786022349ea381,
         type: 3}
@@ -138,7 +138,7 @@ PrefabInstance:
     - target: {fileID: 7909868006403801052, guid: f523ad1a909f9bd438786022349ea381,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7909868006403801052, guid: f523ad1a909f9bd438786022349ea381,
         type: 3}
@@ -2829,7 +2829,6 @@ Transform:
   m_Children:
   - {fileID: 8820168779988754232}
   - {fileID: 3948257280802721271}
-  - {fileID: 1941942765}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3348,10 +3347,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a9eb06159676ee438f52bf9185fedca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cookingTime: 5
   assetHolder: {fileID: 11400000, guid: d0bbbe3340125dd4e96a36b23ee06e34, type: 2}
   performanceManager: {fileID: 1737785782}
   pauseMenu: {fileID: 43563148}
+  cookingTime: 5
+  maxTemperature: 85
+  cookingTimeFactor: 0.2
+  maxTemperatureFactor: 17
+  lmtTemp_roomTemperature: 24.5
+  lmtTemp_cold: 25
+  lmtTemp_stoveMin: 40
+  lmtTemp_stoveMax: 41
+  lmtCook_undercooked: 0.9
+  lmtCook_overcooked: 1.1
 --- !u!4 &1737785784
 Transform:
   m_ObjectHideFlags: 0
@@ -4056,12 +4064,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.118000016, y: 0.0055, z: 0.586}
   m_Center: {x: 0, y: -0.04975, z: 0}
---- !u!4 &1941942765 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7909868006403801052, guid: f523ad1a909f9bd438786022349ea381,
-    type: 3}
-  m_PrefabInstance: {fileID: 4264382}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2004500971
 GameObject:
   m_ObjectHideFlags: 0

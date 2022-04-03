@@ -112,7 +112,6 @@ public class GrillPlank : MonoBehaviour
 
     private void StartOpen()
     {
-        Debug.Log("StartOpen");
         mustBeClosed = false;
         mustMove = true;
 
@@ -126,7 +125,6 @@ public class GrillPlank : MonoBehaviour
 
     private void StartClose()
     {
-        Debug.Log("StartClose");
         mustBeClosed = true;
         mustMove = true;
     }
