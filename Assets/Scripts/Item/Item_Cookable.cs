@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Item_Cookable : Item
 {
-    [SerializeField] CookedMaterial cookedMaterial;
+    [SerializeField] MaterialPropertyController cookedMaterial;
 
     private HeatSource source = HeatSource.NONE;        
     private float temperature = 0;

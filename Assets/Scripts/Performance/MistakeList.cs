@@ -69,7 +69,7 @@ public class MistakeList : MonoBehaviour
     {
         isOpen = false;
 
-        buttonPool.DiactiveAllObjects();
+        buttonPool.DisableAllObjects();
 
         mistakes.Clear();
     }
@@ -139,7 +139,7 @@ public class MistakeList : MonoBehaviour
 
     private void StartSectorListing()
     {
-        buttonPool.DiactiveAllObjects();
+        buttonPool.DisableAllObjects();
         CurrentButton = null;
 
         baseIndex = currentSector * 10;
@@ -172,7 +172,7 @@ public class MistakeList : MonoBehaviour
         buttonObject.transform.SetParent(buttonContainer, false);
         buttonObject.SetActive(true);
 
-        UIMistakeButton button = buttonObject.GetComponent<UIMistakeButton>();
+        PoolObject_UIMistakeButton button = buttonObject.GetComponent<PoolObject_UIMistakeButton>();
         button.SetUp(this, mistakes[mistakeIndex]);
 
         if (CurrentButton == null)
@@ -195,8 +195,8 @@ public class MistakeList : MonoBehaviour
     public delegate void Action();
     public event Action OnButtonPressed;
 
-    private UIMistakeButton currentButton;
-    public UIMistakeButton CurrentButton
+    private PoolObject_UIMistakeButton currentButton;
+    public PoolObject_UIMistakeButton CurrentButton
     {
         get => currentButton;
         set
@@ -224,7 +224,7 @@ public class MistakeList : MonoBehaviour
         text_hint.text = mistake.Hint;
     }
 
-    public void PressMistakeButton(UIMistakeButton button)
+    public void PressMistakeButton(PoolObject_UIMistakeButton button)
     {
         CurrentButton = button;
 

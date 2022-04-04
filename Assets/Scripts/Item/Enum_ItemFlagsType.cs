@@ -32,6 +32,12 @@ public enum ItemType
     BOARDINTERIOR_GRIDBIG,
 
 
+
+    EQUIPMENT_CLEANINGSPONGE,
+
+
+
+
     BOX,
 
     BREAD,

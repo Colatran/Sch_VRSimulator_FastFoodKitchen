@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class UIMistakeButton : PoolObject
+public class PoolObject_UIMistakeButton : PoolObject
 {
     [SerializeField] TMP_Text text;
     [SerializeField] GameObject selectedBackground;

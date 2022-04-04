@@ -6,12 +6,12 @@ public class PoolObject : MonoBehaviour
     public event Action OnEnable;
     public event Action OnDisable;
 
-    public void Enable()
+    public virtual void Enable()
     {
         if (OnEnable != null)
             OnEnable(this);
     }
-    public void Disable()
+    public virtual void Disable()
     {
         if (OnDisable != null)
             OnDisable(this);

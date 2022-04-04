@@ -55,8 +55,6 @@ GameObject:
   - component: {fileID: 1702445839152526732}
   - component: {fileID: 1702445839152526733}
   - component: {fileID: 1702445839152526734}
-  - component: {fileID: 9094306994980572425}
-  - component: {fileID: 1702445839152526735}
   m_Layer: 0
   m_Name: Ingredient_ChickenNugget
   m_TagString: Untagged
@@ -112,43 +110,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxCross: 0.5
---- !u!114 &9094306994980572425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1702445839152526720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5950dbb4229bdb49975e500c41b5cf4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  min: 0
-  max: 5
---- !u!114 &1702445839152526735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1702445839152526720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ed8c484d17f9dc45af2e8b922e5d500, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colliders:
-  - {fileID: 1702445839717369450}
-  magnetPoints:
-  - {fileID: 1702445840356597079}
-  Rb: {fileID: 1702445839152526733}
-  orientationChecker: {fileID: 1702445839152526734}
-  isContainer: 0
-  isContent: 1
-  neededMagnetPoints: 1
-  type: 15
-  category: 2
 --- !u!1 &1702445839602944787
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +167,7 @@ GameObject:
   - component: {fileID: 1702445839717369450}
   m_Layer: 2
   m_Name: Collider
-  m_TagString: Ingredient
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -249,7 +210,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1702445840356597077}
   - component: {fileID: 1702445840356597078}
-  - component: {fileID: 1702445840356597079}
   m_Layer: 9
   m_Name: MagnetPoint
   m_TagString: Untagged
@@ -284,19 +244,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.008
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1702445840356597079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1702445840356597064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03379cabfa64aad4f91c4d5af7f2ef81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 1702445839152526735}
 --- !u!1 &1972898420133504012
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class GrillPlank : MonoBehaviour
 {
+    [SerializeField] GameObjectPool pool;
+    [SerializeField] Transform plank;
     [SerializeField] Button3D button;
     [SerializeField] Animator animator;
     [SerializeField] float plankSpeed = .5f;
@@ -21,7 +23,8 @@ public class GrillPlank : MonoBehaviour
 
 
     private List<Item_Cookable> cookables = new List<Item_Cookable>();
-    private List<Item_Cookable> cookablesSequence = new List<Item_Cookable>();
+    public List<Item_Cookable> cookablesSequence = new List<Item_Cookable>();
+    private List<Item_Cookable> cookablesMustIgnore = new List<Item_Cookable>();
     private ItemType beefType = ItemType.NONE;
 
     private void OnTriggerEnter(Collider other)
@@ -30,7 +33,11 @@ public class GrillPlank : MonoBehaviour
         if (item == null) return;
 
         cookables.Add(item);
-        CheckAddedItem(item);
+
+        bool isNew = !cookablesMustIgnore.Contains(item);
+        if (isNew) cookablesMustIgnore.Add(item);
+
+        CheckAddedItem(item, isNew);
     }
     private void OnTriggerExit(Collider other)
     {
@@ -41,15 +48,21 @@ public class GrillPlank : MonoBehaviour
         CheckRemovedItem(item);
     }
 
-    private void CheckAddedItem(Item_Cookable item)
+    private void CheckAddedItem(Item_Cookable item, bool isNew)
     {
         if (item.Has(ItemAttribute.DIRT))
             GameManager.MakeMistake(MistakeType.GRELHADOR_PRODUTO_CONTAMINADO);
 
-        if (item.Is(ItemType.FRIED))
-            GameManager.MakeMistake(MistakeType.GRELHADOR_PRODUTO_FRITO);
+        if (isNew)
+        {
+            if (greaseCount > 0)
+                GameManager.MakeMistake(MistakeType.GRELHADOR_SUJO);
 
-        else if(item.Is(ItemType.BEEF))
+            if (item.Is(ItemType.FRIED))
+                GameManager.MakeMistake(MistakeType.GRELHADOR_PRODUTO_FRITO);
+        }
+
+        if(item.Is(ItemType.BEEF))
         {
             if (beefType == ItemType.NONE)
             {
@@ -58,11 +71,12 @@ public class GrillPlank : MonoBehaviour
                 else
                     beefType = ItemType.BEEF_VEGAN;
             }
-            else
+
+            else if (isNew)
             {
                 if (!item.Is(beefType))
                     GameManager.MakeMistake(MistakeType.GRELHADOR_PRODUTO_MISTURADO);
-                else
+                else if (!item.IsCooked)
                     cookablesSequence.Add(item);
             }
         }
@@ -71,8 +85,13 @@ public class GrillPlank : MonoBehaviour
 
     private void CheckRemovedItem(Item_Cookable item)
     {
-        if(cookablesSequence.Contains(item)) {
-            if (cookablesSequence[0] == item)
+        if (cookablesSequence.Contains(item))
+        {
+            if (!item.IsCooked)
+            {
+                cookablesSequence.Remove(item);
+            }
+            else if (cookablesSequence[0] == item)
             {
                 cookablesSequence.Remove(item);
 
@@ -86,10 +105,12 @@ public class GrillPlank : MonoBehaviour
             }
         }
 
-        if(cookables.Count == 0) 
+        if (cookables.Count == 0)
         {
             beefType = ItemType.NONE;
         }
+
+        cookablesMustIgnore.RemoveAll(x => x == null);
     }
 
 
@@ -115,7 +136,8 @@ public class GrillPlank : MonoBehaviour
         mustBeClosed = false;
         mustMove = true;
 
-        StopCooking();
+        if (cooking)
+            StopCooking();
     }
     private void FinishOpen()
     {
@@ -147,8 +169,8 @@ public class GrillPlank : MonoBehaviour
     {
         cooking = false;
         SetCookablesHeatSource(HeatSource.NONE);
+        SetGrease();
     }
-
 
     private void SetCookablesHeatSource(HeatSource source)
     {
@@ -157,6 +179,41 @@ public class GrillPlank : MonoBehaviour
             item.SetHeatSource(source);
         }
     }
+
+
+
+    private int greaseCount = 0;
+
+    private void SetGrease()
+    {
+        foreach (Item_Cookable item in cookables)
+        {
+            Vector3 itemPosition = item.transform.position;
+            GameObject grease;
+
+            grease = pool.GetObject();
+            grease.transform.position = new Vector3(itemPosition.x, transform.position.y, itemPosition.z);
+            grease.transform.rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
+            grease.SetActive(true);
+            grease.GetComponent<PoolObject>().OnDisable += OnGreaseDisable;
+
+            grease = pool.GetObject();
+            grease.transform.position = new Vector3(itemPosition.x, transform.position.y + 0.011f, itemPosition.z);
+            grease.transform.rotation = Quaternion.Euler(180, Random.Range(0, 360), 0);
+            grease.transform.parent = plank;
+            grease.SetActive(true);
+            grease.GetComponent<PoolObject>().OnDisable += OnGreaseDisable;
+
+            greaseCount += 2;
+        }
+    }
+
+    private void OnGreaseDisable(PoolObject poolObject)
+    {
+        poolObject.OnDisable -= OnGreaseDisable;
+        greaseCount--;
+    }
+
 
 
     private void UpdatePlankOpenness(float deltaTime)
@@ -186,6 +243,7 @@ public class GrillPlank : MonoBehaviour
             StartOpen();
         }
     }
+
 
 
     private void Update()

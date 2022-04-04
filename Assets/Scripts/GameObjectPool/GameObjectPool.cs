@@ -13,29 +13,34 @@ public class GameObjectPool : MonoBehaviour
 
     [SerializeField] GameObject prefab;
     [SerializeField] Transform container;
-    [SerializeField] List<PoolObject> objects = new List<PoolObject>();
-    [SerializeField] int inicialCount = 10;
     [SerializeField] PoolType poolType = PoolType.FAST;
+    [Header("")]
+    [SerializeField] int initialCount = 0;
+    [SerializeField] List<PoolObject> objects = new List<PoolObject>();
 
     private void OnValidate()
     {
-        if (inicialCount > objects.Count)
+        if (initialCount > objects.Count)
         {
-            while (objects.Count < inicialCount)
+            GetAllExistingObjects();
+
+            while (objects.Count < initialCount)
             {
                 GameObject _object = PrefabUtility.InstantiatePrefab(prefab, container) as GameObject;
                 _object.SetActive(false);
                 objects.Add(_object.GetComponent<PoolObject>());
             }
         }
-        else if (inicialCount < objects.Count)
+        else if (initialCount < objects.Count)
         {
-            PoolObject poolObject = objects[0];
-            objects.Remove(poolObject);
-            Destroy(poolObject.gameObject);
+            GetAllExistingObjects();
         }
     }
-
+    private void GetAllExistingObjects()
+    {
+        objects.RemoveAll(x => x == null);
+        objects.AddRange(container.GetComponentsInChildren<PoolObject>());
+    }
 
 
     public Transform Container { get => container; }
@@ -89,7 +94,7 @@ public class GameObjectPool : MonoBehaviour
         return pObject;
     }
 
-    public void DiactiveAllObjects()
+    public void DisableAllObjects()
     {
         foreach (PoolObject poolObject in objects) 
         {
