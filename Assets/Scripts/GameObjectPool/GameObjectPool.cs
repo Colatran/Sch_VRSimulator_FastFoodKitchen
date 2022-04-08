@@ -13,10 +13,19 @@ public class GameObjectPool : MonoBehaviour
 
     [SerializeField] GameObject prefab;
     [SerializeField] Transform container;
+
+    [Tooltip(
+        "Fast - Gets object acording to a index\n" +
+        "NonScalable - Gets first incative object\n" +
+        "Scalable - If ran out of objects instanciates another\n")]
     [SerializeField] PoolType poolType = PoolType.FAST;
     [Header("")]
     [SerializeField] int initialCount = 0;
     [SerializeField] List<PoolObject> objects = new List<PoolObject>();
+
+    public Transform Container { get => container; }
+    public List<PoolObject> Objects { get => objects; }
+
 
     private void OnValidate()
     {
@@ -26,9 +35,7 @@ public class GameObjectPool : MonoBehaviour
 
             while (objects.Count < initialCount)
             {
-                GameObject _object = PrefabUtility.InstantiatePrefab(prefab, container) as GameObject;
-                _object.SetActive(false);
-                objects.Add(_object.GetComponent<PoolObject>());
+                InstanciateObject(true);
             }
         }
         else if (initialCount < objects.Count)
@@ -36,15 +43,29 @@ public class GameObjectPool : MonoBehaviour
             GetAllExistingObjects();
         }
     }
+
     private void GetAllExistingObjects()
     {
+        objects.Clear();
         objects.RemoveAll(x => x == null);
         objects.AddRange(container.GetComponentsInChildren<PoolObject>());
     }
 
+    private PoolObject InstanciateObject(bool asPrefab)
+    {
+        GameObject _object;
 
-    public Transform Container { get => container; }
-    public List<PoolObject> Objects { get => objects; }
+        if (asPrefab) _object = PrefabUtility.InstantiatePrefab(prefab, container) as GameObject;
+        else _object = Instantiate(prefab, container);
+        _object.SetActive(false);
+
+        PoolObject pObject = _object.GetComponent<PoolObject>();
+        pObject.Pool = this;
+        Objects.Add(pObject);
+        return pObject;
+    }
+
+
 
 
 
@@ -84,14 +105,18 @@ public class GameObjectPool : MonoBehaviour
             if (!pObject.gameObject.activeSelf) return pObject;
         }
 
-        return AddObject();
+        return InstanciateObject(false);
     }
 
-    private PoolObject AddObject()
+
+
+
+
+    public void DisableObject(PoolObject poolObject)
     {
-        PoolObject pObject = Instantiate(prefab, container).GetComponent<PoolObject>();
-        Objects.Add(pObject);
-        return pObject;
+        poolObject.Disable();
+        poolObject.gameObject.SetActive(false);
+        poolObject.gameObject.transform.SetParent(container);
     }
 
     public void DisableAllObjects()
@@ -100,12 +125,5 @@ public class GameObjectPool : MonoBehaviour
         {
             DisableObject(poolObject);
         }
-    }
-
-    public void DisableObject(PoolObject poolObject)
-    {
-        poolObject.Disable();
-        poolObject.gameObject.SetActive(false);
-        poolObject.gameObject.transform.SetParent(container);
     }
 }

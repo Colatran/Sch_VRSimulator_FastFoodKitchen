@@ -24,7 +24,7 @@ public static class MistakeLibrary
                 "Produto Cru",
                 "Colocou na gaveta um produto cru.",
                 "Deve respeitar os temporizadores das frigideiras e dos grelhadores."
-                + " Se achar que o equipamento em questão não está a funcionar corretamente deve chamar o gerente.")
+                + "\nSe achar que o equipamento em questão não está a funcionar corretamente deve chamar o gerente.")
         },
         {
             MistakeType.GAVETA_PRODUTO_QUEIMADO,
@@ -42,7 +42,7 @@ public static class MistakeLibrary
                 "Muito Papel",
                 "Colocou muito papel na gaveta.",
                 "Deve colocar apenas uma folha de papel no fundo da gaveta.")
-        }, 
+        },
         {
             MistakeType.GAVETABIFE_PAPEL_REUTILIZADO,
             new Mistake(
@@ -69,7 +69,7 @@ public static class MistakeLibrary
             new Mistake(
                 "Gaveta Errada",
                 "Colocou um bife de um tipo não correspondente à gaveta."
-                + " Não pode colocar produtos de tipos diferentes na mesma gaveta.",
+                + "\nNão pode colocar produtos de tipos diferentes na mesma gaveta.",
                 "Vermelho para bifes normais, Verde para bifes vegan.")
         },
         {
@@ -125,7 +125,23 @@ public static class MistakeLibrary
                 "Tirou os bifes do grelhado na ordem errada.",
                 "Deve retirar os bifes na ordem em que foram colocados no grelhador.")
         },
-        
+
+
+
+        {
+            MistakeType.PRODUTO_BIFE_CRUSALGADO,
+            new Mistake(
+                "Bife Cru Salgado",
+                "Salgou um bife que ainda estava cru.",
+                "Deve salgar as carnes apenas quando a placa superior do grelhador levantar.")
+        },
+        {
+            MistakeType.PRODUTO_BIFE_MUITOSAL,
+            new Mistake(
+                "Bife Muito Salgado",
+                "Salgou demasiado a carne.",
+                "Deve salgar as carnes uma a uma com o movimento de martelo (Duas vezes é suficiente).")
+        },
 
 
 
@@ -135,19 +151,22 @@ public static class MistakeLibrary
 
 
 
-        { 
-            MistakeType.PRODURO_NOCHAO, 
+
+
+
+        {
+            MistakeType.PRODURO_NOCHAO,
             new Mistake(
                 "Produto no Chão",
                 "Deixou cair um produto.",
-                "") 
+                "")
         }, {
             MistakeType.PRODUTO_CONTAMINADO,
             new Mistake(
                 "Produto Contaminado",
                 "Utilizou produto que tocou no chão.",
                 "Qualquer produto que tenha tocado no chão deve ser descartado.")
-        }, { 
+        }, {
             MistakeType.PRODURO_QUEIMADO,
             new Mistake(
                 "Produto Queimado",
@@ -155,7 +174,7 @@ public static class MistakeLibrary
                 "Os temporizadores das frigideiras e dos grelhadores já estão programados para dar aos produtos o tempo de cozedura correto."
                 + " Se achar que o equipamento em questão não está a funcionar corretamente deve chamar o gerente.")
         }, {
-            MistakeType.PRODUTO_FRIO, 
+            MistakeType.PRODUTO_FRIO,
             new Mistake(
                 "Produto Frio",
                 "Deixou a gaveta fora da UHC muito tempo.",
@@ -178,30 +197,13 @@ public static class MistakeLibrary
 
 
 
-
-        { 
-            MistakeType.BIFE_MUITOSAL,
-            new Mistake(
-                "Bife Muito Salgado",
-                "Salgou demasiado a carne.",
-                "Deve salgar as carnes uma a uma com o movimento de martelo (Duas vezes é suficiente).")
-        }, {
-            MistakeType.BIFE_CRUSALGADO,
-            new Mistake(
-                "Bife Cru Salgado",
-                "Salgou um bife que ainda estava cru.",
-                "Deve salgar as carnes apenas quando a placa superior do grelhador levantar.")
-        }, 
-
-
-
-        { 
+        {
             MistakeType.FRITO_MALESCORRIDO,
             new Mistake(
                 "Frito Mal Escorrido",
                 "Tirou a grelha de cima da cuba muito cedo.",
                 "Deve escorrer os fritos 5 a 10 segundos, só depois tirar para o seu lugar respetivo.")
-        }, { 
+        }, {
             MistakeType.FRITO_SALGADO,
             new Mistake(
                 "Frito Salgado",
@@ -211,7 +213,7 @@ public static class MistakeLibrary
 
 
 
-         
+
 
 
 
@@ -257,12 +259,12 @@ public static class MistakeLibrary
 
 
         {
-            MistakeType.GAVETA_GRELHA_FALTA, 
+            MistakeType.GAVETA_GRELHA_FALTA,
             new Mistake(
                 "Falta Grelha",
                 "Colocou produto frito numa gaveta sem grelha.",
                 "Gavetas para fritos devem ter a sua grelha respetiva.")
-        }, { 
+        }, {
             MistakeType.GAVETA_GRELHA_ERRADA,
             new Mistake(
                 "Grelha Errada",
@@ -278,7 +280,7 @@ public static class MistakeLibrary
 
 
 
-        { 
+        {
             MistakeType.ITEM_CONTAMINADO,
             new Mistake(
                 "Item Contaminado",
@@ -298,19 +300,19 @@ public static class MistakeLibrary
 
 
 
-        { 
+        {
             MistakeType.UHC_ORDEMERRADA,
             new Mistake(
                 "Ordem Errada",
                 "Não seguiu a gestão vertical da UHC.",
                 "Deve colocar as gavetas por ordem no UHC, gavetas colocadas à mais tempo na UHC devem ser subtituidas primeiro (de cima para baixo).")
-        }, { 
+        }, {
             MistakeType.UHC_TEMPORIZADOR_NAOACIONADO,
             new Mistake(
                 "Temporizador Não Acionado",
                 "Não acionou o temporizador depois de ter colocado a gaveta na slot.",
                 "Para ativar o temporizador, pressione o botão ao lado da etiqueta.")
-        }, { 
+        }, {
             MistakeType.UHC_TEMPORIZADOR_INVALIDADO,
             new Mistake(
                 "Temporizador Invalidado.",

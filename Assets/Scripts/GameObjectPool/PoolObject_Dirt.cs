@@ -2,13 +2,10 @@ using UnityEngine;
 
 public class PoolObject_Dirt : PoolObject
 {
-    [SerializeField] GameObjectPool pool;
     [SerializeField] MaterialPropertyController materialProperty;
 
     private void OnValidate()
     {
-        if (pool == null) pool = GetComponentInParent<GameObjectPool>();
-
         if (materialProperty == null) materialProperty = GetComponent<MaterialPropertyController>();
     }
 
@@ -18,11 +15,6 @@ public class PoolObject_Dirt : PoolObject
         base.Enable();
 
         materialProperty.Set();
-    }
-
-    public void DisableSelf()
-    {
-        pool.DisableObject(this);
     }
 
 

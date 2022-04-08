@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ContentCheck_Beef : ContentCheck
+public class ContentCheck_BoardBeef : ContentCheck
 {
     [SerializeField] ItemType beefType;
 

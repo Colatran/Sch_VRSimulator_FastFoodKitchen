@@ -469,6 +469,7 @@ GameObject:
   - component: {fileID: 7909868006403801042}
   - component: {fileID: 7909868006403801049}
   - component: {fileID: 7909868006403801048}
+  - component: {fileID: 5004407542471265129}
   m_Layer: 8
   m_Name: Ingredient_Beef
   m_TagString: Untagged
@@ -614,6 +615,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachment: {fileID: 7909868006403801053}
   typeFlags: 0100000002000000
+  attributeCheck: {fileID: 0}
   cookedMaterial: {fileID: 7909868006403801048}
 --- !u!114 &7909868006403801048
 MonoBehaviour:
@@ -630,6 +632,20 @@ MonoBehaviour:
   m_renderer: {fileID: 7909868007441044755}
   min: 0
   max: 5
+--- !u!114 &5004407542471265129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7909868006403801041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d4b0495164ef24685ca1fc166fbb26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attributes: 
+  item: {fileID: 7909868006403801049}
 --- !u!1 &7909868007441044753
 GameObject:
   m_ObjectHideFlags: 0
