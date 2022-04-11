@@ -13,10 +13,6 @@ public class Item_Container : Item
     }
 
 
-    private void Start()
-    {
-        SetNewBatch();
-    }
 
     private void OnEnable()
     {

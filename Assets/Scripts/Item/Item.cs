@@ -43,7 +43,5 @@ public class Item : MonoBehaviour
 
 
 
-    private int batch = 0;
-    public int Batch { get => batch; set => batch = value; }
-    public void SetNewBatch() => batch = GameManager.GetNewBatch();
+    public int BatchId { get; set; }
 }

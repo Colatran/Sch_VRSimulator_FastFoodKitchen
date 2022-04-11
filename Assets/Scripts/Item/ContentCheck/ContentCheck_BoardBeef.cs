@@ -23,11 +23,6 @@ public class ContentCheck_BoardBeef : ContentCheck
             int paperCount = container.FindAll(ItemType.BOARDINTERIOR_PAPER).Length;
             if (paperCount > 1)
                 GameManager.MakeMistake(MistakeType.GAVETABIFE_PAPEL_MUITO);
-
-            //item
-            Item_Cookable itemCookable = (item as Item_Cookable);
-            itemCookable.SetHeatSource(HeatSource.COOKER);
-            item.Batch = container.Batch;
         }
 
         else if (item.Is(ItemType.BEEF))
@@ -58,11 +53,25 @@ public class ContentCheck_BoardBeef : ContentCheck
             if (!item.Is(beefType))
                 GameManager.MakeMistake(MistakeType.GAVETABIFE_BIFE_TIPOERRADO);
 
-            //ERRO  -bife-      misturou produto velho com novo
-            if (IsOldBatch(item))
-                GameManager.MakeMistake(MistakeType.GAVETA_PRODUTO_MISTURADO_LOTE);
+            //Defenir BatchId do tabuleiro e do papel no tabuleiro
+            if (container.BatchId == 0)
+            {
+                int batchId = item.BatchId;
+                container.BatchId = batchId;
 
-            item.Batch = container.Batch;
+                foreach (Item content in container.Content)
+                {
+                    if (content.Is(ItemType.BOARDINTERIOR_PAPER))
+                    {
+                        content.BatchId = batchId;
+                        Item_Cookable contentCookable = (content as Item_Cookable);
+                        contentCookable.SetHeatSource(HeatSource.COOKER);
+                    }
+                }
+            }
+            //ERRO  -bife-      misturou produto velho com novo
+            else if (IsOldBatch(item))
+                GameManager.MakeMistake(MistakeType.GAVETA_PRODUTO_MISTURADO_LOTE);
         }
 
         else

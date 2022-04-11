@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ContentCheck : MonoBehaviour
+public class ContentCheck : MonoBehaviour
 {
     [SerializeField] protected Item_Container container;
 
@@ -17,7 +17,11 @@ public abstract class ContentCheck : MonoBehaviour
 
 
 
-    public abstract void OnAdd(Item item);
+    public virtual void OnAdd(Item item)
+    {
+        if (container.BatchId == 0)
+            container.BatchId = item.BatchId;
+    }
 
     public void OnRemove(Item item)
     {
@@ -37,8 +41,7 @@ public abstract class ContentCheck : MonoBehaviour
         return false;
     }
 
-    protected bool IsOldBatch(Item item) 
-    { 
-        return item.Batch != 0 && item.Batch != container.Batch;
-    }
+
+
+    protected bool IsOldBatch(Item item) => item.BatchId != 0 && item.BatchId != container.BatchId;
 }

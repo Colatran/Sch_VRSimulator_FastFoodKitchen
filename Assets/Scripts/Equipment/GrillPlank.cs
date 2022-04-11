@@ -4,10 +4,12 @@ using UnityEngine;
 public class GrillPlank : MonoBehaviour
 {
     [SerializeField] GameObjectPool pool;
+    [SerializeField] BatchHandler batchHandler;
     [SerializeField] Transform plank;
     [SerializeField] Button3D button;
     [SerializeField] Animator animator;
     [SerializeField] float plankSpeed = .5f;
+
 
     private void OnEnable()
     {
@@ -23,7 +25,7 @@ public class GrillPlank : MonoBehaviour
 
 
     private List<Item_Cookable> cookables = new List<Item_Cookable>();
-    public List<Item_Cookable> cookablesSequence = new List<Item_Cookable>();
+    private List<Item_Cookable> cookablesSequence = new List<Item_Cookable>();
     private List<Item_Cookable> cookablesMustIgnore = new List<Item_Cookable>();
     private ItemType beefType = ItemType.NONE;
 
@@ -72,12 +74,10 @@ public class GrillPlank : MonoBehaviour
                     beefType = ItemType.BEEF_VEGAN;
             }
 
-            else if (isNew)
+            if (isNew)
             {
                 if (!item.Is(beefType))
                     GameManager.MakeMistake(MistakeType.GRELHADOR_PRODUTO_MISTURADO);
-                else if (!item.IsCooked)
-                    cookablesSequence.Add(item);
             }
         }
           
@@ -170,6 +170,14 @@ public class GrillPlank : MonoBehaviour
         cooking = false;
         SetCookablesHeatSource(HeatSource.NONE);
         SetGrease();
+
+        foreach (Item_Cookable item in cookables)
+            if (item.Is(beefType) && item.BatchId == 0)
+                cookablesSequence.Add(item);
+
+        batchHandler.NextBatch();
+        foreach (Item_Cookable item in cookablesSequence)
+            batchHandler.AddItem(item);
     }
 
     private void SetCookablesHeatSource(HeatSource source)
@@ -179,6 +187,8 @@ public class GrillPlank : MonoBehaviour
             item.SetHeatSource(source);
         }
     }
+
+
 
 
 

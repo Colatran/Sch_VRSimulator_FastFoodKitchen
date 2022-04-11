@@ -69,12 +69,6 @@ public class GameManager : MonoBehaviour
     public static float LmtCook_undercooked { get => reference.lmtCook_undercooked; }
     public static float LmtCook_overcooked { get => reference.lmtCook_overcooked; }
 
-    private int currentBatch = 0;
-    public static int GetNewBatch()
-    {
-        reference.currentBatch++;
-        return reference.currentBatch;
-    }
 
 
 

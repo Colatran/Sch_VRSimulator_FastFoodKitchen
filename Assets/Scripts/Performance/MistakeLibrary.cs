@@ -5,6 +5,39 @@ public static class MistakeLibrary
     public static Dictionary<MistakeType, Mistake> mistakes = new Dictionary<MistakeType, Mistake>()
     {
         {
+            MistakeType.PRODURO_QUEIMADO,
+            new Mistake(
+                "Produto Queimado",
+                "Deixou produto cozinhar demais.",
+                "Os temporizadores das frigideiras e dos grelhadores já estão programados para dar aos produtos o tempo de cozedura correto."
+                + "\nSe achar que o equipamento em questão não está a funcionar corretamente deve chamar o gerente.")
+        },
+        {
+            MistakeType.PRODUTO_FRIO,
+            new Mistake(
+                "Produto Frio",
+                "Deixou a gaveta fora da UHC muito tempo.",
+                "Deve transferir rapidamente a gaveta para a UHC assim que a acabar de encher.")
+        },
+
+        {
+            MistakeType.PRODUTO_BIFE_CRUSALGADO,
+            new Mistake(
+                "Bife Cru Salgado",
+                "Salgou um bife que ainda estava cru.",
+                "Deve salgar as carnes apenas quando a placa superior do grelhador levantar.")
+        },
+        {
+            MistakeType.PRODUTO_BIFE_MUITOSAL,
+            new Mistake(
+                "Bife Muito Salgado",
+                "Salgou demasiado a carne.",
+                "Deve salgar as carnes uma a uma com o movimento de martelo (Duas vezes é suficiente).")
+        },
+        
+
+
+        {
             MistakeType.GAVETA_PRODUTO_CONTAMINADO,
             new Mistake(
                 "Produto Contaminado",
@@ -128,22 +161,6 @@ public static class MistakeLibrary
 
 
 
-        {
-            MistakeType.PRODUTO_BIFE_CRUSALGADO,
-            new Mistake(
-                "Bife Cru Salgado",
-                "Salgou um bife que ainda estava cru.",
-                "Deve salgar as carnes apenas quando a placa superior do grelhador levantar.")
-        },
-        {
-            MistakeType.PRODUTO_BIFE_MUITOSAL,
-            new Mistake(
-                "Bife Muito Salgado",
-                "Salgou demasiado a carne.",
-                "Deve salgar as carnes uma a uma com o movimento de martelo (Duas vezes é suficiente).")
-        },
-
-
 
 
 
@@ -166,19 +183,6 @@ public static class MistakeLibrary
                 "Produto Contaminado",
                 "Utilizou produto que tocou no chão.",
                 "Qualquer produto que tenha tocado no chão deve ser descartado.")
-        }, {
-            MistakeType.PRODURO_QUEIMADO,
-            new Mistake(
-                "Produto Queimado",
-                "Colocou na gaveta um produto queimado.",
-                "Os temporizadores das frigideiras e dos grelhadores já estão programados para dar aos produtos o tempo de cozedura correto."
-                + " Se achar que o equipamento em questão não está a funcionar corretamente deve chamar o gerente.")
-        }, {
-            MistakeType.PRODUTO_FRIO,
-            new Mistake(
-                "Produto Frio",
-                "Deixou a gaveta fora da UHC muito tempo.",
-                "Deve transferir rapidamente a gaveta para a UHC assim que a acabar de encher.")
         },
 
         {
@@ -331,8 +335,6 @@ public static class MistakeLibrary
         "Laranja - Nugget de Frango" +
         "Azul - Filete de Peixe" +
         "Roxo - Douradinhos",
-
-
     };
 
 
