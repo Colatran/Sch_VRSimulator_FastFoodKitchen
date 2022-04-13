@@ -183,9 +183,7 @@ public class GrillPlank : MonoBehaviour
     private void SetCookablesHeatSource(HeatSource source)
     {
         foreach (Item_Cookable item in cookables)
-        {
             item.SetHeatSource(source);
-        }
     }
 
 

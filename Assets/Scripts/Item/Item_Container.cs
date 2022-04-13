@@ -52,4 +52,12 @@ public class Item_Container : Item
 
         contentCheck.OnRemove(item);
     }
+
+
+    public void SetCookablesHeatSource(HeatSource source)
+    {
+        foreach (Item item in content)
+            if (item is Item_Cookable)
+                (item as Item_Cookable).SetHeatSource(source);
+    }
 }

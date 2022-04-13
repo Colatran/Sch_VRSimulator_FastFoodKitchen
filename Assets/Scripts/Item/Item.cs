@@ -7,23 +7,12 @@ public class Item : MonoBehaviour
     [SerializeField] protected Attachment attachment;
     public Attachment Attachment { get => attachment; }
 
-    protected virtual void OnValidate()
-    {
-        attachment = GetComponent<Attachment>();
-    }
-
-    private void Start()
-    {
-        AddAttribute(ItemAttribute.NONE);
-    }
-
     [SerializeField] private ItemType[] typeFlags;
     public bool Is(ItemType flag)
     {
         foreach (ItemType m_flag in typeFlags) if (m_flag == flag) return true;
         return false;
     }
-
 
     [SerializeField] AttributeCheck attributeCheck;
     private List<ItemAttribute> attributeFlags = new List<ItemAttribute>();
@@ -41,6 +30,13 @@ public class Item : MonoBehaviour
             attributeCheck.OnAddAttribute(flag);
     }
 
+
+    protected virtual void OnValidate()
+    {
+        if(attachment == null) attachment = GetComponent<Attachment>();
+
+        if (attributeCheck == null) attributeCheck = GetComponent<AttributeCheck>();
+    }
 
 
     public int BatchId { get; set; }

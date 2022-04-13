@@ -7,7 +7,4 @@ public class AssetHolder : ScriptableObject
 
     public Material Material_UHC_TimerOn;
     public Material Material_UHC_TimerOff;
-
-    public Material Material_Grill_Button;
-    public Material Material_Grill_ButtonLocked;
 }

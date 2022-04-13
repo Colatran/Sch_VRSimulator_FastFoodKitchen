@@ -5,9 +5,9 @@ public class PoolObject : MonoBehaviour
     [SerializeField] protected GameObjectPool pool;
     public GameObjectPool Pool { get => pool; set => pool = value; }
 
-    public delegate void Action(PoolObject poolObject);
-    public event Action OnEnable;
-    public event Action OnDisable;
+    public delegate void PoolAction(PoolObject poolObject);
+    public event PoolAction OnEnable;
+    public event PoolAction OnDisable;
 
 
     public virtual void Enable()

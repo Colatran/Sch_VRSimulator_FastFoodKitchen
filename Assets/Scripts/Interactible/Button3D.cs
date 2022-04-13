@@ -4,19 +4,19 @@ using UnityEngine;
 public class Button3D : MonoBehaviour
 {
     [SerializeField] Transform movinTransform;
-    [SerializeField] Vector3 movingDirection;
-    [SerializeField] float movingDistance;
     [SerializeField] float velocity;
+    [SerializeField] Transform targetPositionTransform;
     [ReadOnly, SerializeField] Vector3 startingPosition;
-    [ReadOnly, SerializeField] Vector3 targetPosition;
+    private Vector3 targetPosition { get => targetPositionTransform.position; }
 
     private void OnValidate()
     {
         startingPosition = movinTransform.position;
-        targetPosition = movinTransform.position + movingDirection.normalized * movingDistance;
 
         if(GetComponent<Collider>() == null) Debug.LogError(gameObject.name + " - Button3D - precisa de um collider!!!");
         else if (!GetComponent<Collider>().isTrigger) Debug.LogError(gameObject.name + " - Button3D - tem de ser trigger!!!");
+
+        if (gameObject.layer != 0) Debug.LogError(gameObject.name + " - Button3D - deve estar na layer 0(Default)!!!");
     }
     private void OnDrawGizmos()
     {

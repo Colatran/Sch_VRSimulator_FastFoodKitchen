@@ -34,7 +34,7 @@ public static class MistakeLibrary
                 "Salgou demasiado a carne.",
                 "Deve salgar as carnes uma a uma com o movimento de martelo (Duas vezes é suficiente).")
         },
-        
+
 
 
         {
@@ -103,7 +103,9 @@ public static class MistakeLibrary
                 "Gaveta Errada",
                 "Colocou um bife de um tipo não correspondente à gaveta."
                 + "\nNão pode colocar produtos de tipos diferentes na mesma gaveta.",
-                "Vermelho para bifes normais, Verde para bifes vegan.")
+                "Vermelho para bifes normais, Verde para bifes vegan."
+                + "\nVermelho - Bife"
+                + "\nVerde - Bife Vegan")
         },
         {
             MistakeType.GAVETABIFE_BIFE_SEMSAL,
@@ -116,7 +118,7 @@ public static class MistakeLibrary
             MistakeType.GAVETABIFE_FRITO,
             new Mistake(
                 "Gaveta Errada",
-                "Colocou na gaveta um produto frito."
+                "Colocou na gaveta para bifes um produto frito."
                 + " Não pode colocar produtos de tipos diferentes na mesma gaveta.",
                 "As gavetas vermelhas e verdes são somente para bifes.")
         },
@@ -161,6 +163,40 @@ public static class MistakeLibrary
 
 
 
+        {
+            MistakeType.UHC_TEMPORIZADOR_NAOACIONADO,
+            new Mistake(
+                "Temporizador Não Acionado",
+                "Não acionou o temporizador depois de ter colocado a gaveta na slot.",
+                "Para ativar o temporizador, pressione o botão ao lado da etiqueta.")
+        },
+        {
+            MistakeType.UHC_TEMPORIZADOR_INVALIDADO,
+            new Mistake(
+                "Temporizador Invalidado.",
+                "Reacionou o temporizador de uma slot com itens ainda dentro da validade.",
+                "Acione o temporizador apenas quando for necessário.")
+        },
+        {
+            MistakeType.UHC_GAVETA_TIPO,
+            new Mistake(
+                "Slot Errada",
+                "Colocou a gaveta numa slot de tipo que não correspondente.",
+                "O tipo de produto está marcado na etiqueta em cima da slot, cada produto tem a sua gaveta:"
+                + "\nVermelho - Bife" 
+                + "\nVerde - Bife Vegan" 
+                + "\nAmarelo - Panado de Frango"
+                + "\nLaranja - Nugget de Frango"
+                + "\nAzul - Filete de Peixe"
+                + "\nRoxo - Douradinhos")
+        },
+        {
+            MistakeType.UHC_GAVETA_PRODUTO,
+            new Mistake(
+                "Slot Errada",
+                "Colocou a gaveta com um produto não correspondente à slot.",
+                "O tipo de produto está marcado na etiqueta em cima da slot.")
+        },
 
 
 
@@ -294,13 +330,7 @@ public static class MistakeLibrary
 
 
 
-         {
-            MistakeType.REL_PRODUTOSLOT,
-            new Mistake(
-                "Slot Errada",
-                "Colocou a gaveta numa slot que não corresponde ao produto.",
-                "O tipo de produto está marcado na etiqueta em cima da slot.")
-        },
+         
 
 
 
@@ -310,19 +340,7 @@ public static class MistakeLibrary
                 "Ordem Errada",
                 "Não seguiu a gestão vertical da UHC.",
                 "Deve colocar as gavetas por ordem no UHC, gavetas colocadas à mais tempo na UHC devem ser subtituidas primeiro (de cima para baixo).")
-        }, {
-            MistakeType.UHC_TEMPORIZADOR_NAOACIONADO,
-            new Mistake(
-                "Temporizador Não Acionado",
-                "Não acionou o temporizador depois de ter colocado a gaveta na slot.",
-                "Para ativar o temporizador, pressione o botão ao lado da etiqueta.")
-        }, {
-            MistakeType.UHC_TEMPORIZADOR_INVALIDADO,
-            new Mistake(
-                "Temporizador Invalidado.",
-                "Reacionou o temporizador de uma slot com itens ainda dentro da validade.",
-                "Acione o temporizador apenas quando for necessário.")
-        },
+        }, 
     };
 
 
