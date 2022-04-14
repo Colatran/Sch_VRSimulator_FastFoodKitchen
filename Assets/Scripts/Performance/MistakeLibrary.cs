@@ -197,6 +197,15 @@ public static class MistakeLibrary
                 "Colocou a gaveta com um produto não correspondente à slot.",
                 "O tipo de produto está marcado na etiqueta em cima da slot.")
         },
+        {
+            MistakeType.UHC_ORDEMERRADA,
+            new Mistake(
+                "Ordem Errada",
+                "Não seguiu a gestão vertical da UHC.",
+                "Deve colocar as gavetas por ordem no UHC, gavetas colocadas à mais tempo na UHC devem ser subtituidas primeiro (de cima para baixo).")
+        },
+
+
 
 
 
@@ -327,33 +336,8 @@ public static class MistakeLibrary
                 "Utilizou um item que tocou no chão",
                 "Não deve utilizar qualquer item que tenha tocado no chão, deve coloca-lo na banca da louça e procurar um item limpo.")
         },
-
-
-
-         
-
-
-
-        {
-            MistakeType.UHC_ORDEMERRADA,
-            new Mistake(
-                "Ordem Errada",
-                "Não seguiu a gestão vertical da UHC.",
-                "Deve colocar as gavetas por ordem no UHC, gavetas colocadas à mais tempo na UHC devem ser subtituidas primeiro (de cima para baixo).")
-        }, 
     };
 
-
-
-    public static string[] sufixes =
-    {
-        "Vermelho - Bife" +
-        "Verde - Bife Vegan" +
-        "Amarelo - Panado de Frango" +
-        "Laranja - Nugget de Frango" +
-        "Azul - Filete de Peixe" +
-        "Roxo - Douradinhos",
-    };
 
 
 

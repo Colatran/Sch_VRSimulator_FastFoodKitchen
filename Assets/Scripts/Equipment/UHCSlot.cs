@@ -4,15 +4,21 @@ using TMPro;
 
 public class UHCSlot : MonoBehaviour
 {
-    [SerializeField] UHCSlotTip[] tips;
-    [SerializeField] private ItemType boardType;
-    [SerializeField] private ItemType type;
     [SerializeField] private Button3D buttonTimer;
-    [Header("")]
+    [SerializeField] private UHCSlotTip[] tips;
     [SerializeField] private TMP_Text[] tags;
     [SerializeField] private MeshRenderer[] lights;
-    
-    public void SetItemType(ItemType type)
+    [Header("")]
+    [ReadOnly, SerializeField] private ItemType type;
+    [ReadOnly, SerializeField] private ItemType boardType;
+
+    public delegate void Action(UHCSlot slot);
+    public event Action OnEnter;
+    public event Action OnExit;
+    public event Action OnEmpty;
+
+
+    public void SetType(ItemType type)
     {
         this.type = type;
 
@@ -29,7 +35,7 @@ public class UHCSlot : MonoBehaviour
         BoardData data = BoardTypeData.GetBoardData(type);
         
         Gizmos.color = data.color;
-        Gizmos.DrawCube(transform.position + Vector3.up * .025f, new Vector3(.05f, .05f, .6f));
+        Gizmos.DrawCube(transform.position + new Vector3(0, .02f, -.325f), new Vector3(.15f, .075f, .01f));
     }
 
 
@@ -55,6 +61,7 @@ public class UHCSlot : MonoBehaviour
 
     public void OnTipEnter(Item_Container container)
     {
+        if (type == ItemType.NONE) return;
         if (HasBoard) return;
 
         foreach (UHCSlotTip tip in tips)
@@ -66,6 +73,7 @@ public class UHCSlot : MonoBehaviour
     }
     public void OnTipExit(Item_Container container)
     {
+        if (type == ItemType.NONE) return;
         if (HasNoBoard) return;
 
         if (container == board)
@@ -86,10 +94,16 @@ public class UHCSlot : MonoBehaviour
 
         hasItemsOfType = true;
         timeToRemoveItem = timeToRemoveItem_initial;
+
+        if (OnEnter != null)
+            OnEnter(this);
     }
     private void OnBoardExit()
     {
         board.SetCookablesHeatSource(HeatSource.NONE);
+
+        if (OnExit != null)
+            OnExit(this);
     }
 
     private void CheckBoard()
@@ -109,17 +123,6 @@ public class UHCSlot : MonoBehaviour
 
 
 
-    private void RemoveItem(int index)
-    {
-        Item item = board.Content[index];
-
-        item.Attachment.Detach();
-
-        Destroy(item.gameObject);
-    }
- 
-
-
 
 
     private float timer_timeToPressTimer = 5;
@@ -131,6 +134,7 @@ public class UHCSlot : MonoBehaviour
     {
         SetLightsMaterial(GameManager.Asset.Material_UHC_TimerOn);
 
+        if (type == ItemType.NONE) return;
         if (HasNoBoard) return;
 
         if(timerActivated)
@@ -191,27 +195,41 @@ public class UHCSlot : MonoBehaviour
             {
                 timeToRemoveItem = timeToRemoveItem_initial;
 
-                FindAndDestroyFirstOfType();
+                int first = FindIndexOfFirstOfType();
+                if (first == -1)
+                {
+                    hasItemsOfType = false;
+                    SetLightsMaterial(GameManager.Asset.Material_UHC_TimerOff);
+
+                    if (OnEmpty != null)
+                        OnEmpty(this);
+                }
+                else
+                {
+                    RemoveItem(first);
+                }
             } 
         }
     }
-    private void FindAndDestroyFirstOfType()
+
+    private void RemoveItem(int index)
+    {
+        Item item = board.Content[index];
+
+        item.Attachment.Detach();
+
+        Destroy(item.gameObject);
+    }
+
+    private int FindIndexOfFirstOfType()
     {
         List<Item> content = board.Content;
 
-        for (int i = 0; i < content.Count; i++)
-        {
-            Item item = content[i];
-            if (item.Is(type))
-            {
-                RemoveItem(i);
-                return;
-            }
-        }
+        for (int i = content.Count - 1; i > 0; i--)
+            if (content[i].Is(type))
+                return i;
 
-        hasItemsOfType = false;
-
-        SetLightsMaterial(GameManager.Asset.Material_UHC_TimerOff);
+        return -1;
     }
 
 
