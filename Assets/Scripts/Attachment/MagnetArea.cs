@@ -63,4 +63,10 @@ public class MagnetArea : MonoBehaviour
             }
         }
     }
+
+
+    public void RectifyPoints()
+    {
+        points.RemoveAll(x => x == null);
+    }
 }

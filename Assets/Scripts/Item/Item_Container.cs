@@ -4,12 +4,15 @@ using UnityEngine;
 public class Item_Container : Item
 {
     [SerializeField] ContentCheck contentCheck;
+    [SerializeField] MagnetArea magnetArea;
 
     protected override void OnValidate()
     {
         base.OnValidate();
 
         if (contentCheck == null) contentCheck = GetComponent<ContentCheck>();
+        if (magnetArea == null) magnetArea = GetComponentInChildren<MagnetArea>();
+
     }
 
 
@@ -59,5 +62,13 @@ public class Item_Container : Item
         foreach (Item item in content)
             if (item is Item_Cookable)
                 (item as Item_Cookable).SetHeatSource(source);
+    }
+
+
+
+    public void RectifyContent()
+    {
+        Content.RemoveAll(x => x == null);
+        magnetArea.RectifyPoints();
     }
 }

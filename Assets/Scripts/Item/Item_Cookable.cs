@@ -90,4 +90,16 @@ public class Item_Cookable : Item
         if (temperature > GameManager.LmtTemp_stoveMax) temperature -= deltaTime;
         else if (temperature < GameManager.LmtTemp_stoveMin) temperature += deltaTime;
     }
+
+
+
+    public void SetCooked()
+    {
+        temperature = 100;
+        cooked = 1;
+        cookedMaterial.Set(1);
+
+        if (Is(ItemType.BEEF))
+            AddAttribute(ItemAttribute.SALT);
+    }
 }

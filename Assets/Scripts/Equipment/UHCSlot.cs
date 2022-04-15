@@ -93,6 +93,7 @@ public class UHCSlot : MonoBehaviour
         timer_timeToPressTimer = 5;
 
         hasItemsOfType = true;
+        timerInvalidated = false;
         timeToRemoveItem = timeToRemoveItem_initial;
 
         if (OnEnter != null)
@@ -187,7 +188,7 @@ public class UHCSlot : MonoBehaviour
 
     private void Update_RemoveItem(float deltaTime)
     {
-        if(timeToRemoveItem > 0)
+        if (timeToRemoveItem > 0)
         {
             timeToRemoveItem -= deltaTime;
 
@@ -195,7 +196,10 @@ public class UHCSlot : MonoBehaviour
             {
                 timeToRemoveItem = timeToRemoveItem_initial;
 
-                int first = FindIndexOfFirstOfType();
+                board.RectifyContent();
+
+                int first = FirstOfType();
+
                 if (first == -1)
                 {
                     hasItemsOfType = false;
@@ -208,28 +212,26 @@ public class UHCSlot : MonoBehaviour
                 {
                     RemoveItem(first);
                 }
-            } 
+            }
         }
+    }
+
+    private int FirstOfType()
+    {
+        List<Item> content = board.Content;
+
+        for (int i = content.Count - 1; i > -1; i--)
+            if (content[i].Is(type))
+                return i;
+
+        return -1;
     }
 
     private void RemoveItem(int index)
     {
         Item item = board.Content[index];
 
-        item.Attachment.Detach();
-
         Destroy(item.gameObject);
-    }
-
-    private int FindIndexOfFirstOfType()
-    {
-        List<Item> content = board.Content;
-
-        for (int i = content.Count - 1; i > 0; i--)
-            if (content[i].Is(type))
-                return i;
-
-        return -1;
     }
 
 
