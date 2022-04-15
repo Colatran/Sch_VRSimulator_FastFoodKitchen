@@ -1,13 +1,8 @@
-using UnityEditor;
 using UnityEngine;
-
-public class ReadOnlyAttribute : PropertyAttribute
-{
-
-}
+using UnityEditor;
 
 [CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
-public class ReadOnlyDrawer : PropertyDrawer
+public class ReadOnlyAttributeDrawer : PropertyDrawer
 {
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
@@ -21,7 +16,7 @@ public class ReadOnlyDrawer : PropertyDrawer
         label.text = label.text.ToLower();
 
         string text = GetLabel(property);
-        if(text.Length > 0) EditorGUI.LabelField(position, label.text, text);
+        if (text.Length > 0) EditorGUI.LabelField(position, label.text, text);
         else EditorGUI.PropertyField(position, property, label, true);
 
         GUI.enabled = true;

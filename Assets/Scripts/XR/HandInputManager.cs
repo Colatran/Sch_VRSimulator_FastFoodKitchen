@@ -4,7 +4,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class HandInputManager : MonoBehaviour
 {
-    [SerializeField] ActionBasedController controller;
+    [SerializeField] ActionBasedController_Custom controller;
 
 
     public delegate void Action();
@@ -55,8 +55,8 @@ public class HandInputManager : MonoBehaviour
         controller.activateAction.action.started += ActivateStart;
         controller.activateAction.action.canceled += ActivateCancel;
 
-        //controller.secondaryAction.action.started += SecondaryStart;
-        //controller.secondaryAction.action.canceled += SecondaryCancel;
+        controller.secondaryAction.action.started += SecondaryStart;
+        controller.secondaryAction.action.canceled += SecondaryCancel;
     }
     private void OnDisable()
     {
@@ -66,8 +66,8 @@ public class HandInputManager : MonoBehaviour
         controller.activateAction.action.started -= ActivateStart;
         controller.activateAction.action.canceled -= ActivateCancel;
 
-        //controller.secondaryAction.action.started -= SecondaryStart;
-        //controller.secondaryAction.action.canceled -= SecondaryCancel;
+        controller.secondaryAction.action.started -= SecondaryStart;
+        controller.secondaryAction.action.canceled -= SecondaryCancel;
     }
 
 

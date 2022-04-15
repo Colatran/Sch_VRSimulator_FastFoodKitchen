@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 
-public class StandardInterpolatedGUI : ShaderGUI
+public class CookedGUI : ShaderGUI
 {
     public override void OnGUI(MaterialEditor materialEditor, MaterialProperty[] properties)
     {

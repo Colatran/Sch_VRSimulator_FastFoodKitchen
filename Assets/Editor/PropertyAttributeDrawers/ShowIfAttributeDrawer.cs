@@ -5,39 +5,6 @@ using System.Linq;
 using UnityEngine;
 using UnityEditor;
 
-
-
-public enum ConditionOperator
-{
-    // A field is visible/enabled only if all conditions are true.
-    And,
-    // A field is visible/enabled if at least ONE condition is true.
-    Or,
-}
-
-public enum ActionOnConditionFail
-{
-    // If condition(s) are false, don't draw the field at all.
-    DontDraw,
-    // If condition(s) are false, just set the field as disabled.
-    JustDisable,
-}
-
-[AttributeUsage(AttributeTargets.Field, AllowMultiple = false, Inherited = true)]
-public class ShowIfAttribute : PropertyAttribute
-{
-    public ActionOnConditionFail Action { get; private set; }
-    public ConditionOperator Operator { get; private set; }
-    public string[] Conditions { get; private set; }
-
-    public ShowIfAttribute(ActionOnConditionFail action, ConditionOperator conditionOperator, params string[] conditions)
-    {
-        Action = action;
-        Operator = conditionOperator;
-        Conditions = conditions;
-    }
-}
-
 [CustomPropertyDrawer(typeof(ShowIfAttribute), true)]
 public class ShowIfAttributeDrawer : PropertyDrawer
 {
@@ -54,8 +21,7 @@ public class ShowIfAttributeDrawer : PropertyDrawer
         return GetAllFields(target, f => f.Name.Equals(fieldName,
               StringComparison.InvariantCulture)).FirstOrDefault();
     }
-    private static IEnumerable<FieldInfo> GetAllFields(object target, Func<FieldInfo,
-            bool> predicate)
+    private static IEnumerable<FieldInfo> GetAllFields(object target, Func<FieldInfo, bool> predicate)
     {
         List<Type> types = new List<Type>()
             {
@@ -70,8 +36,12 @@ public class ShowIfAttributeDrawer : PropertyDrawer
         for (int i = types.Count - 1; i >= 0; i--)
         {
             IEnumerable<FieldInfo> fieldInfos = types[i]
-                .GetFields(BindingFlags.Instance | BindingFlags.Static |
-   BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.DeclaredOnly)
+                .GetFields(
+                BindingFlags.Instance
+                | BindingFlags.Static
+                | BindingFlags.NonPublic
+                | BindingFlags.Public
+                | BindingFlags.DeclaredOnly)
                 .Where(predicate);
 
             foreach (var fieldInfo in fieldInfos)
@@ -80,12 +50,14 @@ public class ShowIfAttributeDrawer : PropertyDrawer
             }
         }
     }
-    private static IEnumerable<MethodInfo> GetAllMethods(object target,
-  Func<MethodInfo, bool> predicate)
+    private static IEnumerable<MethodInfo> GetAllMethods(object target, Func<MethodInfo, bool> predicate)
     {
         IEnumerable<MethodInfo> methodInfos = target.GetType()
-            .GetMethods(BindingFlags.Instance | BindingFlags.Static |
-  BindingFlags.NonPublic | BindingFlags.Public)
+            .GetMethods(
+            BindingFlags.Instance
+            | BindingFlags.Static
+            | BindingFlags.NonPublic
+            | BindingFlags.Public)
             .Where(predicate);
 
         return methodInfos;
@@ -143,8 +115,7 @@ public class ShowIfAttributeDrawer : PropertyDrawer
             return true;
         }
     }
-    public override float GetPropertyHeight(SerializedProperty property, GUIContent
-                 label)
+    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
         // Calcluate the property height, if we don't meet the condition and the draw 
         // mode is DontDraw, then height will be 0.
@@ -157,8 +128,7 @@ public class ShowIfAttributeDrawer : PropertyDrawer
         return base.GetPropertyHeight(property, label);
     }
 
-    public override void OnGUI(Rect position, SerializedProperty property, GUIContent
-           label)
+    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
         bool meetsCondition = MeetsConditions(property);
         // Early out, if conditions met, draw and go.

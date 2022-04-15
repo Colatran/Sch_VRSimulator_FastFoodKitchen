@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
+
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
+
 
 public class GameObjectPool : MonoBehaviour
 {
@@ -35,7 +39,7 @@ public class GameObjectPool : MonoBehaviour
 
             while (objects.Count < initialCount)
             {
-                InstanciateObject(true);
+                InstanciateObject();
             }
         }
         else if (initialCount < objects.Count)
@@ -51,12 +55,16 @@ public class GameObjectPool : MonoBehaviour
         objects.AddRange(container.GetComponentsInChildren<PoolObject>());
     }
 
-    private PoolObject InstanciateObject(bool asPrefab)
+    private PoolObject InstanciateObject()
     {
         GameObject _object;
 
-        if (asPrefab) _object = PrefabUtility.InstantiatePrefab(prefab, container) as GameObject;
-        else _object = Instantiate(prefab, container);
+#if UNITY_EDITOR
+        _object = PrefabUtility.InstantiatePrefab(prefab, container) as GameObject;
+#else
+        _object = Instantiate(prefab, container);
+#endif
+
         _object.SetActive(false);
 
         PoolObject pObject = _object.GetComponent<PoolObject>();
@@ -105,7 +113,7 @@ public class GameObjectPool : MonoBehaviour
             if (!pObject.gameObject.activeSelf) return pObject;
         }
 
-        return InstanciateObject(false);
+        return InstanciateObject();
     }
 
 

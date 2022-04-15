@@ -8,6 +8,8 @@ public class SaltCanister : MonoBehaviour
     [SerializeField] Transform origin;
     [SerializeField] float targetYVelocity = 0;
     [SerializeField] float minYVelocity = 0;
+    [SerializeField] Collider colliderInteractible;
+    [SerializeField] Collider colliderIgnoreRaycast;
 
     private void OnValidate()
     {
@@ -21,9 +23,7 @@ public class SaltCanister : MonoBehaviour
     private Rigidbody rb;
     private bool goodVelocity = false;
     private Vector3 lastVelocity = Vector3.zero;
-
-    public bool PointingDown { get => orientationChecker.Check(null); }
-
+    private bool PointingDown { get => orientationChecker.Check(null); }
 
     private void Start()
     {
@@ -53,11 +53,9 @@ public class SaltCanister : MonoBehaviour
     }
 
 
-    public float maxVel = 0;
+
     void Update()
     {
-        if (rb.velocity.y < maxVel) maxVel = rb.velocity.y;
-
         GetSwing();
     }
 
@@ -91,4 +89,7 @@ public class SaltCanister : MonoBehaviour
 
         pojectile.GetComponent<Rigidbody>().velocity = lastVelocity;
     }
+
+    public Collider ColliderInteractible { get => colliderInteractible; }
+    public Collider ColliderIgnoreRaycast { get => colliderIgnoreRaycast; }
 }

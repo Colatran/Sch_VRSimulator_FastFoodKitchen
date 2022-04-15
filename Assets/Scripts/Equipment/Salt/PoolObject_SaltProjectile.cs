@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PoolObject_SaltProjectile : PoolObject
 {
+    [SerializeField] SaltCanister canister;
     [SerializeField] Rigidbody rb;
 
     private void OnValidate()
@@ -29,9 +30,7 @@ public class PoolObject_SaltProjectile : PoolObject
             time -= deltaTime;
 
             if (time < 0)
-            {
                 DisableSelf();
-            }
         }
     }
 
@@ -44,8 +43,17 @@ public class PoolObject_SaltProjectile : PoolObject
         UpdateTime(deltaTime);
     }
 
-    private void OnCollisionEnter(Collision collision)
+
+
+    public void TriggerEnter(Collider other)
     {
+        if (other == canister.ColliderIgnoreRaycast) return;
+        if (other == canister.ColliderInteractible) return;
+
+        Item_Cookable item = other.GetComponent<Item_Cookable>();
+        if (item != null)
+            item.AddAttribute(ItemAttribute.SALT);
+
         DisableSelf();
     }
 }

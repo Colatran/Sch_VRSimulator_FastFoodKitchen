@@ -3135,7 +3135,7 @@
     "m_AlphaMode": 0,
     "m_TwoSided": false,
     "m_AlphaClip": false,
-    "m_CustomEditorGUI": "StandardInterpolatedGUI"
+    "m_CustomEditorGUI": "CookedGUI"
 }
 
 {

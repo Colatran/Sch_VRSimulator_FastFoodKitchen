@@ -33,7 +33,8 @@ public class UHC : MonoBehaviour
         public void OnValidate() 
         {
             foreach (UHCSlot slot in slots)
-                slot.SetType(type);
+                if(slot != null)
+                    slot.SetType(type);
         }
 
         public void OnEnable() 
