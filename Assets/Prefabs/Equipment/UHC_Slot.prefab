@@ -89,7 +89,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2643120789109982610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.16, y: 0.62, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2135450960931932251}
@@ -121,8 +121,8 @@ MonoBehaviour:
   lights:
   - {fileID: 6908154917671852890}
   - {fileID: 2643120789879348492}
-  boardType: 0
   type: 0
+  boardType: 0
 --- !u!1 &2643120789879348482
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,4 +1052,4 @@ MonoBehaviour:
   movinTransform: {fileID: 5786829629448272949}
   velocity: 10
   targetPositionTransform: {fileID: 2135450961051665035}
-  startingPosition: {x: -0.0975, y: 0.7, z: -0.345}
+  startingPosition: {x: 0.0625, y: 0.08, z: -0.345}

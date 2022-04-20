@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5922932288998359900}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.369, y: 0.754, z: 0.607}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5922932290293519818}
@@ -300,7 +300,6 @@ MonoBehaviour:
   minYVelocity: -1
   colliderInteractible: {fileID: 5922932290293519823}
   colliderIgnoreRaycast: {fileID: 5922932289390699280}
-  maxVel: 0
 --- !u!1 &5922932290375773047
 GameObject:
   m_ObjectHideFlags: 0
