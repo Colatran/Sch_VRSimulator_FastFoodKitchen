@@ -238,6 +238,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4784041427311508895}
+  - component: {fileID: 7726241077441537636}
   m_Layer: 0
   m_Name: Grill
   m_TagString: Untagged
@@ -264,6 +265,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &7726241077441537636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4784041427311508894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14f24ef8e62b24a499b5d9521b10ebff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cookingTime: 60
+  maxTemperature: 85
+  cookingTimeFactor: 0.016666668
+  maxTemperatureFactor: 1.4166666
 --- !u!1 &4784041427587915026
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,6 +405,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4784041427311508895}
     m_Modifications:
+    - target: {fileID: 3645784510180842385, guid: 09d4f5071c9bc324b85333d11eccb9e5,
+        type: 3}
+      propertyPath: grillBase
+      value: 
+      objectReference: {fileID: 7726241077441537636}
     - target: {fileID: 3645784510180842386, guid: 09d4f5071c9bc324b85333d11eccb9e5,
         type: 3}
       propertyPath: m_RootOrder
@@ -493,6 +515,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4784041427311508895}
     m_Modifications:
+    - target: {fileID: 3645784510180842385, guid: 09d4f5071c9bc324b85333d11eccb9e5,
+        type: 3}
+      propertyPath: grillBase
+      value: 
+      objectReference: {fileID: 7726241077441537636}
     - target: {fileID: 3645784510180842386, guid: 09d4f5071c9bc324b85333d11eccb9e5,
         type: 3}
       propertyPath: m_RootOrder
@@ -598,6 +625,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4784041427311508895}
     m_Modifications:
+    - target: {fileID: 3645784510180842385, guid: 09d4f5071c9bc324b85333d11eccb9e5,
+        type: 3}
+      propertyPath: grillBase
+      value: 
+      objectReference: {fileID: 7726241077441537636}
     - target: {fileID: 3645784510180842386, guid: 09d4f5071c9bc324b85333d11eccb9e5,
         type: 3}
       propertyPath: m_RootOrder

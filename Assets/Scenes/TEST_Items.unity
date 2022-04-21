@@ -3888,10 +3888,6 @@ MonoBehaviour:
   assetHolder: {fileID: 11400000, guid: d0bbbe3340125dd4e96a36b23ee06e34, type: 2}
   performanceManager: {fileID: 1737785782}
   pauseMenu: {fileID: 43563148}
-  cookingTime: 5
-  maxTemperature: 85
-  cookingTimeFactor: 0.2
-  maxTemperatureFactor: 17
   lmtTemp_roomTemperature: 24.5
   lmtTemp_cold: 25
   lmtTemp_stoveMin: 40
@@ -4967,6 +4963,21 @@ PrefabInstance:
         type: 3}
       propertyPath: startingPosition.z
       value: 0.576
+      objectReference: {fileID: 0}
+    - target: {fileID: 7726241077441537636, guid: c7797a183c4663d438f62a9a81266098,
+        type: 3}
+      propertyPath: cookingTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7726241077441537636, guid: c7797a183c4663d438f62a9a81266098,
+        type: 3}
+      propertyPath: cookingTimeFactor
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7726241077441537636, guid: c7797a183c4663d438f62a9a81266098,
+        type: 3}
+      propertyPath: maxTemperatureFactor
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 8488274486191766677, guid: c7797a183c4663d438f62a9a81266098,
         type: 3}

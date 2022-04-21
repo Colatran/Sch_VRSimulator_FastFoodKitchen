@@ -7,6 +7,9 @@ public class Item_Cookable : Item
     private HeatSource source = HeatSource.NONE;        
     private float temperature = 0;
     private float cooked = 0;
+    private float maxTemperatureFactor = 0;
+    private float cookingTimeFactor = 0;
+
 
     private bool canCallOnBurned = true;
     private bool canCallOnCold = true;
@@ -22,11 +25,19 @@ public class Item_Cookable : Item
 
     public void SetHeatSource(HeatSource source) => this.source = source;
 
+    public void SetCookingFactors(float maxTemp, float cookingTime)
+    {
+        maxTemperatureFactor = maxTemp;
+        cookingTimeFactor = cookingTime;
+    }
+
+
 
     private void Update()
     {
         CalculateTemperature();
     }
+
 
 
     private void CalculateTemperature()
@@ -69,11 +80,9 @@ public class Item_Cookable : Item
 
     private void HeatSource_Cooker(float deltaTime)
     {
-        float normalizedDeltaTime = deltaTime * GameManager.CookingTimeFactor;
+        temperature += deltaTime * maxTemperatureFactor;
 
-        temperature += deltaTime * GameManager.MaxTemperatureFactor;
-
-        cooked += deltaTime * GameManager.CookingTimeFactor;
+        cooked += deltaTime * cookingTimeFactor;
         cookedMaterial.Set(cooked);
 
         if (canCallOnBurned && IsOvercooked)
