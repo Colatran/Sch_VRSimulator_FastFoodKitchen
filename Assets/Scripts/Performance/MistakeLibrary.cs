@@ -19,6 +19,13 @@ public static class MistakeLibrary
                 "Deixou a gaveta fora da UHC muito tempo.",
                 "Deve transferir rapidamente a gaveta para a UHC assim que a acabar de encher.")
         },
+        {
+            MistakeType.PRODUTO_COMASMAOS,
+            new Mistake(
+                "Produto nas mãos",
+                "Pegou no produto cozinhado com as mãos.",
+                "Deve evitar tocar nos produtos com as mãos para evitar contaminação, e prevenir o risco de se queimar.")
+        },
 
         {
             MistakeType.PRODUTO_BIFE_CRUSALGADO,
@@ -33,6 +40,14 @@ public static class MistakeLibrary
                 "Bife Muito Salgado",
                 "Salgou demasiado a carne.",
                 "Deve salgar as carnes uma a uma com o movimento de martelo (Duas vezes é suficiente).")
+        },
+
+        {
+            MistakeType.PRODUTO_FRITO_SALGADO,
+            new Mistake(
+                "Frito Salgado",
+                "Não deve salgar fritos.",
+                "")
         },
 
 
@@ -183,8 +198,8 @@ public static class MistakeLibrary
                 "Slot Errada",
                 "Colocou a gaveta numa slot de tipo que não correspondente.",
                 "O tipo de produto está marcado na etiqueta em cima da slot, cada produto tem a sua gaveta:"
-                + "\nVermelho - Bife" 
-                + "\nVerde - Bife Vegan" 
+                + "\nVermelho - Bife"
+                + "\nVerde - Bife Vegan"
                 + "\nAmarelo - Panado de Frango"
                 + "\nLaranja - Nugget de Frango"
                 + "\nAzul - Filete de Peixe"
@@ -252,12 +267,6 @@ public static class MistakeLibrary
                 "Frito Mal Escorrido",
                 "Tirou a grelha de cima da cuba muito cedo.",
                 "Deve escorrer os fritos 5 a 10 segundos, só depois tirar para o seu lugar respetivo.")
-        }, {
-            MistakeType.FRITO_SALGADO,
-            new Mistake(
-                "Frito Salgado",
-                "Não deve salgar fritos.",
-                "")
         },
 
 

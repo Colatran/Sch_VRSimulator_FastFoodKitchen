@@ -149,7 +149,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3001969147699593586}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5f2a6db8dd285e48aa5e73dcfb3514c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxCross: 0.1
+  maxCross: 0.2
 --- !u!114 &221295109219743984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachment: {fileID: 2654244468538367558}
   typeFlags: 0100000003000000
-  attributeCheck: {fileID: 0}
+  attributeCheck: {fileID: 3675429191259017101}
   cookedMaterial: {fileID: 8039632554065091845}
 --- !u!114 &8039632554065091845
 MonoBehaviour:
@@ -309,7 +309,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9d4b0495164ef24685ca1fc166fbb26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attributes: 
   item: {fileID: 3131724544931472903}
 --- !u!1 &3068020736526217916
 GameObject:

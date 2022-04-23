@@ -18,7 +18,6 @@ public class MaterialPropertyController : MonoBehaviour
     }
 
 
-
     public virtual void Set() { }
     public virtual void Set(float val) { }
 }

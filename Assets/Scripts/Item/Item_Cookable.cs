@@ -4,6 +4,8 @@ public class Item_Cookable : Item
 {
     [SerializeField] MaterialPropertyController cookedMaterial;
 
+
+
     private HeatSource source = HeatSource.NONE;        
     private float temperature = 0;
     private float cooked = 0;
@@ -110,5 +112,27 @@ public class Item_Cookable : Item
 
         if (Is(ItemType.BEEF))
             AddAttribute(ItemAttribute.SALT);
+    }
+
+
+
+    private void OnEnable()
+    {
+        attachment.OnAttach += OnAttach;
+    }
+    private void OnDisable()
+    {
+        attachment.OnAttach -= OnAttach;
+    }
+
+    private void OnAttach()
+    {
+        if (IsCooked || IsOvercooked)
+        {
+            if (Attachment.DirectParent.GetComponent<HandPhysicsController>() != null)
+            {
+                GameManager.MakeMistake(MistakeType.PRODUTO_COMASMAOS);
+            }
+        }
     }
 }
