@@ -33,7 +33,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1431440227471694606}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.049999952, z: 0}
+  m_LocalPosition: {x: 0, y: 0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1431440228789905794}
@@ -186,8 +186,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1431440228789905795}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.4, y: 0.73, z: 0.8}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1465858117349371387}
@@ -294,7 +294,6 @@ MonoBehaviour:
   attributeCheck: {fileID: 0}
   contentCheck: {fileID: 1431440228789905800}
   magnetArea: {fileID: 4123777156902956580}
-  content: []
 --- !u!114 &1431440228789905800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,7 +334,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2241691575623825217}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.049999952, z: 0}
+  m_LocalPosition: {x: 0, y: 0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1431440228789905794}
@@ -416,7 +415,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4123777156902956603}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.002499953, z: 0}
+  m_LocalPosition: {x: 0, y: 0.0025, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1431440228789905794}
@@ -460,7 +459,7 @@ GameObject:
   - component: {fileID: 6461463605241014644}
   - component: {fileID: 6461463605241014603}
   m_Layer: 10
-  m_Name: InteriorTrigger
+  m_Name: MagnetSnap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -491,7 +490,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.025, y: 0.025, z: 0.45}
+  m_Size: {x: 0.025, y: 0.0125, z: 0.45}
   m_Center: {x: 0, y: 0.035, z: 0}
 --- !u!114 &6461463605241014603
 MonoBehaviour:
@@ -505,6 +504,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92a279223ea14c34dafa083c8716f5f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachment: {fileID: 0}
-  type: 21
-  position: {x: 0, y: 0.003, z: 0}
+  attachment: {fileID: 1431440228789905804}
+  positionGroups:
+  - condition: 0
+    positions:
+    - position: {x: 0, y: 0.002, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 0}
