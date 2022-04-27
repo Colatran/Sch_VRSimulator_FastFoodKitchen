@@ -32,8 +32,7 @@ public class ContentCheck_BoardBeef : ContentCheck
                 GameManager.MakeMistake(MistakeType.GAVETA_PRODUTO_CONTAMINADO);
 
             //ERRO  -gaveta-    falta papel
-            int paperCount = container.FindAll(ItemType.BOARDINTERIOR_PAPER).Length;
-            if (paperCount == 0)
+            if (!container.Contains(ItemType.BOARDINTERIOR_PAPER))
                 GameManager.MakeMistake(MistakeType.GAVETABIFE_PAPEL_FALTA);
 
             if (MustSkipItem(item)) return;
@@ -59,14 +58,11 @@ public class ContentCheck_BoardBeef : ContentCheck
                 int batchId = item.BatchId;
                 container.BatchId = batchId;
 
-                foreach (Item content in container.Content)
+                foreach (Item content in container.FindAll(ItemType.BOARDINTERIOR_PAPER))
                 {
-                    if (content.Is(ItemType.BOARDINTERIOR_PAPER))
-                    {
-                        content.BatchId = batchId;
-                        Item_Cookable contentCookable = (content as Item_Cookable);
-                        contentCookable.SetHeatSource(HeatSource.COOKER);
-                    }
+                    content.BatchId = batchId;
+                    Item_Cookable contentCookable = (content as Item_Cookable);
+                    contentCookable.SetHeatSource(HeatSource.COOKER);
                 }
             }
             //ERRO  -bife-      misturou produto velho com novo

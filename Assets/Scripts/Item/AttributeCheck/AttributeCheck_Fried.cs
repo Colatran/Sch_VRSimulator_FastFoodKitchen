@@ -5,7 +5,7 @@ public class AttributeCheck_Fried : AttributeCheck
     {
         if (flag == ItemAttribute.SALT)
         {
-            GameManager.MakeMistake(MistakeType.PRODUTO_FRITO_SALGADO);
+            GameManager.MakeMistake(MistakeType.PRODUTOFRITO_SALGADO);
         }
     }
 }

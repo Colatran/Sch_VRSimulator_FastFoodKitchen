@@ -4,6 +4,7 @@ public static class MistakeLibrary
 {
     public static Dictionary<MistakeType, Mistake> mistakes = new Dictionary<MistakeType, Mistake>()
     {
+        //PRODUTO
         {
             MistakeType.PRODURO_QUEIMADO,
             new Mistake(
@@ -27,23 +28,25 @@ public static class MistakeLibrary
                 "Deve evitar tocar nos produtos com as mãos para evitar contaminação, e prevenir o risco de se queimar.")
         },
 
+        //PRODUTOBIFE
         {
-            MistakeType.PRODUTO_BIFE_CRUSALGADO,
+            MistakeType.PRODUTOBIFE_CRUSALGADO,
             new Mistake(
                 "Bife Cru Salgado",
                 "Salgou um bife que ainda estava cru.",
                 "Deve salgar as carnes apenas quando a placa superior do grelhador levantar.")
         },
         {
-            MistakeType.PRODUTO_BIFE_MUITOSAL,
+            MistakeType.PRODUTOBIFE_MUITOSAL,
             new Mistake(
                 "Bife Muito Salgado",
                 "Salgou demasiado a carne.",
                 "Deve salgar as carnes uma a uma com o movimento de martelo (Duas vezes é suficiente).")
         },
 
+        //PRODUTOFRITO
         {
-            MistakeType.PRODUTO_FRITO_SALGADO,
+            MistakeType.PRODUTOFRITO_SALGADO,
             new Mistake(
                 "Frito Salgado",
                 "Não deve salgar fritos.",
@@ -51,7 +54,7 @@ public static class MistakeLibrary
         },
 
 
-
+        //GAVETA
         {
             MistakeType.GAVETA_PRODUTO_CONTAMINADO,
             new Mistake(
@@ -82,8 +85,7 @@ public static class MistakeLibrary
                 "Produtos queimados devem ser descartados.")
         },
 
-
-
+        //GAVETABIFE
         {
             MistakeType.GAVETABIFE_PAPEL_MUITO,
             new Mistake(
@@ -118,8 +120,7 @@ public static class MistakeLibrary
                 "Gaveta Errada",
                 "Colocou um bife de um tipo não correspondente à gaveta."
                 + "\nNão pode colocar produtos de tipos diferentes na mesma gaveta.",
-                "Vermelho para bifes normais, Verde para bifes vegan."
-                + "\nVermelho - Bife"
+                "\nVermelho - Bife Normal"
                 + "\nVerde - Bife Vegan")
         },
         {
@@ -138,8 +139,58 @@ public static class MistakeLibrary
                 "As gavetas vermelhas e verdes são somente para bifes.")
         },
 
+        //GAVETAFRITO
+        {
+            MistakeType.GAVETAFRITO_GRELHA_SUJA,
+            new Mistake(
+                "Grelha Suja",
+                "Utilizou um grelha suja.",
+                "Equipamento sujo devem ser limpo antes de utilizado.")
+        },
+        {
+            MistakeType.GAVETAFRITO_GRELHA_ERRADA,
+            new Mistake(
+                "Grelha Errada",
+                "Colocou o tipo de grelha errada na gaveta.",
+                "")
+        },
+        {
+            MistakeType.GAVETAFRITO_GRELHA_FALTA,
+            new Mistake(
+                "Falta Grelha",
+                "Colocou produto frito numa gaveta sem grelha.",
+                "Gavetas para fritos devem ter a sua grelha respetiva.")
+        },
+        {
+            MistakeType.GAVETAFRITO_PAPEL,
+            new Mistake(
+                "Papel em Gaveta para Fritos",
+                "Colocou papel numa gaveta para fritos.",
+                "Gavetas para fritos não necessitam de papel, necessitam apenas da sua grelha respetiva.")
+        },
+        {
+            MistakeType.GAVETAFRITO_BIFE,
+            new Mistake(
+                "Gaveta Errada",
+                "Colocou na gaveta para fritos um bife."
+                + " Não pode colocar produtos de tipos diferentes na mesma gaveta.",
+                "As gavetas amarelas, laranjas, azuis e roxas são somente para fritos.")
+        },
+        {
+            MistakeType.GAVETAFRITO_FRITO_TIPOERRADO,
+            new Mistake(
+                "Gaveta Errada",
+                "Colocou um frito de um tipo não correspondente à gaveta."
+                + "\nNão pode colocar produtos de tipos diferentes na mesma gaveta.",
+                "\nAmarelo - Panado"
+                + "\nLaranja - Nugget de Frango"
+                + "\nAzul - Filletes de Peixe"
+                + "\nRoxo - Douradinhos")
+        },
 
 
+
+        //GRELHADOR
         {
             MistakeType.GRELHADOR_SUJO,
             new Mistake(
@@ -176,8 +227,7 @@ public static class MistakeLibrary
                 "Deve retirar os bifes na ordem em que foram colocados no grelhador.")
         },
 
-
-
+        //UHC
         {
             MistakeType.UHC_TEMPORIZADOR_NAOACIONADO,
             new Mistake(
@@ -312,28 +362,6 @@ public static class MistakeLibrary
                 "Não Escorreu o Óleo",
                 "Retirou o cesto de cima da fritadeira antes de escorrer o óleo.",
                 "Deve escorrer o óleo durante 5 a 10 segundos antes de o retirar de cima da cuba.")
-        },
-
-
-
-        {
-            MistakeType.GAVETA_GRELHA_FALTA,
-            new Mistake(
-                "Falta Grelha",
-                "Colocou produto frito numa gaveta sem grelha.",
-                "Gavetas para fritos devem ter a sua grelha respetiva.")
-        }, {
-            MistakeType.GAVETA_GRELHA_ERRADA,
-            new Mistake(
-                "Grelha Errada",
-                "Colocou o tipo de grelha errada na gaveta.",
-                "Gavetas para fritos devem ter a sua grelha respetiva.")
-        }, {
-            MistakeType.GAVETA_PAPEL_PARAFRITOS,
-            new Mistake(
-                "Papel em Gaveta para Fritos",
-                "Colocou papel numa gaveta para fritos.",
-                "Gavetas para fritos não necessitam de papel, necessitam apenas da sua grelha respetiva.")
         },
 
 

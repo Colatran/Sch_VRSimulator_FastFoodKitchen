@@ -10,13 +10,13 @@ public class AttributeCheck_Beef : AttributeCheck
         {
             if (item.IsUndercooked)
             {
-                GameManager.MakeMistake(MistakeType.PRODUTO_BIFE_CRUSALGADO);
+                GameManager.MakeMistake(MistakeType.PRODUTOBIFE_CRUSALGADO);
             }
 
             else if(item.IsCooked)
             {
                 if (attributes.FindAll(x => x == ItemAttribute.SALT).Count > 2)
-                    GameManager.MakeMistake(MistakeType.PRODUTO_BIFE_MUITOSAL);
+                    GameManager.MakeMistake(MistakeType.PRODUTOBIFE_MUITOSAL);
             }
         }
     }

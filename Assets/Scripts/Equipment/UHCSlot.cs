@@ -114,6 +114,11 @@ public class UHCSlot : MonoBehaviour
 
         foreach (Item item in board.Content)
         {
+            if (item.Is(ItemType.BOARDINTERIOR))
+            {
+                continue;
+            }
+
             if (!item.Is(type))
             {
                 GameManager.MakeMistake(MistakeType.UHC_GAVETA_PRODUTO);

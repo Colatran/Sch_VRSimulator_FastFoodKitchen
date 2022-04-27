@@ -569,6 +569,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   container: {fileID: 8123170149765125805}
   friedType: 6
+  gridType: 23
 --- !u!1 &8969523285850643435
 GameObject:
   m_ObjectHideFlags: 0

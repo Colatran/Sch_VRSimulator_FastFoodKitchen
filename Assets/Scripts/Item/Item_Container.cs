@@ -35,6 +35,14 @@ public class Item_Container : Item
     private List<Item> content = new List<Item>();
     public List<Item> Content { get => content; }
     public Item[] FindAll(ItemType type) => content.FindAll(x => x.Is(type)).ToArray();
+    public bool Contains(ItemType type)
+    {
+        foreach (Item item in content)
+            if (item.Is(type)) return true;
+        return false;
+    }
+
+
 
     private void OnAddContent(Attachment child)
     {
