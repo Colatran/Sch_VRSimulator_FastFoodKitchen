@@ -190,43 +190,6 @@ public static class MistakeLibrary
 
 
 
-        //GRELHADOR
-        {
-            MistakeType.GRELHADOR_SUJO,
-            new Mistake(
-                "Grelhador Sujo",
-                "Utilizou o grelhador antes de o limpar.",
-                "Deve utilizar o rodo para limpar a placa superior e inferior antes de colocar quais quer itens no grelhador.")
-        },
-        {
-            MistakeType.GRELHADOR_PRODUTO_CONTAMINADO,
-            new Mistake(
-                "Produto Contaminado",
-                "Colocou no grelhador um produto que tocou no chão.",
-                "Qualquer produto que tenha tocado no chão deve ser descartado.")
-        },
-        {
-            MistakeType.GRELHADOR_PRODUTO_FRITO,
-            new Mistake(
-                "Frito No Grelhador",
-                "Colocou um produto frito no grelhador.",
-                "O grelhador é apenas para bifes.")
-        },
-        {
-            MistakeType.GRELHADOR_PRODUTO_MISTURADO,
-            new Mistake(
-                "Produto Misturado no Grelhador",
-                "Colocou bifes de tipos diferentes sobre a mesma placa no grelhador.",
-                "Não deve cozinhar produtos de tipos diferentes sobre a mesma placa.")
-        },
-        {
-            MistakeType.GRELHADOR_ORDEMERRADA,
-            new Mistake(
-                "Ordem Errada",
-                "Tirou os bifes do grelhado na ordem errada.",
-                "Deve retirar os bifes na ordem em que foram colocados no grelhador.")
-        },
-
         //UHC
         {
             MistakeType.UHC_TEMPORIZADOR_NAOACIONADO,
@@ -268,6 +231,43 @@ public static class MistakeLibrary
                 "Ordem Errada",
                 "Não seguiu a gestão vertical da UHC.",
                 "Deve colocar as gavetas por ordem no UHC, gavetas colocadas à mais tempo na UHC devem ser subtituidas primeiro (de cima para baixo).")
+        },
+
+        //GRELHADOR
+        {
+            MistakeType.GRELHADOR_SUJO,
+            new Mistake(
+                "Grelhador Sujo",
+                "Utilizou o grelhador antes de o limpar.",
+                "Deve utilizar o rodo para limpar a placa superior e inferior antes de colocar quais quer itens no grelhador.")
+        },
+        {
+            MistakeType.GRELHADOR_PRODUTO_CONTAMINADO,
+            new Mistake(
+                "Produto Contaminado",
+                "Colocou no grelhador um produto que tocou no chão.",
+                "Qualquer produto que tenha tocado no chão deve ser descartado.")
+        },
+        {
+            MistakeType.GRELHADOR_PRODUTO_FRITO,
+            new Mistake(
+                "Frito No Grelhador",
+                "Colocou um produto frito no grelhador.",
+                "O grelhador é apenas para bifes.")
+        },
+        {
+            MistakeType.GRELHADOR_PRODUTO_MISTURADO,
+            new Mistake(
+                "Produto Misturado no Grelhador",
+                "Colocou bifes de tipos diferentes sobre a mesma placa no grelhador.",
+                "Não deve cozinhar produtos de tipos diferentes sobre a mesma placa.")
+        },
+        {
+            MistakeType.GRELHADOR_ORDEMERRADA,
+            new Mistake(
+                "Ordem Errada",
+                "Tirou os bifes do grelhado na ordem errada.",
+                "Deve retirar os bifes na ordem em que foram colocados no grelhador.")
         },
 
 

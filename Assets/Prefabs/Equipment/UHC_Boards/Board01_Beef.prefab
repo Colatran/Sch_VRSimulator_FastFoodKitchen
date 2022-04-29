@@ -505,8 +505,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attachment: {fileID: 1431440228789905804}
-  positionGroups:
-  - condition: 0
-    positions:
-    - position: {x: 0, y: 0.002, z: 0}
-      rotation: {x: 0, y: 0, z: 0, w: 0}
+  positionGroups: {fileID: 11400000, guid: 3a434ce9a1f654a4eb990bf74d62225c, type: 2}

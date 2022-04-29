@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attachment: {fileID: 5461860995676543700}
-  typeFlags: 19000000
+  typeFlags: 190000001a000000
   attributeCheck: {fileID: 0}
 --- !u!1 &5461860996307618444
 GameObject:

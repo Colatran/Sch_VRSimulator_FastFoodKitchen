@@ -58,11 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attachment: {fileID: 3138767755456520374}
-  positionGroups:
-  - condition: 1
-    positions:
-    - position: {x: 0, y: 0.001, z: 0}
-      rotation: {x: 0, y: 0, z: 0, w: 0}
+  positionGroups: {fileID: 11400000, guid: 09ef3b64529be5040ae4c89f1c7d65a2, type: 2}
 --- !u!1 &1599300335532716726
 GameObject:
   m_ObjectHideFlags: 0

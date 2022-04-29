@@ -12,7 +12,6 @@ public class Item_Container : Item
 
         if (contentCheck == null) contentCheck = GetComponent<ContentCheck>();
         if (magnetArea == null) magnetArea = GetComponentInChildren<MagnetArea>();
-
     }
 
 
@@ -51,7 +50,8 @@ public class Item_Container : Item
 
         content.Add(item);
 
-        contentCheck.OnAdd(item);
+        if(contentCheck != null)
+            contentCheck.OnAdd(item);
     }
 
     private void OnRemoveContent(Attachment child)
@@ -61,7 +61,8 @@ public class Item_Container : Item
 
         content.Add(item);
 
-        contentCheck.OnRemove(item);
+        if (contentCheck != null)
+            contentCheck.OnRemove(item);
     }
 
 
@@ -77,6 +78,8 @@ public class Item_Container : Item
     public void RectifyContent()
     {
         Content.RemoveAll(x => x == null);
-        magnetArea.RectifyPoints();
+
+        if(magnetArea != null)
+            magnetArea.RectifyPoints();
     }
 }

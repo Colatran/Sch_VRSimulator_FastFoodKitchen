@@ -446,7 +446,7 @@ MonoBehaviour:
   rb_interpolation: 0
   orientation: {fileID: 3959656550991280720}
   isContainer: 1
-  isDeadEnd: 0
+  isDeadEnd: 1
 --- !u!114 &3959656550991280720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -646,8 +646,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attachment: {fileID: 3959656550991280736}
-  positionGroups:
-  - condition: 2
-    positions:
-    - position: {x: 0, y: 0.001, z: 0}
-      rotation: {x: 0, y: 0, z: 0, w: 0}
+  positionGroups: {fileID: 11400000, guid: bd48ea16872a6fb42b01f67e5ff7fb39, type: 2}

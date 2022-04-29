@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class FrierOilSurfaceSetter : MonoBehaviour
+public class FrierOilMaterialSurfaceSetter : MonoBehaviour
 {
     [SerializeField] MaterialPropertyController_RandomOffset[] materialProperties;
     [SerializeField] float frameTime = 0.066666666f;
