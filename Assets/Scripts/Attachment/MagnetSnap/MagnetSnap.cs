@@ -28,14 +28,7 @@ public class MagnetSnap : MonoBehaviour
             return;
         }
 
-        foreach (PositionGroup group in positionGroups.Groups)
-        {
-            if (positionGroups.ChecksCondition(group.Condition, attachment))
-            {
-                group.TryAttach(attachment, this.attachment);
-                return;
-            }
-        }
+        positionGroups.TryAttach(attachment, this.attachment);
     }
 
     private void OnTriggerExit(Collider other)

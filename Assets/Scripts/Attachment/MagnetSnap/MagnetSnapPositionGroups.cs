@@ -4,10 +4,9 @@ using UnityEngine;
 public class MagnetSnapPositionGroups : ScriptableObject
 {
     [SerializeField] PositionGroup[] groups;
-    public PositionGroup[] Groups { get; }
 
 
-    public bool ChecksCondition(Condition condition, Attachment attachment)
+    private bool ChecksCondition(Condition condition, Attachment attachment)
     {
         switch (condition)
         {
@@ -84,5 +83,17 @@ public class MagnetSnapPositionGroups : ScriptableObject
                 }
         }
         return false;
+    }
+
+    public void TryAttach(Attachment child, Attachment parent)
+    {
+        foreach (PositionGroup group in groups)
+        {
+            if (ChecksCondition(group.Condition, child))
+            {
+                group.TryAttach(child, parent);
+                return;
+            }
+        }
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Grill : MonoBehaviour
+public class CookingFactors : MonoBehaviour
 {
     [SerializeField] float cookingTime = 60;
     [SerializeField] float maxTemperature = 85;

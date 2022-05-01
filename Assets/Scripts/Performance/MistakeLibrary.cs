@@ -270,8 +270,63 @@ public static class MistakeLibrary
                 "Deve retirar os bifes na ordem em que foram colocados no grelhador.")
         },
 
-
-
+        //FRITADEIRA
+        {
+            MistakeType.FRITADEIRA_CESTO_BIFE,
+            new Mistake(
+                "Bife Na Cuba",
+                "Colocou bife no cesto de fritar.",
+                "Se tiver com inteções de cozinhar um bife, use o grelhador.")
+        },
+        {
+            MistakeType.FRITADEIRA_CESTO_PRODUTOMISTURADO_TIPO,
+            new Mistake(
+                "Misturou Produto",
+                "Misturou produtos de tipo diferente no mesmo cesto de fritar.",
+                "Os cestos de fritar podem conter apena um tipo de produto.")
+        },
+        {
+            MistakeType.FRITADEIRA_OLEO_BIFE,
+            new Mistake(
+                "Bife Na Cuba",
+                "Colocou bife na cuba.",
+                "Fritadeiras são apenas para panados, nuggets, douradinhos e filetes de peixe.")
+        },
+        {
+            MistakeType.FRITADEIRA_OLEO_PRODUTOMISTURADO_TIPO,
+            new Mistake(
+                "Misturou Produto",
+                "Misturou produtos de frango e peixe na mesma cuba.",
+                "Pode misturar itens na cuba apenas se forem ambos de frango ou de peixe.")
+        },
+        {
+            MistakeType.FRITADEIRA_PRODUTO_NAOSUBMERSO,
+            new Mistake(
+                "Frito Não Submerso",
+                "O produto não ficou completamente submerso no óleo.",
+                "Agite o cesto para submergir o produto caso necessario assim nenhuma parte do produto fica mal cozinhada.")
+        },
+        {
+            MistakeType.FRITADEIRA_PRODUTO_DIRETAMENTENACUBA,
+            new Mistake(
+                "Produto Diretamente Na Cuba",
+                "Colocou produto diretamente na Cuba.",
+                "Todos os produtos que vão para a cuba devem estar dentro de um cesto de fritar.")
+        },
+        {
+            MistakeType.FRITADEIRA_ITEMERRADO_EQUIPAMENTO,
+            new Mistake(
+                "Equipamento No Óleo",
+                "Deixou cair o equipamento no óleo.",
+                "")
+        },
+        {
+            MistakeType.FRITADEIRA_TEMPORIZADOR_NAOATIVOU,
+            new Mistake(
+                "Não Ativou Temporizador",
+                "Colocou cesto na cuba e não ativou o temporizador.",
+                "Sempre que colocar itens na cuba, deve ativar o temporizador.")
+        },
 
 
 
@@ -295,20 +350,6 @@ public static class MistakeLibrary
                 "Qualquer produto que tenha tocado no chão deve ser descartado.")
         },
 
-        {
-            MistakeType.PRODUTO_MISTURADO_FRITADEIRA,
-            new Mistake(
-                "Misturou Produto",
-                "Misturou produtos de frango e peixe na mesma cuba.",
-                "Pode misturar itens na cuba apenas se forem ambos de frango ou de peixe.")
-        }, {
-            MistakeType.PRODUTO_MISTURADO_CESTODEFRITAR,
-            new Mistake(
-                "Misturou Produto",
-                "Misturou produtos de tipo diferente no mesmo cesto de fritar.",
-                "Os cestos de fritar podem conter apena um tipo de produto.")
-        },
-
 
 
         {
@@ -317,44 +358,6 @@ public static class MistakeLibrary
                 "Frito Mal Escorrido",
                 "Tirou a grelha de cima da cuba muito cedo.",
                 "Deve escorrer os fritos 5 a 10 segundos, só depois tirar para o seu lugar respetivo.")
-        },
-
-
-
-
-
-
-
-        {
-            MistakeType.FRITADEIRA_NAOSUBMERSO,
-            new Mistake(
-                "Frito Não Submerso",
-                "O produto não ficou completamente submerso no óleo.",
-                "Agite o cesto para submergir o produto caso necessario assim nenhuma parte do produto fica mal cozinhada.")
-        }, {
-            MistakeType.FRITADEIRA_DIRETAMENTENACUBA,
-            new Mistake(
-                "Produto Diretamente Na Cuba",
-                "Colocou produto diretamente na Cuba.",
-                "Todos os produtos que vão para a cuba devem estar dentro de um cesto de fritar.")
-        }, {
-            MistakeType.FRITADEIRA_BIFENACUBA,
-            new Mistake(
-                "Bife Na Cuba",
-                "Colocou bife na cuba.",
-                "Fritadeiras são apenas para panados, nuggets, douradinhos e filetes de peixe.")
-        }, {
-            MistakeType.FRITADEIRA_ITEMNACUBA,
-            new Mistake(
-                "Item Invalido Na Cuba",
-                "Colocou um item invalido na cuba.",
-                "Apenas os cestos de fritar podem entrar em contacot com o oleo das fritadeiras.")
-        }, {
-            MistakeType.FRITADEIRA_NAOATIVOUTEMPORIZADOR,
-            new Mistake(
-                "Não Ativou Temporizador",
-                "Colocou cesto na cuba e não ativou o temporizador.",
-                "Sempre que colocar itens na cuba, deve ativar o temporizador.")
         },
         {
             MistakeType.FRITADEIRA_NAOESCORREUOLEO,

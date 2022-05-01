@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GrillPlank : MonoBehaviour
 {
-    [SerializeField] Grill grillBase;
+    [SerializeField] CookingFactors cookingFactors;
     [SerializeField] GameObjectPool pool;
     [SerializeField] BatchHandler batchHandler;
     [SerializeField] Transform plank;
@@ -36,7 +36,7 @@ public class GrillPlank : MonoBehaviour
         if (item == null) return;
 
         cookables.Add(item);
-        item.SetCookingFactors(grillBase.MaxTemperatureFactor, grillBase.CookingTimeFactor);
+        item.SetCookingFactors(cookingFactors.MaxTemperatureFactor, cookingFactors.CookingTimeFactor);
 
         bool isNew = !cookablesMustIgnore.Contains(item);
         if (isNew) cookablesMustIgnore.Add(item);
@@ -163,7 +163,7 @@ public class GrillPlank : MonoBehaviour
 
     private void StartCooking()
     {
-        cookingTime = grillBase.CookingTime;
+        cookingTime = cookingFactors.CookingTime;
         cooking = true;
         SetCookablesHeatSource(HeatSource.COOKER);
     }
