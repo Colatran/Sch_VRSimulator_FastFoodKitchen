@@ -3,14 +3,12 @@ using UnityEngine;
 
 public class Frier : MonoBehaviour
 {
-    private const float _timeToPressTimer = 5;
-
     [SerializeField] CookingFactors cookingFactors;
-    [SerializeField] Button3D[] button_timers;
+    [SerializeField] FrierTimer[] frierTimers;
+
+    public CookingFactors CookingFactors { get => cookingFactors; }
 
     private List<FrierBasket> baskets = new List<FrierBasket>();
-    private bool canFail = true;
-    private float timeToPressTimer = _timeToPressTimer;
     private ItemType contentType = ItemType.NONE;
 
 
@@ -54,10 +52,6 @@ public class Frier : MonoBehaviour
                         GameManager.MakeMistake(MistakeType.FRITADEIRA_OLEO_PRODUTOMISTURADO_TIPO);
                         contentType = ItemType.NONE;
                     }
-
-                    //Manda Ativar o temporizador
-                    canFail = true;
-                    timeToPressTimer = _timeToPressTimer;
                 }
             }
         }
@@ -71,6 +65,7 @@ public class Frier : MonoBehaviour
                 baskets.Add(basket);
 
                 //Defenir o batch
+                //Manda ativar o timer
                 basket.OnEnterOil();
             }
             else
@@ -93,10 +88,11 @@ public class Frier : MonoBehaviour
 
         else if (item.Is(ItemType.EQUIPMENT_FRYERBASKET))
         {
-            baskets.Remove(item.GetComponent<FrierBasket>());
+            FrierBasket basket = item.GetComponent<FrierBasket>();
 
-            if (baskets.Count == 0)
-                canFail = false;
+            baskets.Remove(basket);
+
+            basket.OnExitOil();
         }
     }
 
@@ -104,30 +100,20 @@ public class Frier : MonoBehaviour
 
     private void OnEnable()
     {
-        foreach (Button3D button in button_timers) { }
+        foreach (FrierTimer timer in frierTimers) 
+            timer.OnActivated += ActivateTimer;
+    }
+    private void OnDisable()
+    {
+        foreach (FrierTimer timer in frierTimers)
+            timer.OnActivated -= ActivateTimer;
     }
 
-    private void OnPressTimer()
+    private void ActivateTimer()
     {
-        canFail = false;
-    }
-
-
-
-
-    private void Update()
-    {
-        if (canFail)
+        foreach(FrierBasket basket in baskets)
         {
-            if (timeToPressTimer > 0)
-            {
-                timeToPressTimer -= Time.deltaTime;
-                if (timeToPressTimer <= 0) // E SE NÃO TIVER UM TEMPORIZADOR ATIVADO)
-                {
-                    canFail = false;
-                    GameManager.MakeMistake(MistakeType.FRITADEIRA_TEMPORIZADOR_NAOATIVOU);
-                }
-            }
+            if (basket.ActivateTimer()) return;
         }
     }
 }

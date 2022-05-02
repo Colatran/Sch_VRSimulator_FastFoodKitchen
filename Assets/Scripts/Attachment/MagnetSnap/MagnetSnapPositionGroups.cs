@@ -5,12 +5,16 @@ public class MagnetSnapPositionGroups : ScriptableObject
 {
     [SerializeField] PositionGroup[] groups;
 
+    public int Length { get => groups.Length; }
+    public int GroupLength(int i) => groups[i].Length;
+    public PositionGroup GetGroup(int i) => groups[i];
 
-    private bool ChecksCondition(Condition condition, Attachment attachment)
+
+    private bool ChecksCondition(PositionGroupCondition condition, Attachment attachment)
     {
         switch (condition)
         {
-            case Condition.MUSTBE_ITEM_PAPER:
+            case PositionGroupCondition.MUSTBE_ITEM_PAPER:
                 {
                     Item item = attachment.GetComponent<Item>();
                     if (item != null)
@@ -20,7 +24,7 @@ public class MagnetSnapPositionGroups : ScriptableObject
                     }
                     break;
                 }
-            case Condition.MUSTBE_ITEM_GRIDSMALL:
+            case PositionGroupCondition.MUSTBE_ITEM_GRIDSMALL:
                 {
                     Item item = attachment.GetComponent<Item>();
                     if (item != null)
@@ -30,7 +34,7 @@ public class MagnetSnapPositionGroups : ScriptableObject
                     }
                     break;
                 }
-            case Condition.MUSTBE_ITEM_GRIDBIG:
+            case PositionGroupCondition.MUSTBE_ITEM_GRIDBIG:
                 {
                     Item item = attachment.GetComponent<Item>();
                     if (item != null)
@@ -41,7 +45,7 @@ public class MagnetSnapPositionGroups : ScriptableObject
                     break;
                 }
 
-            case Condition.MUSTBE_ITEM_FISHFILLET:
+            case PositionGroupCondition.MUSTBE_ITEM_FISHFILLET:
                 {
                     Item item = attachment.GetComponent<Item>();
                     if (item != null)
@@ -51,7 +55,7 @@ public class MagnetSnapPositionGroups : ScriptableObject
                     }
                     break;
                 }
-            case Condition.MUSTBE_ITEM_FISHSTICKS:
+            case PositionGroupCondition.MUSTBE_ITEM_FISHSTICKS:
                 {
                     Item item = attachment.GetComponent<Item>();
                     if (item != null)
@@ -61,7 +65,7 @@ public class MagnetSnapPositionGroups : ScriptableObject
                     }
                     break;
                 }
-            case Condition.MUSTBE_ITEM_CHIKENFILLET:
+            case PositionGroupCondition.MUSTBE_ITEM_CHIKENFILLET:
                 {
                     Item item = attachment.GetComponent<Item>();
                     if (item != null)
@@ -71,7 +75,7 @@ public class MagnetSnapPositionGroups : ScriptableObject
                     }
                     break;
                 }
-            case Condition.MUSTBE_ITEM_CHIKENNUGGET:
+            case PositionGroupCondition.MUSTBE_ITEM_CHIKENNUGGET:
                 {
                     Item item = attachment.GetComponent<Item>();
                     if (item != null)
@@ -85,15 +89,12 @@ public class MagnetSnapPositionGroups : ScriptableObject
         return false;
     }
 
-    public void TryAttach(Attachment child, Attachment parent)
+    public int GetMatchingGroupIndex(Attachment child)
     {
-        foreach (PositionGroup group in groups)
-        {
-            if (ChecksCondition(group.Condition, child))
-            {
-                group.TryAttach(child, parent);
-                return;
-            }
-        }
+        for (int i = 0; i < groups.Length; i++)
+            if (ChecksCondition(groups[i].Condition, child))
+                return i;
+
+        return -1;
     }
 }

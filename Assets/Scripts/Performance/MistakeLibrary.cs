@@ -274,7 +274,7 @@ public static class MistakeLibrary
         {
             MistakeType.FRITADEIRA_CESTO_BIFE,
             new Mistake(
-                "Bife Na Cuba",
+                "Bife No Cesto",
                 "Colocou bife no cesto de fritar.",
                 "Se tiver com inteções de cozinhar um bife, use o grelhador.")
         },
@@ -284,6 +284,13 @@ public static class MistakeLibrary
                 "Misturou Produto",
                 "Misturou produtos de tipo diferente no mesmo cesto de fritar.",
                 "Os cestos de fritar podem conter apena um tipo de produto.")
+        },
+        {
+            MistakeType.FRITADEIRA_CESTO_PRODUTOMISTURADO_LOTE,
+            new Mistake(
+                "Misturou Produto",
+                "Misturou produto velho com produto novo no cesto de fritar.",
+                "")
         },
         {
             MistakeType.FRITADEIRA_OLEO_BIFE,
@@ -298,6 +305,13 @@ public static class MistakeLibrary
                 "Misturou Produto",
                 "Misturou produtos de frango e peixe na mesma cuba.",
                 "Pode misturar itens na cuba apenas se forem ambos de frango ou de peixe.")
+        },
+        {
+            MistakeType.FRITADEIRA_OLEO_PRODUTOMISTURADO_LOTE,
+            new Mistake(
+                "Misturou Produto",
+                "Misturou produto velho com produto novo na cuba de fritar.",
+                "")
         },
         {
             MistakeType.FRITADEIRA_PRODUTO_NAOSUBMERSO,
@@ -327,7 +341,13 @@ public static class MistakeLibrary
                 "Colocou cesto na cuba e não ativou o temporizador.",
                 "Sempre que colocar itens na cuba, deve ativar o temporizador.")
         },
-
+        {
+            MistakeType.FRITADEIRA_TEMPORIZADOR_INVALIDADO,
+            new Mistake(
+                "Temporizador Invalidado.",
+                "Reacionou o temporizador.",
+                "Acione o temporizador apenas quando for necessário.")
+        },
 
 
 

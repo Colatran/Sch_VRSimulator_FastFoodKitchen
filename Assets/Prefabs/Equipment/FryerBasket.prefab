@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1275526734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1275526735}
+  - component: {fileID: 1275526736}
+  m_Layer: 11
+  m_Name: MagnetArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1275526735
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275526734}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.11, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7615169744817802587}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1275526736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275526734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36cee4600cbd1be4898c480397e8dbf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachment: {fileID: 7615169744817802577}
 --- !u!1 &6313280525930808390
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,7 +88,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.06, y: 0.09, z: 0.28}
-  m_Center: {x: 0, y: -0.06, z: 0}
+  m_Center: {x: 0, y: 0.05, z: 0}
 --- !u!114 &6313280525930808389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,7 +146,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.06, y: 0.025, z: 0.28}
-  m_Center: {x: 0, y: -0.02, z: 0}
+  m_Center: {x: 0, y: 0.09, z: 0}
 --- !u!114 &7178943275803040467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,7 +187,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7309321684641348068}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7615169744817802587}
@@ -232,7 +276,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7615169744166648936}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7615169745492625250}
@@ -430,6 +474,7 @@ Transform:
   - {fileID: 7615169744166648935}
   - {fileID: 7178943275803040466}
   - {fileID: 6313280525930808391}
+  - {fileID: 1275526735}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -461,7 +506,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.08, y: 0.108, z: 0.309}
-  m_Center: {x: 0, y: -0.059, z: 0.00049999356}
+  m_Center: {x: 0, y: 0.051, z: 0.00049999356}
 --- !u!65 &7615169744817802583
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -474,7 +519,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.045, y: 0.0315, z: 0.039}
-  m_Center: {x: 0, y: 0.0033, z: -0.169}
+  m_Center: {x: 0, y: 0.1133, z: -0.169}
 --- !u!65 &7615169744817802582
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -487,7 +532,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.025, y: 0.045, z: 0.28}
-  m_Center: {x: 0, y: 0.03, z: 0.29}
+  m_Center: {x: 0, y: 0.14, z: 0.29}
 --- !u!114 &7615169744817802577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,7 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737f89125f0b54944b9bbf5ffaf5bc70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDot: -0.6
+  maxDot: -0.85
 --- !u!114 &7615169744817802579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,7 +600,7 @@ MonoBehaviour:
   typeFlags: 190000001b000000
   attributeCheck: {fileID: 0}
   contentCheck: {fileID: 0}
-  magnetArea: {fileID: 0}
+  magnetArea: {fileID: 1275526736}
 --- !u!114 &6313280525040913229
 MonoBehaviour:
   m_ObjectHideFlags: 0
