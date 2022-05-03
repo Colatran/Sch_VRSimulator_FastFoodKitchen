@@ -7,6 +7,7 @@ public class UIMistakeNotificationController : MonoBehaviour
     [SerializeField] UIPopUpResponsiveness popupResponsiveness;
     [SerializeField] Animator animator;
     [SerializeField] Attachment attachment;
+    [SerializeField] AudioSource audioSource;
 
 
 
@@ -43,6 +44,8 @@ public class UIMistakeNotificationController : MonoBehaviour
     {
         if (popup.isUp) return;
         popup.PopUp();
+
+        audioSource.Play();
 
         mistakeList.Open();
 

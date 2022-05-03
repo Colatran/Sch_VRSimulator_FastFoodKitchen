@@ -20,7 +20,7 @@ public class GameObjectPool : MonoBehaviour
 
     [Tooltip(
         "Fast - Gets object acording to a index\n" +
-        "NonScalable - Gets first incative object\n" +
+        "NonScalable - Gets first inactive object\n" +
         "Scalable - If ran out of objects instanciates another\n")]
     [SerializeField] PoolType poolType = PoolType.FAST;
     [Header("")]
@@ -29,7 +29,15 @@ public class GameObjectPool : MonoBehaviour
 
     public Transform Container { get => container; }
     public List<PoolObject> Objects { get => objects; }
-
+    public int GetActiveObjectCount()
+    {
+        int count = 0;
+        foreach (PoolObject pObject in objects)
+        {
+            if (pObject.gameObject.activeSelf) count++;
+        }
+        return count;
+    }
 
     private void OnValidate()
     {

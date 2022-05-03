@@ -410,6 +410,11 @@ PrefabInstance:
       propertyPath: grillBase
       value: 
       objectReference: {fileID: 7726241077441537636}
+    - target: {fileID: 3645784510180842385, guid: 09d4f5071c9bc324b85333d11eccb9e5,
+        type: 3}
+      propertyPath: cookingFactors
+      value: 
+      objectReference: {fileID: 7726241077441537636}
     - target: {fileID: 3645784510180842386, guid: 09d4f5071c9bc324b85333d11eccb9e5,
         type: 3}
       propertyPath: m_RootOrder
@@ -488,17 +493,17 @@ PrefabInstance:
     - target: {fileID: 4300522650042693452, guid: 09d4f5071c9bc324b85333d11eccb9e5,
         type: 3}
       propertyPath: startingPosition.x
-      value: 0.39999998
+      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: 4300522650042693452, guid: 09d4f5071c9bc324b85333d11eccb9e5,
         type: 3}
       propertyPath: startingPosition.y
-      value: 0.11
+      value: 0.71000004
       objectReference: {fileID: 0}
     - target: {fileID: 4300522650042693452, guid: 09d4f5071c9bc324b85333d11eccb9e5,
         type: 3}
       propertyPath: startingPosition.z
-      value: -0.42400002
+      value: 0.576
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09d4f5071c9bc324b85333d11eccb9e5, type: 3}
@@ -518,6 +523,11 @@ PrefabInstance:
     - target: {fileID: 3645784510180842385, guid: 09d4f5071c9bc324b85333d11eccb9e5,
         type: 3}
       propertyPath: grillBase
+      value: 
+      objectReference: {fileID: 7726241077441537636}
+    - target: {fileID: 3645784510180842385, guid: 09d4f5071c9bc324b85333d11eccb9e5,
+        type: 3}
+      propertyPath: cookingFactors
       value: 
       objectReference: {fileID: 7726241077441537636}
     - target: {fileID: 3645784510180842386, guid: 09d4f5071c9bc324b85333d11eccb9e5,
@@ -598,17 +608,17 @@ PrefabInstance:
     - target: {fileID: 4300522650042693452, guid: 09d4f5071c9bc324b85333d11eccb9e5,
         type: 3}
       propertyPath: startingPosition.x
-      value: -0.100000024
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 4300522650042693452, guid: 09d4f5071c9bc324b85333d11eccb9e5,
         type: 3}
       propertyPath: startingPosition.y
-      value: 0.11
+      value: 0.71000004
       objectReference: {fileID: 0}
     - target: {fileID: 4300522650042693452, guid: 09d4f5071c9bc324b85333d11eccb9e5,
         type: 3}
       propertyPath: startingPosition.z
-      value: -0.42400002
+      value: 0.576
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09d4f5071c9bc324b85333d11eccb9e5, type: 3}
@@ -628,6 +638,11 @@ PrefabInstance:
     - target: {fileID: 3645784510180842385, guid: 09d4f5071c9bc324b85333d11eccb9e5,
         type: 3}
       propertyPath: grillBase
+      value: 
+      objectReference: {fileID: 7726241077441537636}
+    - target: {fileID: 3645784510180842385, guid: 09d4f5071c9bc324b85333d11eccb9e5,
+        type: 3}
+      propertyPath: cookingFactors
       value: 
       objectReference: {fileID: 7726241077441537636}
     - target: {fileID: 3645784510180842386, guid: 09d4f5071c9bc324b85333d11eccb9e5,
@@ -708,17 +723,17 @@ PrefabInstance:
     - target: {fileID: 4300522650042693452, guid: 09d4f5071c9bc324b85333d11eccb9e5,
         type: 3}
       propertyPath: startingPosition.x
-      value: -0.6
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 4300522650042693452, guid: 09d4f5071c9bc324b85333d11eccb9e5,
         type: 3}
       propertyPath: startingPosition.y
-      value: 0.11
+      value: 0.71000004
       objectReference: {fileID: 0}
     - target: {fileID: 4300522650042693452, guid: 09d4f5071c9bc324b85333d11eccb9e5,
         type: 3}
       propertyPath: startingPosition.z
-      value: -0.42400002
+      value: 0.576
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09d4f5071c9bc324b85333d11eccb9e5, type: 3}

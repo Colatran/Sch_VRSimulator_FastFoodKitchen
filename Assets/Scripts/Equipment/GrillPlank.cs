@@ -4,12 +4,13 @@ using UnityEngine;
 public class GrillPlank : MonoBehaviour
 {
     [SerializeField] CookingFactors cookingFactors;
-    [SerializeField] GameObjectPool pool;
+    [SerializeField] GameObjectPool greasePool;
     [SerializeField] BatchHandler batchHandler;
     [SerializeField] Transform plank;
     [SerializeField] Button3D button;
     [SerializeField] Animator animator;
     [SerializeField] float plankSpeed = .5f;
+    [SerializeField] AudioSource audioSource;
 
 
     private void OnEnable()
@@ -180,6 +181,8 @@ public class GrillPlank : MonoBehaviour
         batchHandler.NextBatch();
         foreach (Item_Cookable item in cookablesSequence)
             batchHandler.AddItem(item);
+
+        audioSource.Play();
     }
 
     private void SetCookablesHeatSource(HeatSource source)
@@ -201,13 +204,13 @@ public class GrillPlank : MonoBehaviour
             Vector3 itemPosition = item.transform.position;
             GameObject grease;
 
-            grease = pool.GetObject();
+            grease = greasePool.GetObject();
             grease.transform.position = new Vector3(itemPosition.x, transform.position.y, itemPosition.z);
             grease.transform.rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
             grease.SetActive(true);
             grease.GetComponent<PoolObject>().OnDisable += OnGreaseDisable;
 
-            grease = pool.GetObject();
+            grease = greasePool.GetObject();
             grease.transform.position = new Vector3(itemPosition.x, transform.position.y + 0.011f, itemPosition.z);
             grease.transform.rotation = Quaternion.Euler(180, Random.Range(0, 360), 0);
             grease.transform.parent = plank;

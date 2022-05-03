@@ -5,11 +5,22 @@ public class Frier : MonoBehaviour
 {
     [SerializeField] CookingFactors cookingFactors;
     [SerializeField] FrierTimer[] frierTimers;
+    [SerializeField] GameObjectPool oilPool;
+    [SerializeField] GameObjectPool greasePool;
+
+    private void OnValidate()
+    {
+        foreach (PoolObject pObject in oilPool.Objects)
+            (pObject as PoolObject_OilDrop).SetGreasePool(greasePool);
+    }
+
 
     public CookingFactors CookingFactors { get => cookingFactors; }
 
     private List<FrierBasket> baskets = new List<FrierBasket>();
     private ItemType contentType = ItemType.NONE;
+    private float oilDropMistakeTime = 0;
+
 
 
     public void OnItemEnter(Item item)
@@ -78,7 +89,12 @@ public class Frier : MonoBehaviour
 
     public void OnItemExit(Item item)
     {
-        //POR O OLEO A ESCORRER
+        //Por o oleo a escorrer
+        GameObject oilDropObject = oilPool.GetObject();
+        PoolObject_OilDrop oilDrop = oilDropObject.GetComponent<PoolObject_OilDrop>();
+        oilDrop.SetHost(item.transform);
+        oilDropObject.SetActive(true);
+
 
         if (item is Item_Cookable)
         {
@@ -102,18 +118,58 @@ public class Frier : MonoBehaviour
     {
         foreach (FrierTimer timer in frierTimers) 
             timer.OnActivated += ActivateTimer;
+
+        foreach (PoolObject pObject in oilPool.Objects)
+            (pObject as PoolObject_OilDrop).OnDrop += OnOilDrop;
     }
+
     private void OnDisable()
     {
         foreach (FrierTimer timer in frierTimers)
             timer.OnActivated -= ActivateTimer;
+
+        foreach (PoolObject pObject in oilPool.Objects)
+            (pObject as PoolObject_OilDrop).OnDrop -= OnOilDrop;
     }
+
 
     private void ActivateTimer()
     {
         foreach(FrierBasket basket in baskets)
         {
             if (basket.ActivateTimer()) return;
+        }
+    }
+
+    private void OnOilDrop()
+    {
+        if (oilDropMistakeTime == 0)
+        {
+            GameManager.MakeMistake(MistakeType.FRITADEIRA_OLEO_NAOESCORREU);
+
+            oilDropMistakeTime = 5;
+        }
+    }
+
+    public int GetActiveGreaseCount()
+    {
+        return greasePool.GetActiveObjectCount();
+    }
+
+
+
+    private void Update()
+    {
+        float deltaTime = Time.deltaTime;
+
+        if (oilDropMistakeTime > 0)
+        {
+            oilDropMistakeTime -= deltaTime;
+
+            if (oilDropMistakeTime <= 0)
+            {
+                oilDropMistakeTime = 0;
+            }
         }
     }
 }

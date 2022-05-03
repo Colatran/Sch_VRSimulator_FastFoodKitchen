@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] float lmtTemp_stoveMin = 40f;
     [SerializeField] float lmtTemp_stoveMax = 41f;
     [SerializeField] float lmtCook_undercooked = 0.9f;
-    [SerializeField] float lmtCook_overcooked = 1.1f;
+    [SerializeField] float lmtCook_overcooked = 1.25f;
 
     public static float LmtTemp_roomTemperature { get => reference.lmtTemp_roomTemperature; }
     public static float LmtTemp_cold { get => reference.lmtTemp_cold; }
@@ -46,24 +46,6 @@ public class GameManager : MonoBehaviour
     public static float LmtCook_undercooked { get => reference.lmtCook_undercooked; }
     public static float LmtCook_overcooked { get => reference.lmtCook_overcooked; }
 
-
-
-
-
-
-    /*
-    [SerializeField] EffectUpdatedManager effectUpdatedManager;
-
-    public static void AddEffect(EffectUpdated effect)
-    {
-        reference.effectUpdatedManager.AddEffect(effect);
-    }
-    public static void RemoveEffect(EffectUpdated effect)
-    {
-        reference.effectUpdatedManager.RemoveEffect(effect);
-    }
-
-    [SerializeField] GreasePool _greasePool;
-    public static GreasePool greasePool { get => reference._greasePool; }
-    public LayerMask oilMask;*/
+    [SerializeField] LayerMask oilMask;
+    public static LayerMask OilMask { get => reference.oilMask; }    
 }

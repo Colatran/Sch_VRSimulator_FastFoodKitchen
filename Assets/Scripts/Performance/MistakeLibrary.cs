@@ -348,6 +348,17 @@ public static class MistakeLibrary
                 "Reacionou o temporizador.",
                 "Acione o temporizador apenas quando for necessário.")
         },
+        {
+            MistakeType.FRITADEIRA_OLEO_NAOESCORREU,
+            new Mistake(
+                "Não Escorreu o Óleo",
+                "Retirou o cesto de cima da fritadeira antes de escorrer o óleo.",
+                "Deve escorrer o óleo durante 5 a 10 segundos antes de o retirar de cima da cuba.")
+        },
+
+
+
+
 
 
 
@@ -369,24 +380,6 @@ public static class MistakeLibrary
                 "Utilizou produto que tocou no chão.",
                 "Qualquer produto que tenha tocado no chão deve ser descartado.")
         },
-
-
-
-        {
-            MistakeType.FRITO_MALESCORRIDO,
-            new Mistake(
-                "Frito Mal Escorrido",
-                "Tirou a grelha de cima da cuba muito cedo.",
-                "Deve escorrer os fritos 5 a 10 segundos, só depois tirar para o seu lugar respetivo.")
-        },
-        {
-            MistakeType.FRITADEIRA_NAOESCORREUOLEO,
-            new Mistake(
-                "Não Escorreu o Óleo",
-                "Retirou o cesto de cima da fritadeira antes de escorrer o óleo.",
-                "Deve escorrer o óleo durante 5 a 10 segundos antes de o retirar de cima da cuba.")
-        },
-
 
 
         {

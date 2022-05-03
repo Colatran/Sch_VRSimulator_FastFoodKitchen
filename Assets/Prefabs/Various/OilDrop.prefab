@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4607638729670476735}
-  - component: {fileID: 4607638729670476728}
+  - component: {fileID: 1946102671921539527}
   m_Layer: 0
-  m_Name: Oil
+  m_Name: OilDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4607638729670476728
+--- !u!114 &1946102671921539527
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,9 +41,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4607638729670476729}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3e91a191bacce843a0fdbf935fbe894, type: 3}
+  m_Script: {fileID: 11500000, guid: aa5d28bbc4cf4a548a348acf058500e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pool: {fileID: 0}
+  greasePool: {fileID: 0}
 --- !u!1 &4607638730518382852
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,7 +73,7 @@ Transform:
   m_GameObject: {fileID: 4607638730518382852}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 0.001, y: 0.5, z: 0.001}
+  m_LocalScale: {x: 0.005, y: 0.5, z: 0.005}
   m_Children: []
   m_Father: {fileID: 4607638729670476735}
   m_RootOrder: 0

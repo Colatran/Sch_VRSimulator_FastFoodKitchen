@@ -43,10 +43,12 @@ public class MagnetSnap : MonoBehaviour
             attachmentsMustIgnore.Remove(attachment);
             return;
         }
+        attachmentsMustIgnore.Add(attachment);
+
 
         //Find Matching Group
         int groupIndex = positionGroups.GetMatchingGroupIndex(attachment);
-        if(groupIndex == -1) return;
+        if (groupIndex == -1) return;
         PositionGroup group = positionGroups.GetGroup(groupIndex);
 
         //Try attaching group
@@ -60,15 +62,6 @@ public class MagnetSnap : MonoBehaviour
             }
         }
     }
-
-    private void OnTriggerExit(Collider other)
-    {
-        Attachment attachment = other.GetComponent<Attachment>();
-
-        attachmentsMustIgnore.Remove(attachment);
-    }
-
-
 
 
 

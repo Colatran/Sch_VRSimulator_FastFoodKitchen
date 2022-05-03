@@ -10,6 +10,7 @@ public class FrierBasketInterior : MonoBehaviour
         Item_Cookable item = other.GetComponent<Item_Cookable>();
         if (item == null) return;
 
+        if(basket.Contains(item)) return;
         basket.AddItem(item);
     }
 

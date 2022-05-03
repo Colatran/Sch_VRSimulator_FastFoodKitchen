@@ -6,6 +6,7 @@ public class FrierTimer : MonoBehaviour
     [SerializeField] private Button3D button;
     [SerializeField] private TextMeshPro Counter;
     [SerializeField] private Frier frierFrypot;
+    [SerializeField] private AudioSource audioSource;
 
     private float cookingTime = 0;
     private bool activated = false;
@@ -50,7 +51,7 @@ public class FrierTimer : MonoBehaviour
     {
         if (cookingTime > 0)
         {
-            Counter.text = "" + (int)cookingTime;
+            Counter.text = "" + (int)(cookingTime + 1);
             cookingTime -= Time.deltaTime;
             if (cookingTime <= 0)
             {
@@ -66,5 +67,6 @@ public class FrierTimer : MonoBehaviour
     {
         activated = false;
         Counter.text = "00";
+        audioSource.Play();
     }
 }
