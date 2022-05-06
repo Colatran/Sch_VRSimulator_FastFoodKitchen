@@ -63,6 +63,9 @@ public class PoolObject_OilDrop : PoolObject
                     GameObject grease = greasePool.GetObject();
                     grease.transform.position = hitInfo.point;
                     grease.SetActive(true);
+
+                    if (OnDrop != null)
+                        OnDrop();
                 }
             }
         }
