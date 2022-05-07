@@ -13,11 +13,11 @@ public class Interactible_Pickup : Interactible
     }
 
 
-    public override void Interact(GameObject sender, bool grab)
+    public override void Interact(HandInteractor sender, bool grab)
     {
         if (grab)
         {
-            Attachment toAttach = sender.GetComponent<Attachment>();
+            Attachment toAttach = sender.Attachment;
             if (toAttach == null) return;
 
             attachment.Attach(toAttach);

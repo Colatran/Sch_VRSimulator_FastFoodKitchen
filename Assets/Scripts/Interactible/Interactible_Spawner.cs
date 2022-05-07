@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interactible_Spawner : MonoBehaviour
+public class Interactible_Spawner : Interactible
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] GameObject prefab;
 
-    // Update is called once per frame
-    void Update()
+    public override void Interact(HandInteractor sender, bool grab)
     {
+        if (!grab) return;
+
         
     }
 }

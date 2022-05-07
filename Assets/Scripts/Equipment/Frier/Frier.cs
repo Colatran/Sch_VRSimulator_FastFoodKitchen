@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Frier : MonoBehaviour
 {
+    [SerializeField] TriggerArea oilTriggerArea;
     [SerializeField] CookingFactors cookingFactors;
     [SerializeField] FrierTimer[] frierTimers;
     [SerializeField] GameObjectPool oilPool;
@@ -15,16 +16,44 @@ public class Frier : MonoBehaviour
     }
 
 
-    public CookingFactors CookingFactors { get => cookingFactors; }
 
     private List<FrierBasket> baskets = new List<FrierBasket>();
     private ItemType contentType = ItemType.NONE;
     private float oilDropMistakeTime = 0;
 
+    public CookingFactors CookingFactors { get => cookingFactors; }
+    public int ActiveGreaseCount { get => greasePool.GetActiveObjectCount(); }
 
 
-    public void OnItemEnter(Item item)
+
+    private void OnEnable()
     {
+        oilTriggerArea.OnEnter += OnItemEnter;
+        oilTriggerArea.OnExit += OnItemExit;
+
+        foreach (FrierTimer timer in frierTimers) 
+            timer.OnActivated += ActivateTimer;
+
+        foreach (PoolObject pObject in oilPool.Objects)
+            (pObject as PoolObject_OilDrop).OnDrop += OnOilDrop;
+    }
+    private void OnDisable()
+    {
+        oilTriggerArea.OnEnter -= OnItemEnter;
+        oilTriggerArea.OnExit -= OnItemExit;
+
+        foreach (FrierTimer timer in frierTimers)
+            timer.OnActivated -= ActivateTimer;
+
+        foreach (PoolObject pObject in oilPool.Objects)
+            (pObject as PoolObject_OilDrop).OnDrop -= OnOilDrop;
+    }
+
+    private void OnItemEnter(Collider other)
+    {
+        Item_Cookable item = other.GetComponent<Item_Cookable>();
+        if (item == null) return;
+
         if (item is Item_Cookable)
         {
             Item_Cookable itemCookable = item as Item_Cookable;
@@ -86,9 +115,11 @@ public class Frier : MonoBehaviour
 
         }
     }
-
-    public void OnItemExit(Item item)
+    private void OnItemExit(Collider other)
     {
+        Item_Cookable item = other.GetComponent<Item_Cookable>();
+        if (item == null) return;
+
         //Por o oleo a escorrer
         GameObject oilDropObject = oilPool.GetObject();
         PoolObject_OilDrop oilDrop = oilDropObject.GetComponent<PoolObject_OilDrop>();
@@ -112,27 +143,6 @@ public class Frier : MonoBehaviour
         }
     }
 
-
-
-    private void OnEnable()
-    {
-        foreach (FrierTimer timer in frierTimers) 
-            timer.OnActivated += ActivateTimer;
-
-        foreach (PoolObject pObject in oilPool.Objects)
-            (pObject as PoolObject_OilDrop).OnDrop += OnOilDrop;
-    }
-
-    private void OnDisable()
-    {
-        foreach (FrierTimer timer in frierTimers)
-            timer.OnActivated -= ActivateTimer;
-
-        foreach (PoolObject pObject in oilPool.Objects)
-            (pObject as PoolObject_OilDrop).OnDrop -= OnOilDrop;
-    }
-
-
     private void ActivateTimer()
     {
         foreach(FrierBasket basket in baskets)
@@ -149,11 +159,6 @@ public class Frier : MonoBehaviour
 
             oilDropMistakeTime = 5;
         }
-    }
-
-    public int GetActiveGreaseCount()
-    {
-        return greasePool.GetActiveObjectCount();
     }
 
 

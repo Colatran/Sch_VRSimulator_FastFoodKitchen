@@ -2841,7 +2841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleport: {fileID: 8986698116530087174}
   manager: {fileID: 8986698115744034266}
-  handGrabArea: {fileID: 8986698115906489181}
+  handInteractor: {fileID: 7091412330120836759}
   handCursor: {fileID: 1450438066621763519}
   fingerTip: {fileID: 9136770702354237524}
   interactorLineVisual: {fileID: 8986698115744034264}
@@ -3410,9 +3410,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8986698115906489179}
   - component: {fileID: 8986698115906489180}
-  - component: {fileID: 8986698115906489181}
+  - component: {fileID: 3764614779198353563}
   m_Layer: 10
-  m_Name: HandGrabArea
+  m_Name: GrabArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3446,7 +3446,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.01, y: 0.01, z: 0.17}
   m_Center: {x: 0, y: 0, z: 0.02}
---- !u!114 &8986698115906489181
+--- !u!114 &3764614779198353563
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3455,11 +3455,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8986698115906489182}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c7f94aa01169454e88c6a50083ba30e, type: 3}
+  m_Script: {fileID: 11500000, guid: 52e6ad2d0047f324cbeefaceaa2c7eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  otherHand: {fileID: 8986698116705018491}
-  rb: {fileID: 8986698117128959534}
 --- !u!1 &8986698115910154010
 GameObject:
   m_ObjectHideFlags: 0
@@ -6002,6 +6000,7 @@ GameObject:
   - component: {fileID: 8986698116526748092}
   - component: {fileID: 8986698116526748093}
   - component: {fileID: 8986698116526748094}
+  - component: {fileID: 758746495280831971}
   m_Layer: 7
   m_Name: PhysicsRightHand
   m_TagString: Untagged
@@ -6113,6 +6112,22 @@ MonoBehaviour:
   orientation: {fileID: 0}
   isContainer: 1
   isDeadEnd: 1
+--- !u!114 &758746495280831971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8986698116526748064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd64acdab82700940a9f6c8cb35b3e6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherHand: {fileID: 7091412330120836759}
+  rb: {fileID: 8986698116526748092}
+  grabArea: {fileID: 2125338804523633213}
+  attachment: {fileID: 8986698116526748094}
 --- !u!1 &8986698116529678066
 GameObject:
   m_ObjectHideFlags: 0
@@ -6853,9 +6868,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8986698116705018492}
   - component: {fileID: 8986698116705018490}
-  - component: {fileID: 8986698116705018491}
+  - component: {fileID: 2125338804523633213}
   m_Layer: 10
-  m_Name: HandGrabArea
+  m_Name: GrabArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6889,7 +6904,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.01, y: 0.01, z: 0.17}
   m_Center: {x: 0, y: 0, z: 0.02}
---- !u!114 &8986698116705018491
+--- !u!114 &2125338804523633213
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6898,11 +6913,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8986698116705018493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c7f94aa01169454e88c6a50083ba30e, type: 3}
+  m_Script: {fileID: 11500000, guid: 52e6ad2d0047f324cbeefaceaa2c7eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  otherHand: {fileID: 8986698115906489181}
-  rb: {fileID: 8986698116526748092}
 --- !u!1 &8986698116712129229
 GameObject:
   m_ObjectHideFlags: 0
@@ -7870,6 +7883,7 @@ GameObject:
   - component: {fileID: 8986698117128959534}
   - component: {fileID: 8986698117128959535}
   - component: {fileID: 8986698117128959504}
+  - component: {fileID: 7091412330120836759}
   m_Layer: 7
   m_Name: PhysicsLeftHand
   m_TagString: Untagged
@@ -7981,6 +7995,22 @@ MonoBehaviour:
   orientation: {fileID: 0}
   isContainer: 1
   isDeadEnd: 1
+--- !u!114 &7091412330120836759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8986698117128959506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd64acdab82700940a9f6c8cb35b3e6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherHand: {fileID: 758746495280831971}
+  rb: {fileID: 8986698117128959534}
+  grabArea: {fileID: 3764614779198353563}
+  attachment: {fileID: 8986698117128959504}
 --- !u!1 &8986698117130687330
 GameObject:
   m_ObjectHideFlags: 0
@@ -8751,7 +8781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleport: {fileID: 8986698116530087174}
   manager: {fileID: 8986698117200010670}
-  handGrabArea: {fileID: 8986698116705018491}
+  handInteractor: {fileID: 758746495280831971}
   handCursor: {fileID: 3318386580832299338}
   fingerTip: {fileID: 8471182590884369508}
   interactorLineVisual: {fileID: 8986698117200010671}

@@ -7,8 +7,7 @@ public class HandInputController : MonoBehaviour
     [SerializeField] HandInputManager manager;
 
     [Header("")]
-    [SerializeField] HandGrabArea handGrabArea;
-    public HandGrabArea HandGrabArea { get => handGrabArea; }
+    [SerializeField] HandInteractor handInteractor;
     [SerializeField] GameObject handCursor;
     [SerializeField] FingerTip fingerTip;
 
@@ -17,6 +16,7 @@ public class HandInputController : MonoBehaviour
     [SerializeField] XRInteractorLineVisual otherInteractorLineVisual;
     [SerializeField] LineRenderer lineRenderer;
 
+    public HandInteractor HandInteractor { get => handInteractor; }
 
 
 
@@ -56,11 +56,11 @@ public class HandInputController : MonoBehaviour
 
     private void GrabStart()
     {
-        handGrabArea.GrabClosest();
+        handInteractor.GrabClosest();
     }
     private void GrabCancel()
     {
-        handGrabArea.ReleaseGrabbed();
+        handInteractor.ReleaseGrabbed();
     }
 
     private void TeleportStart()
@@ -92,7 +92,6 @@ public class HandInputController : MonoBehaviour
     {
         handCursor.SetActive(false);
     }
-
 
     private void Pause()
     {

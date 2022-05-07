@@ -16,6 +16,7 @@ public class FrierTimer : MonoBehaviour
     public event Action OnActivated;
 
 
+
     private void OnEnable()
     {
         button.OnPressed += OnButtonPressed;
@@ -24,7 +25,6 @@ public class FrierTimer : MonoBehaviour
     {
         button.OnPressed -= OnButtonPressed;
     }
-
 
     private void OnButtonPressed()
     {
@@ -43,7 +43,6 @@ public class FrierTimer : MonoBehaviour
                 OnActivated();
         }
     }
-
 
 
 

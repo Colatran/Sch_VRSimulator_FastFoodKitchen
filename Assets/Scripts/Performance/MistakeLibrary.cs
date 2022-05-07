@@ -381,7 +381,6 @@ public static class MistakeLibrary
                 "Qualquer produto que tenha tocado no chão deve ser descartado.")
         },
 
-
         {
             MistakeType.ITEM_CONTAMINADO,
             new Mistake(

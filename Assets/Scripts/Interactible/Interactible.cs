@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Interactible : MonoBehaviour
+public abstract class Interactible : MonoBehaviour
 {
     [SerializeField] Renderer render;
     [SerializeField] float interactibleRadius = 0;
@@ -52,5 +52,5 @@ public class Interactible : MonoBehaviour
     }
 
 
-    public virtual void Interact(GameObject sender, bool grab) { }
+    public abstract void Interact(HandInteractor sender, bool grab);
 }

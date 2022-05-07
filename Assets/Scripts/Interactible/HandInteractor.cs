@@ -1,11 +1,15 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HandGrabArea : MonoBehaviour
+public class HandInteractor : MonoBehaviour
 {
-    [SerializeField] HandGrabArea otherHand;
+    [SerializeField] HandInteractor otherHand;
     [SerializeField] Rigidbody rb;
+    [SerializeField] TriggerArea grabArea;
+    [SerializeField] Attachment attachment;
 
+    public Attachment Attachment { get => attachment; }
 
     private List<Interactible> interactibles = new List<Interactible>();
     private Interactible closest;
@@ -15,7 +19,19 @@ public class HandGrabArea : MonoBehaviour
     private float interactibleRadius = 0;
 
 
-    private void OnTriggerEnter(Collider other)
+
+    private void OnEnable()
+    {
+        grabArea.OnEnter += OnEnterGrabArea;
+        grabArea.OnExit += OnExitGrabArea;
+    }
+    private void OnDisable()
+    {
+        grabArea.OnEnter -= OnEnterGrabArea;
+        grabArea.OnExit -= OnExitGrabArea;
+    }
+
+    private void OnEnterGrabArea(Collider other)
     {
         Interactible interactible = other.GetComponent<Interactible>();
         if (interactible == null) return;
@@ -24,14 +40,14 @@ public class HandGrabArea : MonoBehaviour
 
         interactibles.Add(interactible);
     }
-
-    private void OnTriggerExit(Collider other)
+    private void OnExitGrabArea(Collider other)
     {
         Interactible interactible = other.GetComponent<Interactible>();
         if (interactible == null) return;
 
         interactibles.Remove(interactible);
     }
+
 
 
     void Update()
@@ -42,8 +58,8 @@ public class HandGrabArea : MonoBehaviour
 
     private void FindClosest()
     {
-        if (interactibles.Count == 0) 
-        { 
+        if (interactibles.Count == 0)
+        {
             if (closest == null) return;
             closest.RemoveHilight();
             closest = null;
@@ -92,12 +108,12 @@ public class HandGrabArea : MonoBehaviour
         if (closest == null || grabing) return;
 
         grabbed = closest;
-        closest = null; 
+        closest = null;
 
         if (otherHand.grabbed == grabbed) otherHand.ReleaseGrabbedWork();
 
         interactibleRadius = grabbed.InteractibleRadius;
-        grabbed.Interact(transform.parent.gameObject, true);
+        grabbed.Interact(this, true);
         grabbed.RemoveHilight();
 
         WorkCase_InteractiblePickup();
@@ -108,7 +124,7 @@ public class HandGrabArea : MonoBehaviour
 
         StopWorkCase_InteractiblePickup();
 
-        grabbed.Interact(transform.parent.gameObject, false);
+        grabbed.Interact(this, false);
 
         ReleaseGrabbedWork();
     }

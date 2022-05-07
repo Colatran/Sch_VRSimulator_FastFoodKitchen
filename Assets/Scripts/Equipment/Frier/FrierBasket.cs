@@ -4,30 +4,27 @@ using UnityEngine;
 public class FrierBasket : MonoBehaviour
 {
     [SerializeField] BatchHandler batchHandler;
+    [SerializeField] TriggerArea interiorTrigger;
 
     private const float _timeToPressTimer = 5;
     private float timeToPressTimer = _timeToPressTimer;
     private bool canFailPressTimer = false;
     private bool timerActivated = false;
-
-    public bool TimerActivated { get => timerActivated; }
-
-
     private ItemType contentType = ItemType.NONE;
     private List<Item_Cookable> content = new List<Item_Cookable>();
 
-
     public bool Contains(Item_Cookable item) => content.Contains(item);
-    public bool IsNotEmpty() => content.Count > 0;
 
 
 
-    public void AddItem(Item_Cookable item)
+    private void AddItem(Item_Cookable item)
     {
+        if (Contains(item)) return;
+
         content.Add(item);
         CheckAddedItem(item);
     }
-    public void RemoveItem(Item_Cookable item)
+    private void RemoveItem(Item_Cookable item)
     {
         content.Remove(item);
         CheckRemovedItem(item);
@@ -73,6 +70,35 @@ public class FrierBasket : MonoBehaviour
 
             contentType = ItemType.NONE;
         }
+    }
+
+
+
+    private void OnEnable()
+    {
+        interiorTrigger.OnEnter += OnEnterInteriorArea;
+        interiorTrigger.OnExit += OnExitInteriorArea;
+    }
+    private void OnDisable()
+    {
+        interiorTrigger.OnEnter -= OnEnterInteriorArea;
+        interiorTrigger.OnExit -= OnExitInteriorArea;
+    }
+
+    private void OnEnterInteriorArea(Collider other)
+    {
+        Item_Cookable item = other.GetComponent<Item_Cookable>();
+        if (item == null) return;
+
+        if (Contains(item)) return;
+        AddItem(item);
+    }
+    private void OnExitInteriorArea(Collider other)
+    {
+        Item_Cookable item = other.GetComponent<Item_Cookable>();
+        if (item == null) return;
+
+        RemoveItem(item);
     }
 
 

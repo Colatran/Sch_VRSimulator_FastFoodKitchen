@@ -23,7 +23,7 @@ public class Interactible_Slider : Interactible
         }
     }
 
-    public override void Interact(GameObject sender, bool grab)
+    public override void Interact(HandInteractor sender, bool grab)
     {
         if(grab)
         {
