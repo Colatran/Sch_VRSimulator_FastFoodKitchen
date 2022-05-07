@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -105,30 +104,41 @@ public class HandInteractor : MonoBehaviour
 
     public void GrabClosest()
     {
-        if (closest == null || grabing) return;
+        if (grabing || closest == null) return;
 
         grabbed = closest;
+        GrabWork();
+    }
+    public void Grab(Interactible interactible)
+    {
+        if (grabing) return;
+
+        grabbed = interactible;
+        GrabWork();
+    }
+    private void GrabWork()
+    {
         closest = null;
 
         if (otherHand.grabbed == grabbed) otherHand.ReleaseGrabbedWork();
 
         interactibleRadius = grabbed.InteractibleRadius;
-        grabbed.Interact(this, true);
+        grabbed.Grab(this);
         grabbed.RemoveHilight();
 
         WorkCase_InteractiblePickup();
     }
+
     public void ReleaseGrabbed()
     {
         if (notGrabing) return;
 
         StopWorkCase_InteractiblePickup();
 
-        grabbed.Interact(this, false);
+        grabbed.Release(this);
 
         ReleaseGrabbedWork();
     }
-
     private void ReleaseGrabbedWork()
     {
         grabbed = null;

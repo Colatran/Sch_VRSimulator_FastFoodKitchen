@@ -8,17 +8,15 @@ public class XRInteractableToInteractibleConverter : MonoBehaviour
 
     public void SelectEnter()
     {
-        interactible.Interact(
+        interactible.Grab(
             XRinteractable.firstInteractorSelecting.transform
-            .GetComponent<HandInputController>().HandInteractor,
-            true);
+            .GetComponent<HandInputController>().HandInteractor);
     }
     public void SelectExit()
     {
-        interactible.Interact(
+        interactible.Release(
             XRinteractable.firstInteractorSelecting.transform
-            .GetComponent<HandInputController>().HandInteractor,
-            false);
+            .GetComponent<HandInputController>().HandInteractor);
     }
 
     public void HoverEnter()

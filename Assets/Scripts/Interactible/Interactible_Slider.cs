@@ -23,17 +23,15 @@ public class Interactible_Slider : Interactible
         }
     }
 
-    public override void Interact(HandInteractor sender, bool grab)
+
+    public override void Grab(HandInteractor sender)
     {
-        if(grab)
-        {
-            targetTransform = sender.transform;
-            offset = targetTransform.position - transform.position;
-        }
-        else
-        {
-            targetTransform = null;
-        }
+        targetTransform = sender.transform;
+        offset = targetTransform.position - transform.position;
+    }
+    public override void Release(HandInteractor sender)
+    {
+        targetTransform = null;
     }
 
 

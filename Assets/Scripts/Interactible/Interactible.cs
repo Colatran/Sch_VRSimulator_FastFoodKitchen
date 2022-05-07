@@ -52,5 +52,6 @@ public abstract class Interactible : MonoBehaviour
     }
 
 
-    public abstract void Interact(HandInteractor sender, bool grab);
+    public abstract void Grab(HandInteractor sender);
+    public abstract void Release(HandInteractor sender);
 }
