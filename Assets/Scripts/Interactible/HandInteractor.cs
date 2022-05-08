@@ -107,27 +107,17 @@ public class HandInteractor : MonoBehaviour
         if (grabing || closest == null) return;
 
         grabbed = closest;
-        GrabWork();
-    }
-    public void Grab(Interactible interactible)
-    {
-        if (grabing) return;
-
-        grabbed = interactible;
-        GrabWork();
-    }
-    private void GrabWork()
-    {
         closest = null;
 
         if (otherHand.grabbed == grabbed) otherHand.ReleaseGrabbedWork();
 
         interactibleRadius = grabbed.InteractibleRadius;
-        grabbed.Grab(this);
         grabbed.RemoveHilight();
+        grabbed.Grab(this);
 
         WorkCase_InteractiblePickup();
     }
+    public void SetGrabbed(Interactible interactible) => grabbed = interactible;
 
     public void ReleaseGrabbed()
     {

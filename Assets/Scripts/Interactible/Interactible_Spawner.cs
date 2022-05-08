@@ -9,13 +9,15 @@ public class Interactible_Spawner : Interactible
     {
         GameObject gObject = Instantiate(prefab);
         Interactible interactible = gObject.GetComponent<Interactible>();
-        sender.Grab(interactible);
 
-        gObject.transform.position = new Vector3(0, -0.07f, 0.128f);
-        gObject.transform.rotation = new Quaternion(0, 0, 270, 0);
+        sender.SetGrabbed(interactible);
+        interactible.Grab(sender);
+
+        gObject.transform.localPosition = new Vector3(-0.01f, -0.04f, 0.1f);
+        gObject.transform.localRotation = new Quaternion(0, 0, 0, 0);
     }
     public override void Release(HandInteractor sender)
     {
-        throw new System.NotImplementedException();
+        
     }
 }
