@@ -121,7 +121,7 @@ public class HandInteractor : MonoBehaviour
 
     public void ReleaseGrabbed()
     {
-        if (notGrabing) return;
+        if (notGrabing || grabbed == null) return;
 
         StopWorkCase_InteractiblePickup();
 

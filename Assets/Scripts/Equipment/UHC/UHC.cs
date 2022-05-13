@@ -4,17 +4,28 @@ using UnityEngine;
 public class UHC : MonoBehaviour
 {
     [SerializeField] List<UHCSlotSequence> sequences = new List<UHCSlotSequence>();
+    [SerializeField, ReadOnly] List<UHCSlot> slots = new List<UHCSlot>();
+    [SerializeField] CookOrderer cookOrderer;
 
     private void OnValidate()
     {
+        slots.Clear();
         foreach (UHCSlotSequence sequence in sequences)
+        {
             sequence.OnValidate();
+            slots.AddRange(sequence.Slots);
+        }
     }
+
+
 
     private void OnEnable()
     {
         foreach (UHCSlotSequence sequence in sequences)
             sequence.OnEnable();
+
+        foreach (UHCSlot slot in slots)
+            slot.OnServe += Slot_OnServe;
     }
     private void OnDisable()
     {
@@ -24,11 +35,20 @@ public class UHC : MonoBehaviour
 
 
 
+    private void Slot_OnServe(ItemType itemType, int count)
+    {
+        cookOrderer.ServeOrder(itemType, count);
+    }
+
+
+
     [System.Serializable]
     private class UHCSlotSequence
     {
         [SerializeField] private ItemType type;
         [SerializeField] private UHCSlot[] slots;
+
+        public UHCSlot[] Slots { get => slots; }
 
         public void OnValidate() 
         {

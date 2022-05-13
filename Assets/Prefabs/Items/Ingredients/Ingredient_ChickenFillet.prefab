@@ -219,6 +219,7 @@ MonoBehaviour:
   attachment: {fileID: 4968985978196330071}
   typeFlags: 040000000800000009000000
   attributeCheck: {fileID: 999675493170257692}
+  disposable: 1
   cookedMaterial: {fileID: 4319343793465925134}
 --- !u!114 &4319343793465925134
 MonoBehaviour:

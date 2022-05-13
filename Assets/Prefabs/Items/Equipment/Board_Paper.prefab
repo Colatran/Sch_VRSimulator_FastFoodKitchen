@@ -296,6 +296,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachment: {fileID: 7810131237612242462}
   typeFlags: 1400000015000000
+  attributeCheck: {fileID: 0}
+  disposable: 1
   cookedMaterial: {fileID: 7810131237612242458}
 --- !u!114 &7810131237612242458
 MonoBehaviour:

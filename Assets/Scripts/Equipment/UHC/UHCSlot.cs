@@ -12,12 +12,6 @@ public class UHCSlot : MonoBehaviour
     [ReadOnly, SerializeField] private ItemType type;
     [ReadOnly, SerializeField] private ItemType boardType;
 
-    public delegate void Action(UHCSlot slot);
-    public event Action OnEnter;
-    public event Action OnExit;
-    public event Action OnEmpty;
-
-
     public void SetType(ItemType type)
     {
         this.type = type;
@@ -58,6 +52,9 @@ public class UHCSlot : MonoBehaviour
     private Item_Container board;
     private bool HasBoard { get => board != null; }
     private bool HasNoBoard { get => board == null; }
+    public delegate void Action(UHCSlot slot);
+    public event Action OnEnter;
+    public event Action OnExit;
 
     public void OnTipEnter(Item_Container container)
     {
@@ -86,15 +83,13 @@ public class UHCSlot : MonoBehaviour
     private void OnBoardEnter()
     {
         CheckBoard();
+        ServeItemsOfType();
 
         board.SetCookablesHeatSource(HeatSource.STOVE);
         board.BatchId = 0;
 
         timer_timeToPressTimer = 5;
-
-        hasItemsOfType = true;
         timerInvalidated = false;
-        timeToRemoveItem = timeToRemoveItem_initial;
 
         if (OnEnter != null)
             OnEnter(this);
@@ -131,6 +126,38 @@ public class UHCSlot : MonoBehaviour
 
 
 
+    public delegate void Serve(ItemType itemType, int count);
+    public event Serve OnServe;
+
+    private void ServeItemsOfType()
+    {
+        List<Item> content = board.Content;
+        int serveCount = 0;
+
+        for (int i = content.Count - 1; i > -1; i--)
+        {
+            if (content[i].Is(type))
+            {
+                RemoveItem(i);
+                serveCount++;
+            }
+
+        }
+
+        OnServe?.Invoke(type, serveCount);
+    }
+
+    private void RemoveItem(int index)
+    {
+        Item item = board.Content[index];
+
+        Destroy(item.gameObject);
+    }
+
+
+
+
+
     private float timer_timeToPressTimer = 5;
     private float timer_timeIrrevocable = 5;
     private bool timerActivated = false;
@@ -143,7 +170,7 @@ public class UHCSlot : MonoBehaviour
         if (type == ItemType.NONE) return;
         if (HasNoBoard) return;
 
-        if(timerActivated)
+        if (timerActivated)
         {
             if (timer_timeIrrevocable <= 0 && !timerInvalidated)
             {
@@ -168,7 +195,7 @@ public class UHCSlot : MonoBehaviour
     {
         if (timerActivated)
         {
-            if(timer_timeIrrevocable > 0)
+            if (timer_timeIrrevocable > 0)
                 timer_timeIrrevocable -= deltaTime;
         }
         else
@@ -183,76 +210,11 @@ public class UHCSlot : MonoBehaviour
         }
     }
 
-
-
-
-
-    private const float timeToRemoveItem_initial = 20;
-    private float timeToRemoveItem = 20;
-    private bool hasItemsOfType = false;
-
-    private void Update_RemoveItem(float deltaTime)
-    {
-        if (timeToRemoveItem > 0)
-        {
-            timeToRemoveItem -= deltaTime;
-
-            if (timeToRemoveItem <= 0)
-            {
-                timeToRemoveItem = timeToRemoveItem_initial;
-
-                board.RectifyContent();
-
-                int first = FirstOfType();
-
-                if (first == -1)
-                {
-                    hasItemsOfType = false;
-                    SetLightsMaterial(GameManager.Asset.Material_UHC_TimerOff);
-
-                    if (OnEmpty != null)
-                        OnEmpty(this);
-                }
-                else
-                {
-                    RemoveItem(first);
-                }
-            }
-        }
-    }
-
-    private int FirstOfType()
-    {
-        List<Item> content = board.Content;
-
-        for (int i = content.Count - 1; i > -1; i--)
-            if (content[i].Is(type))
-                return i;
-
-        return -1;
-    }
-
-    private void RemoveItem(int index)
-    {
-        Item item = board.Content[index];
-
-        Destroy(item.gameObject);
-    }
-
-
-
-
-
     private void Update()
     {
         float deltaTime = Time.deltaTime;
 
-        if (HasBoard)
-        {
+        if (HasBoard)        
             Update_Timer(deltaTime);
-
-            if (hasItemsOfType)
-                Update_RemoveItem(deltaTime);
-        }
     }
 }

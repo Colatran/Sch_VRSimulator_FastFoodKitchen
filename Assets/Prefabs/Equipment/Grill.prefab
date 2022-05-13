@@ -277,10 +277,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f24ef8e62b24a499b5d9521b10ebff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cookingTime: 60
+  cookingTime: 5
   maxTemperature: 85
-  cookingTimeFactor: 0.016666668
-  maxTemperatureFactor: 1.4166666
+  cookingTimeFactor: 0.2
+  maxTemperatureFactor: 17
 --- !u!1 &4784041427587915026
 GameObject:
   m_ObjectHideFlags: 0

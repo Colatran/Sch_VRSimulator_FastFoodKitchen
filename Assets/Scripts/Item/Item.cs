@@ -40,4 +40,8 @@ public class Item : MonoBehaviour
 
 
     public int BatchId { get; set; }
+
+
+    [SerializeField] bool disposable = false;
+    public bool Disposable { get => disposable && attachment.IsNotAttached; }
 }
