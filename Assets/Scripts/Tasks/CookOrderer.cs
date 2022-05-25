@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class CookOrderer : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class CookOrderer : MonoBehaviour
 
 
 
-    public void MakeOrder()
+    private void MakeOrder()
     {
         float seed = Random.Range(0, totalLikelihood);
         float likelihoodStep = 0;
@@ -32,7 +33,10 @@ public class CookOrderer : MonoBehaviour
 
             likelihoodStep += order.Likelihood;
             if (seed < likelihoodStep)
+            {
                 order.MakeOrder();
+                return;
+            }
         }
     }
 
@@ -75,14 +79,15 @@ public class CookOrderer : MonoBehaviour
         [SerializeField, Min(1)] int batchSize = 5;
         [SerializeField, Min(2)] int maxBatchCount = 2;
 
+        [SerializeField] TMP_Text text_count;
+
         private int orderd = 0;
         public int Ordered { get => orderd < 0 ? 0 : orderd; }
 
         private int served = 0;
         public int Served { get => served; }
 
-        public delegate void Action();
-        public event Action OnOrderdChanged;
+        
 
 
         public void MakeOrder()
@@ -90,16 +95,14 @@ public class CookOrderer : MonoBehaviour
             int batchCount = Random.Range(1, maxBatchCount + 1);
             orderd += batchCount * batchSize;
 
-            if (OnOrderdChanged != null)
-                OnOrderdChanged();
+            text_count.text = orderd + "";
         }
         public void Serve(int count)
         {
             orderd -= count;
             served += count;
 
-            if (OnOrderdChanged != null)
-                OnOrderdChanged();
+            text_count.text = orderd + "";
         }
     }
 }
