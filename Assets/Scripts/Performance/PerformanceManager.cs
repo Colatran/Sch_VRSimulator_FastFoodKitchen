@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class PerformanceManager : MonoBehaviour
 {
-    List<MistakeType> mistakeList = new List<MistakeType>();
-    public List<MistakeType> MistakeList { get => mistakeList; }
+    List<MistakeType> mistakes = new List<MistakeType>();
+    public List<MistakeType> Mistakes { get => mistakes; }
 
     public delegate void MistakeTypeAction(MistakeType type);
     public event MistakeTypeAction OnAddMistake;
 
     public void AddMistake(MistakeType mistakeType)
     {
-        mistakeList.Add(mistakeType);
+        mistakes.Add(mistakeType);
 
         if(OnAddMistake != null)
             OnAddMistake(mistakeType);

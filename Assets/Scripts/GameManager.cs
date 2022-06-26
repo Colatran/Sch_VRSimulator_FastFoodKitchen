@@ -47,5 +47,21 @@ public class GameManager : MonoBehaviour
     public static float LmtCook_overcooked { get => reference.lmtCook_overcooked; }
 
     [SerializeField] LayerMask oilMask;
-    public static LayerMask OilMask { get => reference.oilMask; }    
+    public static LayerMask OilMask { get => reference.oilMask; }
+
+
+
+
+
+    [Header("Stats")]
+    [SerializeField] TaskData taskData;
+    public static TaskData TaskData { get => reference.taskData; }
+
+    [SerializeField] Orderer orderer;
+    public static int TotalServed { get => reference.orderer.TotalServed(); }
+
+    private int totalDirt = 0;
+    public static int TotalDirt { get => reference.totalDirt; }
+    public static void AddDirt() { reference.totalDirt++; }
+    public static void RemoveDirt() { reference.totalDirt--; }
 }

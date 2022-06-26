@@ -5,7 +5,7 @@ public class UHC : MonoBehaviour
 {
     [SerializeField] List<UHCSlotSequence> sequences = new List<UHCSlotSequence>();
     [SerializeField, ReadOnly] List<UHCSlot> slots = new List<UHCSlot>();
-    [SerializeField] CookOrderer cookOrderer;
+    [SerializeField] Orderer_Cook cookOrderer;
 
     private void OnValidate()
     {

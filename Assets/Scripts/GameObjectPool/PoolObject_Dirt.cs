@@ -15,6 +15,8 @@ public class PoolObject_Dirt : PoolObject
         base.Enable();
 
         materialProperty.Set();
+
+        GameManager.AddDirt();
     }
 
 
@@ -25,6 +27,10 @@ public class PoolObject_Dirt : PoolObject
         if (item == null) return;
 
         if (item.Is(ItemType.EQUIPMENT_CLEANINGSPONGE))
+        {
+            GameManager.RemoveDirt();
+
             DisableSelf();
+        }
     }
 }
