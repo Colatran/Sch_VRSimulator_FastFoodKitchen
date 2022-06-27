@@ -1,14 +1,42 @@
 using UnityEngine;
 using TMPro;
 
-public class FinalStatsPanel : MonoBehaviour
+public class Notification_FinalStats : Notification
 {
+    [Header("")]
+    [SerializeField] UIPanel_MistakeList mistakeList;
+
+    [Header("Stats")]
     [SerializeField] TMP_Text text_job;
     [SerializeField] TMP_Text text_difficulty;
     [SerializeField] TMP_Text text_time;
     [SerializeField] TMP_Text text_score;
     [SerializeField] TMP_Text text_dirt;
     [SerializeField] TMP_Text text_mistakes;
+
+
+
+    public override bool Open()
+    {
+        if (base.Open())
+        {
+            //Block Player movement
+            SetStats();
+            mistakeList.Open();
+            return true;
+        }
+        return false;
+    }
+    public override bool Close()
+    {
+        if (base.Close())
+        {
+            //Sair para o menu inicial
+            return true;
+        }
+        return false;
+    }
+
 
     public void SetStats()
     {

@@ -2,14 +2,13 @@ using UnityEngine;
 
 public class UIFaceTarget : MonoBehaviour
 {
-    [SerializeField] Transform target;
     [SerializeField] bool lockX = false;
     [SerializeField] bool lockY = false;
     [SerializeField] bool lockZ = false;
 
     private void Update()
     {
-        transform.LookAt(target);
+        transform.LookAt(GameManager.MainCameraTransform);
         Quaternion currRotation = transform.rotation;
 
         float x;

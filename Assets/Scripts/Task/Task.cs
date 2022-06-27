@@ -60,7 +60,7 @@ public static class Task
                 return "Preparador";
 
             default:
-                return "Bather";
+                return "Batcher";
         }
     }
 
@@ -69,16 +69,16 @@ public static class Task
         switch(difficuty)
         {
             case TaskDifficuty.EASY:
-                return "Fácil";
+                return "Aprendiz";
 
             case TaskDifficuty.NORMAL:
-                return "Normal";
+                return "Treino";
 
             case TaskDifficuty.HARD:
-                return "Difícil";
+                return "Simulação";
 
             default:
-                return "Normal";
+                return "Aprendiz";
         }
     }
 }

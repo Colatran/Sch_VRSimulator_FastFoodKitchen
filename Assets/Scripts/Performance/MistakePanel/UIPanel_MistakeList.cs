@@ -30,6 +30,8 @@ public class UIPanel_MistakeList : MonoBehaviour
 
     public void Open()
     {
+        if (GameManager.TaskData.taskDifficuty == TaskDifficuty.HARD) return;
+
         isOpen = true;
 
         currentSector = 0;
@@ -218,8 +220,22 @@ public class UIPanel_MistakeList : MonoBehaviour
         Mistake mistake = MistakeLibrary.GetMistake(mistakeType);
 
         text_title.text = mistake.Title;
-        text_description.text = mistake.Description;
-        text_hint.text = mistake.Hint;
+
+        if(GameManager.TaskData.taskDifficuty == TaskDifficuty.EASY)
+        {
+            text_description.text = mistake.Description;
+            text_hint.text = mistake.Hint;
+        }
+        else if (GameManager.TaskData.taskDifficuty == TaskDifficuty.NORMAL)
+        {
+            text_description.text = mistake.Description;
+            text_hint.text = "!PISTAS BLOQUADAS!\n Para ver pistas tem de estar na difficuldade Aprendiz";
+        }
+        else
+        {
+            text_description.text = "";
+            text_hint.text = "";
+        }
     }
 
     public void PressMistakeButton(PoolObject_UIMistakeButton button)

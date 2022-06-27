@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class UIPopUpResponsiveness : MonoBehaviour
 {
-    [ShowIf(ActionOnConditionFail.JustDisable, ConditionOperator.Or,
-        nameof(responsiveToPosition),
-        nameof(responsiveToAngle),
-        nameof(responsiveToDistance))]
-    [SerializeField] Transform target;
+    private Transform target;
+
+    private void Start()
+    {
+        target = GameManager.MainCameraTransform;
+    }
 
 
 
 
 
-    [Header("")]
     [SerializeField] bool responsiveToPosition = false;
     [ShowIf(ActionOnConditionFail.JustDisable, ConditionOperator.And, nameof(responsiveToPosition))]
     [SerializeField] LayerMask layerMask;

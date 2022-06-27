@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 2822763296046761549}
   - component: {fileID: 2822763296046761555}
   - component: {fileID: 2822763296046761544}
-  - component: {fileID: 2822763296046761550}
-  - component: {fileID: 2822763296046761546}
   - component: {fileID: 2822763296046761554}
   - component: {fileID: 1021759402841811852}
+  - component: {fileID: 2822763296046761550}
+  - component: {fileID: 2822763296046761546}
   m_Layer: 5
-  m_Name: MistakeNotification
+  m_Name: Notification_Mistake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,49 +94,6 @@ MonoBehaviour:
   - {fileID: 2822763297658817944}
   - {fileID: 2822763296950718002}
   responsiveness: {fileID: 2822763296046761550}
---- !u!114 &2822763296046761550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2822763296046761552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bca48e11e4dad947abd7c06715c9e8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  responsiveToPosition: 1
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 257
-  initialDistance: 0.75
-  hitDistanceOffset: 0.1
-  offset: {x: 0, y: -0.3, z: 0}
-  hight: 1
-  responsiveToAngle: 1
-  maxAngle: 45
-  responsiveToDistance: 1
-  maxDistance: 1.5
---- !u!114 &2822763296046761546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2822763296046761552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb87d7aa00859cc4c92144a01682ffd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mistakeList: {fileID: 2822763296716246331}
-  popup: {fileID: 2822763296046761544}
-  popupResponsiveness: {fileID: 2822763296046761550}
-  animator: {fileID: 2822763296046761554}
-  attachment: {fileID: 2822763296046761555}
-  audioSource: {fileID: 1021759402841811852}
 --- !u!95 &2822763296046761554
 Animator:
   serializedVersion: 3
@@ -252,6 +209,48 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2822763296046761550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2822763296046761552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bca48e11e4dad947abd7c06715c9e8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  responsiveToPosition: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 257
+  initialDistance: 0.75
+  hitDistanceOffset: 0.1
+  offset: {x: 0, y: -0.3, z: 0}
+  hight: 1
+  responsiveToAngle: 1
+  maxAngle: 45
+  responsiveToDistance: 1
+  maxDistance: 1.5
+--- !u!114 &2822763296046761546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2822763296046761552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58b49e8d2c92b54488398fe7d943d529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popup: {fileID: 2822763296046761544}
+  attachment: {fileID: 2822763296046761555}
+  animator: {fileID: 2822763296046761554}
+  audioSource: {fileID: 1021759402841811852}
+  mistakeList: {fileID: 2822763296716246331}
+  popupResponsiveness: {fileID: 2822763296046761550}
 --- !u!1 &2822763296615365309
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,8 +710,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2822763296046761546}
-        m_TargetAssemblyTypeName: UIMistakeNotificationController, Assembly-CSharp
-        m_MethodName: Close
+        m_TargetAssemblyTypeName: Notification, Assembly-CSharp
+        m_MethodName: NotificationClose
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1129,7 +1128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47274183084dfc04ba2fac488d1aad21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   lockX: 1
   lockY: 0
   lockZ: 1
@@ -1249,7 +1247,7 @@ PrefabInstance:
     - target: {fileID: 7748449368487432657, guid: 51b571aa973166d40a944225474f302b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000012397766
+      value: 0.000017166138
       objectReference: {fileID: 0}
     - target: {fileID: 7748449368967218161, guid: 51b571aa973166d40a944225474f302b,
         type: 3}

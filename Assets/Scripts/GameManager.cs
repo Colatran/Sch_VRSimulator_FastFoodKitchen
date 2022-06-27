@@ -24,6 +24,11 @@ public class GameManager : MonoBehaviour
         reference.performanceManager.AddMistake(type);
     }
 
+
+    [SerializeField] Transform mainCameraTransform;
+    public static Transform MainCameraTransform { get => reference.mainCameraTransform; }
+
+
     [SerializeField] UIPopUp pauseMenu;
     public static UIPopUp PauseMenu { get => reference.pauseMenu; }
 
