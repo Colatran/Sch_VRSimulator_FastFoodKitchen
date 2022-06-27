@@ -20,7 +20,6 @@ public class Notification_FinalStats : Notification
     {
         if (base.Open())
         {
-            //Block Player movement
             SetStats();
             mistakeList.Open();
             return true;

@@ -2,39 +2,13 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager reference;
-    
-    private void Awake()
-    {
-        reference = this;
-    }
-
-
-
-
-
     [Header("References")]
     [SerializeField] AssetHolder assetHolder;
-    public static AssetHolder Asset { get => reference.assetHolder; }
-
+    [SerializeField] TaskData taskData;
     [SerializeField] PerformanceManager performanceManager;
-    public static PerformanceManager PerformanceManager { get => reference.performanceManager; }
-    public static void MakeMistake(MistakeType type)
-    {
-        reference.performanceManager.AddMistake(type);
-    }
-
-
     [SerializeField] Transform mainCameraTransform;
-    public static Transform MainCameraTransform { get => reference.mainCameraTransform; }
-
-
     [SerializeField] UIPopUp pauseMenu;
-    public static UIPopUp PauseMenu { get => reference.pauseMenu; }
-
-
-
-
+    [SerializeField] Orderer orderer;
 
     [Header("Cooking")]
     [SerializeField] float lmtTemp_roomTemperature = 24.5f;
@@ -43,6 +17,72 @@ public class GameManager : MonoBehaviour
     [SerializeField] float lmtTemp_stoveMax = 41f;
     [SerializeField] float lmtCook_undercooked = 0.9f;
     [SerializeField] float lmtCook_overcooked = 1.25f;
+    [SerializeField] LayerMask oilMask;
+
+    private bool started = false;
+    private float taskTime = 0;
+    private int totalDirt = 0;
+
+
+
+    private void Awake()
+    {
+        reference = this;
+    }
+
+    private void Start()
+    {
+        taskTime = Task.GetTime(taskData.taskTime);
+
+
+        ///
+        ///
+        started = true;
+    }
+
+    private void Update()
+    {
+        if (started) Update_CountTime();
+    }
+
+
+    private void Update_CountTime()
+    {
+        float deltaTime = Time.deltaTime * 100;
+        taskTime -= deltaTime;
+
+        if (taskTime < 0)
+        {
+            taskTime = 0;
+            ReferenceFinishTask();
+        }
+    }
+
+    private void ReferenceStartTask()
+    {
+        started = true;
+
+        //Unlock Player Movement
+    }
+
+    private void ReferenceFinishTask()
+    {
+        started = false;
+
+        //Lock Player Movement
+        //Show Notification
+    }
+
+
+
+
+
+    public static GameManager reference;
+
+    public static AssetHolder Asset { get => reference.assetHolder; }
+    public static PerformanceManager PerformanceManager { get => reference.performanceManager; }
+    public static Transform MainCameraTransform { get => reference.mainCameraTransform; }
+    public static UIPopUp PauseMenu { get => reference.pauseMenu; }
 
     public static float LmtTemp_roomTemperature { get => reference.lmtTemp_roomTemperature; }
     public static float LmtTemp_cold { get => reference.lmtTemp_cold; }
@@ -51,22 +91,20 @@ public class GameManager : MonoBehaviour
     public static float LmtCook_undercooked { get => reference.lmtCook_undercooked; }
     public static float LmtCook_overcooked { get => reference.lmtCook_overcooked; }
 
-    [SerializeField] LayerMask oilMask;
     public static LayerMask OilMask { get => reference.oilMask; }
-
-
-
-
-
-    [Header("Stats")]
-    [SerializeField] TaskData taskData;
     public static TaskData TaskData { get => reference.taskData; }
-
-    [SerializeField] Orderer orderer;
     public static int TotalServed { get => reference.orderer.TotalServed(); }
-
-    private int totalDirt = 0;
+    public static float TaskTime { get => reference.taskTime; }
     public static int TotalDirt { get => reference.totalDirt; }
-    public static void AddDirt() { reference.totalDirt++; }
-    public static void RemoveDirt() { reference.totalDirt--; }
+
+
+
+    public static void AddDirt() => reference.totalDirt++;
+    public static void RemoveDirt() => reference.totalDirt--;
+
+    public static void MakeMistake(MistakeType type) 
+        => reference.performanceManager.AddMistake(type);
+
+    public static void StartTask() => reference.ReferenceStartTask();
+    public static void FinishTask() => reference.ReferenceFinishTask();
 }

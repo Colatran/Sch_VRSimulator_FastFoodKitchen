@@ -44,28 +44,27 @@ public class Item_Cookable : Item
 
     private void CalculateTemperature()
     {
-        float deltaTime = Time.deltaTime;
-
         switch (source)
         {
             case HeatSource.NONE:
-                HeatSource_None(deltaTime);
+                HeatSource_None();
                 return; 
 
             case HeatSource.COOKER:
-                HeatSource_Cooker(deltaTime);
+                HeatSource_Cooker();
                 return;
 
             case HeatSource.STOVE:
-                HeatSource_Stove(deltaTime);
+                HeatSource_Stove();
                 return;
         }
     }
 
-    private void HeatSource_None(float deltaTime)
+    private void HeatSource_None()
     {
         if (temperature > GameManager.LmtTemp_roomTemperature)
         {
+            float deltaTime = Time.deltaTime;
             temperature -= deltaTime;
 
             if (canCallOnCold 
@@ -80,11 +79,12 @@ public class Item_Cookable : Item
         }
     }
 
-    private void HeatSource_Cooker(float deltaTime)
+    private void HeatSource_Cooker()
     {
+        float deltaTime = Time.deltaTime;
         temperature += deltaTime * maxTemperatureFactor;
-
         cooked += deltaTime * cookingTimeFactor;
+
         cookedMaterial.Set(cooked);
 
         if (canCallOnBurned && IsOvercooked)
@@ -96,8 +96,9 @@ public class Item_Cookable : Item
         }
     }
 
-    private void HeatSource_Stove(float deltaTime)
+    private void HeatSource_Stove()
     {
+        float deltaTime = Time.deltaTime;
         if (temperature > GameManager.LmtTemp_stoveMax) temperature -= deltaTime;
         else if (temperature < GameManager.LmtTemp_stoveMin) temperature += deltaTime;
     }

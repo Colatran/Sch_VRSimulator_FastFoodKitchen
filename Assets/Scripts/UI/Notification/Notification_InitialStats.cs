@@ -23,8 +23,7 @@ public class Notification_InitialStats : Notification
     {
         if (base.Close())
         {
-            //UnlockPlayer movement
-            //start clock
+            GameManager.StartTask();
             return true;
         }
         return false;
