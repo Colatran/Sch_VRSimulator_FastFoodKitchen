@@ -7,8 +7,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] TaskData taskData;
     [SerializeField] PerformanceManager performanceManager;
     [SerializeField] Transform mainCameraTransform;
+    [SerializeField] XRMovementManager playerMovementManager;
     [SerializeField] UIPopUp pauseMenu;
     [SerializeField] Orderer orderer;
+
+    [Header("Notifications")]
+    [SerializeField] Notification notification_Mistake;
+    [SerializeField] Notification notification_InitialStats;
+    [SerializeField] Notification notification_FinalStats;
 
     [Header("Cooking")]
     [SerializeField] float lmtTemp_roomTemperature = 24.5f;
@@ -34,7 +40,7 @@ public class GameManager : MonoBehaviour
     {
         taskTime = Task.GetTime(taskData.taskTime);
 
-
+        notification_InitialStats.Open();
         ///
         ///
         started = true;
@@ -58,19 +64,25 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void ReferenceMakeMistake(MistakeType type) {
+        reference.performanceManager.AddMistake(type);
+        notification_Mistake.Open();
+    }
+
     private void ReferenceStartTask()
     {
         started = true;
 
-        //Unlock Player Movement
+        playerMovementManager.Unlock();
     }
 
     private void ReferenceFinishTask()
     {
         started = false;
 
-        //Lock Player Movement
-        //Show Notification
+        playerMovementManager.Lock();
+
+        notification_FinalStats.Open();
     }
 
 
@@ -102,8 +114,7 @@ public class GameManager : MonoBehaviour
     public static void AddDirt() => reference.totalDirt++;
     public static void RemoveDirt() => reference.totalDirt--;
 
-    public static void MakeMistake(MistakeType type) 
-        => reference.performanceManager.AddMistake(type);
+    public static void MakeMistake(MistakeType type) => reference.ReferenceMakeMistake(type);
 
     public static void StartTask() => reference.ReferenceStartTask();
     public static void FinishTask() => reference.ReferenceFinishTask();

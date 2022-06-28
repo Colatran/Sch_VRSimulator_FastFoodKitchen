@@ -2831,6 +2831,7 @@ GameObject:
   - component: {fileID: 8869553772597856329}
   - component: {fileID: 8869553772597856343}
   - component: {fileID: 8869553772597856332}
+  - component: {fileID: 1041350743644591881}
   - component: {fileID: 8869553772597856342}
   - component: {fileID: 2081021155698819773}
   - component: {fileID: 2940673174664874815}
@@ -2911,7 +2912,31 @@ MonoBehaviour:
   objects:
   - {fileID: 8869553772062163868}
   - {fileID: 8869553771823824950}
-  responsiveness: {fileID: 0}
+  responsiveness: {fileID: 1041350743644591881}
+--- !u!114 &1041350743644591881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8869553772597856340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bca48e11e4dad947abd7c06715c9e8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  responsiveToPosition: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 257
+  initialDistance: 0.75
+  hitDistanceOffset: 0.1
+  offset: {x: 0, y: -0.3, z: 0}
+  hight: 1
+  responsiveToAngle: 1
+  maxAngle: 45
+  responsiveToDistance: 1
+  maxDistance: 1.5
 --- !u!95 &8869553772597856342
 Animator:
   serializedVersion: 3

@@ -10,22 +10,12 @@ public class Notification_Mistake : Notification
     
     private void OnEnable()
     {
-        GameManager.PerformanceManager.OnAddMistake += OnAddMistake;
         popupResponsiveness.OnShouldPopOff += NotificationClose;
     }
     private void OnDestroy()
     {
-        GameManager.PerformanceManager.OnAddMistake -= OnAddMistake;
         popupResponsiveness.OnShouldPopOff -= NotificationClose;
     }
-
-
-    private void OnAddMistake(MistakeType type)
-    {
-        if (GameManager.TaskData.taskDifficuty == TaskDifficuty.HARD) return;
-        Open();
-    }
-
 
     public override bool Open()
     {
