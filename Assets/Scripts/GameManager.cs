@@ -6,15 +6,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] AssetHolder assetHolder;
     [SerializeField] TaskData taskData;
     [SerializeField] PerformanceManager performanceManager;
-    [SerializeField] Transform mainCameraTransform;
-    [SerializeField] XRMovementManager playerMovementManager;
-    [SerializeField] UIPopUp pauseMenu;
     [SerializeField] Orderer orderer;
 
-    [Header("Notifications")]
-    [SerializeField] Notification notification_Mistake;
-    [SerializeField] Notification notification_InitialStats;
-    [SerializeField] Notification notification_FinalStats;
+    [Header("Player")]
+    [SerializeField] Transform playerMainCameraTransform;
+    [SerializeField] XRMovementManager playerMovementManager;
+    [SerializeField] XRSettingsController playerSettingsController;
+
+    [Header("PopUps")]
+    [SerializeField] UIPopUp uIPopUp_Mistake;
+    [SerializeField] UIPopUp uIPopUp_InitialStats;
+    [SerializeField] UIPopUp uIPopUp_FinalStats;
+    [SerializeField] UIPopUp uIPopUp_PauseMenu;
 
     [Header("Cooking")]
     [SerializeField] float lmtTemp_roomTemperature = 24.5f;
@@ -28,8 +31,9 @@ public class GameManager : MonoBehaviour
     private bool started = false;
     private float taskTime = 0;
     private int totalDirt = 0;
+    private float nextOrderTime = 0;
 
-
+    [SerializeField] float orderDelay = 60;
 
     private void Awake()
     {
@@ -40,17 +44,20 @@ public class GameManager : MonoBehaviour
     {
         taskTime = Task.GetTime(taskData.taskTime);
 
-        notification_InitialStats.Open();
-        ///
-        ///
-        started = true;
+        uIPopUp_InitialStats.Open();
+
+        ///CUT THIS
+        //started = true;
     }
 
     private void Update()
     {
-        if (started) Update_CountTime();
+        if (started)
+        {
+            Update_CountTime();
+            Update_MakeOrder();
+        }
     }
-
 
     private void Update_CountTime()
     {
@@ -63,28 +70,38 @@ public class GameManager : MonoBehaviour
             ReferenceFinishTask();
         }
     }
+    private void Update_MakeOrder()
+    {
+        nextOrderTime -= Time.deltaTime;
+
+        if (nextOrderTime < 0)
+        {
+            orderer.MakeOrder();
+            nextOrderTime = orderDelay;
+        }
+    }
 
     private void ReferenceMakeMistake(MistakeType type) {
         reference.performanceManager.AddMistake(type);
-        notification_Mistake.Open();
+        uIPopUp_Mistake.Open();
     }
-
     private void ReferenceStartTask()
     {
         started = true;
-
         playerMovementManager.Unlock();
     }
-
     private void ReferenceFinishTask()
     {
         started = false;
-
         playerMovementManager.Lock();
-
-        notification_FinalStats.Open();
+        uIPopUp_FinalStats.Open();
     }
 
+    private void ReferenceQuitToMainMenu()
+    {
+        ///
+        Debug.LogError("Not Implemented");
+    }
 
 
 
@@ -93,8 +110,12 @@ public class GameManager : MonoBehaviour
 
     public static AssetHolder Asset { get => reference.assetHolder; }
     public static PerformanceManager PerformanceManager { get => reference.performanceManager; }
-    public static Transform MainCameraTransform { get => reference.mainCameraTransform; }
-    public static UIPopUp PauseMenu { get => reference.pauseMenu; }
+
+    public static Transform PlayerMainCameraTransform { get => reference.playerMainCameraTransform; }
+    public static XRMovementManager PlayerMovementManager { get => reference.playerMovementManager; }
+    public static XRSettingsController PlayerSettingsController { get => reference.playerSettingsController; }
+
+    public static UIPopUp UIPopUp_PauseMenu { get => reference.uIPopUp_PauseMenu; }
 
     public static float LmtTemp_roomTemperature { get => reference.lmtTemp_roomTemperature; }
     public static float LmtTemp_cold { get => reference.lmtTemp_cold; }
@@ -115,7 +136,7 @@ public class GameManager : MonoBehaviour
     public static void RemoveDirt() => reference.totalDirt--;
 
     public static void MakeMistake(MistakeType type) => reference.ReferenceMakeMistake(type);
-
     public static void StartTask() => reference.ReferenceStartTask();
     public static void FinishTask() => reference.ReferenceFinishTask();
+    public static void QuitToMainMenu() => reference.ReferenceQuitToMainMenu();
 }

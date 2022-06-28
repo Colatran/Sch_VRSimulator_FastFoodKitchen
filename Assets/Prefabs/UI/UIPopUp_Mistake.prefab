@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 2822763296046761553}
   - component: {fileID: 2822763296046761549}
   - component: {fileID: 2822763296046761555}
-  - component: {fileID: 2822763296046761544}
   - component: {fileID: 2822763296046761550}
   - component: {fileID: 2822763296046761554}
   - component: {fileID: 1021759402841811852}
   - component: {fileID: 2822763296046761546}
   m_Layer: 5
-  m_Name: Notification_Mistake
+  m_Name: UIPopUp_Mistake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,22 +77,6 @@ MonoBehaviour:
   orientation: {fileID: 0}
   isContainer: 0
   isDeadEnd: 0
---- !u!114 &2822763296046761544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2822763296046761552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c80ed129117168b4bbf33382df8b7554, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objects:
-  - {fileID: 2822763297658817944}
-  - {fileID: 2822763296950718002}
-  responsiveness: {fileID: 2822763296046761550}
 --- !u!114 &2822763296046761550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,12 +228,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b49e8d2c92b54488398fe7d943d529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popup: {fileID: 2822763296046761544}
+  objects:
+  - {fileID: 2822763297658817944}
+  - {fileID: 2822763296950718002}
+  responsiveness: {fileID: 2822763296046761550}
   attachment: {fileID: 2822763296046761555}
   animator: {fileID: 2822763296046761554}
   audioSource: {fileID: 1021759402841811852}
+  button_Close: {fileID: 2822763296970401987}
   mistakeList: {fileID: 2822763296716246331}
-  popupResponsiveness: {fileID: 2822763296046761550}
 --- !u!1 &2822763296615365309
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,19 +694,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2822763296970402044}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2822763296046761546}
-        m_TargetAssemblyTypeName: Notification, Assembly-CSharp
-        m_MethodName: NotificationClose
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &2822763297405176128
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,7 +920,6 @@ GameObject:
   - component: {fileID: 2822763297639054863}
   - component: {fileID: 2822763297639054862}
   - component: {fileID: 2822763297639054861}
-  - component: {fileID: 2822763297639054865}
   - component: {fileID: 2822763297639054866}
   m_Layer: 5
   m_Name: Canvas
@@ -1057,19 +1030,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RaycastTriggerInteraction: 1
---- !u!114 &2822763297639054865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2822763297639054867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShowMaskGraphic: 1
 --- !u!114 &2822763297639054866
 MonoBehaviour:
   m_ObjectHideFlags: 0

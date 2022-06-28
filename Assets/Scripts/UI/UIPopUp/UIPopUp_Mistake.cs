@@ -1,20 +1,25 @@
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Notification_Mistake : Notification
+public class UIPopUp_Mistake : UIPopUp
 {
+    [Header("Buttons")]
+    [SerializeField] Button button_Close;
+
     [Header("")]
     [SerializeField] UIPanel_MistakeList mistakeList;
-    [SerializeField] UIPopUpResponsiveness popupResponsiveness;
 
 
     
     private void OnEnable()
     {
-        popupResponsiveness.OnShouldPopOff += NotificationClose;
+        button_Close.onClick.AddListener(CallClose);
+        responsiveness.OnShouldPopOff += CallClose;
     }
     private void OnDestroy()
     {
-        popupResponsiveness.OnShouldPopOff -= NotificationClose;
+        button_Close.onClick.RemoveListener(CallClose);
+        responsiveness.OnShouldPopOff -= CallClose;
     }
 
     public override bool Open()

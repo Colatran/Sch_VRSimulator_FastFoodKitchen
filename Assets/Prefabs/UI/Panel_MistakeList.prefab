@@ -1996,7 +1996,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5, y: 0.00002193451}
+  m_AnchoredPosition: {x: 5, y: 0.00000667572}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7748449368487432684
@@ -2230,19 +2230,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7748449368504136805}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7748449369388566507}
-        m_TargetAssemblyTypeName: UIPanel_MistakeList, Assembly-CSharp
-        m_MethodName: PressNextSector
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &7748449368570740213
 GameObject:
   m_ObjectHideFlags: 0
@@ -3526,19 +3514,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7748449369261511171}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7748449369388566507}
-        m_TargetAssemblyTypeName: UIPanel_MistakeList, Assembly-CSharp
-        m_MethodName: PressDescriptionSpoiler
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &7748449369289412291
 GameObject:
   m_ObjectHideFlags: 0
@@ -3659,19 +3635,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7748449369289412318}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7748449369388566507}
-        m_TargetAssemblyTypeName: UIPanel_MistakeList, Assembly-CSharp
-        m_MethodName: PressPreviousSector
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &7748449369341807264
 GameObject:
   m_ObjectHideFlags: 0
@@ -3793,19 +3757,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7748449369341807267}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7748449369388566507}
-        m_TargetAssemblyTypeName: UIPanel_MistakeList, Assembly-CSharp
-        m_MethodName: PressHintSpoiler
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &7748449369341807293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3892,6 +3844,10 @@ MonoBehaviour:
   text_sectorCount: {fileID: 7748449367589771747}
   nextSectorButton: {fileID: 7748449368504136810}
   previousSectorButton: {fileID: 7748449369289412291}
+  button_SpoilerDescription: {fileID: 7748449369261511170}
+  button_SpoilerHint: {fileID: 7748449369341807266}
+  button_SectorNext: {fileID: 7748449368504136804}
+  button_SectorPrevious: {fileID: 7748449369289412317}
   spoilerArrow_Description: {fileID: 7748449368776930824}
   spoilerArrow_Hint: {fileID: 7748449367657642491}
 --- !u!114 &7748449369388566505
@@ -4066,7 +4022,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pool
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7748449369388566505}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b98542c32c2a10f4a8256fa141f51793, type: 3}
 --- !u!114 &6688834968951042657 stripped
@@ -4213,7 +4169,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pool
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7748449369388566505}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b98542c32c2a10f4a8256fa141f51793, type: 3}
 --- !u!224 &3854188791402102651 stripped
@@ -4360,7 +4316,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pool
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7748449369388566505}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b98542c32c2a10f4a8256fa141f51793, type: 3}
 --- !u!114 &5103971821585597501 stripped
@@ -4507,7 +4463,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pool
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7748449369388566505}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b98542c32c2a10f4a8256fa141f51793, type: 3}
 --- !u!224 &307703578011432353 stripped
@@ -4654,7 +4610,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pool
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7748449369388566505}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b98542c32c2a10f4a8256fa141f51793, type: 3}
 --- !u!224 &182916271937861145 stripped
@@ -4801,7 +4757,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pool
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7748449369388566505}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b98542c32c2a10f4a8256fa141f51793, type: 3}
 --- !u!114 &8157819167616083975 stripped
@@ -4948,7 +4904,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pool
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7748449369388566505}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b98542c32c2a10f4a8256fa141f51793, type: 3}
 --- !u!224 &1193237792020511378 stripped
@@ -5095,7 +5051,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pool
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7748449369388566505}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b98542c32c2a10f4a8256fa141f51793, type: 3}
 --- !u!114 &7984555788326690506 stripped
@@ -5242,7 +5198,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pool
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7748449369388566505}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b98542c32c2a10f4a8256fa141f51793, type: 3}
 --- !u!114 &1198975425677696256 stripped
@@ -5389,7 +5345,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pool
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7748449369388566505}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b98542c32c2a10f4a8256fa141f51793, type: 3}
 --- !u!224 &8583116394468335138 stripped

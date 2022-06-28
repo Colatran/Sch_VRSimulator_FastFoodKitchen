@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class UIPanel_MistakeList : MonoBehaviour
@@ -17,16 +18,33 @@ public class UIPanel_MistakeList : MonoBehaviour
     [SerializeField] TMP_Text text_sectorCount;
     [SerializeField] GameObject nextSectorButton;
     [SerializeField] GameObject previousSectorButton;
+    [Header("Buttons")]
+    [SerializeField] Button button_SpoilerDescription;
+    [SerializeField] Button button_SpoilerHint;
+    [SerializeField] Button button_SectorNext;
+    [SerializeField] Button button_SectorPrevious;
 
 
     private void OnEnable()
     {
         GameManager.PerformanceManager.OnAddMistake += AddMistake;
+        button_SpoilerDescription.onClick.AddListener(PressDescriptionSpoiler);
+        button_SpoilerHint.onClick.AddListener(PressHintSpoiler);
+        button_SectorNext.onClick.AddListener(PressNextSector);
+        button_SectorPrevious.onClick.AddListener(PressPreviousSector);
     }
     private void OnDisable()
     {
         GameManager.PerformanceManager.OnAddMistake -= AddMistake;
+        button_SpoilerDescription.onClick.RemoveListener(PressDescriptionSpoiler);
+        button_SpoilerHint.onClick.RemoveListener(PressHintSpoiler);
+        button_SectorNext.onClick.RemoveListener(PressNextSector);
+        button_SectorPrevious.onClick.RemoveListener(PressPreviousSector);
     }
+
+
+
+
 
     public void Open()
     {
@@ -50,10 +68,6 @@ public class UIPanel_MistakeList : MonoBehaviour
         mistakes.Clear();
     }
 
-
-
-
-
     private List<MistakeType> mistakes = new List<MistakeType>();
     private void AddMistake(MistakeType type) 
     {
@@ -62,11 +76,11 @@ public class UIPanel_MistakeList : MonoBehaviour
         SetSectorPanel();
     }
 
-
-
-
-
     private bool isOpen = false;
+
+
+
+
 
     private int sectorCount = 0;
     private int currentSector = 0;
@@ -98,7 +112,6 @@ public class UIPanel_MistakeList : MonoBehaviour
 
         StartSectorListing();
     }
-
 
     private void CheckSectorBoundries()
     {
@@ -139,7 +152,6 @@ public class UIPanel_MistakeList : MonoBehaviour
 
         CheckSectorBoundries();
     }
-
 
     private void StartSectorListing()
     {
@@ -213,7 +225,6 @@ public class UIPanel_MistakeList : MonoBehaviour
             }
         }
     }
-
 
     private void SetDescription(MistakeType mistakeType)
     {

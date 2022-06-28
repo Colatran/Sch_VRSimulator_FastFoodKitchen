@@ -378,14 +378,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   assetHolder: {fileID: 11400000, guid: d0bbbe3340125dd4e96a36b23ee06e34, type: 2}
+  taskData: {fileID: 0}
   performanceManager: {fileID: 49393740}
-  pauseMenu: {fileID: 604125612}
+  mainCameraTransform: {fileID: 0}
+  playerMovementManager: {fileID: 0}
+  orderer: {fileID: 0}
+  uIPopUp_Mistake: {fileID: 0}
+  uIPopUp_InitialStats: {fileID: 0}
+  uIPopUp_FinalStats: {fileID: 0}
+  uIPopUp_PauseMenu: {fileID: 0}
   lmtTemp_roomTemperature: 24.5
   lmtTemp_cold: 25
   lmtTemp_stoveMin: 40
   lmtTemp_stoveMax: 41
   lmtCook_undercooked: 0.9
   lmtCook_overcooked: 1.1
+  oilMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!4 &49393742
 Transform:
   m_ObjectHideFlags: 0
@@ -1516,7 +1526,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bca48e11e4dad947abd7c06715c9e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1740305948}
   responsiveToPosition: 1
   layerMask:
     serializedVersion: 2
@@ -2094,7 +2103,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47274183084dfc04ba2fac488d1aad21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1740305948}
   lockX: 1
   lockY: 0
   lockZ: 1
@@ -2983,7 +2991,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 2862a6653d79175489979b2b86f57010, type: 3}
 --- !u!4 &1283526137 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2955061196783096391, guid: 2862a6653d79175489979b2b86f57010,
+  m_CorrespondingSourceObject: {fileID: 2822763296046761553, guid: 2862a6653d79175489979b2b86f57010,
     type: 3}
   m_PrefabInstance: {fileID: 1283526136}
   m_PrefabAsset: {fileID: 0}
@@ -4563,7 +4571,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1740305947}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1

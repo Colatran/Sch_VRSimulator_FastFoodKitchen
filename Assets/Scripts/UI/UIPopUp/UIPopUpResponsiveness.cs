@@ -4,9 +4,9 @@ public class UIPopUpResponsiveness : MonoBehaviour
 {
     private Transform target;
 
-    private void Start()
+    private void Awake()
     {
-        target = GameManager.MainCameraTransform;
+        target = GameManager.PlayerMainCameraTransform;
     }
 
 

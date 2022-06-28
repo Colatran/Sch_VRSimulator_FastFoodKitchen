@@ -95,9 +95,9 @@ public class HandInputController : MonoBehaviour
 
     private void Pause()
     {
-        UIPopUp pauseMenu = GameManager.PauseMenu;
+        UIPopUp pauseMenu = GameManager.UIPopUp_PauseMenu;
 
-        if (pauseMenu.isUp) pauseMenu.PopOff();
-        else pauseMenu.PopUp();
+        if (pauseMenu.IsOpen) pauseMenu.Close();
+        else pauseMenu.Open();
     }
 }

@@ -5,9 +5,6 @@ public class Orderer_Cook : Orderer
 {
     [SerializeField] Order[] orders;
     [SerializeField, ReadOnly] float totalLikelihood = 0;
-    [SerializeField] float orderDelay = 60;
-
-    private float  nextOrderTime = 0;
 
     public Order[] Orders { get => orders; }
 
@@ -22,7 +19,7 @@ public class Orderer_Cook : Orderer
 
 
 
-    private void MakeOrder()
+    public override void MakeOrder()
     {
         float seed = Random.Range(0, totalLikelihood);
         float likelihoodStep = 0;
@@ -40,31 +37,6 @@ public class Orderer_Cook : Orderer
         }
     }
 
-    private void Update()
-    {
-        nextOrderTime -= Time.deltaTime;
-
-        if(nextOrderTime < 0)
-        {
-            MakeOrder();
-            nextOrderTime = orderDelay;
-        }
-    }
-
-
-
-    public void ServeOrder(ItemType itemType, int count)
-    {
-        foreach(Order order in orders) 
-        {
-            if (order.ItemType == itemType)
-            {
-                order.Serve(count);
-                return;
-            }
-        }
-    }
-
     public override int TotalServed()
     {
         int total = 0;
@@ -74,6 +46,19 @@ public class Orderer_Cook : Orderer
         }
         return total;
     }
+
+    public void ServeOrder(ItemType itemType, int count)
+    {
+        foreach (Order order in orders)
+        {
+            if (order.ItemType == itemType)
+            {
+                order.Serve(count);
+                return;
+            }
+        }
+    }
+
 
 
     [System.Serializable]

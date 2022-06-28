@@ -8,7 +8,7 @@ public class UIFaceTarget : MonoBehaviour
 
     private void Update()
     {
-        transform.LookAt(GameManager.MainCameraTransform);
+        transform.LookAt(GameManager.PlayerMainCameraTransform);
         Quaternion currRotation = transform.rotation;
 
         float x;

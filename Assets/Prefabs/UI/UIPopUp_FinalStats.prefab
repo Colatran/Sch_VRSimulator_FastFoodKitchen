@@ -1907,8 +1907,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2940673174664874815}
-        m_TargetAssemblyTypeName: Notification, Assembly-CSharp
-        m_MethodName: NotificationClose
+        m_TargetAssemblyTypeName: UIPopUp, Assembly-CSharp
+        m_MethodName: CallClose
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2830,13 +2830,12 @@ GameObject:
   - component: {fileID: 8869553772597856341}
   - component: {fileID: 8869553772597856329}
   - component: {fileID: 8869553772597856343}
-  - component: {fileID: 8869553772597856332}
   - component: {fileID: 1041350743644591881}
   - component: {fileID: 8869553772597856342}
   - component: {fileID: 2081021155698819773}
   - component: {fileID: 2940673174664874815}
   m_Layer: 5
-  m_Name: Notification_FinalStats
+  m_Name: UIPopUp_FinalStats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2897,22 +2896,6 @@ MonoBehaviour:
   orientation: {fileID: 0}
   isContainer: 0
   isDeadEnd: 0
---- !u!114 &8869553772597856332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8869553772597856340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c80ed129117168b4bbf33382df8b7554, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objects:
-  - {fileID: 8869553772062163868}
-  - {fileID: 8869553771823824950}
-  responsiveness: {fileID: 1041350743644591881}
 --- !u!114 &1041350743644591881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3064,11 +3047,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bfa273726ed1bc4cbfae26b20afa8b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popup: {fileID: 8869553772597856332}
+  objects:
+  - {fileID: 8869553772062163868}
+  - {fileID: 8869553771823824950}
+  responsiveness: {fileID: 1041350743644591881}
   attachment: {fileID: 8869553772597856343}
   animator: {fileID: 8869553772597856342}
   audioSource: {fileID: 2081021155698819773}
   mistakeList: {fileID: 8490984851535660537}
+  button_end: {fileID: 2188199774188589781}
   text_job: {fileID: 2188199772672302972}
   text_difficulty: {fileID: 2188199773573710170}
   text_time: {fileID: 2188199773436346950}

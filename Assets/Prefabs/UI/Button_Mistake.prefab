@@ -358,5 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff7ec00a7a4db04f9c0986b9772b286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pool: {fileID: 0}
+  button: {fileID: 9180623482995864889}
   text: {fileID: 4891046923922193520}
   selectedBackground: {fileID: 2205885940695100370}

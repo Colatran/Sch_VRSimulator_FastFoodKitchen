@@ -439,12 +439,11 @@ GameObject:
   - component: {fileID: 8143564136823590586}
   - component: {fileID: 8143564136823590587}
   - component: {fileID: 8143564136823590588}
-  - component: {fileID: 8143564136823590589}
   - component: {fileID: 5731478618534166703}
   - component: {fileID: 8143564136823590590}
   - component: {fileID: 8143564136823590560}
   m_Layer: 5
-  m_Name: Notification_InicialStats
+  m_Name: UIPopUp_InicialStats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -505,22 +504,6 @@ MonoBehaviour:
   orientation: {fileID: 0}
   isContainer: 0
   isDeadEnd: 0
---- !u!114 &8143564136823590589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8143564136823590561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c80ed129117168b4bbf33382df8b7554, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objects:
-  - {fileID: 8143564137422970552}
-  - {fileID: 8143564137906187070}
-  responsiveness: {fileID: 5731478618534166703}
 --- !u!114 &5731478618534166703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -576,10 +559,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a585a81aa0c9a44f82cd8b32e1039f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popup: {fileID: 8143564136823590589}
+  objects:
+  - {fileID: 8143564137422970552}
+  - {fileID: 8143564137906187070}
+  responsiveness: {fileID: 5731478618534166703}
   attachment: {fileID: 8143564136823590588}
   animator: {fileID: 8143564136823590590}
   audioSource: {fileID: 0}
+  button_Start: {fileID: 8143564137570047058}
   text_job: {fileID: 8143564136949336315}
   text_difficulty: {fileID: 8143564137637757076}
   text_time: {fileID: 8143564138209269241}
@@ -1028,19 +1015,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8143564137570047057}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8143564136823590560}
-        m_TargetAssemblyTypeName: Notification, Assembly-CSharp
-        m_MethodName: NotificationClose
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &8143564137606132698
 GameObject:
   m_ObjectHideFlags: 0
