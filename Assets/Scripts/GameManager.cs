@@ -26,14 +26,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] float lmtTemp_stoveMax = 41f;
     [SerializeField] float lmtCook_undercooked = 0.9f;
     [SerializeField] float lmtCook_overcooked = 1.25f;
-    [SerializeField] LayerMask oilMask;
+    [SerializeField] SerializableLayerMask oilMask;
 
     private bool started = false;
     private float taskTime = 0;
     private int totalDirt = 0;
+    private float orderDelay = 60;
     private float nextOrderTime = 0;
-
-    [SerializeField] float orderDelay = 60;
 
     private void Awake()
     {
@@ -42,12 +41,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        taskTime = Task.GetTime(taskData.taskTime);
-
+        taskTime = Task.GetTime(taskData.Time);
+        orderDelay = Task.GetOrderTime(taskData.OrderTime);
         uIPopUp_InitialStats.Open();
-
-        ///CUT THIS
-        //started = true;
     }
 
     private void Update()
@@ -124,7 +120,7 @@ public class GameManager : MonoBehaviour
     public static float LmtCook_undercooked { get => reference.lmtCook_undercooked; }
     public static float LmtCook_overcooked { get => reference.lmtCook_overcooked; }
 
-    public static LayerMask OilMask { get => reference.oilMask; }
+    public static LayerMask OilMask { get => reference.oilMask.value; }
     public static TaskData TaskData { get => reference.taskData; }
     public static int TotalServed { get => reference.orderer.TotalServed(); }
     public static float TaskTime { get => reference.taskTime; }

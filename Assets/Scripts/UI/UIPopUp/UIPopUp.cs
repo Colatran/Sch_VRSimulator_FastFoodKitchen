@@ -77,4 +77,8 @@ public class UIPopUp : MonoBehaviour
     {
         Close();
     }
+    public void CallPopOff()
+    {
+        PopOff();
+    }
 }

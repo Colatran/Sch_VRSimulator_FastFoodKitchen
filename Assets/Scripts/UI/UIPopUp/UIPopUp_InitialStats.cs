@@ -9,8 +9,9 @@ public class UIPopUp_InitialStats : UIPopUp
 
     [Header("")]
     [SerializeField] TMP_Text text_job;
-    [SerializeField] TMP_Text text_difficulty;
     [SerializeField] TMP_Text text_time;
+    [SerializeField] TMP_Text text_orderTime;
+    [SerializeField] TMP_Text text_difficulty;
 
     private void OnEnable()
     {
@@ -44,8 +45,9 @@ public class UIPopUp_InitialStats : UIPopUp
 
     private void SetStats()
     {
-        text_job.text = Task.GetJobName(GameManager.TaskData.taskJob);
-        text_difficulty.text = Task.GetDifficultyName(GameManager.TaskData.taskDifficuty);
-        text_time.text = Task.GetTimeName(GameManager.TaskData.taskTime);
+        text_job.text = Task.GetJobName(GameManager.TaskData.Job);
+        text_time.text = Task.GetTimeName(GameManager.TaskData.Time);
+        text_orderTime.text = Task.GetOrderTimeName(GameManager.TaskData.OrderTime);
+        text_difficulty.text = Task.GetDifficultyName(GameManager.TaskData.Difficuty);
     }
 }

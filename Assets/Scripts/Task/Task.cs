@@ -1,6 +1,21 @@
 
 public static class Task
 {
+    public static string GetJobName(TaskJob job)
+    {
+        switch (job)
+        {
+            case TaskJob.BATCHER:
+                return "Batcher";
+
+            case TaskJob.PREPARADOR:
+                return "Preparador";
+
+            default:
+                return "Batcher";
+        }
+    }
+
     public static float GetTime(TaskTime time)
     {
         switch(time)
@@ -24,7 +39,6 @@ public static class Task
                 return 300;
         }
     }
-
     public static string GetTimeName(TaskTime time)
     {
         switch (time)
@@ -49,18 +63,50 @@ public static class Task
         }
     }
 
-    public static string GetJobName(TaskJob job)
+    public static float GetOrderTime(TaskOrderTime time)
     {
-        switch (job)
+        switch (time)
         {
-            case TaskJob.BATCHER:
-                return "Batcher";
+            case TaskOrderTime.SEG30:
+                return 30;
 
-            case TaskJob.PREPARADOR:
-                return "Preparador";
+            case TaskOrderTime.SEG45:
+                return 45;
+
+            case TaskOrderTime.SEG60:
+                return 60;
+
+            case TaskOrderTime.SEG90:
+                return 90;
+
+            case TaskOrderTime.SEG120:
+                return 120;
 
             default:
-                return "Batcher";
+                return 60;
+        }
+    }
+    public static string GetOrderTimeName(TaskOrderTime time)
+    {
+        switch (time)
+        {
+            case TaskOrderTime.SEG30:
+                return "30s";
+
+            case TaskOrderTime.SEG45:
+                return "45s";
+
+            case TaskOrderTime.SEG60:
+                return "60s";
+
+            case TaskOrderTime.SEG90:
+                return "90s";
+
+            case TaskOrderTime.SEG120:
+                return "120s";
+
+            default:
+                return "60s";
         }
     }
 
@@ -96,6 +142,14 @@ public enum TaskTime
     MIN15,
     MIN30,
     MIN60,
+}
+public enum TaskOrderTime
+{
+    SEG30,
+    SEG45,
+    SEG60,
+    SEG90,
+    SEG120,
 }
 public enum TaskJob
 {

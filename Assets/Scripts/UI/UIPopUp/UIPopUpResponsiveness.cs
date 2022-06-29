@@ -15,7 +15,7 @@ public class UIPopUpResponsiveness : MonoBehaviour
 
     [SerializeField] bool responsiveToPosition = false;
     [ShowIf(ActionOnConditionFail.JustDisable, ConditionOperator.And, nameof(responsiveToPosition))]
-    [SerializeField] LayerMask layerMask;
+    [SerializeField] SerializableLayerMask layerMask;
     [ShowIf(ActionOnConditionFail.JustDisable, ConditionOperator.And, nameof(responsiveToPosition))]
     [SerializeField] float initialDistance = .75f;
     [ShowIf(ActionOnConditionFail.JustDisable, ConditionOperator.And, nameof(responsiveToPosition))]
@@ -36,7 +36,7 @@ public class UIPopUpResponsiveness : MonoBehaviour
 
         ray.direction = direction;
         ray.origin = position;
-        if (Physics.Raycast(ray, out hitInfo, .75f + hitDistanceOffset, layerMask))
+        if (Physics.Raycast(ray, out hitInfo, .75f + hitDistanceOffset, layerMask.value))
         {
             distance = Vector3.Distance(position, hitInfo.point) - hitDistanceOffset;
         }
@@ -46,7 +46,7 @@ public class UIPopUpResponsiveness : MonoBehaviour
 
         ray.direction = Vector3.down;
         ray.origin = requestedPosition + Vector3.up * hight;
-        if (Physics.Raycast(ray, out hitInfo, hight, layerMask))
+        if (Physics.Raycast(ray, out hitInfo, hight, layerMask.value))
         {
             finalPosition = hitInfo.point;
         }

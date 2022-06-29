@@ -48,7 +48,7 @@ public class UIPanel_MistakeList : MonoBehaviour
 
     public void Open()
     {
-        if (GameManager.TaskData.taskDifficuty == TaskDifficuty.HARD) return;
+        if (GameManager.TaskData.Difficuty == TaskDifficuty.HARD) return;
 
         isOpen = true;
 
@@ -232,12 +232,12 @@ public class UIPanel_MistakeList : MonoBehaviour
 
         text_title.text = mistake.Title;
 
-        if(GameManager.TaskData.taskDifficuty == TaskDifficuty.EASY)
+        if(GameManager.TaskData.Difficuty == TaskDifficuty.EASY)
         {
             text_description.text = mistake.Description;
             text_hint.text = mistake.Hint;
         }
-        else if (GameManager.TaskData.taskDifficuty == TaskDifficuty.NORMAL)
+        else if (GameManager.TaskData.Difficuty == TaskDifficuty.NORMAL)
         {
             text_description.text = mistake.Description;
             text_hint.text = "!PISTAS BLOQUADAS!\n Para ver pistas tem de estar na difficuldade Aprendiz";

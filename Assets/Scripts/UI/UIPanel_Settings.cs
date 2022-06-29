@@ -10,6 +10,8 @@ public class UIPanel_Settings : MonoBehaviour
     [SerializeField] Slider slider_rotationContinuous;
     [SerializeField] TMP_Text text_rotationContinuous;
 
+    XRSettingsController settingsController;
+
 
 
     private void OnEnable()
@@ -31,6 +33,11 @@ public class UIPanel_Settings : MonoBehaviour
         slider_rotationContinuous.onValueChanged.RemoveListener(OnRotationContinuousChanged);
     }
 
+    private void Start()
+    {
+        settingsController = GameManager.PlayerSettingsController;
+    }
+
 
     public void OnTeleportDashChanged(float value)
     {
@@ -45,7 +52,8 @@ public class UIPanel_Settings : MonoBehaviour
 
     private void SetTeleportDash(bool val)
     {
-        GameManager.PlayerSettingsController.TeleportDash = val;
+        settingsController.TeleportDash = val;
+        settingsController.SetSettings();
 
         if(val)
             text_teleportDash.text = "Dash";
@@ -54,7 +62,8 @@ public class UIPanel_Settings : MonoBehaviour
     }
     private void SetContinuousTurn(bool val)
     {
-        GameManager.PlayerSettingsController.ContinuousTurn = val;
+        settingsController.ContinuousTurn = val;
+        settingsController.SetSettings();
 
         if (val)
             text_rotationContinuous.text = "Continuo";
