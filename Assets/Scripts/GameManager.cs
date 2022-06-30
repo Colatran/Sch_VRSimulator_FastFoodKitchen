@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     [Header("Player")]
     [SerializeField] Transform playerMainCameraTransform;
     [SerializeField] XRMovementManager playerMovementManager;
-    [SerializeField] XRSettingsController playerSettingsController;
 
     [Header("PopUps")]
     [SerializeField] UIPopUp uIPopUp_Mistake;
@@ -109,7 +108,6 @@ public class GameManager : MonoBehaviour
 
     public static Transform PlayerMainCameraTransform { get => reference.playerMainCameraTransform; }
     public static XRMovementManager PlayerMovementManager { get => reference.playerMovementManager; }
-    public static XRSettingsController PlayerSettingsController { get => reference.playerSettingsController; }
 
     public static UIPopUp UIPopUp_PauseMenu { get => reference.uIPopUp_PauseMenu; }
 

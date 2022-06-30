@@ -6,9 +6,17 @@ public class UIFaceTarget : MonoBehaviour
     [SerializeField] bool lockY = false;
     [SerializeField] bool lockZ = false;
 
+    [Header("Target")]
+    [SerializeField] Transform target;
+
+    private void Start()
+    {
+        if (target == null) target = GameManager.PlayerMainCameraTransform;
+    }
+
     private void Update()
     {
-        transform.LookAt(GameManager.PlayerMainCameraTransform);
+        transform.LookAt(target);
         Quaternion currRotation = transform.rotation;
 
         float x;

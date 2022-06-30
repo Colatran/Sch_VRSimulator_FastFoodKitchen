@@ -3,40 +3,36 @@ using TMPro;
 
 public class TEST_XrSettingsCanvas : MonoBehaviour
 {
-    [SerializeField] XRSettingsController settingsController;
+    [SerializeField] XRSettingsData xRSettingsData;
     [SerializeField] TMP_Text text_rot;
     [SerializeField] TMP_Text text_tele;
 
 
     public void Rotacao()
     {
-        if(settingsController.ContinuousTurn)
+        if(xRSettingsData.ContinuousTurn)
         {
-            settingsController.ContinuousTurn = false;
+            xRSettingsData.ContinuousTurn = false;
             text_rot.text = "Rotação Estalido";
         }
         else
         {
-            settingsController.ContinuousTurn = true;
+            xRSettingsData.ContinuousTurn = true;
             text_rot.text = "Rotação Continua";
         }
-
-        settingsController.SetSettings();
     }
 
     public void Teleport()
     {
-        if (settingsController.TeleportDash)
+        if (xRSettingsData.TeleportDash)
         {
-            settingsController.TeleportDash = false;
+            xRSettingsData.TeleportDash = false;
             text_tele.text = "Teletransporte Piscar";
         }
         else
         {
-            settingsController.TeleportDash = true;
+            xRSettingsData.TeleportDash = true;
             text_tele.text = "Teletransporte Dash";
         }
-
-        settingsController.SetSettings();
     }
 }

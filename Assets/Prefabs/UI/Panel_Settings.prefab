@@ -1339,6 +1339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b759910b08648f2408b2fecd5275953f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xRSettingsData: {fileID: 11400000, guid: d55a8063686e365488ea6a65186eca09, type: 2}
   slider_teleportDash: {fileID: 5018771506032933218}
   text_teleportDash: {fileID: 5018771507580663965}
   slider_rotationContinuous: {fileID: 5018771507648767284}

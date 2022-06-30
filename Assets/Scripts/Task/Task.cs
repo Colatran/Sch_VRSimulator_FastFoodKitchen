@@ -5,6 +5,9 @@ public static class Task
     {
         switch (job)
         {
+            case TaskJob.TUTORIAL:
+                return "Tutorial";
+
             case TaskJob.BATCHER:
                 return "Batcher";
 
@@ -32,6 +35,9 @@ public static class Task
             case TaskTime.MIN30:
                 return 1800;
 
+            case TaskTime.MIN45:
+                return 2700;
+
             case TaskTime.MIN60:
                 return 3600;
 
@@ -54,6 +60,9 @@ public static class Task
 
             case TaskTime.MIN30:
                 return "30min";
+
+            case TaskTime.MIN45:
+                return "45min";
 
             case TaskTime.MIN60:
                 return "60min";
@@ -129,11 +138,11 @@ public static class Task
     }
 }
 
-public enum TaskDifficuty
+public enum TaskJob
 {
-    EASY,
-    NORMAL,
-    HARD
+    TUTORIAL,
+    BATCHER,
+    PREPARADOR,
 }
 public enum TaskTime
 {
@@ -141,6 +150,7 @@ public enum TaskTime
     MIN10,
     MIN15,
     MIN30,
+    MIN45,
     MIN60,
 }
 public enum TaskOrderTime
@@ -151,8 +161,10 @@ public enum TaskOrderTime
     SEG90,
     SEG120,
 }
-public enum TaskJob
+public enum TaskDifficuty
 {
-    BATCHER,
-    PREPARADOR,
+    EASY,
+    NORMAL,
+    HARD
 }
+

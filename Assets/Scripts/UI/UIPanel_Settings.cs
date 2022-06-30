@@ -4,13 +4,13 @@ using TMPro;
 
 public class UIPanel_Settings : MonoBehaviour
 {
+    [SerializeField] XRSettingsData xRSettingsData;
+
     [SerializeField] Slider slider_teleportDash;
     [SerializeField] TMP_Text text_teleportDash;
 
     [SerializeField] Slider slider_rotationContinuous;
     [SerializeField] TMP_Text text_rotationContinuous;
-
-    XRSettingsController settingsController;
 
 
 
@@ -19,13 +19,15 @@ public class UIPanel_Settings : MonoBehaviour
         slider_teleportDash.onValueChanged.AddListener(OnTeleportDashChanged);
         slider_rotationContinuous.onValueChanged.AddListener(OnRotationContinuousChanged);
 
-        bool teleportDash = GameManager.PlayerSettingsController.TeleportDash;
+        bool teleportDash = xRSettingsData.TeleportDash;
+        UISetTeleportDash(teleportDash);
         if (teleportDash) slider_teleportDash.SetValueWithoutNotify(1);
-        SetTeleportDash(teleportDash);
+        else slider_teleportDash.SetValueWithoutNotify(0);
 
-        bool continuousTurn = GameManager.PlayerSettingsController.ContinuousTurn;
+        bool continuousTurn = xRSettingsData.ContinuousTurn;
+        UISetContinuousTurn(continuousTurn);
         if (continuousTurn) slider_rotationContinuous.SetValueWithoutNotify(1);
-        SetContinuousTurn(continuousTurn);
+        else slider_rotationContinuous.SetValueWithoutNotify(1);
     }
     private void OnDisable()
     {
@@ -33,42 +35,38 @@ public class UIPanel_Settings : MonoBehaviour
         slider_rotationContinuous.onValueChanged.RemoveListener(OnRotationContinuousChanged);
     }
 
-    private void Start()
-    {
-        settingsController = GameManager.PlayerSettingsController;
-    }
-
-
     public void OnTeleportDashChanged(float value)
     {
-        if (value == 1) GameManager.PlayerSettingsController.TeleportDash = true;
-        else GameManager.PlayerSettingsController.TeleportDash = false;
+        SetTeleportDash(value == 1);
     }
     public void OnRotationContinuousChanged(float value)
     {
-        if (value == 1) GameManager.PlayerSettingsController.ContinuousTurn = true;
-        else GameManager.PlayerSettingsController.ContinuousTurn = false;
+        SetContinuousTurn(value == 1);
     }
 
     private void SetTeleportDash(bool val)
     {
-        settingsController.TeleportDash = val;
-        settingsController.SetSettings();
+        xRSettingsData.TeleportDash = val;
+        UISetTeleportDash(val);
+    }
+    private void SetContinuousTurn(bool val)
+    {
+        xRSettingsData.ContinuousTurn = val;
+        UISetContinuousTurn(val);
+    }
 
-        if(val)
+    private void UISetTeleportDash(bool val)
+    {
+        if (val)
             text_teleportDash.text = "Dash";
         else
             text_teleportDash.text = "Piscar";
     }
-    private void SetContinuousTurn(bool val)
+    private void UISetContinuousTurn(bool val)
     {
-        settingsController.ContinuousTurn = val;
-        settingsController.SetSettings();
-
         if (val)
             text_rotationContinuous.text = "Continuo";
         else
             text_rotationContinuous.text = "Estalo";
     }
-    
 }

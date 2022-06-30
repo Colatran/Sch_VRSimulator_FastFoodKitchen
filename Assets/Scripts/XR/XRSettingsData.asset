@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d2ff9298ab00614cbfe20cce61122b5, type: 3}
-  m_Name: TaskData
+  m_Script: {fileID: 11500000, guid: 0fe300347a2bce348844e4df09faf941, type: 3}
+  m_Name: XRSettingsData
   m_EditorClassIdentifier: 
-  Job: 0
-  Difficuty: 0
-  Time: 0
-  OrderTime: 2

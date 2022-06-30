@@ -6430,11 +6430,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37ee3181fdc9a0740a8aa29fa507ae7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xRSettingsData: {fileID: 11400000, guid: d55a8063686e365488ea6a65186eca09, type: 2}
   ContinuousTurnProvider: {fileID: 8986698116530087169}
   SnapTurnProvider: {fileID: 8986698116530087170}
   MovementTeleport: {fileID: 8986698116530087174}
-  ContinuousTurn: 1
-  TeleportDash: 1
 --- !u!114 &7642290030845271445
 MonoBehaviour:
   m_ObjectHideFlags: 0
