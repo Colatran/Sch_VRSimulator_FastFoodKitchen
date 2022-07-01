@@ -3,7 +3,7 @@ using UnityEngine;
 public class OrientationChecker_Upwards : OrientationChecker
 {
     [SerializeField]
-    [Range(-1, 1)] 
+    [Range(-1, 1)]
     float maxDot = -0.85f;
 
 

@@ -17,7 +17,5 @@ MonoBehaviour:
     type: 2}
   Material_UHC_TimerOff: {fileID: 2100000, guid: 2d96a4ad6ee42064a8d29b2b1a31768e,
     type: 2}
-  Material_Grill_Button: {fileID: 2100000, guid: 19d6434ea5b9d334c91b5b43a6ce571a,
-    type: 2}
-  Material_Grill_ButtonLocked: {fileID: 2100000, guid: f7c0a220c2cdd7c4bb65db2700519a41,
-    type: 2}
+  mask_oil: {fileID: 11400000, guid: 4acacf720876f3d4988b756e7539e71d, type: 2}
+  mask_popUp: {fileID: 11400000, guid: b0ef2c55cfffc1443903739100e9884e, type: 2}

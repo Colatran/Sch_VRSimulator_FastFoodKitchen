@@ -145,13 +145,13 @@ public class Attachment : MonoBehaviour
         OnDetach();
     }
 
-    private void DisableRigidbody()
+    public void DisableRigidbody()
     {
         if (rb == null) return;
 
         Destroy(rb);
     }
-    private void EnableRigidbody()
+    public void EnableRigidbody()
     {
         if (rb != null) return;
 

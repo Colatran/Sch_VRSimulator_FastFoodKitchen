@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] float lmtTemp_stoveMax = 41f;
     [SerializeField] float lmtCook_undercooked = 0.9f;
     [SerializeField] float lmtCook_overcooked = 1.25f;
-    [SerializeField] SerializableLayerMask oilMask;
 
     private bool started = false;
     private float taskTime = 0;
@@ -118,7 +117,6 @@ public class GameManager : MonoBehaviour
     public static float LmtCook_undercooked { get => reference.lmtCook_undercooked; }
     public static float LmtCook_overcooked { get => reference.lmtCook_overcooked; }
 
-    public static LayerMask OilMask { get => reference.oilMask.value; }
     public static TaskData TaskData { get => reference.taskData; }
     public static int TotalServed { get => reference.orderer.TotalServed(); }
     public static float TaskTime { get => reference.taskTime; }
