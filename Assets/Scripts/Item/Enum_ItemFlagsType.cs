@@ -41,6 +41,7 @@ public enum ItemType
     BOX,
 
     BREAD,
+    BREAD_NORMAL,
     BREAD_SEEDS,
     BREAD_NOGLUTEN,
 
@@ -49,4 +50,10 @@ public enum ItemType
     ONION,
     TOMATO,
     LETTUCE,
+    PICKLE,
+
+    SAUCE,
+    SAUCE_KETCHUP,
+    SAUCE_MAYONNAISE,
+    SAUCE_MUSTARD,
 }

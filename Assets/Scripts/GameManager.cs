@@ -94,9 +94,9 @@ public class GameManager : MonoBehaviour
 
     private void ReferenceQuitToMainMenu()
     {
-        ///
-        Debug.LogError("Not Implemented");
+        LevelManager.Instance.LoadScene(0);
     }
+
 
 
 

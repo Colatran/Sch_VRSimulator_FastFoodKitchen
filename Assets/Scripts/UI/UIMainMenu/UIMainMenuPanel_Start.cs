@@ -14,7 +14,6 @@ public class UIMainMenuPanel_Start : UIMainMenuPanel
     [SerializeField] Button button_startQuit;
 
 
-
     private void OnEnable()
     {
         dropdown_job.onValueChanged.AddListener(Dropdown_Job_OnValueChanged);
@@ -118,7 +117,26 @@ public class UIMainMenuPanel_Start : UIMainMenuPanel
     }
     private void Button_Start_OnClick()
     {
+        TaskJob taskJob = taskData.Job;
+        int index;
 
+        switch (taskJob)
+        {
+            case TaskJob.TUTORIAL:
+                index = 1;
+                break;
+            case TaskJob.PREPARADOR:
+                index = 2;
+                break;
+            case TaskJob.BATCHER:
+                index = 3;
+                break;
+            default:
+                index = 2;
+                break;
+        }
+
+        LevelManager.Instance.LoadScene(index);
     }
     private void Button_StartQuit_OnClick()
     {
