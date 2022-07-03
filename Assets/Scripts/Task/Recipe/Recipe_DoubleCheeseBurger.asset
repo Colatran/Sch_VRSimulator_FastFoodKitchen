@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 765b4c3c32bd8db439b6e0e70eaff556, type: 3}
-  m_Name: Recipe_CheeseBurger
+  m_Name: Recipe_DoubleCheeseBurger
   m_EditorClassIdentifier: 
-  ingredients:
-  - itemType: 0
-    min: 1
-    max: 1
+  breadType: 30
+  beefType: 2
+  beefCount: 2
+  cheeseType: 38
+  sauces: 2e00000030000000
+  ingredients: 290000002c000000
