@@ -47,6 +47,7 @@ MonoBehaviour:
   lockX: 1
   lockY: 0
   lockZ: 1
+  target: {fileID: 0}
 --- !u!1 &1495342982138815594
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,9 +568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   responsiveToPosition: 1
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 257
+  layerMask: {fileID: 11400000, guid: b0ef2c55cfffc1443903739100e9884e, type: 2}
   initialDistance: 0.75
   hitDistanceOffset: 0.1
   offset: {x: 0, y: -0.3, z: 0}
@@ -619,8 +618,8 @@ MonoBehaviour:
   Panel_Confirmation: {fileID: 9125499751133924183}
   button_Close: {fileID: 9107613286287417937}
   button_QuitRequest: {fileID: 9107613287183634620}
-  button_QuitCancel: {fileID: 9107613287217532168}
-  button_QuitConfirm: {fileID: 9107613287108651830}
+  button_QuitCancel: {fileID: 9107613287108651830}
+  button_QuitConfirm: {fileID: 9107613287217532168}
 --- !u!1 &1742232226462572136
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,7 +1250,7 @@ GameObject:
   - component: {fileID: 9107613287108651825}
   - component: {fileID: 9107613287108651830}
   m_Layer: 5
-  m_Name: Button_QuitConfirm
+  m_Name: Button_QuitNo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1627,7 +1626,7 @@ GameObject:
   - component: {fileID: 9107613287217532171}
   - component: {fileID: 9107613287217532168}
   m_Layer: 5
-  m_Name: Button_QuitCancel
+  m_Name: Button_QuitYes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

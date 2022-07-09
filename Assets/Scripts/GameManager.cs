@@ -3,7 +3,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] AssetHolder assetHolder;
     [SerializeField] TaskData taskData;
     [SerializeField] PerformanceManager performanceManager;
     [SerializeField] Orderer orderer;
@@ -26,7 +25,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] float lmtCook_undercooked = 0.9f;
     [SerializeField] float lmtCook_overcooked = 1.25f;
 
-    private bool started = false;
+    private bool running = false;
     private float taskTime = 0;
     private int totalDirt = 0;
     private float orderDelay = 60;
@@ -46,7 +45,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (started)
+        if (running)
         {
             Update_CountTime();
             Update_MakeOrder();
@@ -55,7 +54,7 @@ public class GameManager : MonoBehaviour
 
     private void Update_CountTime()
     {
-        float deltaTime = Time.deltaTime * 100;
+        float deltaTime = Time.deltaTime;
         taskTime -= deltaTime;
 
         if (taskTime < 0)
@@ -81,15 +80,22 @@ public class GameManager : MonoBehaviour
     }
     private void ReferenceStartTask()
     {
-        started = true;
+        SetRunning(true);
         playerMovementManager.Unlock();
     }
     private void ReferenceFinishTask()
     {
-        started = false;
+        SetRunning(false);
         playerMovementManager.Lock();
         uIPopUp_FinalStats.Open();
     }
+
+    public void SetRunning(bool running)
+    {
+        if (taskData.Job == TaskJob.TUTORIAL) return;
+        this.running = running;
+    }
+
 
     private void ReferenceQuitToMainMenu()
     {
@@ -101,13 +107,9 @@ public class GameManager : MonoBehaviour
 
 
     public static GameManager reference;
-
-    public static AssetHolder Asset { get => reference.assetHolder; }
     public static PerformanceManager PerformanceManager { get => reference.performanceManager; }
-
     public static Transform PlayerMainCameraTransform { get => reference.playerMainCameraTransform; }
     public static XRMovementManager PlayerMovementManager { get => reference.playerMovementManager; }
-
     public static UIPopUp UIPopUp_PauseMenu { get => reference.uIPopUp_PauseMenu; }
 
     public static float LmtTemp_roomTemperature { get => reference.lmtTemp_roomTemperature; }
@@ -121,6 +123,8 @@ public class GameManager : MonoBehaviour
     public static int TotalServed { get => reference.orderer.TotalServed(); }
     public static float TaskTime { get => reference.taskTime; }
     public static int TotalDirt { get => reference.totalDirt; }
+
+    public static bool Running { get => reference.running; }
 
 
 

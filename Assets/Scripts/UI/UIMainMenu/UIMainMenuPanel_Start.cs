@@ -37,10 +37,10 @@ public class UIMainMenuPanel_Start : UIMainMenuPanel
     {
         TaskJob taskJob = taskData.Job;
         if (taskJob == TaskJob.TUTORIAL) dropdown_job.SetValueWithoutNotify(0);
-        else if (taskJob == TaskJob.BATCHER) dropdown_job.SetValueWithoutNotify(1);
-        else if (taskJob == TaskJob.PREPARADOR) dropdown_job.SetValueWithoutNotify(2);
+        else if (taskJob == TaskJob.PREPARADOR) dropdown_job.SetValueWithoutNotify(1);
+        else if (taskJob == TaskJob.BATCHER) dropdown_job.SetValueWithoutNotify(2);
         else dropdown_job.SetValueWithoutNotify(0);
-        Start_UnlockSettings(taskJob != TaskJob.TUTORIAL);
+        Start_UnlockTaskSettings(taskJob != TaskJob.TUTORIAL);
 
         TaskTime taskTime = taskData.Time;
         if (taskTime == TaskTime.MIN5) dropdown_time.SetValueWithoutNotify(0);
@@ -72,13 +72,13 @@ public class UIMainMenuPanel_Start : UIMainMenuPanel
     {
         TaskJob taskJob;
         if(val == 0) taskJob = TaskJob.TUTORIAL;
-        else if (val == 1) taskJob = TaskJob.BATCHER;
-        else if (val == 2) taskJob = TaskJob.PREPARADOR;
+        else if (val == 1) taskJob = TaskJob.PREPARADOR;
+        else if (val == 2) taskJob = TaskJob.BATCHER;
         else taskJob = TaskJob.BATCHER;
 
         taskData.Job = taskJob;
 
-        Start_UnlockSettings(val != 0);
+        Start_UnlockTaskSettings(val != 0);
     }
     private void Dropdown_Time_OnValueChanged(int val)
     {
@@ -143,7 +143,7 @@ public class UIMainMenuPanel_Start : UIMainMenuPanel
         ResetToMainMenu();
     }
 
-    private void Start_UnlockSettings(bool unlock)
+    private void Start_UnlockTaskSettings(bool unlock)
     {
         dropdown_time.interactable = unlock;
         dropdown_orderTime.interactable = unlock;

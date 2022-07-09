@@ -14,6 +14,7 @@ public class UIPopUp_PauseMenu : UIPopUp
 
     private void OnEnable()
     {
+        responsiveness.OnShouldPopOff += CallClose;
         button_Close.onClick.AddListener(CallClose);
         button_QuitRequest.onClick.AddListener(OpenQuitConfirmation);
         button_QuitCancel.onClick.AddListener(CloseQuitConfirmation);
@@ -21,6 +22,7 @@ public class UIPopUp_PauseMenu : UIPopUp
     }
     private void OnDisable()
     {
+        responsiveness.OnShouldPopOff -= CallClose;
         button_Close.onClick.RemoveListener(CallClose);
         button_QuitRequest.onClick.RemoveListener(OpenQuitConfirmation);
         button_QuitCancel.onClick.RemoveListener(CloseQuitConfirmation);

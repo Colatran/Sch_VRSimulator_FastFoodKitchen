@@ -863,9 +863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   responsiveToPosition: 0
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 257
+  layerMask: {fileID: 11400000, guid: b0ef2c55cfffc1443903739100e9884e, type: 2}
   initialDistance: 0.75
   hitDistanceOffset: 0.1
   offset: {x: 0, y: -0.3, z: 0}
@@ -1211,7 +1209,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8143564137422970551
 Transform:
   m_ObjectHideFlags: 0
@@ -1242,6 +1240,7 @@ MonoBehaviour:
   lockX: 1
   lockY: 0
   lockZ: 1
+  target: {fileID: 0}
 --- !u!1 &8143564137570047060
 GameObject:
   m_ObjectHideFlags: 0

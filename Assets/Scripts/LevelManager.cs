@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-using System.Collections;
-
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
-    public string[] sceneReferences;
+
+    [SerializeField] SerializableArrayString sceneReferences;
+
+
 
     private void Awake()
     {
@@ -23,7 +24,7 @@ public class LevelManager : MonoBehaviour
 
     public void LoadScene(int sceneIndex)
     {
-        string sceneName = sceneReferences[sceneIndex];
+        string sceneName = sceneReferences.Value[sceneIndex];
 
         var scene = SceneManager.LoadSceneAsync(sceneName);
         //scene.allowSceneActivation = false;
@@ -40,19 +41,5 @@ public class LevelManager : MonoBehaviour
         scene.allowSceneActivation = true;
 
         //Deactivate loading panel
-    }
-
-
-    private void Start()
-    {
-        StartCoroutine(stess());
-    }
-
-    IEnumerator stess()
-    {
-
-        yield return new WaitForSeconds(3);
-
-        LoadScene(2);
     }
 }

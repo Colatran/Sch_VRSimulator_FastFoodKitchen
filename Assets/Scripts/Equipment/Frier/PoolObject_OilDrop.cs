@@ -35,7 +35,7 @@ public class PoolObject_OilDrop : PoolObject
             health -= Time.fixedDeltaTime;
 
             RaycastHit hitInfo;
-            Physics.Raycast(new Ray(transform.position, Vector3.down), out hitInfo, 1, GameManager.Asset.mask_oil.value);
+            Physics.Raycast(new Ray(transform.position, Vector3.down), out hitInfo, 1, AssetHolder.Asset.mask_oil.Value);
 
             float diameter = health / 10;
             float length = hitInfo.distance;

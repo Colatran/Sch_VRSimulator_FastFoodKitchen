@@ -5,149 +5,126 @@ using UnityEngine;
 public class Recipe : ScriptableObject
 {
     [SerializeField] ItemType breadType;
-    [SerializeField] ItemType beefType;
-    [SerializeField] int beefCount = 1;
-    [SerializeField] ItemType cheeseType;
     [SerializeField] ItemType[] sauces;
-    [SerializeField] ItemType[] ingredients;
+    [SerializeField] Ingredient[] ingredients;
+    [SerializeField] ItemType beefType;
+    [SerializeField] ItemType cheeseType;
+    [SerializeField] bool[] beefSeqence;
 
 
-    public RecipeResult[] Check(List<Attachment> attachments)
+    
+    public RecipeResult[] Check(
+        ItemType breadType, ItemType beefType, ItemType cheeseType,
+        List<Item> sauce, List<Item> ingredients, List<Item> beefSequence)
     {
-        List<Item> items = new List<Item>();
-        foreach (Attachment child in attachments)
-            items.Add(child.GetComponent<Item>());
-
         //0 - Pão
         //1 - Molhos
         //2 - Ingredientes
-        //3 - Queijo e Carne
-        RecipeResult[] results = new RecipeResult[5];
+        //3 - Carne
+        //4 - Queijo
+        //5 - Sequencia Carne e Queijo
+        RecipeResult[] results = new RecipeResult[6];
 
-        int itemIndex;
-        List<Item> listBuffer = new List<Item>();
-
-
-
-
-        #region Bun
-        itemIndex = 0;
-        Item bun_upper = items[itemIndex];
-        RecipeResult bun_upper_result = Check_Bread(bun_upper);
-        if (bun_upper_result != RecipeResult.MISSING) items.RemoveAt(itemIndex);
-
-        itemIndex = items.Count - 1;
-        Item bun_lower = items[itemIndex];
-        RecipeResult bun_lower_result = Check_Bread(bun_lower);
-        if (bun_lower_result != RecipeResult.MISSING) items.RemoveAt(itemIndex);
-
-        if (bun_upper_result == RecipeResult.CORRECT || bun_lower_result == RecipeResult.CORRECT)
-            results[0] = RecipeResult.CORRECT;
-        else
-            results[0] = RecipeResult.INCORRECT;
-
-        if (bun_upper_result == RecipeResult.CORRECT && bun_upper_result == RecipeResult.INCORRECT ||
-            bun_upper_result == RecipeResult.INCORRECT && bun_upper_result == RecipeResult.CORRECT)
-            GameManager.MakeMistake(MistakeType.PREPARADOR_MISTUROU_PAO);
-        #endregion
-
-        #region
-        foreach (Item item in items)
-        {
-            if (item.Is(ItemType.SAUCE)) ;
-        }
-
-        #endregion
-
-
-
-        /*for (int i = items.Count - 1; i > -1;)
-        {
-            Item item = items[i];
-
-            if (stage == 0)
-            {
-                if (item.Is(ItemType.BREAD))
-                {
-                    if (item.Is(breadType)) results[stage] = RecipeResult.CORRECT;
-                    else results[stage] = RecipeResult.INCORRECT;
-                    i--;
-                }
-                else results[stage] = RecipeResult.MISSING;
-
-                stage++;
-            }
-
-            else if (stage == 1)
-            {
-                if (item.Is(ItemType.SAUCE))
-                {
-                    //sauceCount++;
-
-                    bool invalidSauce = true;
-                    foreach (ItemType sauce in sauces)
-                    {
-                        if (item.Is(sauce))
-                        {
-                            invalidSauce = false;
-
-                            break;
-                        }
-                    }
-                    if (invalidSauce)
-                    {
-                        //return 1;
-                    }
-                    else
-                    {
-
-                    }
-                }
-                else
-                {
-                    //if(sauceCount == 0) results[stage] = RecipeResult.MISSING;
-                    //else if (sauceCount >= sauces.Length * 2)
-                    {
-                        //Make Mistake
-                    }
-                    i++;
-                    stage++;
-                }
-            }
-        }*/
+        results[0] = Check_Ingredient(breadType, this.breadType);
+        results[3] = Check_Ingredient(beefType, this.beefType);
+        results[4] = Check_Ingredient(cheeseType, this.cheeseType);
+        results[1] = Check_Sauce(sauce, sauces);
+        results[2] = Check_Ingredients(ingredients);
+        results[5] = Check_BeefSequence(beefSequence);
 
         return results;
     }
 
-
-    private RecipeResult Check_Bread(Item bread)
+    private RecipeResult Check_Ingredient(ItemType other_type, ItemType my_type)
     {
-        if (bread.Is(ItemType.BREAD))
-            if (bread.Is(breadType)) return RecipeResult.CORRECT;
-            else return RecipeResult.INCORRECT;
-        else return RecipeResult.MISSING;
+        if (other_type == my_type) return RecipeResult.CORRECT;
+        else return RecipeResult.INCORRECT;
+    }
+    
+    private RecipeResult Check_Ingredients(List<Item> items)
+    {
+        int[] quantities = new int[ingredients.Length];
+
+        foreach (Item item in items)
+        {
+            int quantityIndex = FindIngredientIndex(item);
+            if (quantityIndex == -1) return RecipeResult.INCORRECT;
+            else quantities[quantityIndex]++;
+        }
+
+        for (int i = 0; i < ingredients.Length; i++)
+        {
+            int quantity = quantities[i];
+            Ingredient ingredient = ingredients[i];
+
+            if (quantity < ingredient.min) return RecipeResult.MISSING;
+            if (quantity > ingredient.max) return RecipeResult.TOOMUCH;
+        }
+
+        return RecipeResult.CORRECT;
+    }
+    
+    private RecipeResult Check_Sauce(List<Item> items, ItemType[] ingredients)
+    {
+        int[] quantities = new int[ingredients.Length];
+
+        foreach (Item item in items)
+        {
+            int quantityIndex = FindSauceIndex(item);
+            if (quantityIndex == -1) return RecipeResult.INCORRECT;
+            else quantities[quantityIndex]++;
+        }
+
+        foreach (int quantity in quantities)
+        {
+            if (quantity < 1) return RecipeResult.MISSING;
+            if (quantity > 2) return RecipeResult.TOOMUCH;
+        }
+
+        return RecipeResult.CORRECT;
+    }
+    
+    private RecipeResult Check_BeefSequence(List<Item> items)
+    {
+        if (items.Count != beefSeqence.Length) return RecipeResult.INCORRECT;
+
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (GetItemType(items[0]) != beefSeqence[i]) return RecipeResult.INCORRECT;
+        }
+
+        return RecipeResult.CORRECT;
     }
 
 
 
+    private int FindSauceIndex(Item item)
+    {
+        for (int i = 0; i < sauces.Length; i++)
+            if (item.Is(sauces[i])) return i;
+        return -1;
+    }
 
-    private struct IngredientQuantity
+    private int FindIngredientIndex(Item item)
+    {
+        for (int i = 0; i < ingredients.Length; i++)
+            if (item.Is(ingredients[i].type)) return i;
+        return -1;
+    }
+
+    private bool GetItemType(Item item)
+    {
+        if (item.Is(ItemType.BEEF) || item.Is(ItemType.FRIED)) return true;
+        else return false;
+    }
+
+
+
+    [System.Serializable]
+    private struct Ingredient
     {
         public ItemType type;
-        public int quantity;
-
-        public IngredientQuantity(ItemType type)
-        {
-            this.type = type;
-            quantity = 0;
-        }
-        private IngredientQuantity(ItemType type, int quantity)
-        {
-            this.type = type;
-            this.quantity = quantity;
-        }
-
-        public IngredientQuantity Add() => new IngredientQuantity(type, quantity + 1);
-        public bool Is(ItemType type) => this.type == type;
+        public int min;
+        public int max;
     }
 }

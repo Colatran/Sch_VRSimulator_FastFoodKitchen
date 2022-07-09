@@ -42,7 +42,7 @@ public abstract class Interactible : MonoBehaviour
         Material[] newMaterials = render.materials;
 
         for (int i = 0; i < render.materials.Length; i++)
-            newMaterials[i] = GameManager.Asset.Material_Hilight;
+            newMaterials[i] = AssetHolder.Asset.Material_Hilight;
         
         render.materials = newMaterials;
     }

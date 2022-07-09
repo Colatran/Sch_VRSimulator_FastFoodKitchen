@@ -3084,6 +3084,7 @@ MonoBehaviour:
   lockX: 1
   lockY: 0
   lockZ: 1
+  target: {fileID: 0}
 --- !u!1 &8869553772113276271
 GameObject:
   m_ObjectHideFlags: 0
@@ -3255,9 +3256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   responsiveToPosition: 1
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 257
+  layerMask: {fileID: 11400000, guid: b0ef2c55cfffc1443903739100e9884e, type: 2}
   initialDistance: 0.75
   hitDistanceOffset: 0.1
   offset: {x: 0, y: -0.3, z: 0}
@@ -3419,47 +3418,47 @@ PrefabInstance:
     - target: {fileID: 7748449367874362201, guid: 51b571aa973166d40a944225474f302b,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7748449367874362201, guid: 51b571aa973166d40a944225474f302b,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7748449367874362201, guid: 51b571aa973166d40a944225474f302b,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.9805249
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7748449368109672108, guid: 51b571aa973166d40a944225474f302b,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 7954.93
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7748449368487432657, guid: 51b571aa973166d40a944225474f302b,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 5217.18
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7748449368487432657, guid: 51b571aa973166d40a944225474f302b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000019550323
+      value: -0.000012397766
       objectReference: {fileID: 0}
     - target: {fileID: 7748449368967218161, guid: 51b571aa973166d40a944225474f302b,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7748449368967218161, guid: 51b571aa973166d40a944225474f302b,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7748449368967218161, guid: 51b571aa973166d40a944225474f302b,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7748449369388566500, guid: 51b571aa973166d40a944225474f302b,
         type: 3}

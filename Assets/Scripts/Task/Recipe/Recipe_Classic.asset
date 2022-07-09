@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 765b4c3c32bd8db439b6e0e70eaff556, type: 3}
-  m_Name: Recipe_Bacon
+  m_Name: Recipe_Classic
   m_EditorClassIdentifier: 
   breadType: 31
-  sauces: 2f00000031000000
+  sauces: 2f00000030000000
   ingredients:
   - type: 41
     min: 2
@@ -21,6 +21,12 @@ MonoBehaviour:
   - type: 42
     min: 2
     max: 3
+  - type: 43
+    min: 2
+    max: 2
+  - type: 44
+    min: 1
+    max: 1
   beefType: 2
   cheeseType: 38
   beefSeqence: 0100

@@ -19,11 +19,11 @@ public class TEST_Button3D : MonoBehaviour
 
     private void OnPressed()
     {
-        m_renderer.material = GameManager.Asset.Material_UHC_TimerOn;
+        m_renderer.material = AssetHolder.Asset.Material_UHC_TimerOn;
         GameManager.MakeMistake(MistakeType.GAVETA_PRODUTO_CONTAMINADO);
     }
     private void OnReleased()
     {
-        m_renderer.material = GameManager.Asset.Material_UHC_TimerOff;
+        m_renderer.material = AssetHolder.Asset.Material_UHC_TimerOff;
     }
 }

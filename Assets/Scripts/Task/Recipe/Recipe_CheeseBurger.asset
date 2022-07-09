@@ -13,8 +13,14 @@ MonoBehaviour:
   m_Name: Recipe_CheeseBurger
   m_EditorClassIdentifier: 
   breadType: 30
+  sauces: 2f00000031000000
+  ingredients:
+  - type: 42
+    min: 2
+    max: 3
+  - type: 45
+    min: 2
+    max: 2
   beefType: 2
-  beefCount: 1
   cheeseType: 38
-  sauces: 2e00000030000000
-  ingredients: 290000002c000000
+  beefSeqence: 000100

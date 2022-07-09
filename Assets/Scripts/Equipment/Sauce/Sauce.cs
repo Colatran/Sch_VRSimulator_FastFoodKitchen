@@ -9,6 +9,7 @@ public class Sauce : MonoBehaviour
     [SerializeField] Transform mesh;
 
     private bool isAirborn = false;
+    private float time = 3;
 
     private void OnValidate()
     {
@@ -39,7 +40,11 @@ public class Sauce : MonoBehaviour
 
     void Update()
     {
-        if (isAirborn) Update_Falling();
+        if (isAirborn)
+        {
+            Update_Falling();
+            Update_Time();
+        }
     }
 
     private void Update_Falling()
@@ -48,7 +53,7 @@ public class Sauce : MonoBehaviour
 
         RaycastHit[] hits = Physics.RaycastAll(
             transform.position, rb.velocity,
-            distance, GameManager.Asset.mask_popUp.value
+            distance, AssetHolder.Asset.mask_popUp.Value
             );
 
         foreach (RaycastHit hit in hits)
@@ -66,6 +71,11 @@ public class Sauce : MonoBehaviour
             }
             transform.position = hit.point;
         }
+    }
+    private void Update_Time()
+    {
+        time -= Time.deltaTime;
+        if (time < 0) Destroy(gameObject);
     }
 
 

@@ -5,4 +5,5 @@ public enum RecipeResult
     CORRECT,
     INCORRECT,
     MISSING,
+    TOOMUCH,
 }

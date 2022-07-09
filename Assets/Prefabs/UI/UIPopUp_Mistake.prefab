@@ -1089,6 +1089,7 @@ MonoBehaviour:
   lockX: 1
   lockY: 0
   lockZ: 1
+  target: {fileID: 0}
 --- !u!1 &2822763297709925227
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,22 +1181,22 @@ PrefabInstance:
     - target: {fileID: 7748449367874362201, guid: 51b571aa973166d40a944225474f302b,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7748449367874362201, guid: 51b571aa973166d40a944225474f302b,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7748449367874362201, guid: 51b571aa973166d40a944225474f302b,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.9805249
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7748449368109672108, guid: 51b571aa973166d40a944225474f302b,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 7954.93
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7748449368487432657, guid: 51b571aa973166d40a944225474f302b,
         type: 3}
@@ -1205,22 +1206,27 @@ PrefabInstance:
     - target: {fileID: 7748449368487432657, guid: 51b571aa973166d40a944225474f302b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000011920929
+      value: -0.000079631805
       objectReference: {fileID: 0}
     - target: {fileID: 7748449368967218161, guid: 51b571aa973166d40a944225474f302b,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7748449368967218161, guid: 51b571aa973166d40a944225474f302b,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7748449368967218161, guid: 51b571aa973166d40a944225474f302b,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7748449369160253486, guid: 51b571aa973166d40a944225474f302b,
+        type: 3}
+      propertyPath: m_Value
+      value: 1.0003836
       objectReference: {fileID: 0}
     - target: {fileID: 7748449369388566500, guid: 51b571aa973166d40a944225474f302b,
         type: 3}

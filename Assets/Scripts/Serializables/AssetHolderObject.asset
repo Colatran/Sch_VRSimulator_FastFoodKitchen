@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5411e327b2a13e94a909642061ac7ea7, type: 3}
-  m_Name: AssetHolder
+  m_Name: AssetHolderObject
   m_EditorClassIdentifier: 
   Material_Hilight: {fileID: 2100000, guid: 121a2b0ee846cd643abf9f5ed38d0fac, type: 2}
   Material_UHC_TimerOn: {fileID: 2100000, guid: 6cd16e5602d1f4c40a4718e21188d2cc,

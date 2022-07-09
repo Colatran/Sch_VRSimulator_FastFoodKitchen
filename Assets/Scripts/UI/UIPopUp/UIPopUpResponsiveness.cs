@@ -36,7 +36,7 @@ public class UIPopUpResponsiveness : MonoBehaviour
 
         ray.direction = direction;
         ray.origin = position;
-        if (Physics.Raycast(ray, out hitInfo, .75f + hitDistanceOffset, layerMask.value))
+        if (Physics.Raycast(ray, out hitInfo, .75f + hitDistanceOffset, layerMask.Value))
         {
             distance = Vector3.Distance(position, hitInfo.point) - hitDistanceOffset;
         }
@@ -46,7 +46,7 @@ public class UIPopUpResponsiveness : MonoBehaviour
 
         ray.direction = Vector3.down;
         ray.origin = requestedPosition + Vector3.up * hight;
-        if (Physics.Raycast(ray, out hitInfo, hight, layerMask.value))
+        if (Physics.Raycast(ray, out hitInfo, hight, layerMask.Value))
         {
             finalPosition = hitInfo.point;
         }

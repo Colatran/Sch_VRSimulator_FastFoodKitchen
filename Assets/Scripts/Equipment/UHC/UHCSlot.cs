@@ -165,7 +165,7 @@ public class UHCSlot : MonoBehaviour
 
     private void OnButtonTimerPressed()
     {
-        SetLightsMaterial(GameManager.Asset.Material_UHC_TimerOn);
+        SetLightsMaterial(AssetHolder.Asset.Material_UHC_TimerOn);
 
         if (type == ItemType.NONE) return;
         if (HasNoBoard) return;

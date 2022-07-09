@@ -11,12 +11,15 @@ public class PerformanceManager : MonoBehaviour
 
     public void AddMistake(MistakeType mistakeType)
     {
-        mistakes.Add(mistakeType);
+        if (GameManager.Running)
+        {
+            mistakes.Add(mistakeType);
 
-        if(OnAddMistake != null)
-            OnAddMistake(mistakeType);
+            if (OnAddMistake != null)
+                OnAddMistake(mistakeType);
 
-        MistakeToConsole(mistakeType);
+            MistakeToConsole(mistakeType);
+        }
     }
 
 

@@ -27,7 +27,7 @@ public class UIPanel_Settings : MonoBehaviour
         bool continuousTurn = xRSettingsData.ContinuousTurn;
         UISetContinuousTurn(continuousTurn);
         if (continuousTurn) slider_rotationContinuous.SetValueWithoutNotify(1);
-        else slider_rotationContinuous.SetValueWithoutNotify(1);
+        else slider_rotationContinuous.SetValueWithoutNotify(0);
     }
     private void OnDisable()
     {

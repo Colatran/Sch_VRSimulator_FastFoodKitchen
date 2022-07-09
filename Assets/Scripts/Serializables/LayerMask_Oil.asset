@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 765b4c3c32bd8db439b6e0e70eaff556, type: 3}
-  m_Name: Recipe_Phish
+  m_Script: {fileID: 11500000, guid: fa6ac7344e4745448be4e9de7e0e919b, type: 3}
+  m_Name: LayerMask_Oil
   m_EditorClassIdentifier: 
-  breadType: 30
-  beefType: 6
-  beefCount: 1
-  cheeseType: 38
-  sauces: 2f000000
-  ingredients: 2b000000
+  value:
+    serializedVersion: 2
+    m_Bits: 1

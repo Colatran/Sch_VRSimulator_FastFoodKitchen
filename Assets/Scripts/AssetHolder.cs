@@ -1,13 +1,26 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "AssetHolder", menuName = "NewObject/AssetHolder")]
-public class AssetHolder : ScriptableObject
+public class AssetHolder : MonoBehaviour
 {
-    public Material Material_Hilight;
+    [SerializeField] AssetHolderObject assetObject;
 
-    public Material Material_UHC_TimerOn;
-    public Material Material_UHC_TimerOff;
+    public static AssetHolder Instance;
+    public static AssetHolderObject Asset
+    {
+        get => Instance.assetObject;
+    }
 
-    public SerializableLayerMask mask_oil;
-    public SerializableLayerMask mask_popUp;
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
 }
