@@ -292,6 +292,7 @@ MonoBehaviour:
   attachment: {fileID: 1431440228789905804}
   typeFlags: 0b0000000c0000000d000000
   attributeCheck: {fileID: 0}
+  disposable: 0
   contentCheck: {fileID: 1431440228789905800}
   magnetArea: {fileID: 4123777156902956580}
 --- !u!114 &1431440228789905800

@@ -135,11 +135,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ingredient_Beef
       objectReference: {fileID: 0}
-    - target: {fileID: 7909868006403801043, guid: f523ad1a909f9bd438786022349ea381,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7909868006403801052, guid: f523ad1a909f9bd438786022349ea381,
         type: 3}
       propertyPath: m_RootOrder
@@ -560,11 +555,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ingredient_BeefVegan
       objectReference: {fileID: 0}
-    - target: {fileID: 7959330137726844602, guid: 346aab3261712674ca342536a0006f6c,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9121527854866430776, guid: 346aab3261712674ca342536a0006f6c,
         type: 3}
       propertyPath: m_RootOrder
@@ -970,11 +960,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ingredient_Beef
       objectReference: {fileID: 0}
-    - target: {fileID: 7909868006403801043, guid: f523ad1a909f9bd438786022349ea381,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7909868006403801052, guid: f523ad1a909f9bd438786022349ea381,
         type: 3}
       propertyPath: m_RootOrder
@@ -1251,11 +1236,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ingredient_Beef
-      objectReference: {fileID: 0}
-    - target: {fileID: 7909868006403801043, guid: f523ad1a909f9bd438786022349ea381,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7909868006403801052, guid: f523ad1a909f9bd438786022349ea381,
         type: 3}
@@ -2197,11 +2177,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ingredient_BeefVegan
-      objectReference: {fileID: 0}
-    - target: {fileID: 7959330137726844602, guid: 346aab3261712674ca342536a0006f6c,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9121527854866430776, guid: 346aab3261712674ca342536a0006f6c,
         type: 3}
@@ -3240,11 +3215,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ingredient_BeefVegan
       objectReference: {fileID: 0}
-    - target: {fileID: 7959330137726844602, guid: 346aab3261712674ca342536a0006f6c,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9121527854866430776, guid: 346aab3261712674ca342536a0006f6c,
         type: 3}
       propertyPath: m_RootOrder
@@ -3723,11 +3693,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ingredient_BeefVegan
-      objectReference: {fileID: 0}
-    - target: {fileID: 7959330137726844602, guid: 346aab3261712674ca342536a0006f6c,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9121527854866430776, guid: 346aab3261712674ca342536a0006f6c,
         type: 3}
@@ -4580,11 +4545,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ingredient_Beef
-      objectReference: {fileID: 0}
-    - target: {fileID: 7909868006403801043, guid: f523ad1a909f9bd438786022349ea381,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7909868006403801052, guid: f523ad1a909f9bd438786022349ea381,
         type: 3}
@@ -7055,11 +7015,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ingredient_Beef
       objectReference: {fileID: 0}
-    - target: {fileID: 7909868006403801043, guid: f523ad1a909f9bd438786022349ea381,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7909868006403801052, guid: f523ad1a909f9bd438786022349ea381,
         type: 3}
       propertyPath: m_RootOrder
@@ -7128,11 +7083,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ingredient_BeefVegan
-      objectReference: {fileID: 0}
-    - target: {fileID: 7959330137726844602, guid: 346aab3261712674ca342536a0006f6c,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9121527854866430776, guid: 346aab3261712674ca342536a0006f6c,
         type: 3}
@@ -7488,6 +7438,21 @@ PrefabInstance:
       propertyPath: startingPosition.z
       value: 0.576
       objectReference: {fileID: 0}
+    - target: {fileID: 7726241077441537636, guid: c7797a183c4663d438f62a9a81266098,
+        type: 3}
+      propertyPath: cookingTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7726241077441537636, guid: c7797a183c4663d438f62a9a81266098,
+        type: 3}
+      propertyPath: cookingTimeFactor
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7726241077441537636, guid: c7797a183c4663d438f62a9a81266098,
+        type: 3}
+      propertyPath: maxTemperatureFactor
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 8488274486191766677, guid: c7797a183c4663d438f62a9a81266098,
         type: 3}
       propertyPath: startingPosition.x
@@ -7808,6 +7773,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1737785784}
     m_Modifications:
+    - target: {fileID: 2822763295831747708, guid: 2862a6653d79175489979b2b86f57010,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 7954.93
+      objectReference: {fileID: 0}
     - target: {fileID: 2822763296046761552, guid: 2862a6653d79175489979b2b86f57010,
         type: 3}
       propertyPath: m_Name
@@ -7868,16 +7838,61 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2822763296066195849, guid: 2862a6653d79175489979b2b86f57010,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2822763296066195849, guid: 2862a6653d79175489979b2b86f57010,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2822763296066195849, guid: 2862a6653d79175489979b2b86f57010,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.9805249
+      objectReference: {fileID: 0}
     - target: {fileID: 2822763296950717998, guid: 2862a6653d79175489979b2b86f57010,
         type: 3}
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 727492907}
+    - target: {fileID: 2822763297125501217, guid: 2862a6653d79175489979b2b86f57010,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2822763297125501217, guid: 2862a6653d79175489979b2b86f57010,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2822763297125501217, guid: 2862a6653d79175489979b2b86f57010,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2822763297617615617, guid: 2862a6653d79175489979b2b86f57010,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2822763297617615617, guid: 2862a6653d79175489979b2b86f57010,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.00007200241
+      objectReference: {fileID: 0}
     - target: {fileID: 2822763297639054856, guid: 2862a6653d79175489979b2b86f57010,
         type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 727492908}
+    - target: {fileID: 2822763297658817944, guid: 2862a6653d79175489979b2b86f57010,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2862a6653d79175489979b2b86f57010, type: 3}
 --- !u!4 &1161599216591974938 stripped
@@ -10174,21 +10189,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 673897859850191598, guid: 4058fe1682e686545a712bc1da4b6599,
-        type: 3}
-      propertyPath: cookingTime
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 673897859850191598, guid: 4058fe1682e686545a712bc1da4b6599,
-        type: 3}
-      propertyPath: cookingTimeFactor
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 673897859850191598, guid: 4058fe1682e686545a712bc1da4b6599,
-        type: 3}
-      propertyPath: maxTemperatureFactor
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7142769085934142880, guid: 4058fe1682e686545a712bc1da4b6599,
         type: 3}

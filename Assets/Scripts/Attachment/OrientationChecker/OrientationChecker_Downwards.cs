@@ -13,7 +13,6 @@ public class OrientationChecker_Downwards : OrientationChecker
             transform.up
             );
 
-        Debug.LogError("(OrientationChecker_Downwards) NÃO FUNCIONA (Utiliza OrientationChecker_Upwards");
         return res;
     }
 }

@@ -277,10 +277,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f24ef8e62b24a499b5d9521b10ebff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cookingTime: 5
+  cookingTime: 60
   maxTemperature: 85
-  cookingTimeFactor: 0.2
-  maxTemperatureFactor: 17
+  cookingTimeFactor: 0.016666668
+  maxTemperatureFactor: 1.4166666
 --- !u!1 &4784041427587915026
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,6 +412,11 @@ PrefabInstance:
       objectReference: {fileID: 7726241077441537636}
     - target: {fileID: 3645784510180842385, guid: 09d4f5071c9bc324b85333d11eccb9e5,
         type: 3}
+      propertyPath: greasePool
+      value: 
+      objectReference: {fileID: 3054166602684892113}
+    - target: {fileID: 3645784510180842385, guid: 09d4f5071c9bc324b85333d11eccb9e5,
+        type: 3}
       propertyPath: cookingFactors
       value: 
       objectReference: {fileID: 7726241077441537636}
@@ -513,6 +518,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1800025766471555167}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3054166602684892113 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3645784510180842382, guid: 09d4f5071c9bc324b85333d11eccb9e5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1800025766471555167}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09db03b390567c04b991d7c1ea66dd7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5648338826442591193
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -525,6 +542,11 @@ PrefabInstance:
       propertyPath: grillBase
       value: 
       objectReference: {fileID: 7726241077441537636}
+    - target: {fileID: 3645784510180842385, guid: 09d4f5071c9bc324b85333d11eccb9e5,
+        type: 3}
+      propertyPath: greasePool
+      value: 
+      objectReference: {fileID: 9005655053639028823}
     - target: {fileID: 3645784510180842385, guid: 09d4f5071c9bc324b85333d11eccb9e5,
         type: 3}
       propertyPath: cookingFactors
@@ -628,6 +650,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5648338826442591193}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9005655053639028823 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3645784510180842382, guid: 09d4f5071c9bc324b85333d11eccb9e5,
+    type: 3}
+  m_PrefabInstance: {fileID: 5648338826442591193}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09db03b390567c04b991d7c1ea66dd7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8141445889344566131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -640,6 +674,11 @@ PrefabInstance:
       propertyPath: grillBase
       value: 
       objectReference: {fileID: 7726241077441537636}
+    - target: {fileID: 3645784510180842385, guid: 09d4f5071c9bc324b85333d11eccb9e5,
+        type: 3}
+      propertyPath: greasePool
+      value: 
+      objectReference: {fileID: 4784041426352679165}
     - target: {fileID: 3645784510180842385, guid: 09d4f5071c9bc324b85333d11eccb9e5,
         type: 3}
       propertyPath: cookingFactors
@@ -743,3 +782,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8141445889344566131}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4784041426352679165 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3645784510180842382, guid: 09d4f5071c9bc324b85333d11eccb9e5,
+    type: 3}
+  m_PrefabInstance: {fileID: 8141445889344566131}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09db03b390567c04b991d7c1ea66dd7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

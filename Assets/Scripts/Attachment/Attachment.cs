@@ -187,9 +187,11 @@ public class Attachment : MonoBehaviour
 
     public void DetachAllChildren()
     {
-        while (directChildren.Count > 0)
+        int childCount = directChildren.Count;
+        while (childCount > 0)
         {
-            directChildren[0].Detach();
+            directChildren[childCount - 1].Detach();
+            childCount = directChildren.Count;
         }
     }
 

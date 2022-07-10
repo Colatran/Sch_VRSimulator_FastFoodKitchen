@@ -24,8 +24,7 @@ public class UIPanel_MistakeList : MonoBehaviour
     [SerializeField] Button button_SectorNext;
     [SerializeField] Button button_SectorPrevious;
 
-
-    private void OnEnable()
+    private void Awake()
     {
         GameManager.PerformanceManager.OnAddMistake += AddMistake;
         button_SpoilerDescription.onClick.AddListener(PressDescriptionSpoiler);
@@ -33,7 +32,7 @@ public class UIPanel_MistakeList : MonoBehaviour
         button_SectorNext.onClick.AddListener(PressNextSector);
         button_SectorPrevious.onClick.AddListener(PressPreviousSector);
     }
-    private void OnDisable()
+    private void OnDestroy()
     {
         GameManager.PerformanceManager.OnAddMistake -= AddMistake;
         button_SpoilerDescription.onClick.RemoveListener(PressDescriptionSpoiler);
@@ -45,6 +44,14 @@ public class UIPanel_MistakeList : MonoBehaviour
 
 
 
+
+    private List<MistakeType> mistakes = new List<MistakeType>();
+    private void AddMistake(MistakeType type)
+    {
+        mistakes.Add(type);
+
+        SetSectorPanel();
+    }
 
     public void Open()
     {
@@ -66,14 +73,6 @@ public class UIPanel_MistakeList : MonoBehaviour
         buttonPool.DisableAllObjects();
 
         mistakes.Clear();
-    }
-
-    private List<MistakeType> mistakes = new List<MistakeType>();
-    private void AddMistake(MistakeType type) 
-    {
-        mistakes.Add(type);
-
-        SetSectorPanel();
     }
 
     private bool isOpen = false;

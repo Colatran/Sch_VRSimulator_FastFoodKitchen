@@ -51,7 +51,7 @@ public class Frier : MonoBehaviour
 
     private void OnItemEnter(Collider other)
     {
-        Item_Cookable item = other.GetComponent<Item_Cookable>();
+        Item item = other.GetComponent<Item>();
         if (item == null) return;
 
         if (item is Item_Cookable)

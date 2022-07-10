@@ -296,7 +296,7 @@ MonoBehaviour:
   orientationChecker: {fileID: 5922932290293519822}
   pool: {fileID: 5922932289992028178}
   origin: {fileID: 5922932288725181087}
-  targetYVelocity: -1.5
+  targetYVelocity: -1.25
   minYVelocity: -1
   colliderInteractible: {fileID: 5922932290293519823}
   colliderIgnoreRaycast: {fileID: 5922932289390699280}

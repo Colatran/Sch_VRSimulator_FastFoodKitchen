@@ -49,7 +49,7 @@ public class GrillPlank : MonoBehaviour
         Item_Cookable item = other.GetComponent<Item_Cookable>();
         if (item == null) return;
 
-        cookables.Remove(item);
+        cookables.RemoveAll(x => x == item);
         CheckRemovedItem(item);
     }
 

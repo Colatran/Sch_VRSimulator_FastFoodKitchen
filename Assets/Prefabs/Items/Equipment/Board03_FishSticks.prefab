@@ -518,13 +518,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2229069160853977396}
-  rb_mass: 0
+  rb_mass: 1.2
   rb_drag: 0
-  rb_angdrag: 0
+  rb_angdrag: 0.05
   rb_isKinematic: 0
-  rb_useGravity: 0
-  rb_collisionDetectionMode: 0
-  rb_interpolation: 0
+  rb_useGravity: 1
+  rb_collisionDetectionMode: 2
+  rb_interpolation: 1
   orientation: {fileID: 2229069160853977401}
   isContainer: 1
   isDeadEnd: 1
@@ -571,6 +571,7 @@ MonoBehaviour:
   attachment: {fileID: 2229069160853977353}
   typeFlags: 0b0000000f00000011000000
   attributeCheck: {fileID: 0}
+  disposable: 0
   contentCheck: {fileID: 6263474871422680080}
   magnetArea: {fileID: 2229069160309077695}
 --- !u!114 &6263474871422680080

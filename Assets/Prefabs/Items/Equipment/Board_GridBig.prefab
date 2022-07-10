@@ -267,13 +267,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5744845708913949915}
-  rb_mass: 0
+  rb_mass: 0.9
   rb_drag: 0
-  rb_angdrag: 0
+  rb_angdrag: 0.05
   rb_isKinematic: 0
-  rb_useGravity: 0
-  rb_collisionDetectionMode: 0
-  rb_interpolation: 0
+  rb_useGravity: 1
+  rb_collisionDetectionMode: 2
+  rb_interpolation: 1
   orientation: {fileID: 5744845708913949914}
   isContainer: 0
   isDeadEnd: 0
@@ -339,6 +339,7 @@ MonoBehaviour:
   attachment: {fileID: 5744845708913949990}
   typeFlags: 140000001600000018000000
   attributeCheck: {fileID: 0}
+  disposable: 0
 --- !u!1 &5744845709175915511
 GameObject:
   m_ObjectHideFlags: 0

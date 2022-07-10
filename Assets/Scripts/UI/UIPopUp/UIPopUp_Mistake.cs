@@ -24,6 +24,8 @@ public class UIPopUp_Mistake : UIPopUp
 
     public override bool Open()
     {
+        if (GameManager.TaskData.Difficuty == TaskDifficuty.HARD) return false;
+
         if (base.Open())
         {
             mistakeList.Open();

@@ -567,7 +567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737f89125f0b54944b9bbf5ffaf5bc70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDot: -0.85
+  maxDot: -0.5
 --- !u!114 &7615169744817802579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598,6 +598,7 @@ MonoBehaviour:
   attachment: {fileID: 7615169744817802577}
   typeFlags: 190000001b000000
   attributeCheck: {fileID: 0}
+  disposable: 0
   contentCheck: {fileID: 0}
   magnetArea: {fileID: 1275526736}
 --- !u!114 &6313280525040913229
