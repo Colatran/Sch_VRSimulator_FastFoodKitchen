@@ -13,7 +13,7 @@ public class MagnetSnap : MonoBehaviour
 
 
 
-    private List<Attachment> attachmentsMustIgnore = new List<Attachment>();
+    public List<Attachment> attachmentsMustIgnore = new List<Attachment>();
     private PositionSlot[][] positionSlots;
 
     private void Awake()
@@ -40,11 +40,7 @@ public class MagnetSnap : MonoBehaviour
         Attachment attachment = other.GetComponent<Attachment>();
         if (attachment == null) return;
 
-        if (attachmentsMustIgnore.Contains(attachment))
-        {
-            attachmentsMustIgnore.Remove(attachment);
-            return;
-        }
+        if (attachmentsMustIgnore.Contains(attachment)) return;
         attachmentsMustIgnore.Add(attachment);
 
 
@@ -63,6 +59,14 @@ public class MagnetSnap : MonoBehaviour
                 return;
             }
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Attachment attachment = other.GetComponent<Attachment>();
+        if (attachment == null) return;
+
+        attachmentsMustIgnore.Remove(attachment);
     }
 
 
