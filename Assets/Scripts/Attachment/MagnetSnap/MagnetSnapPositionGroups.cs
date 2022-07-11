@@ -85,6 +85,17 @@ public class MagnetSnapPositionGroups : ScriptableObject
                     }
                     break;
                 }
+
+            case PositionGroupCondition.MUSTBE_ITEM_FRYERBASKET:
+                {
+                    Item item = attachment.GetComponent<Item>();
+                    if (item != null)
+                    {
+                        if (item.Is(ItemType.EQUIPMENT_FRYERBASKET))
+                            return true;
+                    }
+                    break;
+                }
         }
         return false;
     }

@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Shiny
-    second: {fileID: 2100000, guid: 743a0fa4a42579c4f99c5582e233d27c, type: 2}
+      name: Console
+    second: {fileID: 2100000, guid: 0807b045aa2301b45b075a5668b48a4e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

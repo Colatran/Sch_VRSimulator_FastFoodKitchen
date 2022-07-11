@@ -36,14 +36,11 @@ public class ContentCheck_BoardFried : ContentCheck
 
             //ERRO  -produto-   cru
             //ERRO  -produto-   queimado
-            //ERRO  -bife-      sem sal
             Item_Cookable itemCookable = (item as Item_Cookable);
             if (itemCookable.IsUndercooked)
                 GameManager.MakeMistake(MistakeType.GAVETA_PRODUTO_CRU);
             else if (itemCookable.IsOvercooked)
                 GameManager.MakeMistake(MistakeType.GAVETA_PRODUTO_QUEIMADO);
-            else if (!item.Has(ItemAttribute.SALT))
-                GameManager.MakeMistake(MistakeType.GAVETABIFE_BIFE_SEMSAL);
 
             //ERRO  -frito-      tipo errado
             if (!item.Is(friedType))

@@ -49,7 +49,7 @@ public class Attachment : MonoBehaviour
     private Attachment directParent;
     private Attachment endParent;
     private List<Attachment> directChildren = new List<Attachment>();
-    private List<Attachment> endChildren;
+    private List<Attachment> endChildren = new List<Attachment>();
     private List<Attachment> colectiveParents = new List<Attachment>();
     private List<Attachment> colectiveChildren = new List<Attachment>();
 
@@ -61,7 +61,7 @@ public class Attachment : MonoBehaviour
     public event AttachmentAction OnRemoveContent;
 
     public float Mass { get => rb_mass; }
-    public bool HasProperOrientation(Transform other) => orientation.Check(other);
+    public bool HasProperOrientation(Transform other) => orientation == null ? true : orientation.Check(other);
     public bool IsContainer { get => isContainer; }
     public Attachment DirectParent { get => directParent; }
     public Attachment EndParent { get => endParent; }
@@ -113,7 +113,6 @@ public class Attachment : MonoBehaviour
         foreach (Attachment child in directChildren)
         {
             child.SetEndParent(parent);
-
             child.SetChildrensEndParent(parent);
         }
     }
@@ -169,10 +168,7 @@ public class Attachment : MonoBehaviour
     {
         if (directChildren.Contains(parent)) return;
 
-        if (IsAttached) 
-        {
-            ClearParenting();
-        }
+        if (IsAttached) ClearParenting();
 
         DisableRigidbody();
 

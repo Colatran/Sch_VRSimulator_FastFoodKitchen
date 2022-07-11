@@ -18,6 +18,9 @@ public class Frier : MonoBehaviour
 
 
     private List<FrierBasket> baskets = new List<FrierBasket>();
+    public void AddBasket(FrierBasket basket) => baskets.Add(basket);
+    public void RemoveBasket(FrierBasket basket) => baskets.Remove(basket);
+
     private ItemType contentType = ItemType.NONE;
     private float oilDropMistakeTime = 0;
 
@@ -31,9 +34,6 @@ public class Frier : MonoBehaviour
         oilTriggerArea.OnEnter += OnItemEnter;
         oilTriggerArea.OnExit += OnItemExit;
 
-        foreach (FrierTimer timer in frierTimers) 
-            timer.OnActivated += ActivateTimer;
-
         foreach (PoolObject pObject in oilPool.Objects)
             (pObject as PoolObject_OilDrop).OnDrop += OnOilDrop;
     }
@@ -41,9 +41,6 @@ public class Frier : MonoBehaviour
     {
         oilTriggerArea.OnEnter -= OnItemEnter;
         oilTriggerArea.OnExit -= OnItemExit;
-
-        foreach (FrierTimer timer in frierTimers)
-            timer.OnActivated -= ActivateTimer;
 
         foreach (PoolObject pObject in oilPool.Objects)
             (pObject as PoolObject_OilDrop).OnDrop -= OnOilDrop;
@@ -98,21 +95,10 @@ public class Frier : MonoBehaviour
 
         else if (item.Is(ItemType.EQUIPMENT))
         {
-            if (item.Is(ItemType.EQUIPMENT_FRYERBASKET))
-            {
-                FrierBasket basket = item.GetComponent<FrierBasket>();
-
-                baskets.Add(basket);
-
-                //Defenir o batch
-                //Manda ativar o timer
-                basket.OnEnterOil();
-            }
-            else
+            if (!item.Is(ItemType.EQUIPMENT_FRYERBASKET))
             {
                 GameManager.MakeMistake(MistakeType.FRITADEIRA_ITEMERRADO_EQUIPAMENTO);
             }
-
         }
     }
     private void OnItemExit(Collider other)
@@ -126,30 +112,13 @@ public class Frier : MonoBehaviour
         oilDrop.SetHost(item.transform);
         oilDropObject.SetActive(true);
 
-
         if (item is Item_Cookable)
         {
             Item_Cookable itemCookable = item as Item_Cookable;
             itemCookable.SetHeatSource(HeatSource.NONE);
         }
-
-        else if (item.Is(ItemType.EQUIPMENT_FRYERBASKET))
-        {
-            FrierBasket basket = item.GetComponent<FrierBasket>();
-
-            baskets.Remove(basket);
-
-            basket.OnExitOil();
-        }
     }
 
-    private void ActivateTimer()
-    {
-        foreach(FrierBasket basket in baskets)
-        {
-            if (basket.ActivateTimer()) return;
-        }
-    }
 
     private void OnOilDrop()
     {
@@ -160,6 +129,7 @@ public class Frier : MonoBehaviour
             oilDropMistakeTime = 5;
         }
     }
+
 
 
 

@@ -6,15 +6,11 @@ public class FrierBasket : MonoBehaviour
     [SerializeField] BatchHandler batchHandler;
     [SerializeField] TriggerArea interiorTrigger;
 
-    private const float _timeToPressTimer = 5;
-    private float timeToPressTimer = _timeToPressTimer;
-    private bool canFailPressTimer = false;
-    private bool timerActivated = false;
     private ItemType contentType = ItemType.NONE;
     private List<Item_Cookable> content = new List<Item_Cookable>();
 
     public bool Contains(Item_Cookable item) => content.Contains(item);
-
+    public bool IsEmpty() => content.Count == 0;
 
 
     private void AddItem(Item_Cookable item)
@@ -103,45 +99,10 @@ public class FrierBasket : MonoBehaviour
 
 
 
-    public void OnEnterOil()
-    { 
-        //Manda ativar o timer
-        canFailPressTimer = true;
-        timeToPressTimer = _timeToPressTimer;
-
-        //Defenir o batch
+    public void DefineBatch()
+    {
         batchHandler.NextBatch();
         foreach (Item_Cookable item in content)
             batchHandler.AddItem(item);
-    }
-    public void OnExitOil()
-    {
-        canFailPressTimer = false;
-    }
-
-    public bool ActivateTimer()
-    {
-        if (timerActivated) return false;
-
-        canFailPressTimer = false;
-        return true;
-    }
-
-
-
-    private void Update()
-    {
-        if (canFailPressTimer)
-        {
-            if (timeToPressTimer > 0)
-            {
-                timeToPressTimer -= Time.deltaTime;
-                if (timeToPressTimer <= 0)
-                {
-                    canFailPressTimer = false;
-                    GameManager.MakeMistake(MistakeType.FRITADEIRA_TEMPORIZADOR_NAOATIVOU);
-                }
-            }
-        }
     }
 }

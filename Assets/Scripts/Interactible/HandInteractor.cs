@@ -90,6 +90,7 @@ public class HandInteractor : MonoBehaviour
         if (closest != null) closest.RemoveHilight();
 
         closest = _closest;
+        if (closest == null) return;
         closest.AddHilight();
     }
 

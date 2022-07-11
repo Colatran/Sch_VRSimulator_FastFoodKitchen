@@ -18,4 +18,12 @@ public class SauceDispenser : MonoBehaviour
     {
         Instantiate(prefab, transform.position, Quaternion.identity);
     }
+
+
+
+    private void Start()
+    {
+        InvokeRepeating("Dispense", 3, 3);    
+    }
+
 }

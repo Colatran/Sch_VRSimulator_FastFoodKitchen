@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 618523478b95a074d8f7c9622792dda5
+guid: cca3e38c943337a47a37e23d553666b1
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,18 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Grid
-    second: {fileID: 2100000, guid: c7d919b4b32f15a4cbba0bec1d78bdf5, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Handle
-    second: {fileID: 2100000, guid: 99e6269a95664c546bb6760e4e9afa2f, type: 2}
+      name: Shiny
+    second: {fileID: 2100000, guid: 743a0fa4a42579c4f99c5582e233d27c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Smooth
-    second: {fileID: 2100000, guid: 743a0fa4a42579c4f99c5582e233d27c, type: 2}
+    second: {fileID: 2100000, guid: 6ab582a724adbe4408a26a49abb20a2d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

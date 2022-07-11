@@ -334,13 +334,13 @@ public static class MistakeLibrary
                 "Deixou cair o equipamento no óleo.",
                 "")
         },
-        {
+        /*{
             MistakeType.FRITADEIRA_TEMPORIZADOR_NAOATIVOU,
             new Mistake(
                 "Não Ativou Temporizador",
                 "Colocou cesto na cuba e não ativou o temporizador.",
                 "Sempre que colocar itens na cuba, deve ativar o temporizador.")
-        },
+        },*/
         {
             MistakeType.FRITADEIRA_TEMPORIZADOR_INVALIDADO,
             new Mistake(
