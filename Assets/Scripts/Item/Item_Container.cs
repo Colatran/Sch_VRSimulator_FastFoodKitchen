@@ -31,7 +31,7 @@ public class Item_Container : Item
 
 
 
-    private List<Item> content = new List<Item>();
+    public List<Item> content = new List<Item>();
     public List<Item> Content { get => content; }
     public Item[] FindAll(ItemType type) => content.FindAll(x => x.Is(type)).ToArray();
     public bool Contains(ItemType type)
@@ -59,10 +59,12 @@ public class Item_Container : Item
         Item item = child.GetComponent<Item>();
         if (item == null) return;
 
-        content.Add(item);
+        content.Remove(item);
 
         if (contentCheck != null)
             contentCheck.OnRemove(item);
+
+        RectifyContent();
     }
 
 
@@ -74,8 +76,15 @@ public class Item_Container : Item
     }
 
 
+    public void DestroyAt(int index)
+    {
+        Item item = content[index];
+        Destroy(item.gameObject);
+        content.RemoveAt(index);
+    }
 
-    public void RectifyContent()
+
+    private void RectifyContent()
     {
         Content.RemoveAll(x => x == null);
 

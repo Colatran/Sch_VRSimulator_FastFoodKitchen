@@ -138,20 +138,11 @@ public class UHCSlot : MonoBehaviour
         {
             if (content[i].Is(type))
             {
-                RemoveItem(i);
+                board.DestroyAt(i);
                 serveCount++;
             }
-
         }
-
         OnServe?.Invoke(type, serveCount);
-    }
-
-    private void RemoveItem(int index)
-    {
-        Item item = board.Content[index];
-
-        Destroy(item.gameObject);
     }
 
 
