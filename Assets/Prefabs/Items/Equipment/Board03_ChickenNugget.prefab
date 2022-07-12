@@ -392,6 +392,8 @@ Transform:
   - {fileID: 3959656549919477416}
   - {fileID: 3959656550449591765}
   - {fileID: 4687294604636498057}
+  - {fileID: 8296725377652751319}
+  - {fileID: 1914285708539927112}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -493,6 +495,7 @@ MonoBehaviour:
   disposable: 0
   contentCheck: {fileID: 9147071452152037241}
   magnetArea: {fileID: 3959656550449591766}
+  content: []
 --- !u!114 &9147071452152037241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -589,6 +592,63 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &4623796357598539549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1914285708539927112}
+  - component: {fileID: 3503871222965362270}
+  - component: {fileID: 169105273322692864}
+  m_Layer: 10
+  m_Name: LowVelocityCensorAboveArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1914285708539927112
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4623796357598539549}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3959656550991280732}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3503871222965362270
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4623796357598539549}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2, y: 0.036, z: 0.65}
+  m_Center: {x: 0, y: 0.059, z: 0}
+--- !u!114 &169105273322692864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4623796357598539549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82d7cbc7b79264345b50e28e23e7bfb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4687294604636498056
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,3 +709,62 @@ MonoBehaviour:
   attachment: {fileID: 3959656550991280736}
   positionGroups: {fileID: 11400000, guid: bd48ea16872a6fb42b01f67e5ff7fb39, type: 2}
   attachmentsMustIgnore: []
+--- !u!1 &8975200375151040735
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8296725377652751319}
+  - component: {fileID: 7745119921697082968}
+  - component: {fileID: 7484887093596839240}
+  m_Layer: 10
+  m_Name: LowVelocityCensor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8296725377652751319
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8975200375151040735}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3959656550991280732}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7745119921697082968
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8975200375151040735}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.175, y: 0.036, z: 0.65}
+  m_Center: {x: 0, y: 0.023, z: 0}
+--- !u!114 &7484887093596839240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8975200375151040735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea8d1c6db396fc54e9df62019b3f5f30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachment: {fileID: 3959656550991280736}
+  aboveArea: {fileID: 169105273322692864}

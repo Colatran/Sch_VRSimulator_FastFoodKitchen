@@ -18,7 +18,7 @@ public class PerformanceManager : MonoBehaviour
             if (OnAddMistake != null)
                 OnAddMistake(mistakeType);
 
-            MistakeToConsole(mistakeType);
+            //MistakeToConsole(mistakeType);
         }
     }
 

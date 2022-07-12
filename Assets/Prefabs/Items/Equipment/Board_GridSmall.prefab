@@ -58,6 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 8967142819161229}
+  parents: []
 --- !u!1 &8967142569892783
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,6 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 8967142819161229}
+  parents: []
 --- !u!1 &8967142819161217
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,6 +493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 8967142819161229}
+  parents: []
 --- !u!1 &8967143980501069
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,6 +552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 8967142819161229}
+  parents: []
 --- !u!1 &927374562221806613
 GameObject:
   m_ObjectHideFlags: 0

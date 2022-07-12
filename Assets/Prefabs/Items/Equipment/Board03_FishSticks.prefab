@@ -473,6 +473,8 @@ Transform:
   - {fileID: 2229069159778962881}
   - {fileID: 2229069160309077692}
   - {fileID: 7570592393618926560}
+  - {fileID: 4853236675405631924}
+  - {fileID: 8365690069326734042}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -574,6 +576,7 @@ MonoBehaviour:
   disposable: 0
   contentCheck: {fileID: 6263474871422680080}
   magnetArea: {fileID: 2229069160309077695}
+  content: []
 --- !u!114 &6263474871422680080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -649,3 +652,119 @@ MonoBehaviour:
   attachment: {fileID: 2229069160853977353}
   positionGroups: {fileID: 11400000, guid: bd48ea16872a6fb42b01f67e5ff7fb39, type: 2}
   attachmentsMustIgnore: []
+--- !u!1 &8990561915153189859
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4853236675405631924}
+  - component: {fileID: 3120753041337954626}
+  - component: {fileID: 6785609230435960612}
+  m_Layer: 10
+  m_Name: LowVelocityCensor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4853236675405631924
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8990561915153189859}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2229069160853977397}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3120753041337954626
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8990561915153189859}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.175, y: 0.036, z: 0.65}
+  m_Center: {x: 0, y: 0.023, z: 0}
+--- !u!114 &6785609230435960612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8990561915153189859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea8d1c6db396fc54e9df62019b3f5f30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachment: {fileID: 2229069160853977353}
+  aboveArea: {fileID: 1032099419376422550}
+--- !u!1 &9165626475487691300
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8365690069326734042}
+  - component: {fileID: 1883977348753082152}
+  - component: {fileID: 1032099419376422550}
+  m_Layer: 10
+  m_Name: LowVelocityCensorAboveArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8365690069326734042
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9165626475487691300}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2229069160853977397}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1883977348753082152
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9165626475487691300}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2, y: 0.036, z: 0.65}
+  m_Center: {x: 0, y: 0.059, z: 0}
+--- !u!114 &1032099419376422550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9165626475487691300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82d7cbc7b79264345b50e28e23e7bfb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
