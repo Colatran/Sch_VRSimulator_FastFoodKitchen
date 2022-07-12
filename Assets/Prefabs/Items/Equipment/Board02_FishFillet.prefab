@@ -59,6 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachment: {fileID: 5550039736748737707}
   positionGroups: {fileID: 11400000, guid: 09ef3b64529be5040ae4c89f1c7d65a2, type: 2}
+  attachmentsMustIgnore: []
 --- !u!1 &8123170148691698271
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,7 +519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737f89125f0b54944b9bbf5ffaf5bc70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDot: -0.85
+  maxDot: -0.2
 --- !u!114 &8123170149765125807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,6 +550,7 @@ MonoBehaviour:
   attachment: {fileID: 5550039736748737707}
   typeFlags: 0b0000000f00000010000000
   attributeCheck: {fileID: 0}
+  disposable: 0
   contentCheck: {fileID: 1518952662679424660}
   magnetArea: {fileID: 8123170149226518823}
 --- !u!114 &1518952662679424660

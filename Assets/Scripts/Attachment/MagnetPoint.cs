@@ -16,7 +16,7 @@ public class MagnetPoint : MonoBehaviour
 
 
 
-    private List<Attachment> parents = new List<Attachment>();
+    public List<Attachment> parents = new List<Attachment>();
 
     public bool HasPotentialParent(Attachment parent) => parents.Contains(parent);
     public bool HasEndParent(Attachment parent)
@@ -38,7 +38,8 @@ public class MagnetPoint : MonoBehaviour
 
     public void OnEnterArea(Attachment attachment)
     {
-        parents.Add(attachment);
+        if(!parents.Contains(attachment))
+            parents.Add(attachment);
 
         manager.PointInArea(attachment, parents.Count == 1);
     }

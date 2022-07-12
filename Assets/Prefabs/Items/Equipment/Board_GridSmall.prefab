@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737f89125f0b54944b9bbf5ffaf5bc70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDot: -0.9
+  maxDot: -0.2
 --- !u!114 &8967142819161231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,6 +274,7 @@ MonoBehaviour:
   attachment: {fileID: 773337678053608773}
   typeFlags: 140000001600000017000000
   attributeCheck: {fileID: 0}
+  disposable: 0
 --- !u!1 &8967143153591702
 GameObject:
   m_ObjectHideFlags: 0

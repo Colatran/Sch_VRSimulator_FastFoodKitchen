@@ -261,7 +261,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.06, y: 0.0025, z: 0.06}
+  m_Size: {x: 0.08, y: 0.0025, z: 0.08}
   m_Center: {x: 0, y: 0.00125, z: 0.0002}
 --- !u!114 &4904707023705566551
 MonoBehaviour:
@@ -422,7 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737f89125f0b54944b9bbf5ffaf5bc70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDot: -0.85
+  maxDot: -0.9
 --- !u!114 &4904707024592179966
 MonoBehaviour:
   m_ObjectHideFlags: 0

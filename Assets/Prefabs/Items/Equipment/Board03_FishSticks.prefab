@@ -540,7 +540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737f89125f0b54944b9bbf5ffaf5bc70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDot: -0.85
+  maxDot: -0.2
 --- !u!114 &2229069160853977352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,3 +648,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachment: {fileID: 2229069160853977353}
   positionGroups: {fileID: 11400000, guid: bd48ea16872a6fb42b01f67e5ff7fb39, type: 2}
+  attachmentsMustIgnore: []
