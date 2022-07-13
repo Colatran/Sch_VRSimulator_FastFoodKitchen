@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 8967142819161231}
   - component: {fileID: 8967142819161229}
   - component: {fileID: 7916626658858273029}
+  - component: {fileID: 606763401}
   m_Layer: 8
   m_Name: Board_GridSmall
   m_TagString: Untagged
@@ -277,6 +278,22 @@ MonoBehaviour:
   typeFlags: 140000001600000017000000
   attributeCheck: {fileID: 0}
   disposable: 0
+--- !u!114 &606763401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8967142819161217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7fab0a611643e43b6efe7fad5b0196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachment: {fileID: 773337678053608773}
+  interactible: {fileID: 8967142819161231}
+  box: {fileID: 8967142819161230}
+  parentType: 11
 --- !u!1 &8967143153591702
 GameObject:
   m_ObjectHideFlags: 0

@@ -166,6 +166,7 @@ public class Attachment : MonoBehaviour
 
     public void Attach(Attachment parent)
     {
+        Debug.Log("Attach");
         if (directChildren.Contains(parent)) return;
 
         if (IsAttached) ClearParenting();
