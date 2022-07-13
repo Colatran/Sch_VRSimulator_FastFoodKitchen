@@ -157,6 +157,7 @@ MonoBehaviour:
   orientation: {fileID: 2236459975505205528}
   isContainer: 0
   isDeadEnd: 0
+  isSticky: 1
 --- !u!114 &2236459975505205528
 MonoBehaviour:
   m_ObjectHideFlags: 0

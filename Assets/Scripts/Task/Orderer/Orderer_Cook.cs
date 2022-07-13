@@ -96,6 +96,14 @@ public class Orderer_Cook : Orderer
             orderd -= count;
             served += count;
 
+            if(orderd < 0)
+            {
+                GameManager.MakeMistake(MistakeType.BATCHER_COZINHOUAMAIS);
+
+                served += orderd;
+                orderd = 0;
+            }
+
             text_count.text = orderd + "";
         }
     }

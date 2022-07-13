@@ -2000,7 +2000,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &463198317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5590,7 +5590,7 @@ PrefabInstance:
     - target: {fileID: 7909868006403801052, guid: f523ad1a909f9bd438786022349ea381,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7909868006403801052, guid: f523ad1a909f9bd438786022349ea381,
         type: 3}
@@ -5975,12 +5975,12 @@ GameObject:
   - component: {fileID: 1700802107}
   - component: {fileID: 1700802106}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: SauceDispenser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1700802106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6008,7 +6008,7 @@ Transform:
   m_Children:
   - {fileID: 335468181}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1706526055 stripped
 Transform:
@@ -10547,6 +10547,7 @@ MonoBehaviour:
   orientation: {fileID: 8599175316546713597}
   isContainer: 0
   isDeadEnd: 0
+  isSticky: 0
 --- !u!4 &8599175316546713585
 Transform:
   m_ObjectHideFlags: 0
@@ -10567,7 +10568,7 @@ Transform:
   - {fileID: 950787999579345962}
   - {fileID: 950787998227190205}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &8599175316546713586
 BoxCollider:
@@ -10652,7 +10653,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &8599175316546713597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10956,7 +10957,7 @@ Transform:
   - {fileID: 9221989731602598089}
   - {fileID: 126926255855638000}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9221989731599200669
 MonoBehaviour:
@@ -10981,6 +10982,7 @@ MonoBehaviour:
   orientation: {fileID: 9221989731599200658}
   isContainer: 1
   isDeadEnd: 0
+  isSticky: 0
 --- !u!114 &9221989731599200670
 MonoBehaviour:
   m_ObjectHideFlags: 0

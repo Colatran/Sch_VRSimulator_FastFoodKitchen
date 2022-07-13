@@ -64,12 +64,25 @@ public class Sauce : MonoBehaviour
                 if (rb == null) return;
                 SetGrounded();
                 GameManager.AddDirt();
+                transform.position = hit.point;
+                return;
+            }
+
+            Item item = attachment.GetComponent<Item>();
+            if(item == null)
+            {
+                Destroy(gameObject);
+            }
+            else if(!item.Is(ItemType.EQUIPMENT_CLEANINGSPONGE))
+            {
+                this.attachment.Attach(attachment);
+                transform.position = hit.point;
             }
             else
             {
-                this.attachment.Attach(attachment);
+                Destroy(gameObject);
             }
-            transform.position = hit.point;
+            return;
         }
     }
     private void Update_Time()

@@ -21,9 +21,8 @@ public class SauceDispenser : MonoBehaviour
 
 
 
-    private void Start()
+    /*private void Start()
     {
         InvokeRepeating("Dispense", 3, 3);    
-    }
-
+    }*/
 }

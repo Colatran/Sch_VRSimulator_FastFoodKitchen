@@ -15,6 +15,7 @@ public class Attachment : MonoBehaviour
     [SerializeField] OrientationChecker orientation;
     [SerializeField] bool isContainer;
     [SerializeField] bool isDeadEnd;
+    [SerializeField] bool isSticky;
 
     private void OnValidate()
     {
@@ -166,7 +167,6 @@ public class Attachment : MonoBehaviour
 
     public void Attach(Attachment parent)
     {
-        Debug.Log("Attach");
         if (directChildren.Contains(parent)) return;
 
         if (IsAttached) ClearParenting();
@@ -177,6 +177,8 @@ public class Attachment : MonoBehaviour
     }
     public void Detach()
     {
+        if (isSticky) return;
+
         EnableRigidbody();
 
         ClearParenting();
@@ -184,12 +186,8 @@ public class Attachment : MonoBehaviour
 
     public void DetachAllChildren()
     {
-        int childCount = directChildren.Count;
-        while (childCount > 0)
-        {
-            directChildren[childCount - 1].Detach();
-            childCount = directChildren.Count;
-        }
+        for (int i = directChildren.Count - 1; i > -1; i--)
+            directChildren[i].Detach();
     }
 
 

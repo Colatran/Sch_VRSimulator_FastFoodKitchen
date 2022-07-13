@@ -39,6 +39,7 @@ public class RecipeChecker : MonoBehaviour
 
     public Recipe CheckRecipe(List<Item> items)
     {
+        int i;
         #region Divide
         bool incomplete = false;
 
@@ -68,24 +69,38 @@ public class RecipeChecker : MonoBehaviour
 
         #region Analize
         RecipeResult[][] results = new RecipeResult[recipes.Length][];
-        for (int i = 0; i < results.Length; i++)
+        for (i = 0; i < results.Length; i++)
         {
             results[i] = recipes[i].Check(breadType, beefType, cheeseType, sauces, ingredients, beefSequence);
         }
         #endregion
 
-        //SELECT
-        int[] score = new int[results.Length];
+        #region Select
+        int[] scores = new int[results.Length];
+        for (i = 0; i < scores.Length; i++)
+            scores[i] = GetScore(results[i]);
 
-        for (int i = 0; i < score.Length; i++)
-            score[i] = GetScore(results[i]);
+        int highestScore = scores[0];
+        int highestScoreIndex = 0;
+        bool tie = false;
+        for (i = 1; i < scores.Length; i++)
+        {
+            int score = scores[i];
+            if (score > highestScore)
+            {
+                highestScore = score;
+                highestScoreIndex = i;
+                tie = false;
+            }
+            else if (score == highestScore)
+            {
+                tie = true;
+            }
+        }
 
-
-
-
-
-
-        return null;
+        if (tie) return null;
+        else return recipes[highestScoreIndex];
+        #endregion
     }
 
 
@@ -153,25 +168,44 @@ public class RecipeChecker : MonoBehaviour
         beefType = default;
         cheeseType = default;
 
+        bool unmistakenBeef = true;
+        bool unmistakenCheese = true;
+
         for (int i = items.Count - 1; i < -1; i--)
         {
             Item item = items[i];
-
+          
             if (item.Is(ItemType.BEEF))
             {
-                if (item.Is(ItemType.BEEF_NORMAL)) beefType = ItemType.BEEF_NORMAL;
-                else beefType = ItemType.BEEF_VEGAN;
+                if (unmistakenBeef)
+                {
+                    if (item.Is(ItemType.BEEF_NORMAL))
+                        unmistakenBeef = SetOrMistake(ItemType.BEEF_NORMAL, ref beefType, MistakeType.PREPARADOR_MISTUROU_CARNES);                 
+                    else
+                        unmistakenBeef = SetOrMistake(ItemType.BEEF_VEGAN, ref beefType, MistakeType.PREPARADOR_MISTUROU_CARNES);
+                }
             }
             else if (item.Is(ItemType.FRIED))
             {
-                if (item.Is(ItemType.FRIED_CHIKEN_FILLET)) beefType = ItemType.FRIED_CHIKEN_FILLET;
-                else beefType = ItemType.FRIED_FISH_FILLET;
+                if (unmistakenBeef)
+                {
+                    if (item.Is(ItemType.FRIED_CHIKEN_FILLET))
+                        unmistakenBeef = SetOrMistake(ItemType.FRIED_CHIKEN_FILLET, ref beefType, MistakeType.PREPARADOR_MISTUROU_CARNES);
+                    else
+                        unmistakenBeef = SetOrMistake(ItemType.FRIED_FISH_FILLET, ref beefType, MistakeType.PREPARADOR_MISTUROU_CARNES);
+                }
             }
             else if (item.Is(ItemType.CHEESE))
             {
-                if (item.Is(ItemType.CHEESE_NORMAL)) cheeseType = ItemType.CHEESE_NORMAL;
-                else if (item.Is(ItemType.CHEESE_CHEDDAR)) cheeseType = ItemType.CHEESE_CHEDDAR;
-                else cheeseType = ItemType.CHEESE_SOY;
+                if(unmistakenCheese)
+                {
+                    if (item.Is(ItemType.CHEESE_NORMAL))
+                        unmistakenCheese = SetOrMistake(ItemType.CHEESE_NORMAL, ref cheeseType, MistakeType.PREPARADOR_MISTUROU_QUEIJOS);
+                    else if (item.Is(ItemType.CHEESE_CHEDDAR))
+                        unmistakenCheese = SetOrMistake(ItemType.CHEESE_CHEDDAR, ref cheeseType, MistakeType.PREPARADOR_MISTUROU_QUEIJOS); 
+                    else
+                        unmistakenCheese = SetOrMistake(ItemType.CHEESE_SOY, ref cheeseType, MistakeType.PREPARADOR_MISTUROU_QUEIJOS);
+                }
             }
             else
             {
@@ -181,6 +215,20 @@ public class RecipeChecker : MonoBehaviour
         }
 
         return sector;
+    }
+
+    private bool SetOrMistake(ItemType type, ref ItemType beefType, MistakeType mistakeType)
+    {
+        if (beefType != ItemType.NONE && beefType != type)
+        {
+            GameManager.MakeMistake(mistakeType);
+            return false;
+        }
+        else
+        {
+            beefType = type;
+            return true;
+        }
     }
 
     private int GetScore(RecipeResult[] results)
