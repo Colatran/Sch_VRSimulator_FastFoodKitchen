@@ -96,6 +96,17 @@ public class MagnetSnapPositionGroups : ScriptableObject
                     }
                     break;
                 }
+
+            case PositionGroupCondition.MUSTBE_BUNLOWER:
+                {
+                    Item item = attachment.GetComponent<Item>();
+                    if (item != null)
+                    {
+                        if (item.Is(ItemType.BREAD_LOWER))
+                            return true;
+                    }
+                    break;
+                }
         }
         return false;
     }

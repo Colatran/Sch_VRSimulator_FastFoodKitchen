@@ -13,7 +13,7 @@ public class MagnetSnap : MonoBehaviour
 
 
 
-    public List<Attachment> attachmentsMustIgnore = new List<Attachment>();
+    private List<Attachment> attachmentsMustIgnore = new List<Attachment>();
     private PositionSlot[][] positionSlots;
 
     private void Awake()
@@ -35,6 +35,7 @@ public class MagnetSnap : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Populate");
         if (!this.attachment.HasProperOrientation(null)) return;
 
         Attachment attachment = other.GetComponent<Attachment>();

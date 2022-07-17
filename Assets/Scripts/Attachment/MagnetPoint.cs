@@ -16,7 +16,7 @@ public class MagnetPoint : MonoBehaviour
 
 
 
-    public List<Attachment> parents = new List<Attachment>();
+    private List<Attachment> parents = new List<Attachment>();
 
     public bool HasPotentialParent(Attachment parent) => parents.Contains(parent);
     public bool HasEndParent(Attachment parent)

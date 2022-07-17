@@ -6112,6 +6112,7 @@ MonoBehaviour:
   orientation: {fileID: 0}
   isContainer: 1
   isDeadEnd: 1
+  isSticky: 0
 --- !u!114 &758746495280831971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8009,6 +8010,7 @@ MonoBehaviour:
   orientation: {fileID: 0}
   isContainer: 1
   isDeadEnd: 1
+  isSticky: 0
 --- !u!114 &7091412330120836759
 MonoBehaviour:
   m_ObjectHideFlags: 0
