@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9de369f12fd7e574db202bb4bec0a32b
+guid: db6afb50583299940bff2aca6c161112
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,8 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Beef
-    second: {fileID: 2100000, guid: 66970407a81feb441b87ca470b4e49c9, type: 2}
+      name: Logo
+    second: {fileID: 2100000, guid: c9485902594e4004386f13449599fecb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plastic
+    second: {fileID: 2100000, guid: 492b942491423a248acd4de4890c2a2f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Smooth
+    second: {fileID: 2100000, guid: 6ab582a724adbe4408a26a49abb20a2d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

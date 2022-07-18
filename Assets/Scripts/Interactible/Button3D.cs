@@ -6,13 +6,11 @@ public class Button3D : MonoBehaviour
     [SerializeField] Transform movinTransform;
     [SerializeField] float velocity;
     [SerializeField] Transform targetPositionTransform;
-    [ReadOnly, SerializeField] Vector3 startingPosition;
-    private Vector3 targetPosition { get => targetPositionTransform.position; }
+    private Vector3 startingPosition;
+    private Vector3 targetPosition;
 
     private void OnValidate()
     {
-        startingPosition = movinTransform.position;
-
         if(GetComponent<Collider>() == null) Debug.LogError(gameObject.name + " - Button3D - precisa de um collider!!!");
         else if (!GetComponent<Collider>().isTrigger) Debug.LogError(gameObject.name + " - Button3D - tem de ser trigger!!!");
 
@@ -20,12 +18,21 @@ public class Button3D : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
+        Vector3 startingPosition = movinTransform.position;
+        Vector3 targetPosition = targetPositionTransform.position;
+
         Gizmos.color = Color.red;
         Gizmos.DrawCube(startingPosition, Vector3.one * .001f);
 
         Gizmos.color = Color.blue;
         Gizmos.DrawCube(targetPosition, Vector3.one * .001f);
         Gizmos.DrawLine(startingPosition, targetPosition);
+    }
+
+    private void Start()
+    {
+        startingPosition = movinTransform.position;
+        targetPosition = targetPositionTransform.position;
     }
 
 

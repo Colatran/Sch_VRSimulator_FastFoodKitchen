@@ -18,7 +18,7 @@ public static class BoardTypeData
             ItemType.BEEF_NORMAL,
             new BoardData(
                 ItemType.BOARD_BEEFNORMAL,
-                "BEEF",
+                "BIFE",
                 new Color(0.9622641f, 0.3213598f, 0.3213598f)
                 )
         },
@@ -26,7 +26,7 @@ public static class BoardTypeData
             ItemType.BEEF_VEGAN,
             new BoardData(
                 ItemType.BOARD_BEEFVEGAN,
-                "BEEF VEGGIE",
+                "BIFE VEGAN",
                 new Color(0.2996078f, 0.5019608f, 0.2007843f)
                 )
         },
@@ -34,7 +34,7 @@ public static class BoardTypeData
             ItemType.FRIED_CHIKEN_FILLET,
             new BoardData(
                 ItemType.BOARD_CHIKENFILLET,
-                "CHIKEN FILLET",
+                "PANADO FRANGO",
                 new Color(0.95f, 0.8391667f, 0.285f)
                 )
         },
@@ -42,7 +42,7 @@ public static class BoardTypeData
             ItemType.FRIED_CHIKEN_NUGGET,
             new BoardData(
                 ItemType.BOARD_CHIKENNUGGET,
-                "CHIKEN NUGGET",
+                "NUGGETS",
                 new Color(0.9f, 0.4808955f, 0.09f)
                 )
         },
@@ -50,7 +50,7 @@ public static class BoardTypeData
             ItemType.FRIED_FISH_FILLET,
             new BoardData(
                 ItemType.BOARD_FISHFILLET,
-                "FISH FILLET",
+                "FILLET PEIXE",
                 new Color(0.2392156f, 0.7065359f, 0.8f)
                 )
         },
@@ -58,7 +58,7 @@ public static class BoardTypeData
             ItemType.FRIED_FISH_STICKS,
             new BoardData(
                 ItemType.BOARD_FISHSTICKS,
-                "FISH STICKS",
+                "DOURADINHOS",
                 new Color(0.727338f, 0.4930579f, 0.9433962f)
                 )
         },

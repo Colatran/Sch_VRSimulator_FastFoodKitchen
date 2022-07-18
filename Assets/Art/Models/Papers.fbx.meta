@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9de369f12fd7e574db202bb4bec0a32b
+guid: 0ac01cfaabde4a8478d89cd9721dafec
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Beef
-    second: {fileID: 2100000, guid: 66970407a81feb441b87ca470b4e49c9, type: 2}
+      name: Paper
+    second: {fileID: 2100000, guid: d7643976dac67b241b115b7737bc810a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

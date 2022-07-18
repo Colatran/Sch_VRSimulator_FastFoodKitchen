@@ -39,7 +39,11 @@ public class FrierElevator : MonoBehaviour
 
     private void Attachment_OnAddContent(Attachment attachment)
     {
+        if (basket != null) return;
+
         basket = attachment.GetComponent<FrierBasket>();
+        if (basket == null) return;
+
         basket.DefineBatch();
         frier.AddBasket(basket);
     }
