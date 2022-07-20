@@ -3,7 +3,7 @@ using UnityEngine;
 public class Item_Cookable : Item
 {
     [SerializeField] MaterialPropertyController cookedMaterial;
-
+    [SerializeField] bool isHandSensitive = true;
 
 
     private HeatSource source = HeatSource.NONE;        
@@ -119,13 +119,15 @@ public class Item_Cookable : Item
 
     private void OnEnable()
     {
-        attachment.OnAttach += OnAttach;
+        if (isHandSensitive)
+            attachment.OnAttach += OnAttach;
     }
     private void OnDisable()
     {
-        attachment.OnAttach -= OnAttach;
+        if (isHandSensitive)
+            attachment.OnAttach -= OnAttach;
     }
-
+    
     private void OnAttach()
     {
         if (IsCooked || IsOvercooked)

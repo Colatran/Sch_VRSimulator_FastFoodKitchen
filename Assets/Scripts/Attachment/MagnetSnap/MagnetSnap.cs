@@ -35,7 +35,6 @@ public class MagnetSnap : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Populate");
         if (!this.attachment.HasProperOrientation(null)) return;
 
         Attachment attachment = other.GetComponent<Attachment>();

@@ -7,11 +7,6 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Box
-    second: {fileID: 2100000, guid: d487a88513bf11546a18bfa5e013a173, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: Cheese
     second: {fileID: 2100000, guid: 0e62c77e280617b4f8ed5aa35206981d, type: 2}
   materials:

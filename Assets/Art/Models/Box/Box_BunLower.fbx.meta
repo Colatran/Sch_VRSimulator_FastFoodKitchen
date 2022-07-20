@@ -7,11 +7,6 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Box
-    second: {fileID: 2100000, guid: 2eefd84fa661e6041900760fe1cf929f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: Bun
     second: {fileID: 2100000, guid: dd577006c9254354fa509f70d7dfd0c7, type: 2}
   materials:
