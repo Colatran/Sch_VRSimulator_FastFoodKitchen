@@ -5,8 +5,8 @@ public static class Task
     {
         switch (job)
         {
-            case TaskJob.TUTORIAL:
-                return "Tutorial";
+            //case TaskJob.TUTORIAL:
+            //    return "Tutorial";
 
             case TaskJob.BATCHER:
                 return "Batcher";
@@ -140,7 +140,7 @@ public static class Task
 
 public enum TaskJob
 {
-    TUTORIAL,
+    //TUTORIAL,
     BATCHER,
     PREPARADOR,
 }

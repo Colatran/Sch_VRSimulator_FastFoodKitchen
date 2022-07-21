@@ -357,6 +357,87 @@ public static class MistakeLibrary
         },
 
 
+        //Batcher
+        {
+            MistakeType.BATCHER_COZINHOUAMAIS,
+            new Mistake(
+                "Cozinhou a Mais",
+                "",
+                "")
+        },
+
+        //Prep
+        {
+            MistakeType.PREPARADOR_FALTA_CAIXA,
+            new Mistake(
+                "Falta Caixa",
+                "",
+                "")
+        },
+        {
+            MistakeType.PREPARADOR_FALTA_PAO,
+            new Mistake(
+                "Falta Pão",
+                "",
+                "")
+        },
+        {
+            MistakeType.PREPARADOR_FALTA_HAMBURGUER,
+            new Mistake(
+                "Falta Carne",
+                "",
+                "")
+        },
+        {
+            MistakeType.PREPARADOR_FALTA_QUEIJO,
+            new Mistake(
+                "Falta Queijo",
+                "",
+                "")
+        },
+
+        {
+            MistakeType.PREPARADOR_MISTUROU_PAO,
+            new Mistake(
+                "Misturou Pão",
+                "",
+                "")
+        },
+        {
+            MistakeType.PREPARADOR_MISTUROU_MOLHOS,
+            new Mistake(
+                "Misturou Molhos",
+                "",
+                "")
+        },
+        {
+            MistakeType.PREPARADOR_MISTUROU_CARNES,
+            new Mistake(
+                "Misturou Carnes",
+                "",
+                "")
+        },
+        {
+            MistakeType.PREPARADOR_MISTUROU_QUEIJOS,
+            new Mistake(
+                "Misturou Queijos",
+                "",
+                "")
+        },
+        {
+            MistakeType.PREPARADOR_ITEM_INVALIDO,
+            new Mistake(
+                "Item nvalido",
+                "",
+                "")
+        },
+        {
+            MistakeType.PREPARADOR_TORRADEIRA_QUEIMADO,
+            new Mistake(
+                "Torrado Demais",
+                "",
+                "")
+        },
 
 
 

@@ -92,8 +92,8 @@ public class GameManager : MonoBehaviour
 
     public void SetRunning(bool running)
     {
-        if (taskData.Job == TaskJob.TUTORIAL) this.running = false;
-        this.running = running;
+        /*if (taskData.Job == TaskJob.TUTORIAL) this.running = false;
+        else*/ this.running = running;
     }
 
 

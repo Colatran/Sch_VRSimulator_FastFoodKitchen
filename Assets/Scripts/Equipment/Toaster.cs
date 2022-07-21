@@ -51,7 +51,7 @@ public class Toaster : MonoBehaviour
         On = false;
 
         foreach (Item_Cookable cookable in cookables)
-            cookable.SetHeatSource(HeatSource.COOKER);
+            cookable.SetHeatSource(HeatSource.NONE);
         
         tosterLight.material = AssetHolder.Asset.Material_Light_Off;
     }

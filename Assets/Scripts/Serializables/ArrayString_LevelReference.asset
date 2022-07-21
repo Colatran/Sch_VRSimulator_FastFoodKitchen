@@ -14,6 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value:
   - MainMenu
+  - Task_Prep
   - TEST_Attach
-  - TEST_Items
-  - TEST_Items
