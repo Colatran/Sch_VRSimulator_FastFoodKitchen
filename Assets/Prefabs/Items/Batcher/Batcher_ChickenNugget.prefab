@@ -198,6 +198,7 @@ MonoBehaviour:
   orientation: {fileID: 1412425195599485995}
   isContainer: 0
   isDeadEnd: 0
+  isSticky: 0
 --- !u!114 &1412425195599485995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,6 +260,7 @@ MonoBehaviour:
   attributeCheck: {fileID: 1860996243992503040}
   disposable: 1
   cookedMaterial: {fileID: 4130817804929171564}
+  isHandSensitive: 1
 --- !u!114 &4130817804929171564
 MonoBehaviour:
   m_ObjectHideFlags: 0

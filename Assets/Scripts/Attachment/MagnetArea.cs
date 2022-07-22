@@ -52,7 +52,7 @@ public class MagnetArea : MonoBehaviour
     {
         if (goodOrientation)
         {
-            if (attachment.IsNotAttachable)
+            if (!attachment.HasProperOrientation(null))
             {
                 goodOrientation = false;
                 foreach (MagnetPoint point in points) point.OnExitArea(attachment);
@@ -61,7 +61,7 @@ public class MagnetArea : MonoBehaviour
         }
         else
         {
-            if (attachment.IsAttachable)
+            if (attachment.HasProperOrientation(null))
             {
                 goodOrientation = true;
                 foreach (MagnetPoint point in points) point.OnEnterArea(attachment);

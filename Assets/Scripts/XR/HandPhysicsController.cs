@@ -39,10 +39,13 @@ public class HandPhysicsController : MonoBehaviour
 
     private void SetNonPhysicalHandsVisibility()
     {
-        if (Vector3.Distance(transform.position, target.position) > .1f ||
+        float distance = Vector3.Distance(transform.position, target.position);
+        if (distance > .1f ||
             Quaternion.Angle(transform.rotation, target.rotation) > 90)
             targetRenderer.enabled = true;
         else
             targetRenderer.enabled = false;
+
+        if (distance > .25f) transform.position = target.position;
     }
 }

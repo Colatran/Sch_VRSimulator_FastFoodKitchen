@@ -58,7 +58,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 1983041866295131150}
-  parents: []
 --- !u!1 &1041883052628702284
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,7 +116,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 1983041866295131150}
-  parents: []
 --- !u!1 &1771819305585486894
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,7 +255,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 1983041866295131150}
-  parents: []
 --- !u!1 &4335170050917476547
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,7 +313,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 1983041866295131150}
-  parents: []
 --- !u!1 &4880240275411440333
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,6 +516,7 @@ MonoBehaviour:
   orientation: {fileID: 4880240277171523953}
   isContainer: 0
   isDeadEnd: 0
+  isSticky: 0
 --- !u!114 &4880240277171523953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,7 +529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5f2a6db8dd285e48aa5e73dcfb3514c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxCross: 0.2
+  maxCross: 0.8
 --- !u!114 &9180828263667988403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -586,6 +583,7 @@ MonoBehaviour:
   attributeCheck: {fileID: 3803404148731395945}
   disposable: 1
   cookedMaterial: {fileID: 3184842889097102335}
+  isHandSensitive: 1
 --- !u!114 &3184842889097102335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -671,7 +669,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 1983041866295131150}
-  parents: []
 --- !u!1 &6385850723405643701
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,4 +727,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 1983041866295131150}
-  parents: []

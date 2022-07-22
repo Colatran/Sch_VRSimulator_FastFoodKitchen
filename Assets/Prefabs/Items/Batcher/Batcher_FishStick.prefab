@@ -256,6 +256,7 @@ MonoBehaviour:
   orientation: {fileID: 692470042835257976}
   isContainer: 0
   isDeadEnd: 0
+  isSticky: 0
 --- !u!114 &692470042835257976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5f2a6db8dd285e48aa5e73dcfb3514c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxCross: 0.9
+  maxCross: 0.8
 --- !u!114 &3551341136800045611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,6 +319,7 @@ MonoBehaviour:
   attributeCheck: {fileID: 1872325890139499951}
   disposable: 1
   cookedMaterial: {fileID: 7463431298415077968}
+  isHandSensitive: 1
 --- !u!114 &1872325890139499951
 MonoBehaviour:
   m_ObjectHideFlags: 0

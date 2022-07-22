@@ -8,18 +8,13 @@ public class RecipeChecker : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(0);
         Item item = GetComponent<Item>();
         if (item == null) return;
 
         if (item.Is(ItemType.BOX))
         {
-            List<Attachment> endChildren = item.Attachment.EndChildren;
-            List<Item> items = new List<Item>();
-
-            foreach (Attachment attachment in endChildren)
-                items.Add(attachment.GetComponent<Item>());
-
-            CheckRecipe(items);
+            OnHamburguerIn(item);
         }
         else
         {
@@ -32,12 +27,34 @@ public class RecipeChecker : MonoBehaviour
             {
                 Item parent = endParent.GetComponent<Item>();
                 if (parent == null) return;
-                if (!parent.Is(ItemType.BOX)) GameManager.MakeMistake(MistakeType.PREPARADOR_FALTA_CAIXA);
+                if (parent.Is(ItemType.BOX))
+                {
+                    OnHamburguerIn(parent);
+                }
+                else
+                {
+                    GameManager.MakeMistake(MistakeType.PREPARADOR_FALTA_CAIXA);
+                }
             }
         }
     }
 
-    public Recipe CheckRecipe(List<Item> items)
+    private void OnHamburguerIn(Item parent)
+    {
+        Debug.Log(1);
+        List<Attachment> endChildren = parent.Attachment.EndChildren;
+        List<Item> items = new List<Item>();
+
+        foreach (Attachment attachment in endChildren)
+            items.Add(attachment.GetComponent<Item>());
+
+        Recipe recipe = GetRecipe(items);
+
+        Debug.Log(recipe.name);
+    }
+
+
+    public Recipe GetRecipe(List<Item> items)
     {
         int i;
         #region Divide
@@ -102,7 +119,6 @@ public class RecipeChecker : MonoBehaviour
         else return recipes[highestScoreIndex];
         #endregion
     }
-
 
     private ItemType GetBread(List<Item> items)
     {

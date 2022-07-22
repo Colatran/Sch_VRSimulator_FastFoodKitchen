@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 811093852875260920}
   - component: {fileID: 811093852875260916}
   - component: {fileID: 811093852875260918}
-  - component: {fileID: 811093852875260921}
+  - component: {fileID: -780653129056143709}
   - component: {fileID: 811093852875260917}
   - component: {fileID: 811093852875260914}
   - component: {fileID: 811093852875260915}
@@ -134,11 +134,11 @@ MonoBehaviour:
   rb_useGravity: 1
   rb_collisionDetectionMode: 2
   rb_interpolation: 1
-  orientation: {fileID: 811093852875260921}
+  orientation: {fileID: -780653129056143709}
   isContainer: 1
   isDeadEnd: 0
   isSticky: 0
---- !u!114 &811093852875260921
+--- !u!114 &-780653129056143709
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,10 +147,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 811093852875260922}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 737f89125f0b54944b9bbf5ffaf5bc70, type: 3}
+  m_Script: {fileID: 11500000, guid: f5f2a6db8dd285e48aa5e73dcfb3514c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDot: -0.5
+  maxCross: 0.8
 --- !u!114 &811093852875260917
 MonoBehaviour:
   m_ObjectHideFlags: 0
