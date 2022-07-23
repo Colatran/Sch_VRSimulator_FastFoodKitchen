@@ -278,9 +278,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cookingTime: 60
-  maxTemperature: 85
+  maxTemperature: 100
   cookingTimeFactor: 0.016666668
-  maxTemperatureFactor: 1.4166666
+  maxTemperatureFactor: 1.6666666
 --- !u!1 &4784041427587915026
 GameObject:
   m_ObjectHideFlags: 0

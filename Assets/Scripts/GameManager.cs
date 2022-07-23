@@ -67,6 +67,8 @@ public class GameManager : MonoBehaviour
     {
         nextOrderTime -= Time.deltaTime;
 
+        if (orderer == null) return;
+
         if (nextOrderTime < 0)
         {
             orderer.MakeOrder();

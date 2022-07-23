@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 028723c871a7b1a42bbd3b48c1ad6b7b
   - enabled: 1
+    path: Assets/Scenes/Task_Batcher.unity
+    guid: 6d15d1647e6d30049a574f940f33114e
+  - enabled: 1
     path: Assets/Scenes/Task_Prep.unity
     guid: 4de2e0732d2aca2458c2cb27632ce3cb
   - enabled: 1

@@ -110,9 +110,6 @@ public class Item_Cookable : Item
         temperature = 100;
         cooked = 1;
         cookedMaterial.Set(1);
-
-        if (Is(ItemType.BEEF))
-            AddAttribute(ItemAttribute.SALT);
     }
 
 
