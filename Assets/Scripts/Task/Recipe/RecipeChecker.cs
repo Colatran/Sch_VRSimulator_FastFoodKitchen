@@ -8,40 +8,18 @@ public class RecipeChecker : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(0);
-        Item item = GetComponent<Item>();
+        Item item = other.GetComponent<Item>();
         if (item == null) return;
 
         if (item.Is(ItemType.BOX))
         {
             OnHamburguerIn(item);
         }
-        else
-        {
-            Attachment endParent = item.Attachment.EndParent;
-            if (endParent == null)
-            {
-                GameManager.MakeMistake(MistakeType.PREPARADOR_FALTA_CAIXA);
-            }
-            else
-            {
-                Item parent = endParent.GetComponent<Item>();
-                if (parent == null) return;
-                if (parent.Is(ItemType.BOX))
-                {
-                    OnHamburguerIn(parent);
-                }
-                else
-                {
-                    GameManager.MakeMistake(MistakeType.PREPARADOR_FALTA_CAIXA);
-                }
-            }
-        }
+        else return;
     }
 
     private void OnHamburguerIn(Item parent)
     {
-        Debug.Log(1);
         List<Attachment> endChildren = parent.Attachment.EndChildren;
         List<Item> items = new List<Item>();
 
@@ -50,7 +28,10 @@ public class RecipeChecker : MonoBehaviour
 
         Recipe recipe = GetRecipe(items);
 
-        Debug.Log(recipe.name);
+        Destroy(parent.gameObject);
+
+        if (recipe == null) Debug.Log(null);
+        else Debug.Log(recipe.name);
     }
 
 
@@ -61,16 +42,22 @@ public class RecipeChecker : MonoBehaviour
         bool incomplete = false;
 
         ItemType breadType = GetBread(items);
-        if (breadType == ItemType.NONE) return null;
+        if (breadType == ItemType.NONE)
+        {
+            return null;
+        }
 
+        Debug.Log("itemsCount " + items.Count);
         List<Item> sauces = GetSector(items, ItemType.SAUCE, MistakeType.PREPARADOR_MISTUROU_MOLHOS);
-
+        Debug.Log("itemsCount " + items.Count);
         List<Item> ingredients = GetSector(items, ItemType.SAUCE, MistakeType.PREPARADOR_MISTUROU_MOLHOS);
+        Debug.Log("itemsCount " + items.Count);
 
         ItemType beefType = ItemType.NONE;
         ItemType cheeseType = ItemType.NONE;
         List<Item> beefSequence = GetBeefSector(items, ref beefType, ref cheeseType);
 
+        Debug.Log("itemsCount " + items.Count);
         if (beefType == ItemType.NONE)
         {
             GameManager.MakeMistake(MistakeType.PREPARADOR_FALTA_HAMBURGUER);
@@ -81,7 +68,10 @@ public class RecipeChecker : MonoBehaviour
             GameManager.MakeMistake(MistakeType.PREPARADOR_FALTA_QUEIJO);
             incomplete = true;
         }
-        if (incomplete) return null;
+        if (incomplete)
+        {
+            return null;
+        }
         #endregion
 
         #region Analize
@@ -115,7 +105,10 @@ public class RecipeChecker : MonoBehaviour
             }
         }
 
-        if (tie) return null;
+        if (tie)
+        {
+            return null;
+        }
         else return recipes[highestScoreIndex];
         #endregion
     }
@@ -151,80 +144,115 @@ public class RecipeChecker : MonoBehaviour
 
     private List<Item> GetSector(List<Item> items, ItemType type, MistakeType mistake)
     {
+        Debug.Log("GetSector");
         bool inSector = false;
         bool toFail = true;
         List<Item> sector = new List<Item>();
 
         for (int i = items.Count - 1; i < -1; i--)
         {
+            Debug.Log("Start");
             Item item = items[i];
 
             if (item.Is(type))
             {
+                Debug.Log("IsType");
                 inSector = true;
                 sector.Add(item);
                 items.RemoveAt(i);
             }
             else if (toFail)
             {
+                Debug.Log("else");
                 if (inSector)
                 {
+                    Debug.Log("fail");
                     toFail = true;
                     GameManager.MakeMistake(mistake);
                 }
             }
         }
-
+        Debug.Log("itemsCount " + items.Count);
         return sector;
     }
 
     private List<Item> GetBeefSector(List<Item> items, ref ItemType beefType, ref ItemType cheeseType)
     {
+        Debug.Log("GetBeefSector");
         List<Item> sector = new List<Item>();
-        beefType = default;
-        cheeseType = default;
+        beefType = ItemType.NONE;
+        cheeseType = ItemType.NONE;
 
         bool unmistakenBeef = true;
         bool unmistakenCheese = true;
 
-        for (int i = items.Count - 1; i < -1; i--)
+        for (int i = items.Count - 1; i > -1; i--)
         {
+            Debug.Log("Start");
             Item item = items[i];
           
             if (item.Is(ItemType.BEEF))
             {
+                Debug.Log("  IsBeef");
                 if (unmistakenBeef)
                 {
+                    Debug.Log("    unmistaken");
                     if (item.Is(ItemType.BEEF_NORMAL))
-                        unmistakenBeef = SetOrMistake(ItemType.BEEF_NORMAL, ref beefType, MistakeType.PREPARADOR_MISTUROU_CARNES);                 
+                    {
+                        Debug.Log("      BEEF_NORMAL");
+                        unmistakenBeef = SetOrMistake(ItemType.BEEF_NORMAL, ref beefType, MistakeType.PREPARADOR_MISTUROU_CARNES);
+                    }
                     else
+                    {
+                        Debug.Log("      else");
                         unmistakenBeef = SetOrMistake(ItemType.BEEF_VEGAN, ref beefType, MistakeType.PREPARADOR_MISTUROU_CARNES);
+                    }              
                 }
             }
             else if (item.Is(ItemType.FRIED))
             {
+                Debug.Log("  IsFried");
                 if (unmistakenBeef)
                 {
+                    Debug.Log("    unmistaken");
                     if (item.Is(ItemType.FRIED_CHIKEN_FILLET))
+                    {
+                        Debug.Log("      FRIED_CHIKEN_FILLET");
                         unmistakenBeef = SetOrMistake(ItemType.FRIED_CHIKEN_FILLET, ref beefType, MistakeType.PREPARADOR_MISTUROU_CARNES);
+                    }
                     else
+                    {
+                        Debug.Log("      else");
                         unmistakenBeef = SetOrMistake(ItemType.FRIED_FISH_FILLET, ref beefType, MistakeType.PREPARADOR_MISTUROU_CARNES);
+                    }
                 }
             }
             else if (item.Is(ItemType.CHEESE))
             {
-                if(unmistakenCheese)
+                Debug.Log("  IsCheese");
+                if (unmistakenCheese)
                 {
+                    Debug.Log("    unmistaken");
                     if (item.Is(ItemType.CHEESE_NORMAL))
+                    {
+                        Debug.Log("      CHEESE_NORMAL");
                         unmistakenCheese = SetOrMistake(ItemType.CHEESE_NORMAL, ref cheeseType, MistakeType.PREPARADOR_MISTUROU_QUEIJOS);
+                    } 
                     else if (item.Is(ItemType.CHEESE_CHEDDAR))
-                        unmistakenCheese = SetOrMistake(ItemType.CHEESE_CHEDDAR, ref cheeseType, MistakeType.PREPARADOR_MISTUROU_QUEIJOS); 
+                    {
+                        Debug.Log("      CHEESE_CHEDDAR");
+                        unmistakenCheese = SetOrMistake(ItemType.CHEESE_CHEDDAR, ref cheeseType, MistakeType.PREPARADOR_MISTUROU_QUEIJOS);
+                    }
                     else
+                    {
+                        Debug.Log("      else");
                         unmistakenCheese = SetOrMistake(ItemType.CHEESE_SOY, ref cheeseType, MistakeType.PREPARADOR_MISTUROU_QUEIJOS);
+                    }  
                 }
             }
             else
             {
+                Debug.Log("  else");
                 GameManager.MakeMistake(MistakeType.PREPARADOR_ITEM_INVALIDO);
                 return sector;
             }
@@ -237,11 +265,13 @@ public class RecipeChecker : MonoBehaviour
     {
         if (beefType != ItemType.NONE && beefType != type)
         {
+            Debug.Log("        SetOrMistake if");
             GameManager.MakeMistake(mistakeType);
             return false;
         }
         else
         {
+            Debug.Log("        SetOrMistake else");
             beefType = type;
             return true;
         }
