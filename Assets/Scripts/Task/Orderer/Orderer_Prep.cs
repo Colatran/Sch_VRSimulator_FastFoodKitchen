@@ -5,6 +5,8 @@ public class Orderer_Prep : Orderer
 {
     [SerializeField] TMP_Text[] counters;
     [SerializeField] Recipe[] recipes;
+    [SerializeField] AudioSource audioSource;
+
     private int[] orders;
     private int served;
 
@@ -35,6 +37,8 @@ public class Orderer_Prep : Orderer
         else
         {
             RemoveToOrder(recipeIndex);
+            served++;
+            audioSource.Play();
         }
     }
 

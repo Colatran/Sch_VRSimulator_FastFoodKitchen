@@ -26,10 +26,10 @@ public class Recipe : ScriptableObject
         RecipeResult[] results = new RecipeResult[6];
 
         results[0] = Check_Ingredient(breadType, this.breadType);
-        results[3] = Check_Ingredient(beefType, this.beefType);
-        results[4] = Check_Ingredient(cheeseType, this.cheeseType);
         results[1] = Check_Sauce(sauce, sauces);
         results[2] = Check_Ingredients(ingredients);
+        results[3] = Check_Ingredient(beefType, this.beefType);
+        results[4] = Check_Ingredient(cheeseType, this.cheeseType);
         results[5] = Check_BeefSequence(beefSequence);
 
         return results;
@@ -86,11 +86,17 @@ public class Recipe : ScriptableObject
     
     private RecipeResult Check_BeefSequence(List<Item> items)
     {
-        if (items.Count != beefSeqence.Length) return RecipeResult.INCORRECT;
+        if (items.Count != beefSeqence.Length)
+        {
+            return RecipeResult.INCORRECT;
+        }
 
         for (int i = 0; i < items.Count; i++)
         {
-            if (GetItemType(items[0]) != beefSeqence[i]) return RecipeResult.INCORRECT;
+            if (IsBeef(items[i]) != beefSeqence[i])
+            {
+                return RecipeResult.INCORRECT;
+            }
         }
 
         return RecipeResult.CORRECT;
@@ -112,7 +118,7 @@ public class Recipe : ScriptableObject
         return -1;
     }
 
-    private bool GetItemType(Item item)
+    private bool IsBeef(Item item)
     {
         if (item.Is(ItemType.BEEF) || item.Is(ItemType.FRIED)) return true;
         else return false;

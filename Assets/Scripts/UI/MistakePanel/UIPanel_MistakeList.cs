@@ -251,6 +251,7 @@ public class UIPanel_MistakeList : MonoBehaviour
     public void PressMistakeButton(PoolObject_UIMistakeButton button)
     {
         CurrentButton = button;
+        SetOpenDescription(true);
     }
 
 
@@ -279,6 +280,8 @@ public class UIPanel_MistakeList : MonoBehaviour
 
     private void SetOpenDescription(bool open)
     {
+        if (openDescription == open) return;
+
         openDescription = open;
 
         if (openDescription)

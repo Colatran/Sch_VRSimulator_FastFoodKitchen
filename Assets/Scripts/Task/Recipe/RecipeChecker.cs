@@ -49,7 +49,7 @@ public class RecipeChecker : MonoBehaviour
         List<Item> fried = GetType(items, ItemType.FRIED);
         List<Item> beef = GetType(items, ItemType.BEEF);
 
-        if (bread.Count == 0) GameManager.MakeMistake(MistakeType.PREPARADOR_FALTA_PAO);
+        if (bread.Count < 2) GameManager.MakeMistake(MistakeType.PREPARADOR_FALTA_PAO);
         if (cheese.Count == 0) GameManager.MakeMistake(MistakeType.PREPARADOR_FALTA_QUEIJO);
         if (fried.Count > 0)
         {

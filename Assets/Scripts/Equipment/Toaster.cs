@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +6,7 @@ public class Toaster : MonoBehaviour
     [SerializeField] CookingFactors cookingFactors;
     [SerializeField] Button3D button;
     [SerializeField] MeshRenderer tosterLight;
+    [SerializeField] AudioSource audioSource;
 
     private List<Item_Cookable> cookables = new List<Item_Cookable>();
     private bool On = false;
@@ -41,7 +41,7 @@ public class Toaster : MonoBehaviour
         cookingTime = cookingFactors.CookingTime;
         On = true;
 
-        foreach(Item_Cookable cookable in cookables)
+        foreach (Item_Cookable cookable in cookables)
             cookable.SetHeatSource(HeatSource.COOKER);
 
         tosterLight.material = AssetHolder.Asset.Material_Light_Red;
@@ -54,6 +54,8 @@ public class Toaster : MonoBehaviour
             cookable.SetHeatSource(HeatSource.NONE);
         
         tosterLight.material = AssetHolder.Asset.Material_Light_Off;
+
+        audioSource.Play();
     }
 
 
@@ -88,7 +90,6 @@ public class Toaster : MonoBehaviour
     {
         cookables.Add(cookable);
         cookable.OnBurned += OnBurned;
-
     } 
     private void RemoveCookable(Item_Cookable cookable)
     {

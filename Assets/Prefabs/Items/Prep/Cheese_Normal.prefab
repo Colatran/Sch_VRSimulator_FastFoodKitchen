@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6684915261759129323}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &2783822451849041081
 SphereCollider:
@@ -43,7 +43,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.0025
+  m_Radius: 0.005
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2783822451849041082
 MonoBehaviour:
@@ -88,7 +88,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6684915261759129323}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &2783822452034081929
 SphereCollider:
@@ -101,7 +101,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.0025
+  m_Radius: 0.005
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2783822452034081930
 MonoBehaviour:
@@ -159,7 +159,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.0025
+  m_Radius: 0.005
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2783822452498193101
 MonoBehaviour:
@@ -217,7 +217,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.0025
+  m_Radius: 0.005
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3126737018004452982
 MonoBehaviour:
@@ -313,9 +313,9 @@ Transform:
   - {fileID: 6684915262863535141}
   - {fileID: 6684915261755211710}
   - {fileID: 2521011997475775111}
-  - {fileID: 2783822451849041083}
-  - {fileID: 2783822452498193102}
   - {fileID: 2783822452034081931}
+  - {fileID: 2783822452498193102}
+  - {fileID: 2783822451849041083}
   - {fileID: 316817333526937899}
   m_Father: {fileID: 0}
   m_RootOrder: 0
