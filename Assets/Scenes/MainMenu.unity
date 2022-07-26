@@ -6991,15 +6991,11 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: 120Segundos
+    - m_Text: Lento
       m_Image: {fileID: 0}
-    - m_Text: 90 Segundos
+    - m_Text: Moderado
       m_Image: {fileID: 0}
-    - m_Text: 60 Segundos
-      m_Image: {fileID: 0}
-    - m_Text: 45 Segundos
-      m_Image: {fileID: 0}
-    - m_Text: 30 Segundos
+    - m_Text: "R\xE1pido"
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:

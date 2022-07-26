@@ -374,7 +374,8 @@ GameObject:
   - component: {fileID: 3501246128007691321}
   - component: {fileID: 3115777819918891125}
   - component: {fileID: 3501246128007691322}
-  - component: {fileID: 3501246128007691338}
+  - component: {fileID: 7827187454133966198}
+  - component: {fileID: 1357735047265029291}
   m_Layer: 8
   m_Name: Box
   m_TagString: Untagged
@@ -480,7 +481,7 @@ MonoBehaviour:
   render: {fileID: 3501246129116337911}
   interactibleRadius: 0
   attachment: {fileID: 3501246128007691321}
---- !u!114 &3501246128007691338
+--- !u!114 &7827187454133966198
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -489,13 +490,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 3501246128007691317}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 801ca1faf29d97345a333ccb396b69b4, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b75f49e073133548b1d4d24dd99a32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attachment: {fileID: 3501246128007691321}
   typeFlags: 1c000000
   attributeCheck: {fileID: 0}
   disposable: 1
+  contentCheck: {fileID: 1357735047265029291}
+  magnetArea: {fileID: 0}
+--- !u!114 &1357735047265029291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3501246128007691317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b65c9bb7c6fd33439409577f5f9cb30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  container: {fileID: 7827187454133966198}
 --- !u!1 &3501246128007939436
 GameObject:
   m_ObjectHideFlags: 0

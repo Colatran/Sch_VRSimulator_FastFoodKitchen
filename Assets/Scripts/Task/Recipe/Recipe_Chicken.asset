@@ -20,4 +20,4 @@ MonoBehaviour:
     max: 1
   beefType: 9
   cheeseType: 37
-  beefSeqence: 01
+  beefSeqence: 0100

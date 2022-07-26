@@ -25,7 +25,7 @@ public static class MistakeLibrary
             new Mistake(
                 "Produto nas mãos",
                 "Pegou no produto cozinhado com as mãos.",
-                "Deve evitar tocar nos produtos com as mãos para evitar contaminação, e prevenir o risco de se queimar.")
+                "Deve evitar tocar nos produtos com as mãos para evitar contaminação.")
         },
 
         //PRODUTOBIFE
@@ -49,8 +49,8 @@ public static class MistakeLibrary
             MistakeType.PRODUTOFRITO_SALGADO,
             new Mistake(
                 "Frito Salgado",
-                "Não deve salgar fritos.",
-                "")
+                "Salgou frito.",
+                "Não deve salgar fritos.")
         },
 
 
@@ -105,14 +105,14 @@ public static class MistakeLibrary
             new Mistake(
                 "Papel Sujo",
                 "Utilizou uma folha de papel suja.",
-                "Folhas de papel que estiverem potencialmente contaminadas devem ser descartadas.")
+                "Folhas de papel que estiverem contaminadas devem ser descartadas.")
         },
         {
             MistakeType.GAVETABIFE_PAPEL_FALTA,
             new Mistake(
                 "Falta Papel",
                 "Colocou a carne numa gaveta sem papel.",
-                "Deve colocar papel no fundo da gaveta antes de colocar as carnes nesta.")
+                "Deve colocar papel no fundo da gaveta antes de colocar as carnes.")
         },
         {
             MistakeType.GAVETABIFE_BIFE_TIPOERRADO,
@@ -128,7 +128,7 @@ public static class MistakeLibrary
             new Mistake(
                 "Bife Sem Sal",
                 "Colocou na gaveta uma carne que não foi salgada.",
-                "Deve salgar os bifes assim que a placa superior subir.")
+                "Deve salgar os bifes assim que a placa superior levantar.")
         },
         {
             MistakeType.GAVETABIFE_FRITO,
@@ -189,7 +189,6 @@ public static class MistakeLibrary
         },
 
 
-
         //UHC
         {
             MistakeType.UHC_TEMPORIZADOR_NAOACIONADO,
@@ -208,7 +207,7 @@ public static class MistakeLibrary
         {
             MistakeType.UHC_GAVETA_TIPO,
             new Mistake(
-                "Slot Errada",
+                "Gaveta Não Correspondente",
                 "Colocou a gaveta numa slot de tipo que não correspondente.",
                 "O tipo de produto está marcado na etiqueta em cima da slot, cada produto tem a sua gaveta:"
                 + "\nVermelho - Bife"
@@ -221,7 +220,7 @@ public static class MistakeLibrary
         {
             MistakeType.UHC_GAVETA_PRODUTO,
             new Mistake(
-                "Slot Errada",
+                "Produto Não Correspondente",
                 "Colocou a gaveta com um produto não correspondente à slot.",
                 "O tipo de produto está marcado na etiqueta em cima da slot.")
         },
@@ -281,16 +280,16 @@ public static class MistakeLibrary
         {
             MistakeType.FRITADEIRA_CESTO_PRODUTOMISTURADO_TIPO,
             new Mistake(
-                "Misturou Produto",
-                "Misturou produtos de tipo diferente no mesmo cesto de fritar.",
+                "Misturou Produto no Cesto",
+                "Misturou produtos de tipos diferentes no mesmo cesto de fritar.",
                 "Os cestos de fritar podem conter apena um tipo de produto.")
         },
         {
             MistakeType.FRITADEIRA_CESTO_PRODUTOMISTURADO_LOTE,
             new Mistake(
-                "Misturou Produto",
+                "Misturou Lotes",
                 "Misturou produto velho com produto novo no cesto de fritar.",
-                "")
+                "Deve cozinhar todos os produtos de um lote de uma vez")
         },
         {
             MistakeType.FRITADEIRA_OLEO_BIFE,
@@ -302,16 +301,23 @@ public static class MistakeLibrary
         {
             MistakeType.FRITADEIRA_OLEO_PRODUTOMISTURADO_TIPO,
             new Mistake(
-                "Misturou Produto",
+                "Misturou Produto na Cuba",
                 "Misturou produtos de frango e peixe na mesma cuba.",
                 "Pode misturar itens na cuba apenas se forem ambos de frango ou de peixe.")
         },
         {
             MistakeType.FRITADEIRA_OLEO_PRODUTOMISTURADO_LOTE,
             new Mistake(
-                "Misturou Produto",
+                "Misturou Lotes na Cuba",
                 "Misturou produto velho com produto novo na cuba de fritar.",
-                "")
+                "Deve cozinhar todos os produtos de um lote de uma vez")
+        },
+        {
+            MistakeType.FRITADEIRA_OLEO_NAOESCORREU,
+            new Mistake(
+                "Não Escorreu o Óleo",
+                "Retirou o cesto de cima da fritadeira antes de escorrer o óleo.",
+                "Deve escorrer o óleo durante 5 a 10 segundos antes de o retirar de cima da cuba.")
         },
         {
             MistakeType.FRITADEIRA_PRODUTO_NAOSUBMERSO,
@@ -332,119 +338,182 @@ public static class MistakeLibrary
             new Mistake(
                 "Equipamento No Óleo",
                 "Deixou cair o equipamento no óleo.",
-                "")
+                "Deve evitar contaminar a cuba do óleo.")
         },
-        /*{
-            MistakeType.FRITADEIRA_TEMPORIZADOR_NAOATIVOU,
-            new Mistake(
-                "Não Ativou Temporizador",
-                "Colocou cesto na cuba e não ativou o temporizador.",
-                "Sempre que colocar itens na cuba, deve ativar o temporizador.")
-        },*/
         {
             MistakeType.FRITADEIRA_TEMPORIZADOR_INVALIDADO,
             new Mistake(
                 "Temporizador Invalidado.",
-                "Reacionou o temporizador.",
+                "Reacionou o temporizador depois de comessar a cozinhar.",
                 "Acione o temporizador apenas quando for necessário.")
         },
-        {
-            MistakeType.FRITADEIRA_OLEO_NAOESCORREU,
-            new Mistake(
-                "Não Escorreu o Óleo",
-                "Retirou o cesto de cima da fritadeira antes de escorrer o óleo.",
-                "Deve escorrer o óleo durante 5 a 10 segundos antes de o retirar de cima da cuba.")
-        },
-
 
         //Batcher
         {
             MistakeType.BATCHER_COZINHOUAMAIS,
             new Mistake(
                 "Cozinhou a Mais",
-                "",
-                "")
+                "Cozinhou produto que não estava a ser pedido.",
+                "Deve evitar desperdícios.")
         },
 
-        //Prep
+
+
+        //Preparador
         {
-            MistakeType.PREPARADOR_FALTA_CAIXA,
+            MistakeType.PREPARADOR_TORRADEIRA_QUEIMADO,
             new Mistake(
-                "Falta Caixa",
-                "",
-                "")
+                "Torrou demais",
+                "Deixou o pão torrar demais.",
+                "O tempo programado na torradeira é suficiente.")
         },
+        {
+            MistakeType.PREPARADOR_TORRADEIRA_NAOTORROU,
+            new Mistake(
+                "Não Torrou o Pão",
+                "Utilizou pão portorrar.",
+                "Deve utilizar a torradaeira.")
+        },
+
+        //Falta
         {
             MistakeType.PREPARADOR_FALTA_PAO,
             new Mistake(
                 "Falta Pão",
-                "",
-                "")
-        },
-        {
-            MistakeType.PREPARADOR_FALTA_HAMBURGUER,
-            new Mistake(
-                "Falta Carne",
-                "",
-                "")
+                "Entregou pedido sem o pão.",
+                "Deve respeitar as receitas nos ecrâs.")
         },
         {
             MistakeType.PREPARADOR_FALTA_QUEIJO,
             new Mistake(
                 "Falta Queijo",
-                "",
-                "")
+                "Entregou pedido sem queijo.",
+                "Deve respeitar as receitas nos ecrâs.")
+        },
+        {
+            MistakeType.PREPARADOR_FALTA_CARNE,
+            new Mistake(
+                "Falta Carne",
+                "Entregou pedido sem o carne.",
+                "Deve respeitar as receitas nos ecrâs.")
         },
 
+        //Misturou
         {
             MistakeType.PREPARADOR_MISTUROU_PAO,
             new Mistake(
                 "Misturou Pão",
-                "",
-                "")
+                "Utilizou partes de pão de tipos diferentes.",
+                "Deve respeitar as receitas nos ecrâs.")
         },
         {
-            MistakeType.PREPARADOR_MISTUROU_MOLHOS,
+            MistakeType.PREPARADOR_MISTUROU_CARNE,
             new Mistake(
-                "Misturou Molhos",
-                "",
-                "")
+                "Misturou Carne",
+                "Utilizou carnes de tipos diferentes.",
+                "Deve respeitar as receitas nos ecrâs.")
         },
         {
-            MistakeType.PREPARADOR_MISTUROU_CARNES,
+            MistakeType.PREPARADOR_MISTUROU_CARNETIPO,
             new Mistake(
-                "Misturou Carnes",
-                "",
-                "")
+                "Misturou Tipos",
+                "Misturou Grelhados com Fritos.",
+                "Deve respeitar as receitas nos ecrâs.")
         },
         {
             MistakeType.PREPARADOR_MISTUROU_QUEIJOS,
             new Mistake(
                 "Misturou Queijos",
-                "",
-                "")
+                "Utilizou quijos de tipos diferentes e não correspondentes à receita.",
+                "Deve respeitar as receitas nos ecrâs.")
+        },
+
+        //RECEITA
+        {
+            MistakeType.PREPARADOR_RECEITA_ERRADA,
+            new Mistake(
+                "Receita Errada",
+                "O Hambúrguer entregue não corresponde a nenhuma receita.",
+                "Deve seguir as receitas com rigorozidade.")
         },
         {
-            MistakeType.PREPARADOR_ITEM_INVALIDO,
+            MistakeType.PREPARADOR_RECEITA_ERRADA_PAO,
             new Mistake(
-                "Item nvalido",
-                "",
-                "")
+                "Pão Errado",
+                "O pão não corresponde há receita.",
+                "Deve seguir as receitas com rigorozidade.")
         },
         {
-            MistakeType.PREPARADOR_TORRADEIRA_QUEIMADO,
+            MistakeType.PREPARADOR_RECEITA_ERRADA_MOLHO,
             new Mistake(
-                "Torrado Demais",
-                "",
-                "")
+                "Molho Errado",
+                "Os molhos utilizados não correspondem há receita.",
+                "Deve seguir as receitas com rigorozidade.")
+        },
+        {
+            MistakeType.PREPARADOR_RECEITA_ERRADA_MOLHO_FALTA,
+            new Mistake(
+                "Falta Molho",
+                "Faltam molhos no pedido.",
+                "Deve respeitar as receitas nos ecrâs.")
+        },
+        {
+            MistakeType.PREPARADOR_RECEITA_ERRADA_MOLHO_MUITO,
+            new Mistake(
+                "Muito Molho",
+                "Utilizou demaziado molho.",
+                "Pressionar o butão nos contentores de molho uma vez já dá a quantidade de molho que necesssário.")
+        },
+        {
+            MistakeType.PREPARADOR_RECEITA_ERRADA_INGREDIENTES,
+            new Mistake(
+                "Recheios Errados",
+                "O conjunto de recheios utilizados não corresponde à receita.",
+                "Deve seguir as receitas com rigorozidade.")
+        },
+        {
+            MistakeType.PREPARADOR_RECEITA_ERRADA_INGREDIENTES_FALTA,
+            new Mistake(
+                "Faltam Recheios",
+                "Faltam recheios no pedido que entregou.",
+                "Deve seguir as receitas com rigorozidade.")
+        },
+        {
+            MistakeType.PREPARADOR_RECEITA_ERRADA_INGREDIENTES_MUITO,
+            new Mistake(
+                "Demaziados Recheios",
+                "Utilizou demaziados recheios.",
+                "Deve seguir as quantidades nas receitas com rigorozidade.")
+        },
+        {
+            MistakeType.PREPARADOR_RECEITA_ERRADA_CARNE,
+            new Mistake(
+                "Carne Errada",
+                "A carne utilizada não corresponde à da receita.",
+                "Deve seguir as receitas com rigorozidade.")
+        },
+        {
+            MistakeType.PREPARADOR_RECEITA_ERRADA_QUEIJO,
+            new Mistake(
+                "Quijo Errado",
+                "O queijo utilizado não corresponde ao da receita.",
+                "Deve seguir as receitas com rigorozidade.")
+        },
+        {
+            MistakeType.PREPARADOR_RECEITA_ERRADA_DESORGANIZADO,
+            new Mistake(
+                "Hambúrguer Desorganizado",
+                "Entregou hambúrguer com erros na ordem dos ingredientes.",
+                "Deve seguir a ordem em que os ingredientes aparecem nas receitas com rigorozidade.")
         },
 
-
-
-
-
-
-
+        {
+            MistakeType.PREPARADOR_NENHUMPEDIDO,
+            new Mistake(
+                "Nenhum Pedido",
+                "Entregou hambúrguer que não corresponde a nenhum pedido.",
+                "Deve evitar desperdícios.")
+        },
 
 
 
@@ -453,21 +522,21 @@ public static class MistakeLibrary
             new Mistake(
                 "Produto no Chão",
                 "Deixou cair um produto.",
-                "")
-        }, {
+                "Deve evitar evitar contaminar os produtos.")
+        },
+        {
             MistakeType.PRODUTO_CONTAMINADO,
             new Mistake(
                 "Produto Contaminado",
                 "Utilizou produto que tocou no chão.",
                 "Qualquer produto que tenha tocado no chão deve ser descartado.")
         },
-
         {
             MistakeType.ITEM_CONTAMINADO,
             new Mistake(
                 "Item Contaminado",
                 "Utilizou um item que tocou no chão",
-                "Não deve utilizar qualquer item que tenha tocado no chão, deve coloca-lo na banca da louça e procurar um item limpo.")
+                "Não deve utilizar qualquer item que tenha sido contaminado.")
         },
     };
 

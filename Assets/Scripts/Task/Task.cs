@@ -72,50 +72,58 @@ public static class Task
         }
     }
 
-    public static float GetOrderTime(TaskOrderTime time)
+    public static float GetOrderTime(TaskOrderTime time, TaskJob job)
     {
-        switch (time)
+        if(job == TaskJob.PREPARADOR)
         {
-            case TaskOrderTime.SEG30:
-                return 30;
+            switch (time)
+            {
+                case TaskOrderTime.SLOW:
+                    return 80;
 
-            case TaskOrderTime.SEG45:
-                return 45;
+                case TaskOrderTime.MEDIUM:
+                    return 40;
 
-            case TaskOrderTime.SEG60:
-                return 60;
+                case TaskOrderTime.FAST:
+                    return 20;
 
-            case TaskOrderTime.SEG90:
-                return 90;
+                default:
+                    return 40;
+            }
+        }
+        else
+        {
+            switch (time)
+            {
+                case TaskOrderTime.SLOW:
+                    return 120;
 
-            case TaskOrderTime.SEG120:
-                return 120;
+                case TaskOrderTime.MEDIUM:
+                    return 60;
 
-            default:
-                return 60;
+                case TaskOrderTime.FAST:
+                    return 30;
+
+                default:
+                    return 60;
+            }
         }
     }
     public static string GetOrderTimeName(TaskOrderTime time)
     {
         switch (time)
         {
-            case TaskOrderTime.SEG30:
-                return "30s";
+            case TaskOrderTime.FAST:
+                return "Rápido";
 
-            case TaskOrderTime.SEG45:
-                return "45s";
+            case TaskOrderTime.MEDIUM:
+                return "Moderado";
 
-            case TaskOrderTime.SEG60:
-                return "60s";
-
-            case TaskOrderTime.SEG90:
-                return "90s";
-
-            case TaskOrderTime.SEG120:
-                return "120s";
+            case TaskOrderTime.SLOW:
+                return "Lento";
 
             default:
-                return "60s";
+                return "Moderado";
         }
     }
 
@@ -155,11 +163,9 @@ public enum TaskTime
 }
 public enum TaskOrderTime
 {
-    SEG30,
-    SEG45,
-    SEG60,
-    SEG90,
-    SEG120,
+    SLOW,
+    MEDIUM,
+    FAST,
 }
 public enum TaskDifficuty
 {

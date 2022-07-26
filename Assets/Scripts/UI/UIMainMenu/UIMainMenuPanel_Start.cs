@@ -36,11 +36,9 @@ public class UIMainMenuPanel_Start : UIMainMenuPanel
     private void Start()
     {
         TaskJob taskJob = taskData.Job;
-        /*if (taskJob == TaskJob.TUTORIAL) dropdown_job.SetValueWithoutNotify(0);
-        else*/ if (taskJob == TaskJob.PREPARADOR) dropdown_job.SetValueWithoutNotify(1);
-        else if (taskJob == TaskJob.BATCHER) dropdown_job.SetValueWithoutNotify(2);
+        if (taskJob == TaskJob.PREPARADOR) dropdown_job.SetValueWithoutNotify(0);
+        else if (taskJob == TaskJob.BATCHER) dropdown_job.SetValueWithoutNotify(1);
         else dropdown_job.SetValueWithoutNotify(0);
-        //Start_UnlockTaskSettings(taskJob != TaskJob.TUTORIAL);
 
         TaskTime taskTime = taskData.Time;
         if (taskTime == TaskTime.MIN5) dropdown_time.SetValueWithoutNotify(0);
@@ -52,11 +50,9 @@ public class UIMainMenuPanel_Start : UIMainMenuPanel
         else dropdown_time.SetValueWithoutNotify(0);
 
         TaskOrderTime taskOrderTime = taskData.OrderTime;
-        if (taskOrderTime == TaskOrderTime.SEG120) dropdown_orderTime.SetValueWithoutNotify(0);
-        else if (taskOrderTime == TaskOrderTime.SEG90) dropdown_orderTime.SetValueWithoutNotify(1);
-        else if (taskOrderTime == TaskOrderTime.SEG60) dropdown_orderTime.SetValueWithoutNotify(2);
-        else if (taskOrderTime == TaskOrderTime.SEG45) dropdown_orderTime.SetValueWithoutNotify(3);
-        else if (taskOrderTime == TaskOrderTime.SEG30) dropdown_orderTime.SetValueWithoutNotify(4);
+        if (taskOrderTime == TaskOrderTime.SLOW) dropdown_orderTime.SetValueWithoutNotify(0);
+        else if (taskOrderTime == TaskOrderTime.MEDIUM) dropdown_orderTime.SetValueWithoutNotify(1);
+        else if (taskOrderTime == TaskOrderTime.FAST) dropdown_orderTime.SetValueWithoutNotify(2);
         else dropdown_orderTime.SetValueWithoutNotify(2);
 
         TaskDifficuty taskDifficuty = taskData.Difficuty;
@@ -71,14 +67,11 @@ public class UIMainMenuPanel_Start : UIMainMenuPanel
     private void Dropdown_Job_OnValueChanged(int val)
     {
         TaskJob taskJob;
-        /*if(val == 0) taskJob = TaskJob.TUTORIAL;
-        else*/ if (val == 0) taskJob = TaskJob.PREPARADOR;
+        if (val == 0) taskJob = TaskJob.PREPARADOR;
         else if (val == 1) taskJob = TaskJob.BATCHER;
         else taskJob = TaskJob.BATCHER;
 
         taskData.Job = taskJob;
-
-        //Start_UnlockTaskSettings(val != 0);
     }
     private void Dropdown_Time_OnValueChanged(int val)
     {
@@ -96,12 +89,10 @@ public class UIMainMenuPanel_Start : UIMainMenuPanel
     private void Dropdown_OrderTime_OnValueChanged(int val)
     {
         TaskOrderTime taskOrderTime;
-        if (val == 0) taskOrderTime = TaskOrderTime.SEG120;
-        else if (val == 1) taskOrderTime = TaskOrderTime.SEG90;
-        else if (val == 2) taskOrderTime = TaskOrderTime.SEG60;
-        else if (val == 3) taskOrderTime = TaskOrderTime.SEG45;
-        else if (val == 4) taskOrderTime = TaskOrderTime.SEG30;
-        else taskOrderTime = TaskOrderTime.SEG60;
+        if (val == 0) taskOrderTime = TaskOrderTime.SLOW;
+        else if (val == 1) taskOrderTime = TaskOrderTime.MEDIUM;
+        else if (val == 2) taskOrderTime = TaskOrderTime.FAST;
+        else taskOrderTime = TaskOrderTime.MEDIUM;
 
         taskData.OrderTime = taskOrderTime;
     }
@@ -122,9 +113,6 @@ public class UIMainMenuPanel_Start : UIMainMenuPanel
 
         switch (taskJob)
         {
-            /*case TaskJob.TUTORIAL:
-                index = 1;
-                break;*/
             case TaskJob.PREPARADOR:
                 index = 1;
                 break;
@@ -142,11 +130,4 @@ public class UIMainMenuPanel_Start : UIMainMenuPanel
     {
         ResetToMainMenu();
     }
-
-    /*private void Start_UnlockTaskSettings(bool unlock)
-    {
-        dropdown_time.interactable = unlock;
-        dropdown_orderTime.interactable = unlock;
-        dropdown_difficulty.interactable = unlock;
-    }*/
 }

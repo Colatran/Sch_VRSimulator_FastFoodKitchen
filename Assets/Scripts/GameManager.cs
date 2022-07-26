@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         taskTime = Task.GetTime(taskData.Time);
-        orderDelay = Task.GetOrderTime(taskData.OrderTime);
+        orderDelay = Task.GetOrderTime(taskData.OrderTime, taskData.Job);
         uIPopUp_InitialStats.Open();
     }
 

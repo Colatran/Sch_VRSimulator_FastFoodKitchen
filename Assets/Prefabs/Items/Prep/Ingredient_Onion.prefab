@@ -118,7 +118,6 @@ Transform:
   - {fileID: 585756584629786157}
   - {fileID: 585756585601828278}
   - {fileID: 8509831390264531087}
-  - {fileID: 8234425394541702835}
   - {fileID: 8234425394049867974}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -218,9 +217,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachment: {fileID: 585756585601055970}
   points:
-  - {fileID: 8234425394541702834}
   - {fileID: 8234425394049867973}
-  minPoints: 2
+  minPoints: 1
 --- !u!114 &585756585601055889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,7 +261,7 @@ Transform:
   m_GameObject: {fileID: 585756585601828279}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.26, y: 0.025, z: 0.26}
+  m_LocalScale: {x: 0.26, y: 0.0125, z: 0.26}
   m_Children: []
   m_Father: {fileID: 585756585601055971}
   m_RootOrder: 1
@@ -367,11 +365,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8234425394049867975}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 585756585601055971}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &8234425394049867972
 SphereCollider:
@@ -393,64 +391,6 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8234425394049867975}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69a31fcc789a5e24f80ce4b3b11d6619, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manager: {fileID: 585756585601055981}
---- !u!1 &8234425394541702844
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8234425394541702835}
-  - component: {fileID: 8234425394541702833}
-  - component: {fileID: 8234425394541702834}
-  m_Layer: 12
-  m_Name: MagnetPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8234425394541702835
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8234425394541702844}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.02, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 585756585601055971}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &8234425394541702833
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8234425394541702844}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.005
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8234425394541702834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8234425394541702844}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69a31fcc789a5e24f80ce4b3b11d6619, type: 3}
