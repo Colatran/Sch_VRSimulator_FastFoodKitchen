@@ -218,6 +218,7 @@ MonoBehaviour:
   orientation: {fileID: 0}
   isContainer: 0
   isDeadEnd: 0
+  isSticky: 0
 --- !u!114 &5461860995676543701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,6 +249,7 @@ MonoBehaviour:
   attachment: {fileID: 5461860995676543700}
   typeFlags: 190000001a000000
   attributeCheck: {fileID: 0}
+  disposable: 0
 --- !u!1 &5461860996307618444
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,7 +288,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5461860996307618444}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: bf50836a553926c4384135a9aa6011ed, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.008
@@ -333,7 +335,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5461860996435614858}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 5ea32b2a9d390a34793c1ddf855c4367, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -346,7 +348,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5461860996435614858}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 5ea32b2a9d390a34793c1ddf855c4367, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4

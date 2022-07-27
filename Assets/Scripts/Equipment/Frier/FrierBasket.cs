@@ -30,6 +30,9 @@ public class FrierBasket : MonoBehaviour
     {
         if (item.Is(ItemType.FRIED))
         {
+            if (item.Has(ItemAttribute.DIRT))
+                GameManager.MakeMistake(MistakeType.PRODUTO_CONTAMINADO);
+
             if (contentType == ItemType.NONE)
             {
                 if (item.Is(ItemType.FRIED_FISH_FILLET)) contentType = ItemType.FRIED_FISH_FILLET;

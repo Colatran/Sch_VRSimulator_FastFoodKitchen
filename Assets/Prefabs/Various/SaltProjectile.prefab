@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 684021644856787125}
   - component: {fileID: 684021644856787127}
-  - component: {fileID: 684021644856787126}
+  - component: {fileID: 285094758452423289}
   m_Layer: 10
   m_Name: TriggerInteractible
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 684021645506307270}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &684021644856787127
 SphereCollider:
@@ -43,9 +43,9 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.0125
+  m_Radius: 0.025
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &684021644856787126
+--- !u!114 &285094758452423289
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -54,10 +54,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 684021644856787124}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8b9c096388abec4ab1b36da30f42d7b, type: 3}
+  m_Script: {fileID: 11500000, guid: 52e6ad2d0047f324cbeefaceaa2c7eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 684021645506307275}
 --- !u!1 &684021645506307274
 GameObject:
   m_ObjectHideFlags: 0
@@ -76,7 +75,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &684021645506307270
 Transform:
   m_ObjectHideFlags: 0
@@ -89,8 +88,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3266449477960348149}
-  - {fileID: 684021644856787125}
   - {fileID: 753668357159543242}
+  - {fileID: 684021644856787125}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -138,6 +137,8 @@ MonoBehaviour:
   pool: {fileID: 0}
   canister: {fileID: 0}
   rb: {fileID: 684021645506307268}
+  IgnoreRaycast: {fileID: 3924060885351072996}
+  Interactible: {fileID: 285094758452423289}
 --- !u!1 &2746934994900773711
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 753668357159543242}
   - component: {fileID: 3858290624641233442}
-  - component: {fileID: 3435557040530932963}
+  - component: {fileID: 3924060885351072996}
   m_Layer: 2
   m_Name: TriggerIgnoreRaycast
   m_TagString: Untagged
@@ -249,7 +250,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 684021645506307270}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &3858290624641233442
 SphereCollider:
@@ -262,9 +263,9 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.0125
+  m_Radius: 0.00625
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3435557040530932963
+--- !u!114 &3924060885351072996
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -273,7 +274,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 3640807467279405234}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8b9c096388abec4ab1b36da30f42d7b, type: 3}
+  m_Script: {fileID: 11500000, guid: 52e6ad2d0047f324cbeefaceaa2c7eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 684021645506307275}

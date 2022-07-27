@@ -4,6 +4,8 @@ public class PoolObject_SaltProjectile : PoolObject
 {
     [SerializeField] SaltCanister canister;
     [SerializeField] Rigidbody rb;
+    [SerializeField] TriggerArea IgnoreRaycast;
+    [SerializeField] TriggerArea Interactible;
 
     private void OnValidate()
     {
@@ -12,14 +14,38 @@ public class PoolObject_SaltProjectile : PoolObject
 
 
 
+    private bool used = false;
+
     public override void Enable()
     {
         base.Enable();
 
         time = 1;
+
+        IgnoreRaycast.OnEnter += IgnoreRaycast_OnEnter;
+        Interactible.OnEnter += Interactible_OnEnter;
+        used = false;
     }
 
+    private void IgnoreRaycast_OnEnter(Collider other)
+    {
+        used = true;
+        DisableSelf();
+    }
+    private void Interactible_OnEnter(Collider other)
+    {
+        Item_Cookable item = other.GetComponent<Item_Cookable>();
+        if (item == null) return;
 
+        if (used) return;
+        used = true;
+
+        item.AddAttribute(ItemAttribute.SALT);
+
+        IgnoreRaycast.OnEnter -= IgnoreRaycast_OnEnter;
+        Interactible.OnEnter -= Interactible_OnEnter;
+        DisableSelf();
+    }
 
     private float time;
 
@@ -41,19 +67,5 @@ public class PoolObject_SaltProjectile : PoolObject
         float deltaTime = Time.deltaTime;
 
         UpdateTime(deltaTime);
-    }
-
-
-
-    public void TriggerEnter(Collider other)
-    {
-        if (other == canister.ColliderIgnoreRaycast) return;
-        if (other == canister.ColliderInteractible) return;
-
-        Item_Cookable item = other.GetComponent<Item_Cookable>();
-        if (item != null)
-            item.AddAttribute(ItemAttribute.SALT);
-
-        DisableSelf();
     }
 }

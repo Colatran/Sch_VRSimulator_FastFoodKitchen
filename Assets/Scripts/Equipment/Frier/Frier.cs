@@ -78,6 +78,9 @@ public class Frier : MonoBehaviour
                 }
                 else if (item.Is(ItemType.FRIED))
                 {
+                    if (item.Has(ItemAttribute.DIRT))
+                        GameManager.MakeMistake(MistakeType.PRODUTO_CONTAMINADO);
+
                     //Vê se é do mesmo tipo
                     if (contentType == ItemType.NONE)
                     {
